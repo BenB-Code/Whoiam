@@ -1,0 +1,19 @@
+<section>
+  <h3>Actions</h3>
+  <ul>
+    @for (action of experience().actions; track $index) {
+      <li>
+        {{ action }}
+      </li>
+    }
+  </ul>
+
+</section>
+<section>
+  <h3>Technos</h3>
+  <article class="badgeList">
+    @for (techno of experience().skills; track $index) {
+      <app-badge [label]="techno"></app-badge>
+    }
+  </article>
+</section>

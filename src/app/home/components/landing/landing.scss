@@ -1,17 +1,13 @@
 :host {
-  display: flex;
-  flex-direction: column;
   justify-content: flex-end;
-  height: 100vh;
-  width: auto;
-  background: rgb(56, 56, 56);
-  color: white;
 
   section {
     margin: 5rem;
+    z-index: 1;
 
     article {
       display: inline-flex;
+      font-family: Consolas;
 
       h1 {
         font-size: 15rem;
@@ -27,7 +23,7 @@
         display: flex;
         align-items: flex-end;
         background: rgba(255, 255, 255, 0.75);
-        width: 12rem;
+        width: 1ch;
         margin-left: 2rem;
         margin-top: auto;
         margin-bottom: 2rem;
@@ -39,6 +35,7 @@
 
     h3 {
       font-size: 3rem;
+      font-weight: 200;
 
       .name {
         color: #5a9c39

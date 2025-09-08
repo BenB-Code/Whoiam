@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  border: 1px solid lime;
+  flex-direction: column;
+  margin: 0.5rem;
+
+
+  &:hover {
+    border: 1px solid red;
+    background: rgba(0, 0, 0, 0.3);
+  }
+}

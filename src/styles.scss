@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  font-family: monospace;
-  color: white;
+@use 'assets/styles/fonts';
+@use 'assets/styles/animations';
 
+* {
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  color: white;
 }
 
 body {
@@ -12,26 +14,11 @@ body {
 }
 
 a {
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
 }
 
-button, .button {
+button, .button, a {
   cursor: pointer;
 }
 
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}

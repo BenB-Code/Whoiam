@@ -1,4 +1,16 @@
 <section>
   <h1>Experiences</h1>
 
+  <div>
+    <article>
+      @for (experience of mockData; track $index) {
+        <app-experience-label [experience]="experience" (click)="onSelection($index)"></app-experience-label>
+      }
+    </article>
+    <article>
+      @if (activeExperience()) {
+        <app-experience-resume [experience]="activeExperience()"></app-experience-resume>
+      }
+    </article>
+  </div>
 </section>
