@@ -1,7 +1,11 @@
 <app-navbar></app-navbar>
 <app-home-landing class="page" id="home"></app-home-landing>
-<app-technical-landing class="page" id="technical"></app-technical-landing>
-<app-experience-landing class="page" id="experiences"></app-experience-landing>
-<app-project-landing class="page" id="projects"></app-project-landing>
-<app-contact-landing class="page" id="contact"></app-contact-landing>
+<app-card class="page">
+  <app-technical-landing id="technical"></app-technical-landing>
+</app-card>
+<app-card>
+  <app-experience-landing class="page" id="experiences"></app-experience-landing>
+  <app-project-landing class="page" id="projects"></app-project-landing>
+</app-card>
+  <app-contact-landing class="page" id="contact"></app-contact-landing>
 <router-outlet></router-outlet>

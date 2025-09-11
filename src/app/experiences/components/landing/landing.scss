@@ -1,6 +1,4 @@
 :host {
-  background: #00aaa7;
-
   section {
     margin: 5rem;
 
@@ -10,7 +8,7 @@
       justify-content: space-between;
 
       article {
-        dispay: flex;
+        display: flex;
         flex-direction: column;
         width: 48%;
         border: 2px solid grey;
