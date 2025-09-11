@@ -15,7 +15,7 @@ export class ContactLanding {
   contactMethods = [
     {
       name: 'Github',
-      logo: 'assets/icons/github-svgrepo-com.svg',
+      logo: 'assets/icons/github-142-svgrepo-com.svg',
       url: 'https://github.com/BenB-Code',
       alt: 'Github'
     }, {
