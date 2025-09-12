@@ -11,8 +11,8 @@
       font-family: Consolas;
 
       h1 {
-        font-size: 15rem;
-        margin-bottom: 1rem;
+        font-size: 8rem;
+        margin-bottom: 0;
 
         .tild {
           color: #ff920a;
@@ -28,7 +28,7 @@
         margin-left: 2rem;
         margin-top: auto;
         margin-bottom: 2rem;
-        height: 18rem;
+        height: 8rem;
         animation: blink step-end 1.5s infinite;
       }
 
@@ -37,12 +37,14 @@
     h3 {
       font-size: 3rem;
       font-weight: 200;
+      margin-top: 0;
 
       .name {
-        color: #5a9c39
+        font-weight: 500;
       }
 
       .skill {
+        font-weight: 500;
         color: #9c35c3
       }
     }
