@@ -1,4 +1,11 @@
-<section>
-  <h1>Projects</h1>
+<h1>Projects</h1>
 
+<section>
+  @for (project of projectsList; track $index) {
+    <article class="project-block">
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.description }}</p>
+      <button (click)="redirect(project.link.url)">{{ project.link.name }}</button>
+    </article>
+  }
 </section>
