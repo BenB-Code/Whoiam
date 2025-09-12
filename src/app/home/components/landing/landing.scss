@@ -1,5 +1,6 @@
 :host {
   justify-content: flex-end;
+  height: 100vh;
 
   section {
     margin: 5rem;
@@ -22,7 +23,7 @@
       .blink {
         display: flex;
         align-items: flex-end;
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(49, 49, 49, .9);
         width: 1ch;
         margin-left: 2rem;
         margin-top: auto;
