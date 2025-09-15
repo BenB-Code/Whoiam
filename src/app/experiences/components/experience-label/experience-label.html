@@ -1,9 +1,10 @@
-<h2>{{ experience().name }}</h2>
-<h3>{{ experience().company }}</h3>
-<p>
-  {{ experience().duration.startDate }} - {{ experience().duration.endDate }}
-</p>
-
-<p>{{ experience().localisation.city }}, {{ experience().localisation.state }}
-  - {{ experience().localisation.country }}</p>
+<app-card class="block" [class.active]="active()">
+  <h2>{{ experience().name }}</h2>
+  <h3>{{ experience().company }} &nbsp; <span>{{ experience().duration.startDate | date:'MM/yyyy' }}
+    - {{ experience().duration.endDate | date:'MM/yyyy' }}
+  </span>
+  </h3>
+  <p>{{ experience().localisation.city }}, {{ experience().localisation.state }}
+    - {{ experience().localisation.country }}</p>
+</app-card>
 

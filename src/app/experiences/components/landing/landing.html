@@ -2,9 +2,10 @@
   <h1>Experiences</h1>
 
   <div>
-    <article>
+    <article class="experiences">
       @for (experience of mockData; track $index) {
-        <app-experience-label [experience]="experience" (click)="onSelection($index)"></app-experience-label>
+        <app-experience-label [active]="isActive() === $index" [experience]="experience"
+                              (click)="onSelection($index)"></app-experience-label>
       }
     </article>
     <article>

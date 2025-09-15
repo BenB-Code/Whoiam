@@ -1,7 +1,7 @@
 :host {
-  section {
-    margin: 5rem;
+  width: 100%;
 
+  section {
     div {
       display: inline-flex;
       width: 100%;
@@ -10,15 +10,14 @@
       article {
         display: flex;
         flex-direction: column;
-        width: 48%;
-        border: 2px solid grey;
+        width: 60%;
         border-radius: 8px;
 
-        app-experience-label, app-experience-resume {
+        &.experiences {
+          margin-right: 2rem;
+          width: 40%;
         }
       }
-
-
     }
   }
 }

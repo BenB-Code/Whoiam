@@ -12,6 +12,8 @@ import {ExperienceLabel} from '../experience-label/experience-label';
   styleUrl: './landing.scss'
 })
 export class ExperienceLanding {
+  isActive = signal<number | null>(null);
+
   mockData = [
     {
       company: "Akka I&S",
@@ -107,6 +109,7 @@ export class ExperienceLanding {
   activeExperience = signal<any>(null)
 
   onSelection(index: number) {
+    this.isActive.set(index);
     this.activeExperience.set(this.mockData[index])
   }
 }
