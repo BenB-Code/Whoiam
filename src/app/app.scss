@@ -1,6 +1,11 @@
 .page {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: auto;
   color: white;
+  margin: 6.5rem;
+}
+
+#projects {
+  margin-top: 5rem;
 }
