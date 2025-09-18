@@ -6,16 +6,17 @@ import {ExperiencesModule} from './experiences/experiences.module';
 import {ContactModule} from './contact/contact.module';
 import {TechnicalModule} from './technical/technical.module';
 import {ProjectsModule} from './projects/projects.module';
-import {Card} from './common/components/card/card';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationModule, HomeModule, ExperiencesModule, ContactModule, TechnicalModule, ProjectsModule, Card],
+  imports: [RouterOutlet, NavigationModule, HomeModule, ExperiencesModule, ContactModule, TechnicalModule, ProjectsModule, DatePipe],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected title = 'Whoiam';
+  time: Date = new Date();
 }
 
 

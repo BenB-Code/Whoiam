@@ -1,13 +1,54 @@
-<app-navbar></app-navbar>
-<app-home-landing class="page" id="home"></app-home-landing>
-<app-card class="page">
-  <app-technical-landing id="technical"></app-technical-landing>
-</app-card>
-<app-card class="page">
-  <app-experience-landing id="experiences"></app-experience-landing>
-</app-card>
-<app-card class="page">
-  <app-project-landing id="projects"></app-project-landing>
-</app-card>
-<app-contact-landing id="contact"></app-contact-landing>
+<!--<app-navbar></app-navbar>-->
+
+
+<section class="header">
+  <article class="left-side">
+    <img src="assets/logo/logo.svg" alt="BenB-Code">
+    <h1>Benjamin Bats</h1>
+  </article>
+  <article class="right-side">
+    <div class="i18n">
+      <button>FR</button>
+      <button>EN</button>
+    </div>
+    <div class="time">{{ time | date:"EEE dd MMM HH:mm":"fr-FR" }}</div>
+  </article>
+</section>
+
 <router-outlet></router-outlet>
+
+<section class="navbar">
+  <div class="el">
+    Home
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Me
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Exp
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Projects
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Contacts
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Github
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    LinkedIn
+    <div class="active-dot"></div>
+  </div>
+  <div class="el">
+    Mail
+    <div class="active-dot"></div>
+  </div>
+</section>
+
