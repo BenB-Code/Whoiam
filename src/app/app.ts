@@ -1,22 +1,18 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {NavigationModule} from './navigation/navigation.module';
-import {HomeModule} from './home/home.module';
-import {ExperiencesModule} from './experiences/experiences.module';
-import {ContactModule} from './contact/contact.module';
-import {TechnicalModule} from './technical/technical.module';
-import {ProjectsModule} from './projects/projects.module';
-import {DatePipe} from '@angular/common';
+import {HeaderBar} from './header-bar/header-bar';
+import {AppBar} from './app-bar/app-bar';
+import {ListingWindow} from './common/listing-window/listing-window';
+import {ContentWindow} from './common/content-window/content-window';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationModule, HomeModule, ExperiencesModule, ContactModule, TechnicalModule, ProjectsModule, DatePipe],
+  imports: [RouterOutlet, HeaderBar, AppBar, ListingWindow, ContentWindow],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected title = 'Whoiam';
-  time: Date = new Date();
 }
 
 
