@@ -1,0 +1,19 @@
+<app-content-window
+  [class.fullscreen]="isFullscreen"
+  [class.reduced]="isReduced"
+  [class.destroyed]="!isVisible"
+  (closeEvent)="onClose()"
+  (fullscreenEvent)="onFullscreen($event)"
+  (reduceEvent)="onReduce()">
+  <section>
+    <h3>Contact</h3>
+    <article>
+      @for (contactMethod of contactMethods; track contactMethod.name) {
+        <div (click)="redirect(contactMethod.url)">
+          <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
+          <p>{{ contactMethod.name }}</p>
+        </div>
+      }
+    </article>
+  </section>
+</app-content-window>
