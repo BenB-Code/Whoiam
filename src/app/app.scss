@@ -1,0 +1,23 @@
+:host {
+  app-header-bar {
+    height: 1.5rem;
+  }
+
+  section {
+    height: calc(100% - 0.5rem);
+    position: relative;
+
+    app-contact,
+    app-listing-window {
+      position: absolute;
+      top: 2rem;
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 5rem;
+    }
+  }
+
+  app-app-bar {
+    height: 4.5rem;
+  }
+}
