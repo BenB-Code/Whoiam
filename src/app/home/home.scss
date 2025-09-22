@@ -1,0 +1,37 @@
+:host {
+  app-content-window {
+    height: 80%;
+    width: 50%;
+    transition: all .3s ease;
+
+    &.fullscreen {
+      height: 100% !important;
+      width: 100% !important;
+    }
+
+    &.reduced {
+      visibility: hidden;
+    }
+
+    &.destroyed {
+      display: none;
+    }
+  }
+
+  section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 100;
+      margin: 0;
+    }
+
+    article {
+
+    }
+  }
+}
