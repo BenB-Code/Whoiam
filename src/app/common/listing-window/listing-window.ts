@@ -1,25 +1,48 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, TemplateRef, signal, ContentChild} from '@angular/core';
+import {NgClass, NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'app-listing-window',
-  imports: [],
+  imports: [NgClass, NgTemplateOutlet],
   templateUrl: './listing-window.html',
   styleUrl: './listing-window.scss'
 })
-export class ListingWindow {
+export class ListingWindow<T = any> {
+  @Input() items: T[] = [];
+  @Input() title = 'Liste';
+  @Input() selectedIndex: number | null = null;
+
+  @ContentChild('itemTemplate') itemTemplate!: TemplateRef<any>;
+
   @Output() closeEvent = new EventEmitter<void>();
   @Output() fullscreenEvent = new EventEmitter<boolean>();
   @Output() reduceEvent = new EventEmitter<void>();
+  @Output() itemSelected = new EventEmitter<{item: T, index: number}>();
 
-  isFullscreen: boolean = false;
+  selectedItemSignal = signal<number | null>(null);
+  isFullscreen = signal<boolean>(false);
+
+  ngOnInit() {
+    this.selectedItemSignal.set(this.selectedIndex);
+  }
+
+  selectItem(item: T, index: number) {
+    this.selectedItemSignal.set(index);
+    this.itemSelected.emit({item, index});
+  }
+
+  isSelected(index: number): boolean {
+    return this.selectedItemSignal() === index;
+  }
 
   close() {
     this.closeEvent.emit();
   }
 
   fullscreen() {
-    this.isFullscreen = !this.isFullscreen;
-    this.fullscreenEvent.emit(this.isFullscreen);
+    const newState = !this.isFullscreen();
+    this.isFullscreen.set(newState);
+    this.fullscreenEvent.emit(newState);
   }
 
   reduce() {
