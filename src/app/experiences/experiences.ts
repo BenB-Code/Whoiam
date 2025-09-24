@@ -1,6 +1,22 @@
 import {Component, signal} from '@angular/core';
 import {ListingWindow} from '../common/listing-window/listing-window';
 
+interface Experience {
+  company: string;
+  name: string;
+  duration: {
+    startDate: Date;
+    endDate: Date;
+  };
+  localisation: {
+    city: string;
+    state: string;
+    country: string;
+  };
+  actions: string[];
+  skills: string[];
+}
+
 @Component({
   selector: 'app-experiences',
   imports: [
@@ -10,8 +26,8 @@ import {ListingWindow} from '../common/listing-window/listing-window';
   styleUrl: './experiences.scss'
 })
 export class Experiences {
-  isActive = signal<number | null>(null);
-  activeExperience = signal<any>(null)
+  selectedIndex = signal<number | null>(null);
+  selectedExperience = signal<Experience | null>(null);
 
   isFullscreen = false;
   isReduced = false;
@@ -110,9 +126,15 @@ export class Experiences {
   ]
 
 
-  onSelection(index: number) {
-    this.isActive.set(index);
-    this.activeExperience.set(this.mockData[index])
+  onSelection(event: {item: Experience, index: number}) {
+    this.selectedIndex.set(event.index);
+    this.selectedExperience.set(event.item);
+  }
+
+  formatDuration(duration: {startDate: Date, endDate: Date}): string {
+    const startMonth = duration.startDate.toLocaleDateString('fr-FR', { month: '2-digit', year: 'numeric' });
+    const endMonth = duration.endDate.toLocaleDateString('fr-FR', { month: '2-digit', year: 'numeric' });
+    return `${startMonth} - ${endMonth}`;
   }
 
   onClose(): void {
