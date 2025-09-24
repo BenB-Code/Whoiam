@@ -1,47 +1,45 @@
 <article class="window">
   <div class="vertical-nav">
     <div class="header">
-      <div class="window-action red"></div>
-      <div class="window-action orange"></div>
-      <div class="window-action green"></div>
+      <div class="window-action red" (click)="close()"></div>
+      <div class="window-action orange" (click)="reduce()"></div>
+      <div class="window-action green" (click)="fullscreen()"></div>
     </div>
     <div class="list-section">
       <h3 class="title">Projects</h3>
       <div class="list">
-        <article class="block">
-          <h2>experience().name</h2>
-          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>
-          </h3>
-          <p>localisation.city,localisation.state - country</p>
-        </article>
-        <article class="block active">
-          <h2>experience().name</h2>
-          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>
-          </h3>
-          <p>localisation.city,localisation.state - country</p>
-        </article>
-        <article class="block">
-          <h2>experience().name</h2>
-          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>
-          </h3>
-          <p>localisation.city,localisation.state - country</p>
-        </article>
-        <article class="block">
-          <h2>experience().name</h2>
-          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>
-          </h3>
-          <p>localisation.city,localisation.state - country</p>
-        </article>
-        <article class="block">
-          <h2>experience().name</h2>
-          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>
-          </h3>
-          <p>localisation.city,localisation.state - country</p>
-        </article>
+<!--        <article class="block">-->
+<!--          <ng-content select="[item]"></ng-content>-->
+<!--        </article>-->
+        <!--        <article class="block active">-->
+        <!--          <h2>experience().name</h2>-->
+        <!--          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>-->
+        <!--          </h3>-->
+        <!--          <p>localisation.city,localisation.state - country</p>-->
+        <!--        </article>-->
+        <!--        <article class="block">-->
+        <!--          <h2>experience().name</h2>-->
+        <!--          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>-->
+        <!--          </h3>-->
+        <!--          <p>localisation.city,localisation.state - country</p>-->
+        <!--        </article>-->
+        <!--        <article class="block">-->
+        <!--          <h2>experience().name</h2>-->
+        <!--          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>-->
+        <!--          </h3>-->
+        <!--          <p>localisation.city,localisation.state - country</p>-->
+        <!--        </article>-->
+        <!--        <article class="block">-->
+        <!--          <h2>experience().name</h2>-->
+        <!--          <h3>experience().company&nbsp;<span>MM/yyyy - MM/yyyy</span>-->
+        <!--          </h3>-->
+        <!--          <p>localisation.city,localisation.state - country</p>-->
+        <!--        </article>-->
       </div>
     </div>
   </div>
   <div class="details">
-    this is details of anything
+    <ng-content select="[details]"></ng-content>
+    <!--    this is details of anything-->
   </div>
 </article>
