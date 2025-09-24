@@ -1,8 +1,10 @@
+@use '../../assets/styles/index' as *;
+
 :host {
   app-content-window {
     height: 50%;
     width: 20%;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 
     &.fullscreen {
       height: 100% !important;
@@ -19,13 +21,13 @@
   }
 
   section {
-    padding: 2rem;
+    padding: $space-2xl;
     display: flex;
     flex-direction: column;
     height: 100%;
 
     h3 {
-      font-size: 2rem;
+      font-size: $font-size-2xl;
       font-weight: 100;
       margin: 0;
     }
@@ -50,11 +52,10 @@
         }
 
         img {
-          height: 3rem;
-          width: 3rem;
-          background: white;
-          border-radius: 1rem;
-
+          height: $size-xl;
+          width: $size-xl;
+          background: $system-white;
+          border-radius: $radius-md;
         }
 
       }

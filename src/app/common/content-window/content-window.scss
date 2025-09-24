@@ -1,62 +1,64 @@
+@use '../../../assets/styles/index' as *;
+
 :host {
   .window {
     height: inherit;
     width: inherit;
     min-height: 50%;
     min-width: 30%;
-    border-radius: 1rem;
+    border-radius: $radius-md;
     z-index: 1000;
-    background: rgba(255, 255, 255, .95);
+    background: $white-translucent;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    box-shadow: 0 0 1.5rem rgba(100, 100, 100, 0.5);
+    box-shadow: $shadow-default;
 
     .header {
-      border-radius: 1rem 1rem 0 0;
-      height: 2rem;
+      border-radius: $radius-md $radius-md 0 0;
+      height: $window-header-height;
       width: 100%;
-      background: rgba(100, 100, 100, .9);
+      background: $gray-translucent-dark;
       cursor: pointer;
       display: inline-flex;
       justify-content: flex-start;
       align-items: center;
 
       .window-action {
-        height: 1rem;
-        width: 1rem;
-        margin-right: .5rem;
-        border-radius: 100%;
+        height: $size-sm;
+        width: $size-sm;
+        margin-right: $space-sm;
+        border-radius: $radius-full;
         border: 1px solid transparent;
 
         &:first-child {
-          margin-left: 1rem;
+          margin-left: $space-lg;
         }
 
         &.red {
-          background-color: #FF605C;
+          background-color: $os-red;
         }
 
         &.orange {
-          background-color: #FFBD44;
+          background-color: $os-orange;
         }
 
         &.green {
-          background-color: #00CA4E;
+          background-color: $os-green;
         }
 
         &:hover {
-          border: 1px solid #53676C;
+          border: 1px solid $system-accent;
         }
       }
     }
 
     .content {
       width: 100%;
-      height: calc(100% - 2rem);
+      height: calc(100% - #{$window-header-height});
       overflow-y: scroll;
     }
   }

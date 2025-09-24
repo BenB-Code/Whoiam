@@ -1,8 +1,10 @@
+@use '../../assets/styles/index' as *;
+
 :host {
   app-content-window {
     height: 85%;
     width: 80%;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 
     &.fullscreen {
       height: 100% !important;
@@ -215,13 +217,6 @@
       &:nth-child(#{$i}) {
         animation-delay: #{$i * 0.1}s;
       }
-    }
-  }
-
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 }

@@ -1,10 +1,12 @@
+@use '../assets/styles/index' as *;
+
 :host {
   app-header-bar {
-    height: 1.5rem;
+    height: $header-height;
   }
 
   section {
-    height: calc(100% - 0.5rem);
+    height: calc(100% - #{$space-sm});
     position: relative;
 
     app-home,
@@ -13,14 +15,14 @@
     app-projects,
     app-listing-window {
       position: absolute;
-      top: 2rem;
-      left: 0.5rem;
-      right: 0.5rem;
-      bottom: 5rem;
+      top: $space-2xl;
+      left: $space-sm;
+      right: $space-sm;
+      bottom: $space-4xl + $space-sm;
     }
   }
 
   app-app-bar {
-    height: 4.5rem;
+    height: $app-bar-height;
   }
 }
