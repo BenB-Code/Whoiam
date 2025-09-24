@@ -5,10 +5,11 @@ import {AppBar} from './app-bar/app-bar';
 import {Contact} from './contact/contact';
 import {Home} from './home/home';
 import {Experiences} from './experiences/experiences';
+import {Projects} from './projects/projects';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderBar, AppBar, Contact, Home, Experiences],
+  imports: [RouterOutlet, HeaderBar, AppBar, Contact, Home, Experiences, Projects],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
