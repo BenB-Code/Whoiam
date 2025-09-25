@@ -1,18 +1,14 @@
 import {WindowStatus} from './window-status.type';
 import {WindowType} from './window-type.type';
+import {Size} from './size.model';
+import {Position} from './position.model';
 
 
 export interface WindowState {
   id: WindowType,
   status: WindowStatus,
-  position?: {
-    x: number,
-    y: number
-  },
-  size?: {
-    height: number,
-    width: number
-  },
+  position?: Position,
+  size?: Size,
   zIndex: number,
   isActive: boolean
 }
