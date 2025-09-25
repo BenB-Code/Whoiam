@@ -1,6 +1,6 @@
 import {WindowState} from './window.model';
-import {CONTACT, EXPERIENCES, HOME, PROJECTS} from './window-type.type';
-import {CLOSED, OPEN} from './window-status.type';
+import {CONTACT, EXPERIENCES, HOME, PROJECTS} from './types.const';
+import {CLOSED, OPEN} from './status.const';
 
 export const DEFAULT_POSITION = {
   x: '50%',
@@ -8,19 +8,19 @@ export const DEFAULT_POSITION = {
 };
 
 export const DEFAULT_SIZES = {
-  [HOME]: {
+  HOME: {
     width: '50%',
     height: '50%',
   },
-  [EXPERIENCES]: {
+  EXPERIENCES: {
     width: '80%',
     height: '80%',
   },
-  [PROJECTS]: {
+  PROJECTS: {
     width: '75%',
     height: '70%',
   },
-  [CONTACT]: {
+  CONTACT: {
     width: '30%',
     height: '50%',
   },

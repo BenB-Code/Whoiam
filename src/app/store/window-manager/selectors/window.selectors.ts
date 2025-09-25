@@ -1,5 +1,6 @@
 import {adapter, State} from '../reducers/window.reducer';
-import {OPEN} from '../models/window-status.type';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {OPEN} from '../models/status.const';
 
 
 export const selectWindowState = createFeatureSelector<State>('windowManager');
@@ -15,7 +16,7 @@ export const selectActiveWindow = createSelector(
   selectAll, (window) => window.find(window => window.isActive) || null
 );
 
-export const selectOpenWindow = createSelector(
+export const selectOpenWindows = createSelector(
   selectAll, (window) => window.find(window => window.status === OPEN) || null
 );
 
@@ -27,5 +28,5 @@ export const selectMaxZIndex = createSelector(
 );
 
 export const selectWindowById = createSelector(
-  selectEntities, (entities) => entities[id] || null
+  selectEntities, (entities) => entities || null
 );
