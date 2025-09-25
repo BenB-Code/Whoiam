@@ -59,7 +59,7 @@
     .content {
       width: 100%;
       height: calc(100% - #{$window-header-height});
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 }
