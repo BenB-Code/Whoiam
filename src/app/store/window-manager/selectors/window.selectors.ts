@@ -20,15 +20,15 @@ export const selectTotalWindows = selectTotal;
 
 
 export const selectActiveWindow = createSelector(
-  selectAllWindows, (window) => window.find(window => window.isActive) || null
+  selectAllWindows, (windows) => windows.find(window => window.isActive) || null
 );
 
 export const selectOpenWindows = createSelector(
-  selectAllWindows, (window) => window.filter(window => window.status === OPEN));
+  selectAllWindows, (windows) => windows.filter(window => window.status === OPEN));
 
 export const selectMaxZIndex = createSelector(
-  selectAllWindows, (window) => {
-    const openWindows = window.filter(window => window.status === OPEN);
+  selectAllWindows, (windows) => {
+    const openWindows = windows.filter(window => window.status === OPEN);
     return openWindows.length > 0 ? Math.max(...openWindows.map(window => window.zIndex)) : 0;
   }
 );
