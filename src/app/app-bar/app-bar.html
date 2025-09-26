@@ -29,7 +29,10 @@
     }
   </div>
   <div class="divider"></div>
-  <div class="el"><img src="assets/icons/github-svgrepo-com.svg" alt="Github"></div>
-  <div class="el"><img src="assets/icons/linkedin-svgrepo-com.svg" alt="LinkedIn"></div>
-  <div class="el"><img src="assets/icons/gmail-svgrepo-com.svg" alt="Gmail"></div>
+
+  @for (contactMethod of contactMethods; track contactMethod.name) {
+    <div class="el" (click)="redirect(contactMethod.url)">
+      <img [src]="contactMethod.logo" [alt]="contactMethod.alt">
+    </div>
+  }
 }

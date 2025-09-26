@@ -16,6 +16,25 @@ import {AsyncPipe} from '@angular/common';
 export class AppBar {
   private store = inject(Store);
 
+  contactMethods = [
+    {
+      name: 'Email',
+      logo: 'assets/icons/gmail-svgrepo-com.svg',
+      url: 'mailto:benjamin.bats.dev@gmail.com',
+      alt: 'Email'
+    }, {
+      name: 'LinkedIn',
+      logo: 'assets/icons/linkedin-svgrepo-com.svg',
+      url: 'https://www.linkedin.com/in/benjamin-bats-200464165/',
+      alt: 'LinkedIn'
+    }, {
+      name: 'Github',
+      logo: 'assets/icons/github-svgrepo-com.svg',
+      url: 'https://github.com/BenB-Code',
+      alt: 'Github'
+    },
+  ]
+
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
@@ -41,5 +60,9 @@ export class AppBar {
 
       }
     )
+  }
+
+  redirect(url: string): void {
+    window.open(url, url.includes('mailto:') ? '_self' : '_blank');
   }
 }
