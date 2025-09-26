@@ -7,14 +7,14 @@
     min-height: 50%;
     min-width: 30%;
     border-radius: $radius-md;
-    z-index: 1000;
+    z-index: inherit;
     background: $white-translucent;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    top: inherit;
+    bottom: inherit;
+    left: inherit;
+    right: inherit;
+    transform: inherit;
     box-shadow: $shadow-default;
 
     .header {
