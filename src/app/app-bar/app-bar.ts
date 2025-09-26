@@ -3,10 +3,13 @@ import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs';
 import {openWindow, restoreWindow, selectAllWindows, setActiveWindow, WindowState, WindowType} from '../store';
 import {CLOSED, MINIMIZED} from '../store/window-manager/models/status.const';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-app-bar',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './app-bar.html',
   styleUrl: './app-bar.scss'
 })
