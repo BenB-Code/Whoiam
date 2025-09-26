@@ -40,7 +40,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: EXPERIENCES,
     status: CLOSED,
-    position: undefined,
+    position: DEFAULT_POSITION,
     size: DEFAULT_SIZES.EXPERIENCES,
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -48,7 +48,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: PROJECTS,
     status: CLOSED,
-    position: undefined,
+    position: DEFAULT_POSITION,
     size: DEFAULT_SIZES.PROJECTS,
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -56,7 +56,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: CONTACT,
     status: CLOSED,
-    position: undefined,
+    position: DEFAULT_POSITION,
     size: DEFAULT_SIZES.CONTACT,
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
