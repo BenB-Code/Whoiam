@@ -6,17 +6,13 @@
     width: 50%;
     transition: all 0.3s ease;
 
-    &.fullscreen {
+    &.maximized {
       height: 100% !important;
       width: 100% !important;
     }
 
-    &.reduced {
+    &.minimized {
       visibility: hidden;
-    }
-
-    &.destroyed {
-      display: none;
     }
   }
 
