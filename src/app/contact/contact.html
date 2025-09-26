@@ -1,15 +1,15 @@
-@if (homeWindow$ | async; as homeWindow) {
-  @if (homeWindow.status !== 'closed') {
+@if (contactWindow$ | async; as contactWindow) {
+  @if (contactWindow.status !== 'closed') {
     <app-content-window
-      [style.left]="homeWindow.position?.x"
-      [style.top]="homeWindow.position?.y"
-      [style.transform]="homeWindow.position?.transform"
-      [style.width]="homeWindow.size?.width"
-      [style.height]="homeWindow.size?.height"
-      [style.z-index]="homeWindow.zIndex"
-      [class.active]="homeWindow.isActive"
-      [class.maximized]="homeWindow.status === 'maximized'"
-      [class.minimized]="homeWindow.status === 'minimized'"
+      [style.left]="contactWindow.position?.x"
+      [style.top]="contactWindow.position?.y"
+      [style.transform]="contactWindow.position?.transform"
+      [style.width]="contactWindow.size?.width"
+      [style.height]="contactWindow.size?.height"
+      [style.z-index]="contactWindow.zIndex"
+      [class.active]="contactWindow.isActive"
+      [class.maximized]="contactWindow.status === 'maximized'"
+      [class.minimized]="contactWindow.status === 'minimized'"
 
       (closeEvent)="onClose()"
       (fullscreenEvent)="onFullscreen()"

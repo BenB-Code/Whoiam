@@ -37,7 +37,7 @@ export class Contact {
   ]
   private store = inject(Store);
 
-  homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
+  contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
   onClose(): void {
     this.store.dispatch(closeWindow({id: CONTACT}));
