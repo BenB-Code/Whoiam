@@ -1,21 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ContentWindow} from '../common/content-window/content-window';
-import {NgOptimizedImage} from '@angular/common';
+import {AsyncPipe, NgOptimizedImage} from '@angular/common';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../store';
+import {CONTACT} from '../store/window-manager/models/types.const';
 
 @Component({
   selector: 'app-contact',
   imports: [
     ContentWindow,
     NgOptimizedImage,
+    AsyncPipe,
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
 export class Contact {
-  isFullscreen = false;
-  isReduced = false;
-  isVisible = true;
-
   contactMethods = [
     {
       name: 'Github',
@@ -34,17 +35,24 @@ export class Contact {
       alt: 'LinkedIn'
     }
   ]
+  private store = inject(Store);
+
+  homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
   onClose(): void {
-    this.isVisible = false;
+    this.store.dispatch(closeWindow({id: CONTACT}));
   }
 
-  onFullscreen(isFullscreen: boolean): void {
-    this.isFullscreen = isFullscreen;
+  onFullscreen(): void {
+    this.store.dispatch(maximizeWindow({id: CONTACT}));
   }
 
   onReduce(): void {
-    this.isReduced = true;
+    this.store.dispatch(minimizeWindow({id: CONTACT}));
+  }
+
+  onActivate(): void {
+    this.store.dispatch(setActiveWindow({id: CONTACT}));
   }
 
   redirect(url: string): void {

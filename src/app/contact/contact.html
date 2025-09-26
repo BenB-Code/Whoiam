@@ -1,19 +1,32 @@
-<app-content-window
-  [class.fullscreen]="isFullscreen"
-  [class.reduced]="isReduced"
-  [class.destroyed]="!isVisible"
-  (closeEvent)="onClose()"
-  (fullscreenEvent)="onFullscreen($event)"
-  (reduceEvent)="onReduce()">
-  <section>
-    <h3>Contact</h3>
-    <article>
-      @for (contactMethod of contactMethods; track contactMethod.name) {
-        <div (click)="redirect(contactMethod.url)">
-          <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
-          <p>{{ contactMethod.name }}</p>
-        </div>
-      }
-    </article>
-  </section>
-</app-content-window>
+@if (homeWindow$ | async; as homeWindow) {
+  @if (homeWindow.status !== 'closed') {
+    <app-content-window
+      [style.left]="homeWindow.position?.x"
+      [style.top]="homeWindow.position?.y"
+      [style.transform]="homeWindow.position?.transform"
+      [style.width]="homeWindow.size?.width"
+      [style.height]="homeWindow.size?.height"
+      [style.z-index]="homeWindow.zIndex"
+      [class.active]="homeWindow.isActive"
+      [class.maximized]="homeWindow.status === 'maximized'"
+      [class.minimized]="homeWindow.status === 'minimized'"
+
+      (closeEvent)="onClose()"
+      (fullscreenEvent)="onFullscreen()"
+      (reduceEvent)="onReduce()"
+      (click)="onActivate()"
+    >
+      <section>
+        <h3>Contact</h3>
+        <article>
+          @for (contactMethod of contactMethods; track contactMethod.name) {
+            <div (click)="redirect(contactMethod.url)">
+              <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
+              <p>{{ contactMethod.name }}</p>
+            </div>
+          }
+        </article>
+      </section>
+    </app-content-window>
+  }
+}
