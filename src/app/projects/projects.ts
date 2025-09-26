@@ -1,5 +1,10 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ContentWindow} from '../common/content-window/content-window';
+import {AsyncPipe} from '@angular/common';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../store';
+import {PROJECTS} from '../store/window-manager/models/types.const';
 
 interface Project {
   name: string;
@@ -17,15 +22,16 @@ interface Project {
 @Component({
   selector: 'app-projects',
   imports: [
-    ContentWindow
+    ContentWindow,
+    AsyncPipe
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
 })
 export class Projects {
-  isFullscreen = false;
-  isReduced = false;
-  isVisible = true;
+  private store = inject(Store);
+
+  projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
   mockData: Project[] = [
     {
@@ -68,27 +74,34 @@ export class Projects {
 
   getStatusColor(status: string): string {
     switch (status) {
-      case 'active': return '#00CA4E';
-      case 'completed': return '#007ACC';
-      case 'archived': return '#FFA500';
-      default: return '#666';
+      case 'active':
+        return '#00CA4E';
+      case 'completed':
+        return '#007ACC';
+      case 'archived':
+        return '#FFA500';
+      default:
+        return '#666';
     }
   }
 
-
-  redirect(url: string): void {
-    window.open(url, '_blank');
-  }
-
   onClose(): void {
-    this.isVisible = false;
+    this.store.dispatch(closeWindow({id: PROJECTS}));
   }
 
-  onFullscreen(isFullscreen: boolean): void {
-    this.isFullscreen = isFullscreen;
+  onFullscreen(): void {
+    this.store.dispatch(maximizeWindow({id: PROJECTS}));
   }
 
   onReduce(): void {
-    this.isReduced = true;
+    this.store.dispatch(minimizeWindow({id: PROJECTS}));
+  }
+
+  onActivate(): void {
+    this.store.dispatch(setActiveWindow({id: PROJECTS}));
+  }
+
+  redirect(url: string): void {
+    window.open(url, '_blank');
   }
 }

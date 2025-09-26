@@ -1,48 +1,60 @@
-<app-content-window
-  [class.fullscreen]="isFullscreen"
-  [class.reduced]="isReduced"
-  [class.destroyed]="!isVisible"
-  (closeEvent)="onClose()"
-  (fullscreenEvent)="onFullscreen($event)"
-  (reduceEvent)="onReduce()">
+@if (projectsWindow$ | async; as projectsWindow) {
+  @if (projectsWindow.status !== 'closed') {
+    <app-content-window
+      [style.left]="projectsWindow.position?.x"
+      [style.top]="projectsWindow.position?.y"
+      [style.transform]="projectsWindow.position?.transform"
+      [style.width]="projectsWindow.size?.width"
+      [style.height]="projectsWindow.size?.height"
+      [style.z-index]="projectsWindow.zIndex"
+      [class.active]="projectsWindow.isActive"
+      [class.maximized]="projectsWindow.status === 'maximized'"
+      [class.minimized]="projectsWindow.status === 'minimized'"
 
-  <div class="projects-header">
-    <h1>My Projects</h1>
-    <p>Discover my projects and contributions</p>
-  </div>
+      (closeEvent)="onClose()"
+      (fullscreenEvent)="onFullscreen()"
+      (reduceEvent)="onReduce()"
+      (click)="onActivate()"
+    >
+      <div class="projects-header">
+        <h1>My Projects</h1>
+        <p>Discover my projects and contributions</p>
+      </div>
 
-  <div class="projects-grid">
-    @for (project of mockData; track $index) {
-      <article class="project-card" [attr.data-category]="project.category">
-        <div class="card-header">
-          <div class="project-meta">
-            <span class="project-year">{{ project.year }}</span>
-          </div>
-          <div class="status-indicator"
-               [style.background-color]="getStatusColor(project.status || 'active')"
-               [title]="project.status || 'active'">
-          </div>
-        </div>
+      <div class="projects-grid">
+        @for (project of mockData; track $index) {
+          <article class="project-card" [attr.data-category]="project.category">
+            <div class="card-header">
+              <div class="project-meta">
+                <span class="project-year">{{ project.year }}</span>
+              </div>
+              <div class="status-indicator"
+                   [style.background-color]="getStatusColor(project.status || 'active')"
+                   [title]="project.status || 'active'">
+              </div>
+            </div>
 
-        <div class="card-content">
-          <h2>{{ project.name }}</h2>
-          <p class="description">{{ project.description }}</p>
+            <div class="card-content">
+              <h2>{{ project.name }}</h2>
+              <p class="description">{{ project.description }}</p>
 
-          @if (project.technologies) {
-            <div class="technologies">
-              @for (tech of project.technologies; track $index) {
-                <span class="tech-badge">{{ tech }}</span>
+              @if (project.technologies) {
+                <div class="technologies">
+                  @for (tech of project.technologies; track $index) {
+                    <span class="tech-badge">{{ tech }}</span>
+                  }
+                </div>
               }
             </div>
-          }
-        </div>
 
-        <div class="card-actions">
-          <button class="primary-btn" (click)="redirect(project.link.url)">
-            {{ project.link.name }}
-          </button>
-        </div>
-      </article>
-    }
-  </div>
-</app-content-window>
+            <div class="card-actions">
+              <button class="primary-btn" (click)="redirect(project.link.url)">
+                {{ project.link.name }}
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    </app-content-window>
+  }
+}
