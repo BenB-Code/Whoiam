@@ -1,16 +1,18 @@
 import {WindowState} from './window.model';
 import {CONTACT, EXPERIENCES, HOME, PROJECTS} from './types.const';
 import {CLOSED, OPEN} from './status.const';
+export const DEFAULT_ZINDEX = 1;
 
 export const DEFAULT_POSITION = {
   x: '50%',
   y: '50%',
+  transform: 'translate(-50%, -50%)',
 };
 
 export const DEFAULT_SIZES = {
   HOME: {
-    width: '50%',
-    height: '50%',
+    width: '90%',
+    height: '90%',
   },
   EXPERIENCES: {
     width: '80%',
@@ -32,7 +34,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: OPEN,
     position: DEFAULT_POSITION,
     size: DEFAULT_SIZES.HOME,
-    zIndex: 0,
+    zIndex: 2,
     isActive: true,
   },
   {
@@ -40,7 +42,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     position: undefined,
     size: DEFAULT_SIZES.EXPERIENCES,
-    zIndex: 0,
+    zIndex: DEFAULT_ZINDEX,
     isActive: false,
   },
   {
@@ -48,7 +50,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     position: undefined,
     size: DEFAULT_SIZES.PROJECTS,
-    zIndex: 0,
+    zIndex: DEFAULT_ZINDEX,
     isActive: false,
   },
   {
@@ -56,7 +58,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     position: undefined,
     size: DEFAULT_SIZES.CONTACT,
-    zIndex: 0,
+    zIndex: DEFAULT_ZINDEX,
     isActive: false,
   },
 ]
