@@ -10,9 +10,9 @@ import {
   setActiveWindow,
   WindowState,
   WindowType
-} from '../store';
+} from '../../store';
 import {AsyncPipe} from '@angular/common';
-import {ContactsService} from '../services/contact/contacts.service';
+import {ContactsService} from '../../services/contact/contacts.service';
 
 @Component({
   selector: 'app-app-bar',

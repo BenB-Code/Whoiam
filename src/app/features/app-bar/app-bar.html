@@ -1,6 +1,6 @@
 @if (windowState$ | async; as windowStates) {
   <div class="el no-bg" (click)="onAppClick('home')">
-    <img src="assets/icons/home-2-svgrepo-com.svg" alt="Home">
+    <img src="../../../assets/icons/home-2-svgrepo-com.svg" alt="Home">
     @if (windowStates['home'] && windowStates['home'].status !== 'closed') {
       <div class="active-dot"></div>
     }
@@ -11,19 +11,19 @@
     <!--    <div class="active-dot"></div>-->
     <!--}</div>-->
   <div class="el no-bg" (click)="onAppClick('experiences')">
-    <img src="assets/icons/book-svgrepo-com.svg" alt="Experiences">
+    <img src="../../../assets/icons/book-svgrepo-com.svg" alt="Experiences">
     @if (windowStates['experiences'] && windowStates['experiences'].status !== 'closed') {
       <div class="active-dot"></div>
     }
   </div>
   <div class="el no-bg" (click)="onAppClick('projects')">
-    <img src="assets/icons/code-square-svgrepo-com.svg" alt="Projects">
+    <img src="../../../assets/icons/code-square-svgrepo-com.svg" alt="Projects">
     @if (windowStates['projects'] && windowStates['projects'].status !== 'closed') {
       <div class="active-dot"></div>
     }
   </div>
   <div class="el no-bg" (click)="onAppClick('contact')">
-    <img src="assets/icons/chat-round-dots-svgrepo-com.svg" alt="Contact">
+    <img src="../../../assets/icons/chat-round-dots-svgrepo-com.svg" alt="Contact">
     @if (windowStates['contact'] && windowStates['contact'].status !== 'closed') {
       <div class="active-dot"></div>
     }
