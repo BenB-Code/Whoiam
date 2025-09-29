@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {HeaderBar} from './header-bar/header-bar';
+import {HeaderBar} from './features/header-bar/header-bar';
 import {AppBar} from './app-bar/app-bar';
 import {Contact} from './features/contact/contact';
 import {Home} from './features/home/home';
