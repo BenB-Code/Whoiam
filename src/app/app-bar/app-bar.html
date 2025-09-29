@@ -28,11 +28,14 @@
       <div class="active-dot"></div>
     }
   </div>
-  <div class="divider"></div>
 
-  @for (contactMethod of contactMethods; track contactMethod.name) {
-    <div class="el" (click)="redirect(contactMethod.url)">
-      <img [src]="contactMethod.logo" [alt]="contactMethod.alt">
-    </div>
+  @if (contactMethods.length > 0) {
+    <div class="divider"></div>
+
+    @for (contactMethod of contactMethods; track contactMethod.name) {
+      <div class="el" (click)="redirect(contactMethod.url)">
+        <img [src]="contactMethod.logo" [alt]="contactMethod.alt">
+      </div>
+    }
   }
 }

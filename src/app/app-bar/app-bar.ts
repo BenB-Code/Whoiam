@@ -13,6 +13,7 @@ import {
 } from '../store';
 import {AsyncPipe} from '@angular/common';
 import {Contact} from '../features/contact/models/contact.model';
+import {ContactsService} from '../features/contact/services/contact.service';
 
 @Component({
   selector: 'app-app-bar',
@@ -24,26 +25,6 @@ import {Contact} from '../features/contact/models/contact.model';
 })
 export class AppBar {
   private store = inject(Store);
-
-  contactMethods: Contact[] = [
-    {
-      name: 'Email',
-      logo: 'assets/icons/gmail-svgrepo-com.svg',
-      url: 'mailto:benjamin.bats.dev@gmail.com',
-      alt: 'Email'
-    }, {
-      name: 'LinkedIn',
-      logo: 'assets/icons/linkedin-svgrepo-com.svg',
-      url: 'https://www.linkedin.com/in/benjamin-bats-200464165/',
-      alt: 'LinkedIn'
-    }, {
-      name: 'Github',
-      logo: 'assets/icons/github-svgrepo-com.svg',
-      url: 'https://github.com/BenB-Code',
-      alt: 'Github'
-    },
-  ]
-
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
@@ -53,6 +34,13 @@ export class AppBar {
       return stateMap
     })
   )
+
+  private contactsService: ContactsService = inject(ContactsService);
+  contactMethods: Contact[] = []
+
+  constructor() {
+    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods = contacts));
+  }
 
   onAppClick(id: WindowType) {
     this.store.select(selectAllWindows).pipe(
