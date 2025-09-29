@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {Store} from '@ngrx/store';
 import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
@@ -13,7 +13,8 @@ import {HOME} from '../../store/window-manager/constants/types.const';
     AsyncPipe
   ],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrl: './home.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Home {
   private store = inject(Store);

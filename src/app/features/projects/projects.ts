@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {AsyncPipe} from '@angular/common';
 import {Store} from '@ngrx/store';
@@ -16,7 +16,8 @@ import {Spinner} from '../../common/spinner/spinner';
     Spinner
   ],
   templateUrl: './projects.html',
-  styleUrl: './projects.scss'
+  styleUrl: './projects.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Projects {
   private store = inject(Store);

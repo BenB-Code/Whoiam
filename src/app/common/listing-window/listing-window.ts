@@ -1,11 +1,21 @@
-import {Component, EventEmitter, Input, Output, TemplateRef, signal, ContentChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  Output,
+  signal,
+  TemplateRef
+} from '@angular/core';
 import {NgClass, NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'app-listing-window',
   imports: [NgClass, NgTemplateOutlet],
   templateUrl: './listing-window.html',
-  styleUrl: './listing-window.scss'
+  styleUrl: './listing-window.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListingWindow<T = any> {
   @Input() items: T[] = [];

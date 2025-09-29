@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -17,7 +17,8 @@ import {Spinner} from '../../common/spinner/spinner';
     Spinner,
   ],
   templateUrl: './contact.html',
-  styleUrl: './contact.scss'
+  styleUrl: './contact.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Contact {
   private store = inject(Store);

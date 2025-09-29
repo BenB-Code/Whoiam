@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {ListingWindow} from '../../common/listing-window/listing-window';
 import {Experience} from './models/experience.model';
 import {Store} from '@ngrx/store';
@@ -17,7 +17,8 @@ import {Spinner} from '../../common/spinner/spinner';
     Spinner
   ],
   templateUrl: './experiences.html',
-  styleUrl: './experiences.scss'
+  styleUrl: './experiences.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Experiences {
   private store = inject(Store);

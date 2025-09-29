@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs';
 import {
@@ -20,9 +20,10 @@ import {ContactsService} from '../../services/contact/contacts.service';
     AsyncPipe
   ],
   templateUrl: './app-bar.html',
-  styleUrl: './app-bar.scss'
+  styleUrl: './app-bar.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppBar {
+export class AppBar implements OnInit {
   private store = inject(Store);
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
@@ -35,6 +36,10 @@ export class AppBar {
   );
 
   contactsService = inject(ContactsService);
+
+  ngOnInit() {
+    this.contactsService.loadContacts();
+  }
 
   onAppClick(id: WindowType) {
     this.store.select(selectAllWindows).pipe(
