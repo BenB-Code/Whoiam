@@ -12,12 +12,12 @@ export class ListingWindow<T = any> {
   @Input() title = 'Liste';
   @Input() selectedIndex: number | null = null;
 
-  @ContentChild('itemTemplate') itemTemplate!: TemplateRef<any>;
+  @ContentChild('itemTemplate') itemTemplate!: TemplateRef<{ $implicit: T, index: number }>;
 
   @Output() closeEvent = new EventEmitter<void>();
   @Output() fullscreenEvent = new EventEmitter<boolean>();
   @Output() reduceEvent = new EventEmitter<void>();
-  @Output() itemSelected = new EventEmitter<{item: T, index: number}>();
+  @Output() itemSelected = new EventEmitter<{ item: T, index: number }>();
 
   selectedItemSignal = signal<number | null>(null);
   isFullscreen = signal<boolean>(false);

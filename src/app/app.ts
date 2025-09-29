@@ -2,10 +2,11 @@ import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderBar} from './header-bar/header-bar';
 import {AppBar} from './app-bar/app-bar';
-import {Contact} from './contact/contact';
-import {Home} from './home/home';
-import {Experiences} from './experiences/experiences';
-import {Projects} from './projects/projects';
+import {Contact} from './features/contact/contact';
+import {Home} from './features/home/home';
+import {Experiences} from './features/experiences/experiences';
+import {Projects} from './features/projects/projects';
+
 
 @Component({
   selector: 'app-root',

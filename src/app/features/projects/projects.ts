@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {ContentWindow} from '../common/content-window/content-window';
+import {ContentWindow} from '../../common/content-window/content-window';
 import {AsyncPipe} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../store';
-import {PROJECTS} from '../store/window-manager/models/types.const';
+import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
+import {PROJECTS} from '../../store/window-manager/constants/types.const';
 
 interface Project {
   name: string;

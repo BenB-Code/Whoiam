@@ -1,6 +1,6 @@
 import {adapter, State} from '../reducers/window.reducer';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {OPEN} from '../models/status.const';
+import {OPEN} from '../constants/status.const';
 import {WindowType} from '../models/window-type.type';
 
 

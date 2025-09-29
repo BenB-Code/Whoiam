@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {ContentWindow} from '../common/content-window/content-window';
+import {ContentWindow} from '../../common/content-window/content-window';
 import {Store} from '@ngrx/store';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../store';
+import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
-import {HOME} from '../store/window-manager/models/types.const';
+import {HOME} from '../../store/window-manager/constants/types.const';
 
 @Component({
   selector: 'app-home',

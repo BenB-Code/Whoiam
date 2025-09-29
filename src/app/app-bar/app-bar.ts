@@ -2,8 +2,9 @@ import {Component, inject} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs';
 import {openWindow, restoreWindow, selectAllWindows, setActiveWindow, WindowState, WindowType} from '../store';
-import {CLOSED, MINIMIZED} from '../store/window-manager/models/status.const';
+import {CLOSED, MINIMIZED} from '../store/window-manager/constants/status.const';
 import {AsyncPipe} from '@angular/common';
+import {Contact} from '../features/contact/models/contact.model';
 
 @Component({
   selector: 'app-app-bar',
@@ -16,7 +17,7 @@ import {AsyncPipe} from '@angular/common';
 export class AppBar {
   private store = inject(Store);
 
-  contactMethods = [
+  contactMethods: Contact[] = [
     {
       name: 'Email',
       logo: 'assets/icons/gmail-svgrepo-com.svg',

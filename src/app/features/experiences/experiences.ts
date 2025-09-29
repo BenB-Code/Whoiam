@@ -1,10 +1,10 @@
 import {Component, inject, signal} from '@angular/core';
-import {ListingWindow} from '../common/listing-window/listing-window';
+import {ListingWindow} from '../../common/listing-window/listing-window';
 import {Experience} from './models/experience.model';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../store';
-import {EXPERIENCES} from '../store/window-manager/models/types.const';
+import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
+import {EXPERIENCES} from '../../store/window-manager/constants/types.const';
 import {AsyncPipe} from '@angular/common';
 
 @Component({
@@ -23,7 +23,7 @@ export class Experiences {
   selectedIndex = signal<number | null>(null);
   selectedExperience = signal<Experience | null>(null);
 
-  mockData = [
+  mockData: Experience[] = [
     {
       company: "Akka I&S",
       name: "Ingénieur d'étude et développemennt",

@@ -6,4 +6,4 @@ export * from './window-manager/models/window-type.type';
 export * from './window-manager/models/size.model';
 export * from './window-manager/models/window.model';
 export * from './window-manager/models/position.model';
-export * from './window-manager/models/default-values.const';
+export * from './window-manager/constants/default-values.const';

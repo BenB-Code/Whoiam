@@ -11,5 +11,4 @@ import {DatePipe} from '@angular/common';
 })
 export class HeaderBar {
   time: Date = new Date();
-
 }

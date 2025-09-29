@@ -1,7 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {WindowType} from '../models/window-type.type';
-import {Position} from '../models/position.model';
-import {Size} from '../models/size.model';
+import {WindowUpdate} from '../models/window-update.model';
 
 export const openWindow = createAction('[Window] Open Window', props<{ id: WindowType }>());
 export const closeWindow = createAction('[Window] Close Window', props<{ id: WindowType }>())
@@ -9,11 +8,5 @@ export const minimizeWindow = createAction('[Window] Minimize Window', props<{ i
 export const maximizeWindow = createAction('[Window] Maximize Window', props<{ id: WindowType }>());
 export const restoreWindow = createAction('[Window] Restore Window', props<{ id: WindowType }>());
 export const setActiveWindow = createAction('[Window] Set active Window', props<{ id: WindowType }>());
-export const updateWindow = createAction('[Window] Update Window', props<{
-  id: WindowType,
-  position?: Position,
-  size?: Size,
-  zIndex?: number,
-  isActive?: boolean,
-}>());
+export const updateWindow = createAction('[Window] Update Window', props<WindowUpdate>());
 
