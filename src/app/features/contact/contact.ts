@@ -6,6 +6,7 @@ import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActive
 import {ContentWindow} from '../../common/content-window/content-window';
 import {CONTACT} from '../../store/window-manager/constants/types.const';
 import {ContactsService} from '../../services/contact/contacts.service';
+import {Spinner} from '../../common/spinner/spinner';
 
 @Component({
   selector: 'app-contact',
@@ -13,17 +14,16 @@ import {ContactsService} from '../../services/contact/contacts.service';
     ContentWindow,
     NgOptimizedImage,
     AsyncPipe,
+    Spinner,
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
 export class Contact {
   private store = inject(Store);
-  private contactsService = inject(ContactsService);
-
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
-  contactMethods = this.contactsService.contacts;
+  contactsService = inject(ContactsService);
 
   onClose(): void {
     this.store.dispatch(closeWindow({id: CONTACT}));

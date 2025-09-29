@@ -19,11 +19,19 @@
       <section>
         <h3>Contact</h3>
         <article>
-          @for (contactMethod of contactMethods(); track contactMethod.name) {
-            <div (click)="redirect(contactMethod.url)">
-              <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
-              <p>{{ contactMethod.name }}</p>
+          @if (contactsService.isLoading()) {
+            <app-spinner></app-spinner>
+          } @else if (contactsService.shouldDisplayPlaceholder()) {
+            <div class="message-container">
+              <p>{{ contactsService.placeholder() }}</p>
             </div>
+          } @else {
+            @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
+              <div (click)="redirect(contactMethod.url)">
+                <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
+                <p>{{ contactMethod.name }}</p>
+              </div>
+            }
           }
         </article>
       </section>

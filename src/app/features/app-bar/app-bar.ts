@@ -24,8 +24,6 @@ import {ContactsService} from '../../services/contact/contacts.service';
 })
 export class AppBar {
   private store = inject(Store);
-  private contactsService = inject(ContactsService);
-
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
@@ -36,7 +34,7 @@ export class AppBar {
     })
   );
 
-  contactMethods = this.contactsService.contacts;
+  contactsService = inject(ContactsService);
 
   onAppClick(id: WindowType) {
     this.store.select(selectAllWindows).pipe(
@@ -50,7 +48,6 @@ export class AppBar {
         } else {
           this.store.dispatch(setActiveWindow({id}));
         }
-
       }
     )
   }

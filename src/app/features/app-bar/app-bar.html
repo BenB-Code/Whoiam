@@ -29,10 +29,10 @@
     }
   </div>
 
-  @if (contactMethods().length > 0) {
+  @if (contactsService.contacts().length > 0) {
     <div class="divider"></div>
 
-    @for (contactMethod of contactMethods(); track contactMethod.name) {
+    @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
       <div class="el" (click)="redirect(contactMethod.url)">
         <img [src]="contactMethod.logo" [alt]="contactMethod.alt">
       </div>
