@@ -1,8 +1,7 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {Contact} from '../../features/contact/models/contact.model';
-import {catchError, Observable, of, tap} from 'rxjs';
+import {catchError, Observable, of, take, tap} from 'rxjs';
 import {DataService} from '../data/data.service';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +23,7 @@ export class ContactsService {
   }
 
   private loadContacts(): void {
-    this.getContacts().pipe(takeUntilDestroyed()).subscribe();
+    this.getContacts().pipe(take(1)).subscribe();
   }
 
   private getContacts(): Observable<Contact[]> {

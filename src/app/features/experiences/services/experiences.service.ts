@@ -1,8 +1,7 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {DataService} from '../../../services/data/data.service';
-import {catchError, map, Observable, of, tap,} from 'rxjs';
+import {catchError, map, Observable, of, take, tap,} from 'rxjs';
 import {Experience} from '../models/experience.model';
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +23,7 @@ export class ExperiencesService {
     }
 
     private loadExperiences() {
-        this.getExperiences().pipe(takeUntilDestroyed()).subscribe();
+        this.getExperiences().pipe(take(1)).subscribe();
     }
 
     private getExperiences(): Observable<Experience[]> {

@@ -1,8 +1,7 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {DataService} from '../../../services/data/data.service';
-import {catchError, Observable, of, tap} from 'rxjs';
+import {catchError, Observable, of, take, tap} from 'rxjs';
 import {Project} from '../models/project.model';
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +23,7 @@ export class ProjectsService {
     }
 
     private loadProjects() {
-        this.getProjects().pipe(takeUntilDestroyed()).subscribe();
+        this.getProjects().pipe(take(1)).subscribe();
     }
 
     private getProjects(): Observable<Project[]> {
