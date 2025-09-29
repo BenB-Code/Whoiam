@@ -10,7 +10,7 @@
       [class.active]="experiencesWindow.isActive"
       [class.maximized]="experiencesWindow.status === 'maximized'"
       [class.minimized]="experiencesWindow.status === 'minimized'"
-      [items]="mockData"
+      [items]="experiences"
 
       (closeEvent)="onClose()"
       (fullscreenEvent)="onFullscreen()"
