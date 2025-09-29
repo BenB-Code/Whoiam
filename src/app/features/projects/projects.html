@@ -21,40 +21,48 @@
         <p>Discover my projects and contributions</p>
       </div>
 
-      <div class="projects-grid">
-        @for (project of projects(); track $index) {
-          <article class="project-card" [attr.data-category]="project.category">
-            <div class="card-header">
-              <div class="project-meta">
-                <span class="project-year">{{ project.year }}</span>
-              </div>
-              <div class="status-indicator"
-                   [style.background-color]="getStatusColor(project.status || 'active')"
-                   [title]="project.status || 'active'">
-              </div>
-            </div>
-
-            <div class="card-content">
-              <h2>{{ project.name }}</h2>
-              <p class="description">{{ project.description }}</p>
-
-              @if (project.technologies) {
-                <div class="technologies">
-                  @for (tech of project.technologies; track $index) {
-                    <span class="tech-badge">{{ tech }}</span>
-                  }
+      @if (projectsService.isLoading()) {
+        <app-spinner></app-spinner>
+      } @else if (projectsService.shouldDisplayPlaceholder()) {
+        <div class="message-container">
+          <p>{{ projectsService.placeholder() }}</p>
+        </div>
+      } @else {
+        <div class="projects-grid">
+          @for (project of projects(); track $index) {
+            <article class="project-card" [attr.data-category]="project.category">
+              <div class="card-header">
+                <div class="project-meta">
+                  <span class="project-year">{{ project.year }}</span>
                 </div>
-              }
-            </div>
+                <div class="status-indicator"
+                     [style.background-color]="getStatusColor(project.status || 'active')"
+                     [title]="project.status || 'active'">
+                </div>
+              </div>
 
-            <div class="card-actions">
-              <button class="primary-btn" (click)="redirect(project.link.url)">
-                {{ project.link.name }}
-              </button>
-            </div>
-          </article>
-        }
-      </div>
+              <div class="card-content">
+                <h2>{{ project.name }}</h2>
+                <p class="description">{{ project.description }}</p>
+
+                @if (project.technologies) {
+                  <div class="technologies">
+                    @for (tech of project.technologies; track $index) {
+                      <span class="tech-badge">{{ tech }}</span>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="card-actions">
+                <button class="primary-btn" (click)="redirect(project.link.url)">
+                  {{ project.link.name }}
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      }
     </app-content-window>
   }
 }

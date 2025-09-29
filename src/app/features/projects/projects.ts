@@ -6,25 +6,15 @@ import {Observable, take} from 'rxjs';
 import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
 import {PROJECTS} from '../../store/window-manager/constants/types.const';
 import {ProjectsService} from './services/projects.service';
-
-interface Project {
-  name: string;
-  description: string;
-  link: {
-    name: string;
-    url: string;
-  };
-  technologies?: string[];
-  status?: 'active' | 'archived' | 'completed';
-  year?: number;
-  category?: 'web' | 'api' | 'tool' | 'portfolio';
-}
+import {Spinner} from '../../common/spinner/spinner';
+import {Project} from './models/project.model';
 
 @Component({
   selector: 'app-projects',
   imports: [
     ContentWindow,
-    AsyncPipe
+    AsyncPipe,
+    Spinner
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
@@ -33,7 +23,7 @@ export class Projects implements OnInit {
   private store = inject(Store);
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
-  private projectsService: ProjectsService = inject(ProjectsService);
+  projectsService: ProjectsService = inject(ProjectsService);
   projects = signal<Project[]>([])
 
   ngOnInit(): void {
