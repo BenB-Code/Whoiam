@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {AsyncPipe} from '@angular/common';
 import {Store} from '@ngrx/store';
@@ -29,15 +29,15 @@ interface Project {
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
 })
-export class Projects {
+export class Projects implements OnInit {
   private store = inject(Store);
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
   private projectsService: ProjectsService = inject(ProjectsService);
-  projects: Project[] = []
+  projects = signal<Project[]>([])
 
-  constructor() {
-    this.projectsService.getProjects().pipe(take(1)).subscribe(projects => (this.projects = projects));
+  ngOnInit(): void {
+    this.projectsService.getProjects().pipe(take(1)).subscribe(projects => (this.projects.set(projects)));
   }
 
   getStatusColor(status: string): string {
