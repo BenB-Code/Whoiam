@@ -19,7 +19,7 @@
       <section>
         <h3>Contact</h3>
         <article>
-          @for (contactMethod of contactMethods; track contactMethod.name) {
+          @for (contactMethod of contactMethods(); track contactMethod.name) {
             <div (click)="redirect(contactMethod.url)">
               <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
               <p>{{ contactMethod.name }}</p>

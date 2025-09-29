@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable, take} from 'rxjs';
@@ -18,15 +18,15 @@ import {Contact as ContactModel} from './models/contact.model';
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
-export class Contact {
+export class Contact implements OnInit {
   private store = inject(Store);
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
   private contactsService: ContactsService = inject(ContactsService);
-  contactMethods: ContactModel[] = []
+  contactMethods = signal<ContactModel[]>([]);
 
-  constructor() {
-    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods = contacts));
+  ngOnInit(): void {
+    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods.set(contacts)));
   }
 
   onClose(): void {
