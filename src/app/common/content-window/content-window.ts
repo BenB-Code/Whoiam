@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output, signal} from '@angular/core';
 
 @Component({
   selector: 'app-content-window',
@@ -12,15 +12,16 @@ export class ContentWindow {
   @Output() fullscreenEvent = new EventEmitter<boolean>();
   @Output() reduceEvent = new EventEmitter<void>();
 
-  isFullscreen: boolean = false;
+  isFullscreen = signal<boolean>(false);
 
   close() {
     this.closeEvent.emit();
   }
 
   fullscreen() {
-    this.isFullscreen = !this.isFullscreen;
-    this.fullscreenEvent.emit(this.isFullscreen);
+    const newState = !this.isFullscreen();
+    this.isFullscreen.set(newState);
+    this.fullscreenEvent.emit(newState);
   }
 
   reduce() {
