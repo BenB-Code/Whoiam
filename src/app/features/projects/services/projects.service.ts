@@ -26,7 +26,7 @@ export class ProjectsService {
         return this.dataService.fetchJson<Project[]>('/assets/data/projects.json').pipe(
             tap(projects => {
                 this.projects.set(projects);
-                // this.isLoading.set(false);
+                this.isLoading.set(false);
             }),
             catchError(err => {
                 console.error('Error loading projects: ', err)
