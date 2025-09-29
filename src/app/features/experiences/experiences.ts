@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {ListingWindow} from '../../common/listing-window/listing-window';
 import {Experience} from './models/experience.model';
 import {Store} from '@ngrx/store';
@@ -7,7 +7,6 @@ import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActive
 import {EXPERIENCES} from '../../store/window-manager/constants/types.const';
 import {AsyncPipe} from '@angular/common';
 import {ExperiencesService} from './services/experiences.service';
-import {provideHttpClient, withFetch} from '@angular/common/http';
 
 @Component({
   selector: 'app-experiences',
@@ -18,18 +17,18 @@ import {provideHttpClient, withFetch} from '@angular/common/http';
   templateUrl: './experiences.html',
   styleUrl: './experiences.scss'
 })
-export class Experiences {
+export class Experiences implements OnInit {
   private store = inject(Store);
   experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
 
   private experiencesService: ExperiencesService = inject(ExperiencesService);
-  experiences: Experience[] = [];
+  experiences = signal<Experience[]>([]);
 
   selectedIndex = signal<number | null>(null);
   selectedExperience = signal<Experience | null>(null);
 
-  constructor() {
-    this.experiencesService.getExperiences().pipe(take(1)).subscribe(experiences => this.experiences = experiences)
+  ngOnInit(): void {
+    this.experiencesService.getExperiences().pipe(take(1)).subscribe(experiences => this.experiences.set(experiences))
   }
 
   onSelection(event: { item: Experience, index: number }) {
