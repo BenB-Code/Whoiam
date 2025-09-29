@@ -18,12 +18,10 @@ export class ProjectsService {
     shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
     placeholder = computed(() => this.hasError() ? this.error() : "Aucun projet disponible pour le moment");
 
-    constructor() {
-        this.loadProjects();
-    }
-
-    private loadProjects() {
-        this.getProjects().pipe(take(1)).subscribe();
+    loadProjects() {
+        if (this.projects().length === 0) {
+            this.getProjects().pipe(take(1)).subscribe();
+        }
     }
 
     private getProjects(): Observable<Project[]> {

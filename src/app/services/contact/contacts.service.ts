@@ -18,12 +18,10 @@ export class ContactsService {
   shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   placeholder = computed(() => this.hasError() ? this.error() : "Aucun moyen de me contacter pour le moment.")
 
-  constructor() {
-    this.loadContacts();
-  }
-
-  private loadContacts(): void {
-    this.getContacts().pipe(take(1)).subscribe();
+  loadContacts(): void {
+    if (this.contacts().length === 0) {
+      this.getContacts().pipe(take(1)).subscribe();
+    }
   }
 
   private getContacts(): Observable<Contact[]> {

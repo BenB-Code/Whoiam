@@ -18,12 +18,10 @@ export class ExperiencesService {
     shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
     placeholder = computed(() => this.hasError() ? this.error() : "Aucune expérience disponible pour le moment");
 
-    constructor() {
-        this.loadExperiences();
-    }
-
-    private loadExperiences() {
-        this.getExperiences().pipe(take(1)).subscribe();
+    loadExperiences() {
+        if (this.experiences().length === 0) {
+            this.getExperiences().pipe(take(1)).subscribe();
+        }
     }
 
     private getExperiences(): Observable<Experience[]> {

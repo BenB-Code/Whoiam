@@ -12,6 +12,8 @@ import {provideStore} from '@ngrx/store';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
 import {windowReducer} from './store';
 import {provideHttpClient, withFetch} from '@angular/common/http';
+import {provideEffects} from '@ngrx/effects';
+import {WindowEffects} from './store/window-manager/effects/window.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       windowManager: windowReducer
     }),
+    provideEffects(WindowEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
