@@ -2,9 +2,10 @@ import {Component, inject} from '@angular/core';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {AsyncPipe} from '@angular/common';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, take} from 'rxjs';
 import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
 import {PROJECTS} from '../../store/window-manager/constants/types.const';
+import {ProjectsService} from './services/projects.service';
 
 interface Project {
   name: string;
@@ -30,47 +31,14 @@ interface Project {
 })
 export class Projects {
   private store = inject(Store);
-
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
-  mockData: Project[] = [
-    {
-      name: 'Kaamelott Citation Extractor',
-      description: 'An XML parser to extract and structure quotes from the Kaamelott Wikiquote pages',
-      link: {
-        name: 'Github',
-        url: 'https://github.com/BenB-Code/Kaamelott_Citation_Extractor'
-      },
-      technologies: ['TypeScript', 'XML', 'JSON', 'Parser'],
-      status: 'active',
-      year: 2025,
-      category: 'tool'
-    },
-    {
-      name: 'Kaamelott Citation API',
-      description: "Une API REST qui permet de récupérer, filtrer et rechercher des citations cultes de la série Kaamelott d'Alexandre Astier.",
-      link: {
-        name: 'Github',
-        url: 'https://github.com/BenB-Code/Kaamelott_Citation_API'
-      },
-      technologies: ['TypeScript', 'REST API'],
-      status: 'active',
-      year: 2025,
-      category: 'api'
-    },
-    {
-      name: 'Whoiam',
-      description: 'Quick portfolio websitte that act as a resume.',
-      link: {
-        name: 'Github',
-        url: 'https://github.com/BenB-Code/Whoiam'
-      },
-      technologies: ['HTML', 'TypeScript', 'SCSS'],
-      status: 'active',
-      year: 2025,
-      category: 'portfolio'
-    },
-  ];
+  private projectsService: ProjectsService = inject(ProjectsService);
+  projects: Project[] = []
+
+  constructor() {
+    this.projectsService.getProjects().pipe(take(1)).subscribe(projects => (this.projects = projects));
+  }
 
   getStatusColor(status: string): string {
     switch (status) {

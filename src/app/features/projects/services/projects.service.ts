@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
-import {DataService} from '../data/data.service';
+import {DataService} from '../../../services/data/data.service';
 import {catchError, Observable, of} from 'rxjs';
-import {Project} from '../../features/projects/models/project.model';
+import {Project} from '../models/project.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class ProjectsService {
   private dataService = inject(DataService);
 
   getProjects(): Observable<Project[]> {
-    return this.dataService.fetchJson<Project[]>('assets/data/projects.json').pipe(
+    return this.dataService.fetchJson<Project[]>('/assets/data/projects.json').pipe(
       catchError(err => {
         console.error('Error loading projects: ', err)
         return of([]);
