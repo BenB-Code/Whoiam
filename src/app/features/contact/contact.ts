@@ -1,10 +1,12 @@
 import {Component, inject} from '@angular/core';
 import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, take} from 'rxjs';
 import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {CONTACT} from '../../store/window-manager/constants/types.const';
+import {ContactsService} from './services/contact.service';
+import {Contact as ContactModel} from './models/contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -17,27 +19,15 @@ import {CONTACT} from '../../store/window-manager/constants/types.const';
   styleUrl: './contact.scss'
 })
 export class Contact {
-  contactMethods = [
-    {
-      name: 'Github',
-      logo: 'assets/icons/github-svgrepo-com.svg',
-      url: 'https://github.com/BenB-Code',
-      alt: 'Github'
-    }, {
-      name: 'Email',
-      logo: 'assets/icons/gmail-svgrepo-com.svg',
-      url: 'mailto:benjamin.bats.dev@gmail.com',
-      alt: 'Email'
-    }, {
-      name: 'LinkedIn',
-      logo: 'assets/icons/linkedin-svgrepo-com.svg',
-      url: 'https://www.linkedin.com/in/benjamin-bats-200464165/',
-      alt: 'LinkedIn'
-    }
-  ]
   private store = inject(Store);
-
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
+
+  private contactsService: ContactsService = inject(ContactsService);
+  contactMethods: ContactModel[] = []
+
+  constructor() {
+    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods = contacts));
+  }
 
   onClose(): void {
     this.store.dispatch(closeWindow({id: CONTACT}));
