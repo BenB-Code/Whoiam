@@ -1,6 +1,7 @@
-export type EXPERIENCES = 'experiences';
-export type PROJECTS = 'projects';
-export type HOME = 'home';
-export type CONTACT = 'contact';
 
-export type WindowType = EXPERIENCES | PROJECTS | HOME | CONTACT;
+export type T_EXPERIENCES = 'experiences';
+export type T_PROJECTS = 'projects';
+export type T_HOME = 'home';
+export type T_CONTACT = 'contact';
+
+export type WindowType = T_EXPERIENCES | T_PROJECTS | T_HOME | T_CONTACT;

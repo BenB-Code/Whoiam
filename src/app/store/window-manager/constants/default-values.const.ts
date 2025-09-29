@@ -1,9 +1,6 @@
-import {WindowState} from '../models/window.model';
+import {Position, Size, WindowState, WindowType} from '../models';
 import {CONTACT, EXPERIENCES, HOME, PROJECTS} from './types.const';
 import {CLOSED, OPEN} from './status.const';
-import {Position} from '../models/position.model';
-import {Size} from '../models/size.model';
-import {WindowType} from '../models/window-type.type';
 
 export const DEFAULT_ZINDEX = 1;
 

@@ -1,6 +1,7 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {WindowState} from '../models/window.model';
 import {createReducer, on} from '@ngrx/store';
+import {CLOSED, DEFAULT_WINDOWS, DEFAULT_ZINDEX, MAXIMIZED, MINIMIZED, OPEN} from '../constants';
+import {WindowState} from '../models';
 import {
   closeWindow,
   maximizeWindow,
@@ -9,8 +10,6 @@ import {
   restoreWindow,
   setActiveWindow
 } from '../actions/window.actions';
-import {DEFAULT_WINDOWS, DEFAULT_ZINDEX} from '../constants/default-values.const';
-import {CLOSED, MAXIMIZED, MINIMIZED, OPEN} from '../constants/status.const';
 
 
 export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowState>({

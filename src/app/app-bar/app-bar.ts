@@ -1,8 +1,16 @@
 import {Component, inject} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs';
-import {openWindow, restoreWindow, selectAllWindows, setActiveWindow, WindowState, WindowType} from '../store';
-import {CLOSED, MINIMIZED} from '../store/window-manager/constants/status.const';
+import {
+  CLOSED,
+  MINIMIZED,
+  openWindow,
+  restoreWindow,
+  selectAllWindows,
+  setActiveWindow,
+  WindowState,
+  WindowType
+} from '../store';
 import {AsyncPipe} from '@angular/common';
 import {Contact} from '../features/contact/models/contact.model';
 
