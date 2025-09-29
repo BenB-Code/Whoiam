@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs';
 import {
@@ -12,8 +12,7 @@ import {
   WindowType
 } from '../store';
 import {AsyncPipe} from '@angular/common';
-import {Contact} from '../features/contact/models/contact.model';
-import {ContactsService} from '../features/contact/services/contact.service';
+import {ContactsService} from '../services/contact/contacts.service';
 
 @Component({
   selector: 'app-app-bar',
@@ -23,8 +22,10 @@ import {ContactsService} from '../features/contact/services/contact.service';
   templateUrl: './app-bar.html',
   styleUrl: './app-bar.scss'
 })
-export class AppBar implements OnInit {
+export class AppBar {
   private store = inject(Store);
+  private contactsService = inject(ContactsService);
+
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
@@ -33,14 +34,9 @@ export class AppBar implements OnInit {
       });
       return stateMap
     })
-  )
+  );
 
-  private contactsService: ContactsService = inject(ContactsService);
-  contactMethods = signal<Contact[]>([]);
-
-  ngOnInit(): void {
-    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods.set(contacts)));
-  }
+  contactMethods = this.contactsService.contacts;
 
   onAppClick(id: WindowType) {
     this.store.select(selectAllWindows).pipe(

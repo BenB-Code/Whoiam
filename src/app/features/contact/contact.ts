@@ -1,12 +1,11 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {Store} from '@ngrx/store';
-import {Observable, take} from 'rxjs';
+import {Observable} from 'rxjs';
 import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {CONTACT} from '../../store/window-manager/constants/types.const';
-import {ContactsService} from './services/contact.service';
-import {Contact as ContactModel} from './models/contact.model';
+import {ContactsService} from '../../services/contact/contacts.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,16 +17,13 @@ import {Contact as ContactModel} from './models/contact.model';
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
-export class Contact implements OnInit {
+export class Contact {
   private store = inject(Store);
+  private contactsService = inject(ContactsService);
+
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
-  private contactsService: ContactsService = inject(ContactsService);
-  contactMethods = signal<ContactModel[]>([]);
-
-  ngOnInit(): void {
-    this.contactsService.getContacts().pipe(take(1)).subscribe(contacts => (this.contactMethods.set(contacts)));
-  }
+  contactMethods = this.contactsService.contacts;
 
   onClose(): void {
     this.store.dispatch(closeWindow({id: CONTACT}));

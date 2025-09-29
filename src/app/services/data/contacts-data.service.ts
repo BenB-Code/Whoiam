@@ -1,12 +1,12 @@
 import {inject, Injectable} from '@angular/core';
-import {DataService} from '../../../services/data/data.service';
+import {DataService} from './data.service';
 import {catchError, Observable, of} from 'rxjs';
-import {Contact} from '../models/contact.model';
+import {Contact} from '../../features/contact/models/contact.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ContactsService {
+export class ContactsDataService {
   private dataService = inject(DataService);
 
   getContacts(): Observable<Contact[]> {
