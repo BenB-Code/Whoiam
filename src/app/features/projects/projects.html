@@ -29,7 +29,7 @@
         </div>
       } @else {
         <div class="projects-grid">
-          @for (project of projects(); track $index) {
+          @for (project of projectsService.projects(); track $index) {
             <article class="project-card" [attr.data-category]="project.category">
               <div class="card-header">
                 <div class="project-meta">
