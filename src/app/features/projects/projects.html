@@ -1,5 +1,5 @@
 @if (projectsWindow$ | async; as projectsWindow) {
-  @if (projectsWindow.status !== 'closed') {
+  @if (projectsWindow.status !== CLOSED) {
     <app-content-window
       [style.left]="projectsWindow.position?.x"
       [style.top]="projectsWindow.position?.y"
@@ -8,13 +8,11 @@
       [style.height]="projectsWindow.size?.height"
       [style.z-index]="projectsWindow.zIndex"
       [class.active]="projectsWindow.isActive"
-      [class.maximized]="projectsWindow.status === 'maximized'"
-      [class.minimized]="projectsWindow.status === 'minimized'"
+      [class.maximized]="projectsWindow.status === MAXIMIZED"
+      [class.minimized]="projectsWindow.status === MINIMIZED"
 
-      (closeEvent)="onClose()"
-      (fullscreenEvent)="onFullscreen()"
-      (reduceEvent)="onReduce()"
-      (click)="onActivate()"
+      appWindowActions
+      [windowId]="PROJECTS"
     >
       <div class="projects-header">
         <h1>My Projects</h1>

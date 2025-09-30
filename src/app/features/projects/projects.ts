@@ -3,17 +3,19 @@ import {ContentWindow} from '../../common/content-window/content-window';
 import {AsyncPipe} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
+import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../../store';
 import {PROJECTS} from '../../store/window-manager/constants/types.const';
 import {ProjectsService} from './services/projects.service';
 import {Spinner} from '../../common/spinner/spinner';
+import {WindowActions} from '../../common/directives/window-actions';
 
 @Component({
   selector: 'app-projects',
   imports: [
     ContentWindow,
     AsyncPipe,
-    Spinner
+    Spinner,
+    WindowActions
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
@@ -38,23 +40,12 @@ export class Projects {
     }
   }
 
-  onClose(): void {
-    this.store.dispatch(closeWindow({id: PROJECTS}));
-  }
-
-  onFullscreen(): void {
-    this.store.dispatch(maximizeWindow({id: PROJECTS}));
-  }
-
-  onReduce(): void {
-    this.store.dispatch(minimizeWindow({id: PROJECTS}));
-  }
-
-  onActivate(): void {
-    this.store.dispatch(setActiveWindow({id: PROJECTS}));
-  }
-
   redirect(url: string): void {
     window.open(url, '_blank');
   }
+
+  protected readonly PROJECTS = PROJECTS;
+  protected readonly CLOSED = CLOSED;
+  protected readonly MAXIMIZED = MAXIMIZED;
+  protected readonly MINIMIZED = MINIMIZED;
 }
