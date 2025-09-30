@@ -7,7 +7,7 @@ import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../..
 import {PROJECTS} from '../../store/window-manager/constants/types.const';
 import {ProjectsService} from './services/projects.service';
 import {Spinner} from '../../common/spinner/spinner';
-import {WindowActions} from '../../common/directives/window-actions';
+import {WindowActions} from '../../common/directives';
 
 @Component({
   selector: 'app-projects',

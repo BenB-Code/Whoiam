@@ -5,7 +5,7 @@ import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../..
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {HOME} from '../../store/window-manager/constants/types.const';
-import {WindowActions} from '../../common/directives/window-actions';
+import {WindowActions} from '../../common/directives';
 
 @Component({
   selector: 'app-home',

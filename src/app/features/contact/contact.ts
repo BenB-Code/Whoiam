@@ -7,7 +7,7 @@ import {ContentWindow} from '../../common/content-window/content-window';
 import {CONTACT} from '../../store/window-manager/constants/types.const';
 import {ContactsService} from '../../services/contact/contacts.service';
 import {Spinner} from '../../common/spinner/spinner';
-import {WindowActions} from '../../common/directives/window-actions';
+import {WindowActions} from '../../common/directives';
 
 @Component({
   selector: 'app-contact',

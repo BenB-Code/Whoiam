@@ -8,7 +8,7 @@ import {EXPERIENCES} from '../../store/window-manager/constants/types.const';
 import {AsyncPipe} from '@angular/common';
 import {ExperiencesService} from './services/experiences.service';
 import {Spinner} from '../../common/spinner/spinner';
-import {WindowActions} from '../../common/directives/window-actions';
+import {WindowActions} from '../../common/directives';
 
 @Component({
   selector: 'app-experiences',

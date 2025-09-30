@@ -25,17 +25,24 @@ export const windowReducer = createReducer(initialState,
       (state, {id}) => {
         const currentWindow = state.entities[id];
         const defaultValues = DEFAULT_WINDOWS.find(window => window.id === id);
+        const openBehavior = currentWindow?.status === CLOSED
+          ? OPEN : currentWindow?.status === MINIMIZED
+            ? currentWindow.lastStatus : currentWindow?.status;
+
         return adapter.updateOne({
-          id,
-          changes: {
-            status: OPEN,
-            lastStatus: currentWindow?.status,
-            position: currentWindow?.position || defaultValues?.position,
-            size: currentWindow?.size || defaultValues?.size,
-            isActive: defaultValues?.isActive,
-            zIndex: selectMaxZIndexValue(state) + 1
-          }
-        }, state);
+            id,
+            changes: {
+              status: openBehavior,
+              lastStatus: currentWindow?.status,
+              position: currentWindow?.position || defaultValues?.position,
+              size: currentWindow?.size || defaultValues?.size,
+              isActive: defaultValues?.isActive,
+              zIndex: selectMaxZIndexValue(state) + 1
+            }
+          },
+          state
+        )
+          ;
       }),
     on(closeWindow, (state, {id}) => {
       const currentWindow = state.entities[id];
@@ -111,6 +118,6 @@ export const windowReducer = createReducer(initialState,
 ;
 
 function selectMaxZIndexValue(state: State): number {
-  const windows = Object.values(state.entities).filter(w => w?.status === OPEN);
+  const windows = Object.values(state.entities).filter(w => w?.status === OPEN || w?.status === MAXIMIZED);
   return windows.length > 0 ? Math.max(...windows.map(w => w!.zIndex)) : DEFAULT_ZINDEX;
 }
