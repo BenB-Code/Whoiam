@@ -1,5 +1,5 @@
 @if (experiencesWindow$ | async; as experiencesWindow) {
-  @if (experiencesWindow.status !== 'closed') {
+  @if (experiencesWindow.status !== CLOSED) {
     <app-listing-window
       [style.left]="experiencesWindow.position?.x"
       [style.top]="experiencesWindow.position?.y"
@@ -8,14 +8,13 @@
       [style.height]="experiencesWindow.size?.height"
       [style.z-index]="experiencesWindow.zIndex"
       [class.active]="experiencesWindow.isActive"
-      [class.maximized]="experiencesWindow.status === 'maximized'"
-      [class.minimized]="experiencesWindow.status === 'minimized'"
+      [class.maximized]="experiencesWindow.status === MAXIMIZED"
+      [class.minimized]="experiencesWindow.status === MINIMIZED"
       [items]="experiencesService.experiences()"
 
-      (closeEvent)="onClose()"
-      (fullscreenEvent)="onFullscreen()"
-      (reduceEvent)="onReduce()"
-      (click)="onActivate()"
+      appWindowActions
+      [windowId]="EXPERIENCES"
+
       (itemSelected)="onSelection($event)">
 
 

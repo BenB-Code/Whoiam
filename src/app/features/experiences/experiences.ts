@@ -3,18 +3,20 @@ import {ListingWindow} from '../../common/listing-window/listing-window';
 import {Experience} from './models/experience.model';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
+import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../../store';
 import {EXPERIENCES} from '../../store/window-manager/constants/types.const';
 import {AsyncPipe} from '@angular/common';
 import {ExperiencesService} from './services/experiences.service';
 import {Spinner} from '../../common/spinner/spinner';
+import {WindowActions} from '../../common/directives/window-actions';
 
 @Component({
   selector: 'app-experiences',
   imports: [
     ListingWindow,
     AsyncPipe,
-    Spinner
+    Spinner,
+    WindowActions
   ],
   templateUrl: './experiences.html',
   styleUrl: './experiences.scss',
@@ -40,19 +42,8 @@ export class Experiences {
     return `${startMonth} - ${endMonth}`;
   }
 
-  onClose(): void {
-    this.store.dispatch(closeWindow({id: EXPERIENCES}));
-  }
-
-  onFullscreen(): void {
-    this.store.dispatch(maximizeWindow({id: EXPERIENCES}));
-  }
-
-  onReduce(): void {
-    this.store.dispatch(minimizeWindow({id: EXPERIENCES}));
-  }
-
-  onActivate(): void {
-    this.store.dispatch(setActiveWindow({id: EXPERIENCES}));
-  }
+  protected readonly MAXIMIZED = MAXIMIZED;
+  protected readonly MINIMIZED = MINIMIZED;
+  protected readonly CLOSED = CLOSED;
+  protected readonly EXPERIENCES = EXPERIENCES;
 }
