@@ -1,16 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {map, take} from 'rxjs';
-import {
-  CLOSED,
-  MINIMIZED,
-  openWindow,
-  restoreWindow,
-  selectAllWindows,
-  setActiveWindow,
-  WindowState,
-  WindowType
-} from '../../store';
+import {map} from 'rxjs';
+import {openWindow, selectAllWindows, WindowState, WindowType} from '../../store';
 import {AsyncPipe} from '@angular/common';
 import {ContactsService} from '../../services/contact/contacts.service';
 
@@ -42,19 +33,7 @@ export class AppBar implements OnInit {
   }
 
   onAppClick(id: WindowType) {
-    this.store.select(selectAllWindows).pipe(
-      map(windows => windows.find(w => w.id === id)),
-      take(1)
-    ).subscribe(window => {
-        if (!window || window.status === CLOSED) {
-          this.store.dispatch(openWindow({id}));
-        } else if (window.status === MINIMIZED) {
-          this.store.dispatch(restoreWindow({id}));
-        } else {
-          this.store.dispatch(setActiveWindow({id}));
-        }
-      }
-    )
+    this.store.dispatch(openWindow({id}));
   }
 
   redirect(url: string): void {
