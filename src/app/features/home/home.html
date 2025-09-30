@@ -1,5 +1,5 @@
 @if (homeWindow$ | async; as homeWindow) {
-  @if (homeWindow.status !== 'closed') {
+  @if (homeWindow.status !== CLOSED) {
     <app-content-window
       [style.left]="homeWindow.position?.x"
       [style.top]="homeWindow.position?.y"
@@ -8,13 +8,11 @@
       [style.height]="homeWindow.size?.height"
       [style.z-index]="homeWindow.zIndex"
       [class.active]="homeWindow.isActive"
-      [class.maximized]="homeWindow.status === 'maximized'"
-      [class.minimized]="homeWindow.status === 'minimized'"
+      [class.maximized]="homeWindow.status === MAXIMIZED"
+      [class.minimized]="homeWindow.status === MINIMIZED"
 
-      (closeEvent)="onClose()"
-      (fullscreenEvent)="onFullscreen()"
-      (reduceEvent)="onReduce()"
-      (click)="onActivate()"
+      appWindowActions
+      [windowId]="HOME"
     >
       <section>
         <h3>Home</h3>
