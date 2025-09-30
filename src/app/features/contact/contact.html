@@ -1,5 +1,5 @@
 @if (contactWindow$ | async; as contactWindow) {
-  @if (contactWindow.status !== 'closed') {
+  @if (contactWindow.status !== CLOSED) {
     <app-content-window
       [style.left]="contactWindow.position?.x"
       [style.top]="contactWindow.position?.y"
@@ -8,14 +8,12 @@
       [style.height]="contactWindow.size?.height"
       [style.z-index]="contactWindow.zIndex"
       [class.active]="contactWindow.isActive"
-      [class.maximized]="contactWindow.status === 'maximized'"
-      [class.minimized]="contactWindow.status === 'minimized'"
+      [class.maximized]="contactWindow.status === MAXIMIZED"
+      [class.minimized]="contactWindow.status === MINIMIZED"
 
-      (closeEvent)="onClose()"
-      (fullscreenEvent)="onFullscreen()"
-      (reduceEvent)="onReduce()"
-      (click)="onActivate()"
-    >
+      appWindowActions
+      [windowId]="CONTACT">
+
       <section>
         <h3>Contact</h3>
         <article>

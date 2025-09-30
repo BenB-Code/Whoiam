@@ -2,11 +2,12 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {closeWindow, maximizeWindow, minimizeWindow, selectWindowById, setActiveWindow, WindowState} from '../../store';
+import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../../store';
 import {ContentWindow} from '../../common/content-window/content-window';
 import {CONTACT} from '../../store/window-manager/constants/types.const';
 import {ContactsService} from '../../services/contact/contacts.service';
 import {Spinner} from '../../common/spinner/spinner';
+import {WindowActions} from '../../common/directives/window-actions';
 
 @Component({
   selector: 'app-contact',
@@ -15,6 +16,7 @@ import {Spinner} from '../../common/spinner/spinner';
     NgOptimizedImage,
     AsyncPipe,
     Spinner,
+    WindowActions
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
@@ -26,23 +28,12 @@ export class Contact {
 
   contactsService = inject(ContactsService);
 
-  onClose(): void {
-    this.store.dispatch(closeWindow({id: CONTACT}));
-  }
-
-  onFullscreen(): void {
-    this.store.dispatch(maximizeWindow({id: CONTACT}));
-  }
-
-  onReduce(): void {
-    this.store.dispatch(minimizeWindow({id: CONTACT}));
-  }
-
-  onActivate(): void {
-    this.store.dispatch(setActiveWindow({id: CONTACT}));
-  }
-
   redirect(url: string): void {
     window.open(url, url.includes('mailto:') ? '_self' : '_blank');
   }
+
+  protected readonly CONTACT = CONTACT;
+  protected readonly MAXIMIZED = MAXIMIZED;
+  protected readonly MINIMIZED = MINIMIZED;
+  protected readonly CLOSED = CLOSED;
 }

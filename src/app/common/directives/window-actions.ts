@@ -21,15 +21,12 @@ export class WindowActions implements OnInit {
 
   ngOnInit() {
     this.windowComponent.fullscreenEvent.subscribe(() => {
-      console.log('[appWindowActions] fullscreen event');
       this.store.dispatch(maximizeWindow({id: this.windowId}));
     });
     this.windowComponent.reduceEvent.subscribe(() => {
-      console.log('[appWindowActions] reduce event');
       this.store.dispatch(minimizeWindow({id: this.windowId}));
     });
     this.windowComponent.closeEvent.subscribe(() => {
-      console.log('[appWindowActions] close event');
       this.store.dispatch(closeWindow({id: this.windowId}));
     });
   }
