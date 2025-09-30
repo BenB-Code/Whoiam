@@ -9,6 +9,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import {NgClass, NgTemplateOutlet} from '@angular/common';
+import {WindowComponentBase} from '../models/window-component.base';
 
 @Component({
   selector: 'app-listing-window',
@@ -17,17 +18,18 @@ import {NgClass, NgTemplateOutlet} from '@angular/common';
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListingWindow<T = any> {
+export class ListingWindow<T = any> extends WindowComponentBase {
+  @Output() closeEvent = new EventEmitter<void>();
+  @Output() fullscreenEvent = new EventEmitter<boolean>();
+  @Output() reduceEvent = new EventEmitter<void>();
+  @Output() itemSelected = new EventEmitter<{ item: T, index: number }>();
+
   @Input() items: T[] = [];
   @Input() title = 'Liste';
   @Input() selectedIndex: number | null = null;
 
   @ContentChild('itemTemplate') itemTemplate!: TemplateRef<{ $implicit: T, index: number }>;
 
-  @Output() closeEvent = new EventEmitter<void>();
-  @Output() fullscreenEvent = new EventEmitter<boolean>();
-  @Output() reduceEvent = new EventEmitter<void>();
-  @Output() itemSelected = new EventEmitter<{ item: T, index: number }>();
 
   selectedItemSignal = signal<number | null>(null);
   isFullscreen = signal<boolean>(false);

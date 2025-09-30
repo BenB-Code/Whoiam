@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output, signal} from '@angular/core';
+import {WindowComponentBase} from '../models/window-component.base';
 
 @Component({
   selector: 'app-content-window',
@@ -7,7 +8,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output, signal} from '
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentWindow {
+export class ContentWindow extends WindowComponentBase {
   @Output() closeEvent = new EventEmitter<void>();
   @Output() fullscreenEvent = new EventEmitter<boolean>();
   @Output() reduceEvent = new EventEmitter<void>();
