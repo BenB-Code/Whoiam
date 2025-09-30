@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, signal} from '@angular/core';
 import {DatePipe} from '@angular/common';
 
 @Component({
@@ -11,5 +11,18 @@ import {DatePipe} from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderBar {
-  time: Date = new Date();
+  private destroyRef = inject(DestroyRef);
+
+  time = signal(new Date());
+
+  constructor() {
+    const intervalId = setInterval(() => {
+      this.time.set(new Date());
+    }, 1000);
+
+    this.destroyRef.onDestroy(() => {
+      clearInterval(intervalId);
+    });
+  }
+
 }
