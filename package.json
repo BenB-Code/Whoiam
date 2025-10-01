@@ -9,7 +9,9 @@
     "test": "ng test",
     "serve:ssr:Whoiam": "node dist/Whoiam/server/server.mjs",
     "format": "prettier --write \"src/**/*.{ts,scss,html,json}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,scss,html,json}\""
+    "format:check": "prettier --check \"src/**/*.{ts,scss,html,json}\"",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
@@ -36,12 +38,16 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "angular-eslint": "20.3.0",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "typescript-eslint": "8.40.0"
   }
 }
