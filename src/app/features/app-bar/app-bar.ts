@@ -21,7 +21,7 @@ export class AppBar implements OnInit {
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
-      for (let window of windows) {
+      for (const window of windows) {
         stateMap[window.id] = window;
       }
       return stateMap;

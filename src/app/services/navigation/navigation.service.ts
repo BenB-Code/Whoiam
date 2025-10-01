@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NavigationService {
-  redirect(url: string) {
+  redirect(url: string): void {
     window.open(url, url.includes('mailto:') ? '_self' : '_blank');
   }
 }

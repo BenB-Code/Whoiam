@@ -18,7 +18,7 @@ export class ExperiencesService {
   );
   private readonly dataService = inject(DataService);
 
-  loadExperiences() {
+  loadExperiences(): void {
     if (this.experiences().length === 0) {
       this.getExperiences().pipe(take(1)).subscribe();
     }

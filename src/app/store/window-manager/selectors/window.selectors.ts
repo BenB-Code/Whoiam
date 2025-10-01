@@ -1,7 +1,7 @@
 import { adapter, State } from '../reducers/window.reducer';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { OPEN } from '../constants';
-import { WindowType } from '../models';
+import { WindowState, WindowType } from '../models';
 
 export const selectWindowState = createFeatureSelector<State>('windowManager');
 
@@ -26,5 +26,5 @@ export const selectMaxZIndex = createSelector(selectAllWindows, windows => {
   return openWindows.length > 0 ? Math.max(...openWindows.map(window => window.zIndex)) : 0;
 });
 
-export const selectWindowById = (id: WindowType) =>
+export const selectWindowById = (id: WindowType): MemoizedSelector<object, WindowState | null> =>
   createSelector(selectWindowEntities, entities => entities[id] || null);

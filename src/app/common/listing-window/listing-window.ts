@@ -19,7 +19,7 @@ import { WindowComponentBase } from '../models/window-component.base';
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListingWindow<T = any> extends WindowComponentBase implements OnInit {
+export class ListingWindow<T> extends WindowComponentBase implements OnInit {
   @Output() readonly closeEvent = new EventEmitter<void>();
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();

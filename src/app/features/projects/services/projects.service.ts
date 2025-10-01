@@ -16,7 +16,7 @@ export class ProjectsService {
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun projet disponible pour le moment'));
   private readonly dataService = inject(DataService);
 
-  loadProjects() {
+  loadProjects(): void {
     if (this.projects().length === 0) {
       this.getProjects().pipe(take(1)).subscribe();
     }
