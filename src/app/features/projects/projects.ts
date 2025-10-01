@@ -8,6 +8,7 @@ import {PROJECTS} from '../../store/window-manager/constants/types.const';
 import {ProjectsService} from './services/projects.service';
 import {Spinner} from '../../common/spinner/spinner';
 import {WindowActions} from '../../common/directives';
+import {NavigationService} from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'app-projects',
@@ -26,6 +27,7 @@ export class Projects {
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
   projectsService: ProjectsService = inject(ProjectsService);
+  navigationService: NavigationService = inject(NavigationService);
 
   getStatusColor(status: string): string {
     switch (status) {
@@ -38,10 +40,6 @@ export class Projects {
       default:
         return '#666';
     }
-  }
-
-  redirect(url: string): void {
-    window.open(url, '_blank');
   }
 
   protected readonly PROJECTS = PROJECTS;

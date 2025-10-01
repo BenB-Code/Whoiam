@@ -33,7 +33,7 @@
     <div class="divider"></div>
 
     @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
-      <div class="el" (click)="redirect(contactMethod.url)">
+      <div class="el" (click)="navigationService.redirect(contactMethod.url)">
         <img [src]="contactMethod.logo" [alt]="contactMethod.alt">
       </div>
     }

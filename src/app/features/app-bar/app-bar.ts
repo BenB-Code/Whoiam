@@ -4,6 +4,7 @@ import {map} from 'rxjs';
 import {openWindow, selectAllWindows, WindowState, WindowType} from '../../store';
 import {AsyncPipe} from '@angular/common';
 import {ContactsService} from '../../services/contact/contacts.service';
+import {NavigationService} from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'app-app-bar',
@@ -27,6 +28,7 @@ export class AppBar implements OnInit {
   );
 
   contactsService = inject(ContactsService);
+  navigationService: NavigationService = inject(NavigationService);
 
   ngOnInit() {
     this.contactsService.loadContacts();
@@ -34,9 +36,5 @@ export class AppBar implements OnInit {
 
   onAppClick(id: WindowType) {
     this.store.dispatch(openWindow({id}));
-  }
-
-  redirect(url: string): void {
-    window.open(url, url.includes('mailto:') ? '_self' : '_blank');
   }
 }

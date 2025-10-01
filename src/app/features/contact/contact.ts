@@ -8,6 +8,7 @@ import {CONTACT} from '../../store/window-manager/constants/types.const';
 import {ContactsService} from '../../services/contact/contacts.service';
 import {Spinner} from '../../common/spinner/spinner';
 import {WindowActions} from '../../common/directives';
+import {NavigationService} from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'app-contact',
@@ -27,10 +28,7 @@ export class Contact {
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 
   contactsService = inject(ContactsService);
-
-  redirect(url: string): void {
-    window.open(url, url.includes('mailto:') ? '_self' : '_blank');
-  }
+  navigationService: NavigationService = inject(NavigationService);
 
   protected readonly CONTACT = CONTACT;
   protected readonly MAXIMIZED = MAXIMIZED;

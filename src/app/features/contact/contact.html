@@ -25,7 +25,7 @@
             </div>
           } @else {
             @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
-              <div (click)="redirect(contactMethod.url)">
+              <div (click)="navigationService.redirect(contactMethod.url)">
                 <img [ngSrc]="contactMethod.logo" [alt]="contactMethod.alt" width="50" height="50">
                 <p>{{ contactMethod.name }}</p>
               </div>
