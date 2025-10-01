@@ -16,4 +16,8 @@ import { Projects } from './features/projects/projects';
 })
 export class App {
   protected title = 'Whoiam';
+
+  constructor() {
+    const toto = 'kdj';
+  }
 }
