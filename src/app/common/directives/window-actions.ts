@@ -1,8 +1,8 @@
 import { Directive, HostListener, inject, input, OnInit } from '@angular/core';
 import { closeWindow, maximizeWindow, minimizeWindow, setActiveWindow, WindowType } from '../../store';
 import { Store } from '@ngrx/store';
-import { ContentWindow } from '../content-window/content-window';
-import { ListingWindow } from '../listing-window/listing-window';
+import { ContentWindow } from '../components/content-window/content-window';
+import { ListingWindow } from '../components/listing-window/listing-window';
 
 @Directive({
   selector: '[appWindowActions]',

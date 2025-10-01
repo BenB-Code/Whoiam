@@ -1,4 +1,4 @@
-@use '../../../assets/styles/index' as *;
+@use '../../../../assets/styles/index' as *;
 
 :host {
   .window {
@@ -16,7 +16,7 @@
     right: inherit;
     transform: inherit;
     box-shadow: $shadow-default;
-    
+
     .content {
       width: 100%;
       height: calc(100% - #{$window-header-height});

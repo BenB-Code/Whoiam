@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
-import { WindowComponentBase } from '../models/window-component.base';
+import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
 
 @Component({

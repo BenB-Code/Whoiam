@@ -3,9 +3,9 @@ import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CLOSED, CONTACT, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
-import { ContentWindow } from '../../common/content-window/content-window';
+import { ContentWindow } from '../../common/components/content-window/content-window';
 import { ContactsService } from '../../services/contact/contacts.service';
-import { Spinner } from '../../common/spinner/spinner';
+import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 

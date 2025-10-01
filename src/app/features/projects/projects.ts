@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ContentWindow } from '../../common/content-window/content-window';
+import { ContentWindow } from '../../common/components/content-window/content-window';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
 import { PROJECTS } from '../../store/window-manager/constants/types.const';
 import { ProjectsService } from './services/projects.service';
-import { Spinner } from '../../common/spinner/spinner';
+import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 

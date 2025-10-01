@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { ListingWindow } from '../../common/listing-window/listing-window';
+import { ListingWindow } from '../../common/components/listing-window/listing-window';
 import { Experience } from './models/experience.type';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CLOSED, EXPERIENCES, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { ExperiencesService } from './services/experiences.service';
-import { Spinner } from '../../common/spinner/spinner';
+import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 
 @Component({

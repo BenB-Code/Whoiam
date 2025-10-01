@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ContentWindow } from '../../common/content-window/content-window';
+import { ContentWindow } from '../../common/components/content-window/content-window';
 import { Store } from '@ngrx/store';
 import { CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
 import { Observable } from 'rxjs';

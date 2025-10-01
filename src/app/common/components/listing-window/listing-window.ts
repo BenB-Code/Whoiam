@@ -10,9 +10,9 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { WindowComponentBase } from '../models/window-component.base';
+import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
-import { TRANSPARENT } from '../constants/style.const';
+import { TRANSPARENT } from '../../constants/style.const';
 
 @Component({
   selector: 'app-listing-window',

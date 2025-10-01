@@ -8,9 +8,8 @@ describe('WindowHeader', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WindowHeader]
-    })
-    .compileComponents();
+      imports: [WindowHeader],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WindowHeader);
     component = fixture.componentInstance;

@@ -1,7 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { openWindow, selectAllWindows, WindowState, WindowType } from '../../store';
+import {
+  CLOSED,
+  CONTACT,
+  EXPERIENCES,
+  HOME,
+  openWindow,
+  PROJECTS,
+  selectAllWindows,
+  WindowState,
+  WindowType,
+} from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { ContactsService } from '../../services/contact/contacts.service';
 import { NavigationService } from '../../services/navigation/navigation.service';
@@ -16,7 +26,11 @@ import { NavigationService } from '../../services/navigation/navigation.service'
 export class AppBar implements OnInit {
   contactsService = inject(ContactsService);
   navigationService: NavigationService = inject(NavigationService);
-
+  protected readonly HOME = HOME;
+  protected readonly CLOSED = CLOSED;
+  protected readonly EXPERIENCES = EXPERIENCES;
+  protected readonly PROJECTS = PROJECTS;
+  protected readonly CONTACT = CONTACT;
   private readonly store = inject(Store);
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
