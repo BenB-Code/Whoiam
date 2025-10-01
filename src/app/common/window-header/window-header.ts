@@ -10,21 +10,21 @@ import { GREY, TRANSPARENT } from '../constants/style.const';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WindowHeader {
-  @Output() readonly onClose = new EventEmitter<void>();
-  @Output() readonly onFullscreen = new EventEmitter<boolean>();
-  @Output() readonly onReduce = new EventEmitter<void>();
+  @Output() readonly closeWindow = new EventEmitter<void>();
+  @Output() readonly activateFullscreen = new EventEmitter<boolean>();
+  @Output() readonly reduceWindow = new EventEmitter<void>();
 
   readonly backgroundColor = input<typeof GREY | typeof TRANSPARENT>(GREY);
 
-  close(): void {
-    this.onClose.emit();
+  onClose(): void {
+    this.closeWindow.emit();
   }
 
-  fullscreen(): void {
-    this.onFullscreen.emit();
+  onFullscreen(): void {
+    this.activateFullscreen.emit();
   }
 
-  reduce(): void {
-    this.onReduce.emit();
+  onReduce(): void {
+    this.reduceWindow.emit();
   }
 }

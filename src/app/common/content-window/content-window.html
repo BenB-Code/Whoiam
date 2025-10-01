@@ -1,5 +1,5 @@
 <article class="window">
-  <app-window-header (onClose)="close()" (onFullscreen)="fullscreen()" (onReduce)="reduce()" />
+  <app-window-header (activateFullscreen)="fullscreen()" (closeWindow)="close()" (reduceWindow)="reduce()" />
   <section class="content">
     <ng-content />
   </section>

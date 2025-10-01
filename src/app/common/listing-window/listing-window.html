@@ -1,10 +1,10 @@
 <article class="window">
   <div class="vertical-nav">
     <app-window-header
-      (onClose)="close()"
-      (onFullscreen)="fullscreen()"
-      (onReduce)="reduce()"
       [backgroundColor]="TRANSPARENT"
+      (activateFullscreen)="fullscreen()"
+      (closeWindow)="close()"
+      (reduceWindow)="reduce()"
     />
     <div class="list-section">
       <h3 class="title">{{ title() }}</h3>
