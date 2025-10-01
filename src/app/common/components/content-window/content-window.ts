@@ -4,7 +4,7 @@ import { WindowHeader } from '../window-header/window-header';
 
 @Component({
   selector: 'app-content-window',
-  imports: [WindowHeader, WindowHeader],
+  imports: [WindowHeader],
   templateUrl: './content-window.html',
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
