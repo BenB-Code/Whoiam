@@ -15,7 +15,8 @@ export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowSta
   selectId: (window: WindowState) => window.id,
 });
 
-export type State = {} & EntityState<WindowState>;
+export interface State extends EntityState<WindowState> {}
+
 export const initialState: State = adapter.setAll(DEFAULT_WINDOWS, adapter.getInitialState());
 
 export const windowReducer = createReducer(

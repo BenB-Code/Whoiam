@@ -18,11 +18,14 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Projects {
-  private store = inject(Store);
-  projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
-
   projectsService: ProjectsService = inject(ProjectsService);
   navigationService: NavigationService = inject(NavigationService);
+  protected readonly PROJECTS = PROJECTS;
+  protected readonly CLOSED = CLOSED;
+  protected readonly MAXIMIZED = MAXIMIZED;
+  protected readonly MINIMIZED = MINIMIZED;
+  private readonly store = inject(Store);
+  projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 
   getStatusColor(status: string): string {
     switch (status) {
@@ -36,9 +39,4 @@ export class Projects {
         return '#666';
     }
   }
-
-  protected readonly PROJECTS = PROJECTS;
-  protected readonly CLOSED = CLOSED;
-  protected readonly MAXIMIZED = MAXIMIZED;
-  protected readonly MINIMIZED = MINIMIZED;
 }

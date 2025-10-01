@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { DataService } from '../../../services/data/data.service';
 import { catchError, Observable, of, take, tap } from 'rxjs';
-import { Project } from '../models/project.type';
+import { Project } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class ProjectsService {
   readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun projet disponible pour le moment'));
-  private dataService = inject(DataService);
+  private readonly dataService = inject(DataService);
 
   loadProjects() {
     if (this.projects().length === 0) {

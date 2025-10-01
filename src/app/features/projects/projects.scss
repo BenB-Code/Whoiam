@@ -32,7 +32,7 @@
       padding: 0 1rem;
       margin-bottom: 2rem;
     }
-
+    
     .project-card {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 1rem;
@@ -191,18 +191,6 @@
 
         &:active {
           transform: translateY(0);
-        }
-      }
-    }
-
-    .project-card {
-      animation: slideInUp 0.6s ease-out forwards;
-      opacity: 0;
-      transform: translateY(20px);
-
-      @for $i from 1 through 10 {
-        &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.1}s;
         }
       }
     }

@@ -10,9 +10,9 @@ import { ListingWindow } from '../listing-window/listing-window';
 export class WindowActions implements OnInit {
   readonly windowId = input<WindowType>();
 
-  private store = inject(Store);
-  private contentWindow = inject(ContentWindow, { optional: true });
-  private listingWindow = inject(ListingWindow, { optional: true });
+  private readonly store = inject(Store);
+  private readonly contentWindow = inject(ContentWindow, { optional: true });
+  private readonly listingWindow = inject(ListingWindow, { optional: true });
 
   private get windowComponent(): ContentWindow | ListingWindow<any> {
     const component = this.contentWindow || this.listingWindow;

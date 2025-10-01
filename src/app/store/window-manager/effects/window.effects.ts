@@ -9,11 +9,11 @@ import { ExperiencesService } from '../../../features/experiences/services/exper
 
 @Injectable()
 export class WindowEffects {
-  private actions$ = inject(Actions);
+  private readonly actions$ = inject(Actions);
 
-  private experiencesService = inject(ExperiencesService);
-  private projectsService = inject(ProjectsService);
-  private contactsService = inject(ContactsService);
+  private readonly experiencesService = inject(ExperiencesService);
+  private readonly projectsService = inject(ProjectsService);
+  private readonly contactsService = inject(ContactsService);
 
   readonly openWindow$ = createEffect(
     () =>

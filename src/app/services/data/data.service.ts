@@ -7,9 +7,9 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
   providedIn: 'root',
 })
 export class DataService {
-  private http = inject(HttpClient);
-  private platformId = inject(PLATFORM_ID);
-  private document = inject(DOCUMENT);
+  private readonly http = inject(HttpClient);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly document = inject(DOCUMENT);
 
   fetchJson<T>(path: string): Observable<T> {
     const fullUrl = this.getAbsoluteUrl(path);

@@ -21,7 +21,7 @@
     <p>{{ experiencesService.placeholder() }}</p>
   </div>
   } @else {
-  <ng-template #itemTemplate let-experience let-index="index">
+  <ng-template #itemTemplate let-experience>
     <h2>{{ experience.name }}</h2>
     <h3>{{ experience.company }}&nbsp;<span>{{ formatDuration(experience.duration) }}</span></h3>
     <p>

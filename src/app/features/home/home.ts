@@ -15,12 +15,10 @@ import { WindowActions } from '../../common/directives';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
-  private store = inject(Store);
-
-  homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(HOME));
-
   protected readonly HOME = HOME;
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;
+  private readonly store = inject(Store);
+  homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(HOME));
 }

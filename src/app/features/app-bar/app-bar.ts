@@ -17,13 +17,13 @@ export class AppBar implements OnInit {
   contactsService = inject(ContactsService);
   navigationService: NavigationService = inject(NavigationService);
 
-  private store = inject(Store);
+  private readonly store = inject(Store);
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
       const stateMap: Record<string, WindowState | null> = {};
-      windows.forEach(window => {
+      for (let window of windows) {
         stateMap[window.id] = window;
-      });
+      }
       return stateMap;
     })
   );

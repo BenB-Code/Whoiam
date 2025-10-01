@@ -9,9 +9,8 @@ import { DatePipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderBar {
-  private destroyRef = inject(DestroyRef);
-
   readonly time = signal(new Date());
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
     const intervalId = setInterval(() => {

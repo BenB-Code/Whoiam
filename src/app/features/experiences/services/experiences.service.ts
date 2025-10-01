@@ -16,7 +16,7 @@ export class ExperiencesService {
   readonly placeholder = computed(() =>
     this.hasError() ? this.error() : 'Aucune expérience disponible pour le moment'
   );
-  private dataService = inject(DataService);
+  private readonly dataService = inject(DataService);
 
   loadExperiences() {
     if (this.experiences().length === 0) {
