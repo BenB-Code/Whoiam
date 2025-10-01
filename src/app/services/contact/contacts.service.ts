@@ -1,7 +1,7 @@
-import {computed, inject, Injectable, signal} from '@angular/core';
-import {Contact} from '../../features/contact/models/contact.model';
-import {catchError, Observable, of, take, tap} from 'rxjs';
-import {DataService} from '../data/data.service';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { Contact } from '../../features/contact/models/contact.model';
+import { catchError, Observable, of, take, tap } from 'rxjs';
+import { DataService } from '../data/data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class ContactsService {
   hasError = computed(() => this.error() !== null);
   isEmpty = computed(() => !this.hasError() && this.contacts().length === 0);
   shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  placeholder = computed(() => this.hasError() ? this.error() : "Aucun moyen de me contacter pour le moment.")
+  placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun moyen de me contacter pour le moment.'));
 
   loadContacts(): void {
     if (this.contacts().length === 0) {
@@ -34,12 +34,14 @@ export class ContactsService {
         this.isLoading.set(false);
       }),
       catchError(err => {
-        console.error('Error loading contact: ', err)
-        this.error.set("Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard.")
+        console.error('Error loading contact: ', err);
+        this.error.set(
+          'Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard.'
+        );
         this.isLoading.set(false);
         this.contacts.set([]);
         return of([]);
       })
-    )
+    );
   }
 }

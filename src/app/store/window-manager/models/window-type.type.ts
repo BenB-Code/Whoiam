@@ -1,4 +1,3 @@
-
 export type T_EXPERIENCES = 'experiences';
 export type T_PROJECTS = 'projects';
 export type T_HOME = 'home';

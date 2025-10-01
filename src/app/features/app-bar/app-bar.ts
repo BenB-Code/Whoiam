@@ -1,19 +1,17 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {map} from 'rxjs';
-import {openWindow, selectAllWindows, WindowState, WindowType} from '../../store';
-import {AsyncPipe} from '@angular/common';
-import {ContactsService} from '../../services/contact/contacts.service';
-import {NavigationService} from '../../services/navigation/navigation.service';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
+import { openWindow, selectAllWindows, WindowState, WindowType } from '../../store';
+import { AsyncPipe } from '@angular/common';
+import { ContactsService } from '../../services/contact/contacts.service';
+import { NavigationService } from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'app-app-bar',
-  imports: [
-    AsyncPipe
-  ],
+  imports: [AsyncPipe],
   templateUrl: './app-bar.html',
   styleUrl: './app-bar.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppBar implements OnInit {
   private store = inject(Store);
@@ -23,7 +21,7 @@ export class AppBar implements OnInit {
       windows.forEach(window => {
         stateMap[window.id] = window;
       });
-      return stateMap
+      return stateMap;
     })
   );
 
@@ -35,6 +33,6 @@ export class AppBar implements OnInit {
   }
 
   onAppClick(id: WindowType) {
-    this.store.dispatch(openWindow({id}));
+    this.store.dispatch(openWindow({ id }));
   }
 }

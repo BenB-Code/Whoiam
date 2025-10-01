@@ -8,9 +8,8 @@ describe('ContentWindow', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContentWindow]
-    })
-    .compileComponents();
+      imports: [ContentWindow],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ContentWindow);
     component = fixture.componentInstance;

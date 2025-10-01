@@ -1,5 +1,5 @@
-import {PROJECT_STATUS} from './projects-status.type';
-import {PROJECT_CATEGORY} from './projects-category.type';
+import { PROJECT_STATUS } from './projects-status.type';
+import { PROJECT_CATEGORY } from './projects-category.type';
 
 export interface Project {
   name: string;
@@ -13,4 +13,3 @@ export interface Project {
   year?: number;
   category?: PROJECT_CATEGORY;
 }
-

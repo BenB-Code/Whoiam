@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output, signal} from '@angular/core';
-import {WindowComponentBase} from '../models/window-component.base';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
+import { WindowComponentBase } from '../models/window-component.base';
 
 @Component({
   selector: 'app-content-window',
   imports: [],
   templateUrl: './content-window.html',
   styleUrl: './content-window.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentWindow extends WindowComponentBase {
   @Output() closeEvent = new EventEmitter<void>();

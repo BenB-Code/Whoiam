@@ -15,7 +15,7 @@
   background: $gray-translucent;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: -#{$space-xs};
@@ -30,7 +30,7 @@
     justify-content: center;
 
     .i18n {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       display: inline-flex;
       align-items: center;
 
@@ -53,7 +53,6 @@
         }
       }
     }
-
 
     .time {
       color: $system-white;

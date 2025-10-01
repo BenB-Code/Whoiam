@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 export abstract class WindowComponentBase {
   abstract closeEvent: EventEmitter<void>;

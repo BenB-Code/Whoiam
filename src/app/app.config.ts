@@ -2,26 +2,27 @@ import {
   ApplicationConfig,
   isDevMode,
   provideBrowserGlobalErrorListeners,
-  provideZonelessChangeDetection
+  provideZonelessChangeDetection,
 } from '@angular/core';
-import {provideRouter} from '@angular/router';
+import { provideRouter } from '@angular/router';
 
-import {routes} from './app.routes';
-import {provideClientHydration, withEventReplay} from '@angular/platform-browser';
-import {provideStore} from '@ngrx/store';
-import {provideStoreDevtools} from '@ngrx/store-devtools';
-import {windowReducer} from './store';
-import {provideHttpClient, withFetch} from '@angular/common/http';
-import {provideEffects} from '@ngrx/effects';
-import {WindowEffects} from './store/window-manager/effects/window.effects';
+import { routes } from './app.routes';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { windowReducer } from './store';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideEffects } from '@ngrx/effects';
+import { WindowEffects } from './store/window-manager/effects/window.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
     provideStore({
-      windowManager: windowReducer
+      windowManager: windowReducer,
     }),
     provideEffects(WindowEffects),
     provideStoreDevtools({
@@ -29,8 +30,8 @@ export const appConfig: ApplicationConfig = {
       logOnly: !isDevMode(),
       autoPause: true,
       trace: false,
-      traceLimit: 75
+      traceLimit: 75,
     }),
     provideHttpClient(withFetch()),
-  ]
+  ],
 };

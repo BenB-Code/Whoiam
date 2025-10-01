@@ -1,14 +1,12 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, inject, signal} from '@angular/core';
-import {DatePipe} from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-header-bar',
-  imports: [
-    DatePipe
-  ],
+  imports: [DatePipe],
   templateUrl: './header-bar.html',
   styleUrl: './header-bar.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderBar {
   private destroyRef = inject(DestroyRef);
@@ -24,5 +22,4 @@ export class HeaderBar {
       clearInterval(intervalId);
     });
   }
-
 }

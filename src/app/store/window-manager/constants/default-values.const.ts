@@ -1,6 +1,6 @@
-import {Position, Size, WindowState, WindowType} from '../models';
-import {CONTACT, EXPERIENCES, HOME, PROJECTS} from './types.const';
-import {CLOSED, OPEN} from './status.const';
+import { Position, Size, WindowState, WindowType } from '../models';
+import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
+import { CLOSED, OPEN } from './status.const';
 
 export const DEFAULT_ZINDEX = 1;
 
@@ -27,7 +27,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
     width: '30%',
     height: '50%',
   },
-}
+};
 
 export const DEFAULT_WINDOWS: WindowState[] = [
   {
@@ -62,4 +62,4 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
   },
-]
+];

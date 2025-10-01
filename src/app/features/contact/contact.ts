@@ -1,27 +1,21 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {AsyncPipe, NgOptimizedImage} from '@angular/common';
-import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
-import {CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState} from '../../store';
-import {ContentWindow} from '../../common/content-window/content-window';
-import {CONTACT} from '../../store/window-manager/constants/types.const';
-import {ContactsService} from '../../services/contact/contacts.service';
-import {Spinner} from '../../common/spinner/spinner';
-import {WindowActions} from '../../common/directives';
-import {NavigationService} from '../../services/navigation/navigation.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
+import { ContentWindow } from '../../common/content-window/content-window';
+import { CONTACT } from '../../store/window-manager/constants/types.const';
+import { ContactsService } from '../../services/contact/contacts.service';
+import { Spinner } from '../../common/spinner/spinner';
+import { WindowActions } from '../../common/directives';
+import { NavigationService } from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'app-contact',
-  imports: [
-    ContentWindow,
-    NgOptimizedImage,
-    AsyncPipe,
-    Spinner,
-    WindowActions
-  ],
+  imports: [ContentWindow, NgOptimizedImage, AsyncPipe, Spinner, WindowActions],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contact {
   private store = inject(Store);

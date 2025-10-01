@@ -1,69 +1,66 @@
-@if (experiencesWindow$ | async; as experiencesWindow) {
-  @if (experiencesWindow.status !== CLOSED) {
-    <app-listing-window
-      [style.left]="experiencesWindow.position?.x"
-      [style.top]="experiencesWindow.position?.y"
-      [style.transform]="experiencesWindow.position?.transform"
-      [style.width]="experiencesWindow.size?.width"
-      [style.height]="experiencesWindow.size?.height"
-      [style.z-index]="experiencesWindow.zIndex"
-      [class.active]="experiencesWindow.isActive"
-      [class.maximized]="experiencesWindow.status === MAXIMIZED"
-      [class.minimized]="experiencesWindow.status === MINIMIZED"
-      [items]="experiencesService.experiences()"
+@if (experiencesWindow$ | async; as experiencesWindow) { @if (experiencesWindow.status !== CLOSED) {
+<app-listing-window
+  [style.left]="experiencesWindow.position?.x"
+  [style.top]="experiencesWindow.position?.y"
+  [style.transform]="experiencesWindow.position?.transform"
+  [style.width]="experiencesWindow.size?.width"
+  [style.height]="experiencesWindow.size?.height"
+  [style.z-index]="experiencesWindow.zIndex"
+  [class.active]="experiencesWindow.isActive"
+  [class.maximized]="experiencesWindow.status === MAXIMIZED"
+  [class.minimized]="experiencesWindow.status === MINIMIZED"
+  [items]="experiencesService.experiences()"
+  appWindowActions
+  [windowId]="EXPERIENCES"
+  (itemSelected)="onSelection($event)"
+>
+  @if (experiencesService.isLoading()) {
+  <app-spinner></app-spinner>
+  } @else if (experiencesService.shouldDisplayPlaceholder()) {
+  <div class="message-container">
+    <p>{{ experiencesService.placeholder() }}</p>
+  </div>
+  } @else {
+  <ng-template #itemTemplate let-experience let-index="index">
+    <h2>{{ experience.name }}</h2>
+    <h3>{{ experience.company }}&nbsp;<span>{{ formatDuration(experience.duration) }}</span></h3>
+    <p>
+      {{ experience.localisation.city }}, {{ experience.localisation.state }} - {{ experience.localisation.country }}
+    </p>
+  </ng-template>
 
-      appWindowActions
-      [windowId]="EXPERIENCES"
+  @if (selectedExperience()) {
+  <section>
+    <h2>{{ selectedExperience()!.name }}</h2>
+    <h3>{{ selectedExperience()!.company }}</h3>
+    <p><strong>Durée :</strong> {{ formatDuration(selectedExperience()!.duration) }}</p>
+    <p>
+      <strong>Localisation :</strong> {{ selectedExperience()!.localisation.city }} , {{
+      selectedExperience()!.localisation.state }} - {{ selectedExperience()!.localisation.country }}
+    </p>
 
-      (itemSelected)="onSelection($event)">
-
-
-      @if (experiencesService.isLoading()) {
-        <app-spinner></app-spinner>
-      } @else if (experiencesService.shouldDisplayPlaceholder()) {
-        <div class="message-container">
-          <p>{{ experiencesService.placeholder() }}</p>
-        </div>
-      } @else {
-        <ng-template #itemTemplate let-experience let-index="index">
-          <h2>{{ experience.name }}</h2>
-          <h3>{{ experience.company }}&nbsp;<span>{{ formatDuration(experience.duration) }}</span></h3>
-          <p>{{ experience.localisation.city }}, {{ experience.localisation.state }}
-            - {{ experience.localisation.country }}</p>
-        </ng-template>
-
-        @if (selectedExperience()) {
-          <section>
-            <h2>{{ selectedExperience()!.name }}</h2>
-            <h3>{{ selectedExperience()!.company }}</h3>
-            <p><strong>Durée :</strong> {{ formatDuration(selectedExperience()!.duration) }}</p>
-            <p><strong>Localisation :</strong> {{ selectedExperience()!.localisation.city }}
-              , {{ selectedExperience()!.localisation.state }} - {{ selectedExperience()!.localisation.country }}</p>
-
-            <section>
-              <h3>Actions</h3>
-              <ul>
-                @for (action of selectedExperience()!.actions; track $index) {
-                  <li>{{ action }}</li>
-                }
-              </ul>
-            </section>
-
-            <section>
-              <h3>Compétences</h3>
-              <div class="skills-list">
-                @for (skill of selectedExperience()!.skills; track $index) {
-                  <span class="skill-badge">{{ skill }}</span>
-                }
-              </div>
-            </section>
-          </section>
-        } @else {
-          <div class="placeholder">
-            <p>Sélectionnez une expérience pour voir les détails</p>
-          </div>
+    <section>
+      <h3>Actions</h3>
+      <ul>
+        @for (action of selectedExperience()!.actions; track $index) {
+        <li>{{ action }}</li>
         }
-      }
-    </app-listing-window>
-  }
-}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Compétences</h3>
+      <div class="skills-list">
+        @for (skill of selectedExperience()!.skills; track $index) {
+        <span class="skill-badge">{{ skill }}</span>
+        }
+      </div>
+    </section>
+  </section>
+  } @else {
+  <div class="placeholder">
+    <p>Sélectionnez une expérience pour voir les détails</p>
+  </div>
+  } }
+</app-listing-window>
+} }

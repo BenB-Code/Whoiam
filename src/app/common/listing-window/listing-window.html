@@ -9,14 +9,9 @@
       <h3 class="title">{{ title }}</h3>
       <div class="list">
         @for (item of items; track $index) {
-          <article
-            class="block"
-            [ngClass]="{ active: isSelected($index) }"
-            (click)="selectItem(item, $index)">
-            <ng-container
-              *ngTemplateOutlet="itemTemplate; context: { $implicit: item, index: $index }">
-            </ng-container>
-          </article>
+        <article class="block" [ngClass]="{ active: isSelected($index) }" (click)="selectItem(item, $index)">
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item, index: $index }"> </ng-container>
+        </article>
         }
       </div>
     </div>

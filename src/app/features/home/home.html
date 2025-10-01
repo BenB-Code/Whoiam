@@ -1,54 +1,57 @@
-@if (homeWindow$ | async; as homeWindow) {
-  @if (homeWindow.status !== CLOSED) {
-    <app-content-window
-      [style.left]="homeWindow.position?.x"
-      [style.top]="homeWindow.position?.y"
-      [style.transform]="homeWindow.position?.transform"
-      [style.width]="homeWindow.size?.width"
-      [style.height]="homeWindow.size?.height"
-      [style.z-index]="homeWindow.zIndex"
-      [class.active]="homeWindow.isActive"
-      [class.maximized]="homeWindow.status === MAXIMIZED"
-      [class.minimized]="homeWindow.status === MINIMIZED"
-
-      appWindowActions
-      [windowId]="HOME"
-    >
-      <section>
-        <h3>Home</h3>
-        <article>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-          <h3>Hi </h3>
-          <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-          <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-          <p>Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i
-            do.</p>
-        </article>
-      </section>
-    </app-content-window>
-  }
-}
+@if (homeWindow$ | async; as homeWindow) { @if (homeWindow.status !== CLOSED) {
+<app-content-window
+  [style.left]="homeWindow.position?.x"
+  [style.top]="homeWindow.position?.y"
+  [style.transform]="homeWindow.position?.transform"
+  [style.width]="homeWindow.size?.width"
+  [style.height]="homeWindow.size?.height"
+  [style.z-index]="homeWindow.zIndex"
+  [class.active]="homeWindow.isActive"
+  [class.maximized]="homeWindow.status === MAXIMIZED"
+  [class.minimized]="homeWindow.status === MINIMIZED"
+  appWindowActions
+  [windowId]="HOME"
+>
+  <section>
+    <h3>Home</h3>
+    <article>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+      <h3>Hi</h3>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
+      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+      <p>
+        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+      </p>
+    </article>
+  </section>
+</app-content-window>
+} }

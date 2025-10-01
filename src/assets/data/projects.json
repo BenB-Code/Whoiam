@@ -6,12 +6,7 @@
       "name": "Github",
       "url": "https://github.com/BenB-Code/Kaamelott_Citation_Extractor"
     },
-    "technologies": [
-      "TypeScript",
-      "XML",
-      "JSON",
-      "Parser"
-    ],
+    "technologies": ["TypeScript", "XML", "JSON", "Parser"],
     "status": "active",
     "year": 2025,
     "category": "tool"
@@ -23,10 +18,7 @@
       "name": "Github",
       "url": "https://github.com/BenB-Code/Kaamelott_Citation_API"
     },
-    "technologies": [
-      "TypeScript",
-      "REST API"
-    ],
+    "technologies": ["TypeScript", "REST API"],
     "status": "active",
     "year": 2025,
     "category": "api"
@@ -38,11 +30,7 @@
       "name": "Github",
       "url": "https://github.com/BenB-Code/Whoiam"
     },
-    "technologies": [
-      "HTML",
-      "TypeScript",
-      "SCSS"
-    ],
+    "technologies": ["HTML", "TypeScript", "SCSS"],
     "status": "active",
     "year": 2025,
     "category": "portfolio"
