@@ -12,4 +12,4 @@ export type Project = {
   status?: PROJECT_STATUS;
   year?: number;
   category?: PROJECT_CATEGORY;
-}
+};

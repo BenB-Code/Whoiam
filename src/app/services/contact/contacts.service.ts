@@ -13,7 +13,9 @@ export class ContactsService {
   readonly hasError = computed(() => this.error() !== null);
   readonly isEmpty = computed(() => !this.hasError() && this.contacts().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun moyen de me contacter pour le moment.'));
+  readonly placeholder = computed(() =>
+    this.hasError() ? this.error() : 'Aucun moyen de me contacter pour le moment.'
+  );
   private dataService = inject(DataService);
 
   loadContacts(): void {

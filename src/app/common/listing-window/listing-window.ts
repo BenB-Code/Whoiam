@@ -9,8 +9,8 @@ import {
   signal,
   TemplateRef,
 } from '@angular/core';
-import {NgClass, NgTemplateOutlet} from '@angular/common';
-import {WindowComponentBase} from '../models/window-component.base';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { WindowComponentBase } from '../models/window-component.base';
 
 @Component({
   selector: 'app-listing-window',
@@ -40,7 +40,7 @@ export class ListingWindow<T = any> extends WindowComponentBase implements OnIni
 
   selectItem(item: T, index: number): void {
     this.selectedItemSignal.set(index);
-    this.itemSelected.emit({item, index});
+    this.itemSelected.emit({ item, index });
   }
 
   isSelected(index: number): boolean {
