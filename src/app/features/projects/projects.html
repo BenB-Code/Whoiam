@@ -1,15 +1,15 @@
 @if (projectsWindow$ | async; as projectsWindow) { @if (projectsWindow.status !== CLOSED) {
 <app-content-window
+  appWindowActions
+  [class.active]="projectsWindow.isActive"
+  [class.maximized]="projectsWindow.status === MAXIMIZED"
+  [class.minimized]="projectsWindow.status === MINIMIZED"
+  [style.height]="projectsWindow.size?.height"
   [style.left]="projectsWindow.position?.x"
   [style.top]="projectsWindow.position?.y"
   [style.transform]="projectsWindow.position?.transform"
   [style.width]="projectsWindow.size?.width"
-  [style.height]="projectsWindow.size?.height"
   [style.z-index]="projectsWindow.zIndex"
-  [class.active]="projectsWindow.isActive"
-  [class.maximized]="projectsWindow.status === MAXIMIZED"
-  [class.minimized]="projectsWindow.status === MINIMIZED"
-  appWindowActions
   [windowId]="PROJECTS"
 >
   <div class="projects-header">
@@ -18,7 +18,7 @@
   </div>
 
   @if (projectsService.isLoading()) {
-  <app-spinner></app-spinner>
+  <app-spinner />
   } @else if (projectsService.shouldDisplayPlaceholder()) {
   <div class="message-container">
     <p>{{ projectsService.placeholder() }}</p>

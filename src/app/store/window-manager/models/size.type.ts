@@ -1,4 +1,4 @@
-export interface Size {
+export type Size = {
   width: string;
   height: string;
 }

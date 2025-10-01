@@ -7,13 +7,13 @@ import { Experience } from '../models/experience.type';
   providedIn: 'root',
 })
 export class ExperiencesService {
-  experiences = signal<Experience[]>([]);
-  isLoading = signal<boolean>(false);
-  error = signal<string | null>(null);
-  hasError = computed(() => this.error() !== null);
-  isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
-  shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  placeholder = computed(() => (this.hasError() ? this.error() : 'Aucune expérience disponible pour le moment'));
+  readonly experiences = signal<Experience[]>([]);
+  readonly isLoading = signal<boolean>(false);
+  readonly error = signal<string | null>(null);
+  readonly hasError = computed(() => this.error() !== null);
+  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
+  readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
+  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'Aucune expérience disponible pour le moment'));
   private dataService = inject(DataService);
 
   loadExperiences() {

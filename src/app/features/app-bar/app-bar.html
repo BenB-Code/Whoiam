@@ -1,6 +1,6 @@
 @if (windowState$ | async; as windowStates) {
 <div class="el no-bg" (click)="onAppClick('home')">
-  <img src="../../../assets/icons/home-2-svgrepo-com.svg" alt="Home" />
+  <img alt="Home" src="../../../assets/icons/home-2-svgrepo-com.svg" />
   @if (windowStates['home'] && windowStates['home'].status !== 'closed') {
   <div class="active-dot"></div>
   }
@@ -34,6 +34,6 @@
 
 @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
 <div class="el" (click)="navigationService.redirect(contactMethod.url)">
-  <img [src]="contactMethod.logo" [alt]="contactMethod.alt" />
+  <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
 </div>
 } } }

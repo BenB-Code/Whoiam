@@ -1,21 +1,21 @@
 @if (experiencesWindow$ | async; as experiencesWindow) { @if (experiencesWindow.status !== CLOSED) {
 <app-listing-window
-  [style.left]="experiencesWindow.position?.x"
-  [style.top]="experiencesWindow.position?.y"
-  [style.transform]="experiencesWindow.position?.transform"
-  [style.width]="experiencesWindow.size?.width"
-  [style.height]="experiencesWindow.size?.height"
-  [style.z-index]="experiencesWindow.zIndex"
+  appWindowActions
   [class.active]="experiencesWindow.isActive"
   [class.maximized]="experiencesWindow.status === MAXIMIZED"
   [class.minimized]="experiencesWindow.status === MINIMIZED"
   [items]="experiencesService.experiences()"
-  appWindowActions
+  [style.height]="experiencesWindow.size?.height"
+  [style.left]="experiencesWindow.position?.x"
+  [style.top]="experiencesWindow.position?.y"
+  [style.transform]="experiencesWindow.position?.transform"
+  [style.width]="experiencesWindow.size?.width"
+  [style.z-index]="experiencesWindow.zIndex"
   [windowId]="EXPERIENCES"
   (itemSelected)="onSelection($event)"
 >
   @if (experiencesService.isLoading()) {
-  <app-spinner></app-spinner>
+  <app-spinner />
   } @else if (experiencesService.shouldDisplayPlaceholder()) {
   <div class="message-container">
     <p>{{ experiencesService.placeholder() }}</p>

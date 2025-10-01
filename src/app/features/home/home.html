@@ -1,15 +1,15 @@
 @if (homeWindow$ | async; as homeWindow) { @if (homeWindow.status !== CLOSED) {
 <app-content-window
+  appWindowActions
+  [class.active]="homeWindow.isActive"
+  [class.maximized]="homeWindow.status === MAXIMIZED"
+  [class.minimized]="homeWindow.status === MINIMIZED"
+  [style.height]="homeWindow.size?.height"
   [style.left]="homeWindow.position?.x"
   [style.top]="homeWindow.position?.y"
   [style.transform]="homeWindow.position?.transform"
   [style.width]="homeWindow.size?.width"
-  [style.height]="homeWindow.size?.height"
   [style.z-index]="homeWindow.zIndex"
-  [class.active]="homeWindow.isActive"
-  [class.maximized]="homeWindow.status === MAXIMIZED"
-  [class.minimized]="homeWindow.status === MINIMIZED"
-  appWindowActions
   [windowId]="HOME"
 >
   <section>

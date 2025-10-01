@@ -25,14 +25,14 @@ export class ListingWindow<T = any> extends WindowComponentBase implements OnIni
   @Output() readonly reduceEvent = new EventEmitter<void>();
   @Output() readonly itemSelected = new EventEmitter<{ item: T; index: number }>();
 
-  items = input<T[]>([]);
-  title = input<string>('Liste');
-  selectedIndex = input<number | null>(null);
+  readonly items = input<T[]>([]);
+  readonly title = input<string>('Liste');
+  readonly selectedIndex = input<number | null>(null);
 
   @ContentChild('itemTemplate') itemTemplate!: TemplateRef<{ $implicit: T; index: number }>;
 
-  selectedItemSignal = signal<number | null>(null);
-  isFullscreen = signal<boolean>(false);
+  readonly selectedItemSignal = signal<number | null>(null);
+  readonly isFullscreen = signal<boolean>(false);
 
   ngOnInit(): void {
     this.selectedItemSignal.set(this.selectedIndex());

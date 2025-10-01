@@ -1,7 +1,7 @@
 import { PROJECT_STATUS } from './projects-status.type';
 import { PROJECT_CATEGORY } from './projects-category.type';
 
-export interface Project {
+export type Project = {
   name: string;
   description: string;
   link: {

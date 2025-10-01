@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 export class HeaderBar {
   private destroyRef = inject(DestroyRef);
 
-  time = signal(new Date());
+  readonly time = signal(new Date());
 
   constructor() {
     const intervalId = setInterval(() => {

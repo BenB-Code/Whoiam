@@ -8,7 +8,7 @@ import { ListingWindow } from '../listing-window/listing-window';
   selector: '[appWindowActions]',
 })
 export class WindowActions implements OnInit {
-  windowId = input<WindowType>();
+  readonly windowId = input<WindowType>();
 
   private store = inject(Store);
   private contentWindow = inject(ContentWindow, { optional: true });

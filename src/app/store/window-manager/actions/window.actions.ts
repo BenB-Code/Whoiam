@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { WindowType } from '../models/window-type.type';
-import { WindowUpdate } from '../models/window-update.model';
+import { WindowUpdate } from '../models/window-update.type';
 
 export const openWindow = createAction('[Window] Open Window', props<{ id: WindowType }>());
 export const closeWindow = createAction('[Window] Close Window', props<{ id: WindowType }>());

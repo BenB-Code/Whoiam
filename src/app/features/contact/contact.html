@@ -4,13 +4,13 @@
   [class.active]="contactWindow.isActive"
   [class.maximized]="contactWindow.status === MAXIMIZED"
   [class.minimized]="contactWindow.status === MINIMIZED"
-  [windowId]="CONTACT"
+  [style.height]="contactWindow.size?.height"
   [style.left]="contactWindow.position?.x"
   [style.top]="contactWindow.position?.y"
   [style.transform]="contactWindow.position?.transform"
   [style.width]="contactWindow.size?.width"
-  [style.height]="contactWindow.size?.height"
   [style.z-index]="contactWindow.zIndex"
+  [windowId]="CONTACT"
 >
   <section>
     <h3>Contact</h3>
