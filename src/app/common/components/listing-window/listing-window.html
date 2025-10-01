@@ -17,7 +17,7 @@
           (click)="selectItem(item, $index)"
           (keydown.enter)="selectItem(item, $index)"
         >
-          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item, index: $index }" />
+          <ng-container *ngTemplateOutlet="itemTemplate(); context: { $implicit: item, index: $index }" />
         </article>
         }
       </div>

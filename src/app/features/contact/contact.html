@@ -22,14 +22,14 @@
         <p>{{ contactsService.placeholder() }}</p>
       </div>
       } @else { @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
-      <div
-        tabindex="0"
+      <button
+        type="button"
         (click)="navigationService.redirect(contactMethod.url)"
         (keydown.enter)="navigationService.redirect(contactMethod.url)"
       >
-        <img height="50" width="50" [alt]="contactMethod.alt" [ngSrc]="contactMethod.logo" />
+        <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
         <p>{{ contactMethod.name }}</p>
-      </div>
+      </button>
       } }
     </article>
   </section>

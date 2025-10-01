@@ -14,7 +14,7 @@ export class WindowActions implements OnInit {
   private readonly contentWindow = inject(ContentWindow, { optional: true });
   private readonly listingWindow = inject(ListingWindow, { optional: true });
 
-  private get windowComponent(): ContentWindow | ListingWindow<any> {
+  private get windowComponent(): ContentWindow | ListingWindow<unknown> {
     const component = this.contentWindow || this.listingWindow;
     if (!component) {
       throw new Error('WindowActions directive must be used on ContentWindow or ListingWindow');

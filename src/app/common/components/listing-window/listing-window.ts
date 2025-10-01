@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
+  contentChild,
   EventEmitter,
   input,
   OnInit,
@@ -31,7 +31,7 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
   readonly title = input<string>('Liste');
   readonly selectedIndex = input<number | null>(null);
 
-  @ContentChild('itemTemplate') itemTemplate!: TemplateRef<{ $implicit: T; index: number }>;
+  readonly itemTemplate = contentChild.required<TemplateRef<{ $implicit: T; index: number }>>('itemTemplate');
 
   readonly selectedItemSignal = signal<number | null>(null);
   readonly isFullscreen = signal<boolean>(false);

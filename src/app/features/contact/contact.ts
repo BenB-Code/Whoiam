@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CLOSED, CONTACT, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
@@ -11,7 +11,7 @@ import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
   selector: 'app-contact',
-  imports: [ContentWindow, NgOptimizedImage, AsyncPipe, Spinner, WindowActions],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
