@@ -9,23 +9,23 @@ import { WindowComponentBase } from '../models/window-component.base';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentWindow extends WindowComponentBase {
-  @Output() closeEvent = new EventEmitter<void>();
-  @Output() fullscreenEvent = new EventEmitter<boolean>();
-  @Output() reduceEvent = new EventEmitter<void>();
+  @Output() readonly closeEvent = new EventEmitter<void>();
+  @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
+  @Output() readonly reduceEvent = new EventEmitter<void>();
 
-  isFullscreen = signal<boolean>(false);
+  readonly isFullscreen = signal<boolean>(false);
 
-  close() {
+  close(): void {
     this.closeEvent.emit();
   }
 
-  fullscreen() {
+  fullscreen(): void {
     const newState = !this.isFullscreen();
     this.isFullscreen.set(newState);
     this.fullscreenEvent.emit(newState);
   }
 
-  reduce() {
+  reduce(): void {
     this.reduceEvent.emit();
   }
 }

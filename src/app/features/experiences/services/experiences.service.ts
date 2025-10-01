@@ -1,22 +1,20 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { DataService } from '../../../services/data/data.service';
 import { catchError, map, Observable, of, take, tap } from 'rxjs';
-import { Experience } from '../models/experience.model';
+import { Experience } from '../models/experience.type';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExperiencesService {
-  private dataService = inject(DataService);
-
   experiences = signal<Experience[]>([]);
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
-
   hasError = computed(() => this.error() !== null);
   isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   placeholder = computed(() => (this.hasError() ? this.error() : 'Aucune expérience disponible pour le moment'));
+  private dataService = inject(DataService);
 
   loadExperiences() {
     if (this.experiences().length === 0) {

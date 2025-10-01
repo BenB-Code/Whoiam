@@ -1,4 +1,4 @@
-export interface Experience {
+export type Experience = {
   company: string;
   name: string;
   duration: {
@@ -12,4 +12,4 @@ export interface Experience {
   };
   actions: string[];
   skills: string[];
-}
+};

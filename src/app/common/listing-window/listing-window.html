@@ -1,22 +1,22 @@
 <article class="window">
   <div class="vertical-nav">
     <div class="header">
-      <div class="window-action red" (click)="close()"></div>
-      <div class="window-action orange" (click)="reduce()"></div>
-      <div class="window-action green" (click)="fullscreen()"></div>
+      <div (click)="close()" class="window-action red"></div>
+      <div (click)="reduce()" class="window-action orange"></div>
+      <div (click)="fullscreen()" class="window-action green"></div>
     </div>
     <div class="list-section">
-      <h3 class="title">{{ title }}</h3>
+      <h3 class="title">{{ title() }}</h3>
       <div class="list">
-        @for (item of items; track $index) {
-        <article class="block" [ngClass]="{ active: isSelected($index) }" (click)="selectItem(item, $index)">
-          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item, index: $index }"> </ng-container>
-        </article>
+        @for (item of items(); track $index) {
+          <article class="block" [ngClass]="{ active: isSelected($index) }" (click)="selectItem(item, $index)">
+            <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item, index: $index }"/>
+          </article>
         }
       </div>
     </div>
   </div>
   <div class="details">
-    <ng-content></ng-content>
+    <ng-content/>
   </div>
 </article>

@@ -14,6 +14,9 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppBar implements OnInit {
+  contactsService = inject(ContactsService);
+  navigationService: NavigationService = inject(NavigationService);
+
   private store = inject(Store);
   windowState$ = this.store.select(selectAllWindows).pipe(
     map(windows => {
@@ -25,14 +28,11 @@ export class AppBar implements OnInit {
     })
   );
 
-  contactsService = inject(ContactsService);
-  navigationService: NavigationService = inject(NavigationService);
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.contactsService.loadContacts();
   }
 
-  onAppClick(id: WindowType) {
+  onAppClick(id: WindowType): void {
     this.store.dispatch(openWindow({ id }));
   }
 }

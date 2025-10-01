@@ -18,14 +18,12 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contact {
-  private store = inject(Store);
-  contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
-
   contactsService = inject(ContactsService);
   navigationService: NavigationService = inject(NavigationService);
-
   protected readonly CONTACT = CONTACT;
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;
+  private store = inject(Store);
+  contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 }

@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Contact } from '../../features/contact/models/contact.model';
+import { Contact } from '../../features/contact/models/contact.type';
 import { catchError, Observable, of, take, tap } from 'rxjs';
 import { DataService } from '../data/data.service';
 
@@ -7,16 +7,14 @@ import { DataService } from '../data/data.service';
   providedIn: 'root',
 })
 export class ContactsService {
-  private dataService = inject(DataService);
-
   contacts = signal<Contact[]>([]);
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
-
   hasError = computed(() => this.error() !== null);
   isEmpty = computed(() => !this.hasError() && this.contacts().length === 0);
   shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun moyen de me contacter pour le moment.'));
+  private dataService = inject(DataService);
 
   loadContacts(): void {
     if (this.contacts().length === 0) {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ListingWindow } from '../../common/listing-window/listing-window';
-import { Experience } from './models/experience.model';
+import { Experience } from './models/experience.type';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
@@ -18,15 +18,17 @@ import { WindowActions } from '../../common/directives';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Experiences {
+  experiencesService: ExperiencesService = inject(ExperiencesService);
+  readonly selectedIndex = signal<number | null>(null);
+  readonly selectedExperience = signal<Experience | null>(null);
+  protected readonly MAXIMIZED = MAXIMIZED;
+  protected readonly MINIMIZED = MINIMIZED;
+  protected readonly CLOSED = CLOSED;
+  protected readonly EXPERIENCES = EXPERIENCES;
   private store = inject(Store);
   experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
 
-  experiencesService: ExperiencesService = inject(ExperiencesService);
-
-  selectedIndex = signal<number | null>(null);
-  selectedExperience = signal<Experience | null>(null);
-
-  onSelection(event: { item: Experience; index: number }) {
+  onSelection(event: { item: Experience; index: number }): void {
     this.selectedIndex.set(event.index);
     this.selectedExperience.set(event.item);
   }
@@ -36,9 +38,4 @@ export class Experiences {
     const endMonth = duration.endDate.toLocaleDateString('fr-FR', { month: '2-digit', year: 'numeric' });
     return `${startMonth} - ${endMonth}`;
   }
-
-  protected readonly MAXIMIZED = MAXIMIZED;
-  protected readonly MINIMIZED = MINIMIZED;
-  protected readonly CLOSED = CLOSED;
-  protected readonly EXPERIENCES = EXPERIENCES;
 }

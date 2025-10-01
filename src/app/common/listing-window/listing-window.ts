@@ -3,13 +3,14 @@ import {
   Component,
   ContentChild,
   EventEmitter,
-  Input,
+  input,
+  OnInit,
   Output,
   signal,
   TemplateRef,
 } from '@angular/core';
-import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { WindowComponentBase } from '../models/window-component.base';
+import {NgClass, NgTemplateOutlet} from '@angular/common';
+import {WindowComponentBase} from '../models/window-component.base';
 
 @Component({
   selector: 'app-listing-window',
@@ -18,45 +19,45 @@ import { WindowComponentBase } from '../models/window-component.base';
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListingWindow<T = any> extends WindowComponentBase {
-  @Output() closeEvent = new EventEmitter<void>();
-  @Output() fullscreenEvent = new EventEmitter<boolean>();
-  @Output() reduceEvent = new EventEmitter<void>();
-  @Output() itemSelected = new EventEmitter<{ item: T; index: number }>();
+export class ListingWindow<T = any> extends WindowComponentBase implements OnInit {
+  @Output() readonly closeEvent = new EventEmitter<void>();
+  @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
+  @Output() readonly reduceEvent = new EventEmitter<void>();
+  @Output() readonly itemSelected = new EventEmitter<{ item: T; index: number }>();
 
-  @Input() items: T[] = [];
-  @Input() title = 'Liste';
-  @Input() selectedIndex: number | null = null;
+  items = input<T[]>([]);
+  title = input<string>('Liste');
+  selectedIndex = input<number | null>(null);
 
   @ContentChild('itemTemplate') itemTemplate!: TemplateRef<{ $implicit: T; index: number }>;
 
   selectedItemSignal = signal<number | null>(null);
   isFullscreen = signal<boolean>(false);
 
-  ngOnInit() {
-    this.selectedItemSignal.set(this.selectedIndex);
+  ngOnInit(): void {
+    this.selectedItemSignal.set(this.selectedIndex());
   }
 
-  selectItem(item: T, index: number) {
+  selectItem(item: T, index: number): void {
     this.selectedItemSignal.set(index);
-    this.itemSelected.emit({ item, index });
+    this.itemSelected.emit({item, index});
   }
 
   isSelected(index: number): boolean {
     return this.selectedItemSignal() === index;
   }
 
-  close() {
+  close(): void {
     this.closeEvent.emit();
   }
 
-  fullscreen() {
+  fullscreen(): void {
     const newState = !this.isFullscreen();
     this.isFullscreen.set(newState);
     this.fullscreenEvent.emit(newState);
   }
 
-  reduce() {
+  reduce(): void {
     this.reduceEvent.emit();
   }
 }
