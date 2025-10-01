@@ -1,9 +1,5 @@
 <article class="window">
-  <div class="header">
-    <div class="window-action red" (click)="close()"></div>
-    <div class="window-action orange" (click)="reduce()"></div>
-    <div class="window-action green" (click)="fullscreen()"></div>
-  </div>
+  <app-window-header (onClose)="close()" (onFullscreen)="fullscreen()" (onReduce)="reduce()" />
   <section class="content">
     <ng-content />
   </section>

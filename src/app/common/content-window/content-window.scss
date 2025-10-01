@@ -16,46 +16,7 @@
     right: inherit;
     transform: inherit;
     box-shadow: $shadow-default;
-
-    .header {
-      border-radius: $radius-md $radius-md 0 0;
-      height: $window-header-height;
-      width: 100%;
-      background: $gray-translucent-dark;
-      cursor: pointer;
-      display: inline-flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      .window-action {
-        height: $size-sm;
-        width: $size-sm;
-        margin-right: $space-sm;
-        border-radius: $radius-full;
-        border: 1px solid transparent;
-
-        &:first-child {
-          margin-left: $space-lg;
-        }
-
-        &.red {
-          background-color: $os-red;
-        }
-
-        &.orange {
-          background-color: $os-orange;
-        }
-
-        &.green {
-          background-color: $os-green;
-        }
-
-        &:hover {
-          border: 1px solid $system-accent;
-        }
-      }
-    }
-
+    
     .content {
       width: 100%;
       height: calc(100% - #{$window-header-height});

@@ -11,10 +11,12 @@ import {
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { WindowComponentBase } from '../models/window-component.base';
+import { WindowHeader } from '../window-header/window-header';
+import { TRANSPARENT } from '../constants/style.const';
 
 @Component({
   selector: 'app-listing-window',
-  imports: [NgClass, NgTemplateOutlet],
+  imports: [NgClass, NgTemplateOutlet, WindowHeader],
   templateUrl: './listing-window.html',
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,6 +35,7 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
 
   readonly selectedItemSignal = signal<number | null>(null);
   readonly isFullscreen = signal<boolean>(false);
+  protected readonly TRANSPARENT = TRANSPARENT;
 
   ngOnInit(): void {
     this.selectedItemSignal.set(this.selectedIndex());

@@ -1,0 +1,5 @@
+<div [ngClass]="backgroundColor()" class="header">
+  <div (click)="close()" (keyup.escape)="close()" class="window-action red" tabindex="0"></div>
+  <div (click)="reduce()" (keyup.arrowDown)="reduce()" class="window-action orange" tabindex="0"></div>
+  <div (click)="fullscreen()" (keyup.enter)="fullscreen()" class="window-action green" tabindex="0"></div>
+</div>
