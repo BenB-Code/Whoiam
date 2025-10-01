@@ -1,5 +1,26 @@
 <div class="header" [ngClass]="backgroundColor()">
-  <div class="window-action red" tabindex="0" (click)="onClose()" (keydown.enter)="onClose()"></div>
-  <div class="window-action orange" tabindex="0" (click)="onReduce()" (keydown.enter)="onReduce()"></div>
-  <div class="window-action green" tabindex="0" (click)="onFullscreen()" (keydown.enter)="onFullscreen()"></div>
+  <button
+    aria-label="close"
+    class="window-action red"
+    tabindex="0"
+    type="button"
+    (click)="onClose()"
+    (keydown.enter)="onClose()"
+  ></button>
+  <button
+    aria-label="reduce"
+    class="window-action orange"
+    tabindex="0"
+    type="button"
+    (click)="onReduce()"
+    (keydown.arrowDown)="onReduce()"
+  ></button>
+  <button
+    aria-label="fullscreen"
+    class="window-action green"
+    tabindex="0"
+    type="button"
+    (click)="onFullscreen()"
+    (keydown.arrowUp)="onFullscreen()"
+  ></button>
 </div>

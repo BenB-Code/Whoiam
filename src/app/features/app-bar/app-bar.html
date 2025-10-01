@@ -1,39 +1,40 @@
 @if (windowState$ | async; as windowStates) {
-<div class="el no-bg" tabindex="0" (click)="onAppClick(HOME)" (keydown.enter)="onAppClick(HOME)">
+<button class="el no-bg" type="button" (click)="onAppClick(HOME)" (keydown.enter)="onAppClick(HOME)">
   <img alt="Home" src="../../../assets/icons/home-2-svgrepo-com.svg" />
   @if (windowStates[HOME] && windowStates[HOME]?.status !== CLOSED) {
   <div class="active-dot"></div>
   }
-</div>
-<div class="el no-bg" tabindex="0" (click)="onAppClick(EXPERIENCES)" (keydown.enter)="onAppClick(EXPERIENCES)">
+</button>
+<button class="el no-bg" type="button" (click)="onAppClick(EXPERIENCES)" (keydown.enter)="onAppClick(EXPERIENCES)">
   <img alt="Experiences" src="../../../assets/icons/book-svgrepo-com.svg" />
   @if (windowStates[EXPERIENCES] && windowStates[EXPERIENCES]?.status !== CLOSED) {
   <div class="active-dot"></div>
   }
-</div>
-<div class="el no-bg" tabindex="0" (click)="onAppClick(PROJECTS)" (keydown.enter)="onAppClick(PROJECTS)">
+</button>
+<button class="el no-bg" type="button" (click)="onAppClick(PROJECTS)" (keydown.enter)="onAppClick(PROJECTS)">
   <img alt="Projects" src="../../../assets/icons/code-square-svgrepo-com.svg" />
   @if (windowStates[PROJECTS] && windowStates[PROJECTS]?.status !== CLOSED) {
   <div class="active-dot"></div>
   }
-</div>
-<div class="el no-bg" tabindex="0" (click)="onAppClick(CONTACT)" (keydown.enter)="onAppClick(CONTACT)">
+</button>
+<button class="el no-bg" type="button" (click)="onAppClick(CONTACT)" (keydown.enter)="onAppClick(CONTACT)">
   <img alt="Contact" src="../../../assets/icons/chat-round-dots-svgrepo-com.svg" />
   @if (windowStates[CONTACT] && windowStates[CONTACT]?.status !== CLOSED) {
   <div class="active-dot"></div>
   }
-</div>
+</button>
 
 @if (contactsService.contacts().length > 0) {
 <div class="divider"></div>
 
 @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
-<div
+<button
   class="el"
   tabindex="0"
+  type="button"
   (click)="navigationService.redirect(contactMethod.url)"
   (keydown.enter)="navigationService.redirect(contactMethod.url)"
 >
   <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
-</div>
+</button>
 } } }

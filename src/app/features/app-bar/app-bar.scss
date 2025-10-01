@@ -30,9 +30,15 @@
     border-radius: $radius-md;
     position: relative;
     cursor: pointer;
+    padding: 0;
+    border: none;
 
-    &.no-bg img {
+    &.no-bg {
       background: transparent;
+
+      img {
+        background: transparent;
+      }
     }
 
     img {

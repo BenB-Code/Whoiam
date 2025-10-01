@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ContentWindow } from '../../common/components/content-window/content-window';
 import { Store } from '@ngrx/store';
-import { CLOSED, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
+import { CLOSED, HOME, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { HOME } from '../../store/window-manager/constants/types.const';
 import { WindowActions } from '../../common/directives';
 
 @Component({
