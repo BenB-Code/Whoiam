@@ -45,4 +45,15 @@
       border: 1px solid $system-accent;
     }
   }
+
+  .title {
+    margin: 0 auto;
+
+    p {
+      color: white;
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
