@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, input, Output, signal } from '@angular/core';
 import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
 
@@ -13,6 +13,8 @@ export class ContentWindow extends WindowComponentBase {
   @Output() readonly closeEvent = new EventEmitter<void>();
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();
+
+  readonly title = input('');
 
   readonly isFullscreen = signal<boolean>(false);
 

@@ -6,7 +6,10 @@
   width: 100%;
 
   &.GREY {
-    background: $gray-translucent-dark;
+    background: $gray-lighter;
+
+    .window-action {
+    }
   }
 
   &.TRANSPARENT {
@@ -18,31 +21,36 @@
   justify-content: flex-start;
   align-items: center;
 
-  .window-action {
-    height: $size-sm;
-    width: $size-sm;
-    margin-right: $space-sm;
-    border-radius: $radius-full;
-    border: 1px solid transparent;
+  .btn-container {
+    margin-top: $space-xs;
 
-    &:first-child {
-      margin-left: $space-lg;
-    }
+    .window-action {
+      height: $size-sm;
+      width: $size-sm;
+      margin-right: $space-sm;
+      border-radius: $radius-full;
+      cursor: pointer;
+      border: none;
 
-    &.red {
-      background-color: $os-red;
-    }
+      &:first-child {
+        margin-left: $space-lg;
+      }
 
-    &.orange {
-      background-color: $os-orange;
-    }
+      &.red {
+        background-color: $os-red;
+      }
 
-    &.green {
-      background-color: $os-green;
-    }
+      &.orange {
+        background-color: $os-orange;
+      }
 
-    &:hover {
-      border: 1px solid $system-accent;
+      &.green {
+        background-color: $os-green;
+      }
+
+      &:hover {
+        transform: scale(110%);
+      }
     }
   }
 

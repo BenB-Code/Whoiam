@@ -22,6 +22,43 @@
   visibility: hidden;
 }
 
+.italic {
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  font-weight: $font-weight-extra-bold;
+  color: $gradient-red;
+  font-size: $font-size-lg;
+  cursor: pointer;
+
+  &:hover {
+    color: $os-red;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: $space-lg auto;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
 body {
   margin: 0;
   width: 100vw;

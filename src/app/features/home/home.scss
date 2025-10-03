@@ -2,20 +2,45 @@
 
 :host {
   app-content-window {
-    height: 80%;
-    width: 50%;
-  }
+    article {
+      padding: $space-2xl;
+      width: 100%;
+      display: inline-flex;
 
-  section {
-    padding: $space-2xl;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+      .description {
+        width: 70%;
 
-    h3 {
-      font-size: $font-size-2xl;
-      font-weight: 100;
-      margin: 0;
+        h3 {
+          font-weight: $font-weight-extra-light;
+          margin: 0;
+        }
+      }
+
+      .picture {
+        width: 30%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin: auto $space-3xl;
+
+        .img-container {
+          width: 20rem;
+          height: 20rem;
+          border: 1rem solid $accent-orange-strong;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            height: 300%;
+            width: auto;
+            margin-bottom: 30%;
+          }
+        }
+      }
     }
   }
 }

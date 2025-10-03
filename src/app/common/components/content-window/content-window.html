@@ -1,5 +1,10 @@
 <article class="window">
-  <app-window-header (activateFullscreen)="fullscreen()" (closeWindow)="close()" (reduceWindow)="reduce()" />
+  <app-window-header
+    [title]="title()"
+    (activateFullscreen)="fullscreen()"
+    (closeWindow)="close()"
+    (reduceWindow)="reduce()"
+  />
   <section class="content">
     <ng-content />
   </section>

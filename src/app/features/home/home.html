@@ -1,6 +1,7 @@
 @if (homeWindow$ | async; as homeWindow) { @if (homeWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
+  title="Home"
   [class.active]="homeWindow.isActive"
   [class.maximized]="homeWindow.status === MAXIMIZED"
   [class.minimized]="homeWindow.status === MINIMIZED"
@@ -12,46 +13,44 @@
   [style.z-index]="homeWindow.zIndex"
   [windowId]="HOME"
 >
-  <section>
-    <h3>Home</h3>
-    <article>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-      <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+  <article>
+    <section class="description">
+      <h1>Hi</h1>
+      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fullstack</span> web developer</h3>
+
+      <p class="intro">
+        I design and build <strong>robust, scalable web applications</strong> with <strong>Angular & NestJS.</strong>
       </p>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
+
       <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+        Specialized in <strong>Angular</strong> for several years, I bring not only technical expertise but also
+        <strong>clear communication</strong> and a <strong>genuine team spirit</strong> that makes collaboration smooth
+        and efficient.
       </p>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-      <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+
+      <p class="highlight">
+        My signature? Maintainable code, rapid integration, and positive energy that moves projects forward.
       </p>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-      <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
+
+      <p class="cta">
+        Discover my
+        <a tabindex="0" (click)="open(PROJECTS); $event.stopPropagation()" (keydown.enter)="open(PROJECTS)">projects</a>
+        and
+        <a tabindex="0" (click)="open(EXPERIENCES); $event.stopPropagation()" (keydown.enter)="open(EXPERIENCES)"
+          >experiences</a
+        >, or
+        <a tabindex="0" (click)="open(CONTACT); $event.stopPropagation()" (keydown.enter)="open(CONTACT)"
+          >let's connect</a
+        >.
       </p>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-      <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
-      </p>
-      <h3>Hi</h3>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fulltstack</span> web developper</h3>
-      <p>This is a lorem ipsum text. Still need to figure what i want to add</p>
-      <p>
-        Feel free to navigate on this website as you would do on your computer. Hope you will enjoy it as much as i do.
-      </p>
-    </article>
-  </section>
+
+      <p class="italic">Optimal experience designed for desktop – explore it like you would on your computer.</p>
+    </section>
+    <section class="picture">
+      <div class="img-container">
+        <img alt="Benjamin Bats" src="assets/images/me.jpg" />
+      </div>
+    </section>
+  </article>
 </app-content-window>
 } }

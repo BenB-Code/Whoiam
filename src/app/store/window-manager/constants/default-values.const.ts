@@ -12,8 +12,8 @@ export const DEFAULT_POSITION: Position = {
 
 export const DEFAULT_SIZES: Record<WindowType, Size> = {
   [HOME]: {
-    width: '90%',
-    height: '90%',
+    width: '60%',
+    height: '60%',
   },
   [EXPERIENCES]: {
     width: '80%',
