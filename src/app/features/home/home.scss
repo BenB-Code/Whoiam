@@ -10,6 +10,10 @@
       .description {
         width: 70%;
 
+        h1 {
+          margin: 0;
+        }
+
         h3 {
           font-weight: $font-weight-extra-light;
           margin: 0;

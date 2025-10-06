@@ -4,6 +4,7 @@
   [class.active]="experiencesWindow.isActive"
   [class.maximized]="experiencesWindow.status === MAXIMIZED"
   [class.minimized]="experiencesWindow.status === MINIMIZED"
+  [disableFullscreen]="experiencesWindow?.disableFullscreen === true"
   [items]="experiencesService.experiences()"
   [style.height]="experiencesWindow.size?.height"
   [style.left]="experiencesWindow.position?.x"

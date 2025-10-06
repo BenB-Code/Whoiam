@@ -4,25 +4,23 @@
   border-radius: $radius-md $radius-md 0 0;
   height: $window-header-height;
   width: 100%;
+  display: grid;
+  cursor: pointer;
+  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
 
   &.GREY {
     background: $gray-lighter;
-
-    .window-action {
-    }
   }
 
   &.TRANSPARENT {
     background: transparent;
   }
 
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-
   .btn-container {
     margin-top: $space-xs;
+    grid-column: 1;
+    justify-self: start;
 
     .window-action {
       height: $size-sm;
@@ -51,11 +49,22 @@
       &:hover {
         transform: scale(110%);
       }
+
+      &[disabled] {
+        cursor: default;
+        opacity: 0.25;
+
+        &:hover {
+          transform: none;
+        }
+      }
     }
   }
 
   .title {
     margin: 0 auto;
+    grid-column: 2;
+    text-align: center;
 
     p {
       color: white;

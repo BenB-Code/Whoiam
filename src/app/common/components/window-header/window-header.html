@@ -21,6 +21,7 @@
       class="window-action green"
       tabindex="0"
       type="button"
+      [disabled]="disableFullscreen()"
       (click)="onFullscreen()"
       (keydown.arrowUp)="onFullscreen()"
     ></button>

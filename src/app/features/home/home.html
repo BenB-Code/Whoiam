@@ -5,6 +5,7 @@
   [class.active]="homeWindow.isActive"
   [class.maximized]="homeWindow.status === MAXIMIZED"
   [class.minimized]="homeWindow.status === MINIMIZED"
+  [disableFullscreen]="homeWindow?.disableFullscreen === true"
   [style.height]="homeWindow.size?.height"
   [style.left]="homeWindow.position?.x"
   [style.top]="homeWindow.position?.y"

@@ -1,5 +1,6 @@
 <article class="window">
   <app-window-header
+    [disableFullscreen]="disableFullscreen()"
     [title]="title()"
     (activateFullscreen)="fullscreen()"
     (closeWindow)="close()"

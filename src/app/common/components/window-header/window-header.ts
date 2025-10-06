@@ -15,6 +15,7 @@ export class WindowHeader {
   @Output() readonly reduceWindow = new EventEmitter<void>();
 
   readonly title = input('');
+  readonly disableFullscreen = input.required<boolean>();
 
   readonly backgroundColor = input<typeof GREY | typeof TRANSPARENT>(GREY);
 

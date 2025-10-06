@@ -12,7 +12,7 @@ export const DEFAULT_POSITION: Position = {
 
 export const DEFAULT_SIZES: Record<WindowType, Size> = {
   [HOME]: {
-    width: '60%',
+    width: '65%',
     height: '60%',
   },
   [EXPERIENCES]: {
@@ -25,7 +25,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
   },
   [CONTACT]: {
     width: '30%',
-    height: '50%',
+    height: '40%',
   },
 };
 
@@ -33,6 +33,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: HOME,
     status: OPEN,
+    disableFullscreen: true,
     position: DEFAULT_POSITION,
     size: DEFAULT_SIZES[HOME],
     zIndex: 2,
@@ -41,6 +42,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: EXPERIENCES,
     status: CLOSED,
+    disableFullscreen: false,
     position: DEFAULT_POSITION,
     size: DEFAULT_SIZES[EXPERIENCES],
     zIndex: DEFAULT_ZINDEX,
@@ -49,6 +51,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: PROJECTS,
     status: CLOSED,
+    disableFullscreen: true,
     position: DEFAULT_POSITION,
     size: DEFAULT_SIZES[PROJECTS],
     zIndex: DEFAULT_ZINDEX,
@@ -57,6 +60,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: CONTACT,
     status: CLOSED,
+    disableFullscreen: true,
     position: DEFAULT_POSITION,
     size: DEFAULT_SIZES[CONTACT],
     zIndex: DEFAULT_ZINDEX,

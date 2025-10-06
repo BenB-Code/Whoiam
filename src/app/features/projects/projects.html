@@ -4,6 +4,7 @@
   [class.active]="projectsWindow.isActive"
   [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
+  [disableFullscreen]="projectsWindow?.disableFullscreen === true"
   [style.height]="projectsWindow.size?.height"
   [style.left]="projectsWindow.position?.x"
   [style.top]="projectsWindow.position?.y"

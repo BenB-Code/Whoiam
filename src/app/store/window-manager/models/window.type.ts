@@ -6,6 +6,7 @@ import { Position } from './position.type';
 export type WindowState = {
   id: WindowType;
   status: WindowStatus;
+  disableFullscreen?: boolean;
   lastStatus?: WindowStatus;
   position?: Position;
   size?: Size;

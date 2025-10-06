@@ -1,9 +1,11 @@
 @if (contactWindow$ | async; as contactWindow) { @if (contactWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
+  title="Contact"
   [class.active]="contactWindow.isActive"
   [class.maximized]="contactWindow.status === MAXIMIZED"
   [class.minimized]="contactWindow.status === MINIMIZED"
+  [disableFullscreen]="contactWindow?.disableFullscreen === true"
   [style.height]="contactWindow.size?.height"
   [style.left]="contactWindow.position?.x"
   [style.top]="contactWindow.position?.y"
@@ -13,7 +15,7 @@
   [windowId]="CONTACT"
 >
   <section>
-    <h3>Contact</h3>
+    <p class="description">Feel free to contact with any of this ways.</p>
     <article>
       @if (contactsService.isLoading()) {
       <app-spinner />
