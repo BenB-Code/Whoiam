@@ -83,11 +83,12 @@
             font-weight: $font-weight-extra-bold;
           }
 
-          article {
+          .bubbles {
             width: 80%;
             display: inline-flex;
             flex-wrap: wrap;
             padding: 0 0 0 $space-md;
+            justify-content: flex-start;
           }
         }
 

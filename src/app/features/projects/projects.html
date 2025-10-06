@@ -32,7 +32,7 @@
       <p class="description">{{ project.description }}</p>
       <section class="technos-list">
         <p>Technologies:</p>
-        <article>
+        <article class="bubbles">
           @if (project.technologies) { @for (techno of project.technologies; track $index) {
           <app-bubble [textContent]="techno" />
           } }

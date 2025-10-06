@@ -2,8 +2,9 @@
 
 :host {
   border-radius: 0.5rem;
-  background: $gradient-light-gray;
+  background: $light-grey;
   padding: $space-xs $space-sm;
   margin: 0 $space-xs;
   font-size: $font-size-xs;
+  opacity: 1;
 }
