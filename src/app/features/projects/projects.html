@@ -21,6 +21,11 @@
   <app-placeholder-text [textContent]="projectsService.placeholder() || ''" />
   } @else {
   <article>
+    <section class="title">
+      <hr />
+      <h4>Personals projects and repositories</h4>
+      <hr />
+    </section>
     @for (project of projectsService.projects(); track $index) {
     <app-card>
       <h3>{{ project.name }}</h3>

@@ -8,7 +8,32 @@
       width: 100%;
       display: inline-flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      justify-content: space-between;
+
+      .title {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: $space-lg;
+
+        h4 {
+          font-weight: $font-weight-light;
+          font-size: $font-size-xl;
+          margin: 0 $space-md;
+          width: fit-content;
+          text-align: center;
+        }
+
+        hr {
+          height: 1px;
+          border-radius: $space-lg;
+          border: none;
+          margin: 0;
+          width: 35%;
+          background: $gradient-green-alt;
+        }
+      }
 
       app-card {
         width: 31%;
@@ -16,6 +41,14 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+        }
 
         &::after {
           content: '';
@@ -67,7 +100,7 @@
             width: 45%;
             border-radius: 0.5rem;
             border: none;
-            background: linear-gradient(90deg, $gradient-orange, $gradient-red 150%);
+            background: linear-gradient(90deg, $gradient-green-alt, $os-green 250%);
             font-size: $font-size-md;
             color: $system-white;
             padding: $space-sm $space-md;

@@ -11,7 +11,7 @@
     max-height: 100%;
     border-radius: $radius-md;
     z-index: inherit;
-    background: $white-translucent;
+    background: $white;
     position: absolute;
     top: inherit;
     bottom: inherit;
@@ -26,7 +26,7 @@
       overflow-y: auto;
 
       hr {
-        height: 0.75rem;
+        height: $space-md;
         border: none;
         margin: 0;
 
