@@ -3,17 +3,33 @@ import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
 import { CLOSED, OPEN } from './status.const';
 
 export const DEFAULT_ZINDEX = 1;
-
-export const DEFAULT_POSITION: Position = {
-  x: '50%',
-  y: '50%',
-  transform: 'translate(-50%, -50%)',
+export const DEFAULT_POSITION: Record<WindowType, Position> = {
+  [HOME]: {
+    x: '50%',
+    y: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  [EXPERIENCES]: {
+    x: '50%',
+    y: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  [PROJECTS]: {
+    x: '50%',
+    y: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  [CONTACT]: {
+    x: '65%',
+    y: '5%',
+    transform: 'translate(0%, 0%)',
+  },
 };
 
 export const DEFAULT_SIZES: Record<WindowType, Size> = {
   [HOME]: {
     width: '65%',
-    height: '60%',
+    height: 'fit-content',
   },
   [EXPERIENCES]: {
     width: '80%',
@@ -25,7 +41,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
   },
   [CONTACT]: {
     width: '30%',
-    height: '40%',
+    height: 'fit-content',
   },
 };
 
@@ -34,7 +50,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     id: HOME,
     status: OPEN,
     disableFullscreen: true,
-    position: DEFAULT_POSITION,
+    position: DEFAULT_POSITION[HOME],
     size: DEFAULT_SIZES[HOME],
     zIndex: 2,
     isActive: true,
@@ -43,7 +59,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     id: EXPERIENCES,
     status: CLOSED,
     disableFullscreen: false,
-    position: DEFAULT_POSITION,
+    position: DEFAULT_POSITION[EXPERIENCES],
     size: DEFAULT_SIZES[EXPERIENCES],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -52,7 +68,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     id: PROJECTS,
     status: CLOSED,
     disableFullscreen: true,
-    position: DEFAULT_POSITION,
+    position: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -61,7 +77,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     id: CONTACT,
     status: CLOSED,
     disableFullscreen: true,
-    position: DEFAULT_POSITION,
+    position: DEFAULT_POSITION[CONTACT],
     size: DEFAULT_SIZES[CONTACT],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,

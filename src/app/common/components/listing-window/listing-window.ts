@@ -30,7 +30,7 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
   readonly items = input<T[]>([]);
   readonly title = input<string>('Liste');
   readonly selectedIndex = input<number | null>(null);
-  readonly disableFullscreen = input.required<boolean>();
+  readonly disableFullscreen = input<boolean>(false);
 
   readonly itemTemplate = contentChild.required<TemplateRef<{ $implicit: T; index: number }>>('itemTemplate');
 

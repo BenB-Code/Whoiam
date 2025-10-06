@@ -15,7 +15,7 @@ export class ContentWindow extends WindowComponentBase {
   @Output() readonly reduceEvent = new EventEmitter<void>();
 
   readonly title = input('');
-  readonly disableFullscreen = input.required<boolean>();
+  readonly disableFullscreen = input<boolean>(false);
 
   readonly isFullscreen = signal<boolean>(false);
 

@@ -18,9 +18,8 @@
       display: inline-flex;
       justify-content: space-between;
       align-items: center;
-      width: 50%;
       max-width: 25rem;
-      margin: auto;
+      margin: $space-3xl auto auto auto;
 
       button {
         display: flex;
@@ -30,9 +29,11 @@
         cursor: pointer;
         background: none;
         border: none;
+        margin: 0 $space-md;
 
         p {
           margin-bottom: 0;
+          font-weight: $font-weight-bold;
         }
 
         img {

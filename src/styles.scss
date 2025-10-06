@@ -59,6 +59,16 @@ h3 {
   font-size: $font-size-2xl;
 }
 
+[disabled],
+.disabled {
+  cursor: default !important;
+  opacity: 0.25;
+
+  &:hover {
+    transform: none !important;
+  }
+}
+
 body {
   margin: 0;
   width: 100vw;
