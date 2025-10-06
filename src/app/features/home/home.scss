@@ -60,7 +60,7 @@
         .img-container {
           width: $profile-picture-size;
           height: $profile-picture-size;
-          border: $profile-border-width solid $accent-orange-strong;
+          border: $space-sm solid $gradient-red;
           border-radius: $profile-border-radius;
           overflow: hidden;
           display: flex;
