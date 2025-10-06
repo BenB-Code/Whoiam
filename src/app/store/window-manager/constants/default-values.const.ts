@@ -66,7 +66,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   },
   {
     id: PROJECTS,
-    status: OPEN,
+    status: CLOSED,
     disableFullscreen: true,
     position: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],
