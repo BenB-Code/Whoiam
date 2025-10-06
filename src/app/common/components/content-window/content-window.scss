@@ -43,8 +43,8 @@
         }
 
         &.rainbow {
-          background: radial-gradient(
-            circle at center,
+          background: linear-gradient(
+            45deg,
             $gradient-red 0%,
             $gradient-red 33.3%,
             $gradient-orange 33.3%,

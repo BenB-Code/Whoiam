@@ -17,7 +17,7 @@ import {
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { WindowActions } from '../../common/directives';
-import { GREEN, ORANGE } from '../../common/constants/style.const';
+import { RED } from '../../common/constants/style.const';
 
 @Component({
   selector: 'app-home',
@@ -34,8 +34,7 @@ export class Home {
   protected readonly PROJECTS = PROJECTS;
   protected readonly EXPERIENCES = EXPERIENCES;
   protected readonly CONTACT = CONTACT;
-  protected readonly GREEN = GREEN;
-  protected readonly ORANGE = ORANGE;
+  protected readonly RED = RED;
   private readonly store = inject(Store);
   homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(HOME));
 
