@@ -21,7 +21,7 @@ export const DEFAULT_POSITION: Record<WindowType, Position> = {
   },
   [CONTACT]: {
     x: '65%',
-    y: '5%',
+    y: '1%',
     transform: 'translate(0%, 0%)',
   },
 };
