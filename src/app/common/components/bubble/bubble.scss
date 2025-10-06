@@ -1,0 +1,9 @@
+@use '../../../../assets/styles/index' as *;
+
+:host {
+  border-radius: 0.5rem;
+  background: $gradient-light-gray;
+  padding: $space-xs $space-sm;
+  margin: 0 $space-xs;
+  font-size: $font-size-xs;
+}
