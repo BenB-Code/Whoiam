@@ -60,8 +60,8 @@
         .img-container {
           width: $profile-picture-size;
           height: $profile-picture-size;
-          border: 1rem solid $accent-orange-strong;
-          border-radius: $profile-border-width;
+          border: $profile-border-width solid $accent-orange-strong;
+          border-radius: $profile-border-radius;
           overflow: hidden;
           display: flex;
           justify-content: center;

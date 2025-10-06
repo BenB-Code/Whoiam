@@ -2,12 +2,13 @@
 
 :host {
   .window {
+    display: flex;
+    flex-direction: column;
     height: inherit;
     width: inherit;
     min-height: 30%;
     min-width: 30%;
     max-height: 100%;
-    overflow: auto;
     border-radius: $radius-md;
     z-index: inherit;
     background: $white-translucent;
@@ -21,7 +22,7 @@
 
     .content {
       width: 100%;
-      height: calc(100% - #{$window-header-height});
+      flex: 1;
       overflow-y: auto;
     }
   }
