@@ -58,17 +58,17 @@
         margin: auto $space-3xl;
 
         .img-container {
-          width: 20rem;
-          height: 20rem;
+          width: $profile-picture-size;
+          height: $profile-picture-size;
           border: 1rem solid $accent-orange-strong;
-          border-radius: 50rem;
+          border-radius: $profile-border-width;
           overflow: hidden;
           display: flex;
           justify-content: center;
           align-items: center;
 
           img {
-            height: 300%;
+            height: $profile-img-zoom;
             width: auto;
             margin-bottom: 30%;
           }

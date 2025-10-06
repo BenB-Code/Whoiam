@@ -17,8 +17,8 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contact {
-  contactsService = inject(ContactsService);
-  navigationService: NavigationService = inject(NavigationService);
+  protected readonly navigationService: NavigationService = inject(NavigationService);
+  protected readonly contactsService = inject(ContactsService);
   protected readonly CONTACT = CONTACT;
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;

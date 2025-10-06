@@ -17,9 +17,9 @@ import { WindowActions } from '../../common/directives';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Experiences {
-  experiencesService: ExperiencesService = inject(ExperiencesService);
   readonly selectedIndex = signal<number | null>(null);
   readonly selectedExperience = signal<Experience | null>(null);
+  protected readonly experiencesService: ExperiencesService = inject(ExperiencesService);
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;

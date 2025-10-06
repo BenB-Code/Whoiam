@@ -24,8 +24,8 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppBar implements OnInit {
-  contactsService = inject(ContactsService);
-  navigationService: NavigationService = inject(NavigationService);
+  protected readonly contactsService = inject(ContactsService);
+  protected readonly navigationService: NavigationService = inject(NavigationService);
   protected readonly HOME = HOME;
   protected readonly CLOSED = CLOSED;
   protected readonly EXPERIENCES = EXPERIENCES;

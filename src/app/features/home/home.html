@@ -35,12 +35,23 @@
 
       <p class="cta">
         Discover my
-        <a tabindex="0" (click)="open(PROJECTS); $event.stopPropagation()" (keydown.enter)="open(PROJECTS)">projects</a>
+        <a
+          tabindex="0"
+          (click)="open(PROJECTS); $event.stopPropagation()"
+          (keydown.enter)="open(PROJECTS); $event.stopPropagation()"
+          >projects</a
+        >
         and
-        <a tabindex="0" (click)="open(EXPERIENCES); $event.stopPropagation()" (keydown.enter)="open(EXPERIENCES)"
+        <a
+          tabindex="0"
+          (click)="open(EXPERIENCES); $event.stopPropagation()"
+          (keydown.enter)="open(EXPERIENCES); $event.stopPropagation()"
           >experiences</a
         >, or
-        <a tabindex="0" (click)="open(CONTACT); $event.stopPropagation()" (keydown.enter)="open(CONTACT)"
+        <a
+          tabindex="0"
+          (click)="open(CONTACT); $event.stopPropagation()"
+          (keydown.enter)="open(CONTACT); $event.stopPropagation()"
           >let's connect</a
         >.
       </p>
