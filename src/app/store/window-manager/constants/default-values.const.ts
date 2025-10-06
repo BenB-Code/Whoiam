@@ -15,13 +15,13 @@ export const DEFAULT_POSITION: Record<WindowType, Position> = {
     transform: 'translate(-50%, -50%)',
   },
   [PROJECTS]: {
-    x: '50%',
-    y: '50%',
-    transform: 'translate(-50%, -50%)',
+    x: '0%',
+    y: '1%',
+    transform: 'translate(0%, 0%)',
   },
   [CONTACT]: {
-    x: '65%',
-    y: '1%',
+    x: '69%',
+    y: '5%',
     transform: 'translate(0%, 0%)',
   },
 };
@@ -36,7 +36,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
     height: '80%',
   },
   [PROJECTS]: {
-    width: '75%',
+    width: '60%',
     height: '70%',
   },
   [CONTACT]: {
@@ -66,7 +66,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   },
   {
     id: PROJECTS,
-    status: CLOSED,
+    status: OPEN,
     disableFullscreen: true,
     position: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],

@@ -8,10 +8,11 @@ import { ContactsService } from '../../services/contact/contacts.service';
 import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
+import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
 
 @Component({
   selector: 'app-contact',
-  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

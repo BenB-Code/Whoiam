@@ -8,10 +8,11 @@ import { AsyncPipe } from '@angular/common';
 import { ExperiencesService } from './services/experiences.service';
 import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
+import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
 
 @Component({
   selector: 'app-experiences',
-  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions],
+  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
   templateUrl: './experiences.html',
   styleUrl: './experiences.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

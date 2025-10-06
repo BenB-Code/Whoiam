@@ -1,6 +1,7 @@
 @if (projectsWindow$ | async; as projectsWindow) { @if (projectsWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
+  title="Projects"
   [class.active]="projectsWindow.isActive"
   [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
@@ -13,17 +14,10 @@
   [style.z-index]="projectsWindow.zIndex"
   [windowId]="PROJECTS"
 >
-  <div class="projects-header">
-    <h1>My Projects</h1>
-    <p>Discover my projects and contributions</p>
-  </div>
-
   @if (projectsService.isLoading()) {
   <app-spinner />
   } @else if (projectsService.shouldDisplayPlaceholder()) {
-  <div class="message-container">
-    <p>{{ projectsService.placeholder() }}</p>
-  </div>
+  <app-placeholder-text [textContent]="projectsService.placeholder() || ''" />
   } @else {
   <div class="projects-grid">
     @for (project of projectsService.projects(); track $index) {

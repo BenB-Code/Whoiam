@@ -14,6 +14,11 @@
   [style.z-index]="contactWindow.zIndex"
   [windowId]="CONTACT"
 >
+  @if (contactsService.isLoading()) {
+  <app-spinner />
+  } @else if (contactsService.shouldDisplayPlaceholder()) {
+  <app-placeholder-text [textContent]="contactsService.placeholder() || ''" />
+  } @else {
   <section>
     <p class="description">Feel free to contact me with any of this ways.</p>
     <article>
@@ -35,5 +40,6 @@
       } }
     </article>
   </section>
+  }
 </app-content-window>
 } }

@@ -18,9 +18,7 @@
   @if (experiencesService.isLoading()) {
   <app-spinner />
   } @else if (experiencesService.shouldDisplayPlaceholder()) {
-  <div class="message-container">
-    <p>{{ experiencesService.placeholder() }}</p>
-  </div>
+  <app-placeholder-text [textContent]="experiencesService.placeholder() || ''" />
   } @else {
   <ng-template #itemTemplate let-experience>
     <h2>{{ experience.name }}</h2>

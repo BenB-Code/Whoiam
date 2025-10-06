@@ -1,0 +1,19 @@
+@use '../../../../assets/styles/index' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: $space-xl;
+
+  .placeholder-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: $gray-dark;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+    }
+  }
+}

@@ -8,17 +8,18 @@ import { ProjectsService } from './services/projects.service';
 import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
+import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
 
 @Component({
   selector: 'app-projects',
-  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Projects {
-  projectsService: ProjectsService = inject(ProjectsService);
-  navigationService: NavigationService = inject(NavigationService);
+  protected readonly projectsService: ProjectsService = inject(ProjectsService);
+  protected readonly navigationService: NavigationService = inject(NavigationService);
   protected readonly PROJECTS = PROJECTS;
   protected readonly CLOSED = CLOSED;
   protected readonly MAXIMIZED = MAXIMIZED;
