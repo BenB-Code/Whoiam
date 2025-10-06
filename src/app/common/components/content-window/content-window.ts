@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, input, Output, signal } from '@angular/core';
 import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
+import { NgClass } from '@angular/common';
+import { RAINBOW } from '../../constants/style.const';
 
 @Component({
   selector: 'app-content-window',
-  imports: [WindowHeader],
+  imports: [WindowHeader, NgClass],
   templateUrl: './content-window.html',
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +18,7 @@ export class ContentWindow extends WindowComponentBase {
 
   readonly title = input('');
   readonly disableFullscreen = input<boolean>(false);
-
+  readonly color = input<string>(RAINBOW);
   readonly isFullscreen = signal<boolean>(false);
 
   close(): void {

@@ -9,10 +9,13 @@ import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
+import { Card } from '../../common/components/card/card';
+import { Bubble } from '../../common/components/bubble/bubble';
+import { GREEN } from '../../common/constants/style.const';
 
 @Component({
   selector: 'app-projects',
-  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Card, Bubble],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +27,7 @@ export class Projects {
   protected readonly CLOSED = CLOSED;
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
+  protected readonly GREEN = GREEN;
   private readonly store = inject(Store);
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
 

@@ -69,6 +69,10 @@ h3 {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   width: 100vw;
@@ -83,10 +87,10 @@ body {
     $gradient-green-alt 50%,
     $gradient-gray 50%,
     $gradient-gray 66.6%,
-    $gradient-light-gray 66.6%,
-    $gradient-light-gray 83.2%,
+    $gradient-medium-gray 66.6%,
     $gradient-medium-gray 83.2%,
-    $gradient-medium-gray 100%
+    $gradient-light-gray 83.2%,
+    $gradient-light-gray 100%
   );
   position: relative;
 }

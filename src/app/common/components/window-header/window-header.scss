@@ -8,11 +8,11 @@
   align-items: center;
   grid-template-columns: 1fr auto 1fr;
 
-  &.GREY {
+  &.grey {
     background: $gray-lighter;
   }
 
-  &.TRANSPARENT {
+  &.transparent {
     background: transparent;
   }
 
@@ -57,7 +57,7 @@
     text-align: center;
 
     p {
-      color: $white;
+      color: $system-white;
       font-weight: 500;
       padding: 0;
       margin: 0;

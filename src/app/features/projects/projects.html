@@ -5,6 +5,7 @@
   [class.active]="projectsWindow.isActive"
   [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
+  [color]="GREEN"
   [disableFullscreen]="projectsWindow?.disableFullscreen === true"
   [style.height]="projectsWindow.size?.height"
   [style.left]="projectsWindow.position?.x"
@@ -19,41 +20,34 @@
   } @else if (projectsService.shouldDisplayPlaceholder()) {
   <app-placeholder-text [textContent]="projectsService.placeholder() || ''" />
   } @else {
-  <div class="projects-grid">
+  <article>
     @for (project of projectsService.projects(); track $index) {
-    <article class="project-card" [attr.data-category]="project.category">
-      <div class="card-header">
-        <div class="project-meta">
-          <span class="project-year">{{ project.year }}</span>
-        </div>
-        <div
-          class="status-indicator"
-          [style.background-color]="getStatusColor(project.status || 'active')"
-          [title]="project.status || 'active'"
-        ></div>
-      </div>
-
-      <div class="card-content">
-        <h2>{{ project.name }}</h2>
-        <p class="description">{{ project.description }}</p>
-
-        @if (project.technologies) {
-        <div class="technologies">
-          @for (tech of project.technologies; track $index) {
-          <span class="tech-badge">{{ tech }}</span>
-          }
-        </div>
-        }
-      </div>
-
-      <div class="card-actions">
-        <button class="primary-btn" type="button" (click)="navigationService.redirect(project.link.url)">
-          {{ project.link.name }}
+    <app-card>
+      <h3>{{ project.name }}</h3>
+      <p class="description">{{ project.description }}</p>
+      <section class="technos-list">
+        <p>Technologies:</p>
+        <article>
+          @if (project.technologies) { @for (techno of project.technologies; track $index) {
+          <app-bubble [textContent]="techno" />
+          } }
+        </article>
+      </section>
+      <section class="redirect-container">
+        @if (project.link) {
+        <button
+          type="button"
+          (click)="navigationService.redirect(project.link.url); $event.stopPropagation()"
+          (keydown.enter)="navigationService.redirect(project.link.url); $event.stopPropagation()"
+        >
+          Visit {{ project.link.name }}
         </button>
-      </div>
-    </article>
+        }
+      </section>
+    </app-card>
     }
-  </div>
+  </article>
+
   }
 </app-content-window>
 } }

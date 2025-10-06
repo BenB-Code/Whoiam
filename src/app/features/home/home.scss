@@ -28,8 +28,8 @@
 
         .highlight {
           font-style: italic;
-          color: $dark-grey;
-          background: $accent-orange-light;
+          color: $system-white;
+          background: linear-gradient(90deg, $gradient-orange, $gradient-red 100%);
           padding: $space-md;
           margin: $space-xl 0;
           border-radius: $radius-md;

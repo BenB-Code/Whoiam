@@ -24,6 +24,36 @@
       width: 100%;
       flex: 1;
       overflow-y: auto;
+
+      hr {
+        height: 0.5rem;
+        border: none;
+        margin: 0;
+
+        &.orange {
+          background: $gradient-orange;
+        }
+
+        &.green {
+          background: $gradient-green-alt;
+        }
+
+        &.red {
+          background: $gradient-red;
+        }
+
+        &.rainbow {
+          background: radial-gradient(
+            circle at center,
+            $gradient-red 0%,
+            $gradient-red 33.3%,
+            $gradient-orange 33.3%,
+            $gradient-orange 66.6%,
+            $gradient-green-alt 66.6%,
+            $gradient-green-alt 100%
+          );
+        }
+      }
     }
   }
 }
