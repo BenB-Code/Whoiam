@@ -11,7 +11,7 @@ export const DEFAULT_POSITION: Record<WindowType, Position> = {
   },
   [EXPERIENCES]: {
     x: '0%',
-    y: '15%',
+    y: '5%',
     transform: 'translate(0%, 0%)',
   },
   [PROJECTS]: {
@@ -33,7 +33,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
   },
   [EXPERIENCES]: {
     width: '80%',
-    height: '80%',
+    height: '90%',
   },
   [PROJECTS]: {
     width: '80%',

@@ -65,7 +65,7 @@
 
       .list-section {
         height: calc(100% - 6.5rem);
-        margin: $space-lg 0 0 $space-lg;
+        margin: $space-lg 0 0 $space-xl;
 
         .title {
           font-size: $font-size-xl;
@@ -82,7 +82,7 @@
             background: $accent-orange-light;
             border: $space-xs solid transparent;
             border-radius: $radius-md;
-            margin: $space-xl $space-lg $space-xl 0;
+            margin: $space-xl $space-xl $space-xl 0;
             padding: $space-lg;
 
             &:hover,
