@@ -2,62 +2,46 @@
 
 :host {
   app-listing-window {
-    height: 80%;
-    width: 70%;
-  }
-
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-sm;
-    margin-top: $space-sm;
-
-    .skill-badge {
-      background: $accent-orange-light;
-      color: $system-accent;
-      padding: $space-xs $space-md;
-      border-radius: $radius-md;
-      font-size: $font-size-sm;
-      border: 1px solid $accent-orange-medium;
-    }
-  }
-
-  .placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #666;
-    font-style: italic;
-  }
-
-  section {
-    margin-bottom: $space-xl;
-
-    h2 {
-      margin: 0 0 $space-sm 0;
-      font-size: $font-size-xl;
-    }
-
-    h3 {
-      margin: $space-lg 0 $space-sm 0;
-      font-size: $font-size-lg;
-      color: $system-accent;
-    }
-
-    ul {
-      margin: $space-sm 0;
-      padding-left: $space-xl;
-
-      li {
-        margin-bottom: $space-sm;
-        line-height: 1.4;
+    .card {
+      .red {
+        color: $accent-red-full;
       }
-    }
 
-    p {
-      margin: $space-sm 0;
-      line-height: 1.4;
+      .italic {
+        font-style: italic;
+      }
+
+      h3 {
+        font-size: $font-size-lg;
+      }
+
+      h3,
+      h4,
+      p {
+        margin: 0 0 $space-xs 0;
+        align-self: flex-start;
+        position: relative;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      article {
+        margin-top: $space-md;
+        margin-left: $space-sm;
+        padding-left: $space-sm;
+        border-radius: $space-xs 0 0 $space-xs;
+        border-left: $space-xs solid $accent-red-medium;
+
+        .date {
+          font-weight: $font-weight-medium;
+        }
+
+        h4 {
+          font-size: $font-size-md;
+        }
+      }
     }
   }
 }

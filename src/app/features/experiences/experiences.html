@@ -12,6 +12,7 @@
   [style.transform]="experiencesWindow.position?.transform"
   [style.width]="experiencesWindow.size?.width"
   [style.z-index]="experiencesWindow.zIndex"
+  [title]="EXPERIENCES"
   [windowId]="EXPERIENCES"
   (itemSelected)="onSelection($event)"
 >
@@ -21,45 +22,20 @@
   <app-placeholder-text [textContent]="experiencesService.placeholder() || ''" />
   } @else {
   <ng-template #itemTemplate let-experience>
-    <h2>{{ experience.name }}</h2>
-    <h3>{{ experience.company }}&nbsp;<span>{{ formatDuration(experience.duration) }}</span></h3>
-    <p>
-      {{ experience.localisation.city }}, {{ experience.localisation.state }} - {{ experience.localisation.country }}
-    </p>
+    <section class="card">
+      <h3>{{ experience.name }}</h3>
+      <article>
+        <h4>
+          {{ experience.company }} · <span class="date">{{ formatService.formatDuration(experience.duration) }}</span>
+        </h4>
+        <p class="italic">
+          {{ experience.localisation.city }}, {{ experience.localisation.state }} - {{ experience.localisation.country
+          }}
+        </p>
+      </article>
+    </section>
   </ng-template>
-
-  @if (selectedExperience()) {
-  <section>
-    <h2>{{ selectedExperience()!.name }}</h2>
-    <h3>{{ selectedExperience()!.company }}</h3>
-    <p><strong>Durée :</strong> {{ formatDuration(selectedExperience()!.duration) }}</p>
-    <p>
-      <strong>Localisation :</strong> {{ selectedExperience()!.localisation.city }} , {{
-      selectedExperience()!.localisation.state }} - {{ selectedExperience()!.localisation.country }}
-    </p>
-
-    <section>
-      <h3>Actions</h3>
-      <ul>
-        @for (action of selectedExperience()!.actions; track $index) {
-        <li>{{ action }}</li>
-        }
-      </ul>
-    </section>
-
-    <section>
-      <h3>Compétences</h3>
-      <div class="skills-list">
-        @for (skill of selectedExperience()!.skills; track $index) {
-        <span class="skill-badge">{{ skill }}</span>
-        }
-      </div>
-    </section>
-  </section>
-  } @else {
-  <div class="placeholder">
-    <p>Sélectionnez une expérience pour voir les détails</p>
-  </div>
-  } }
+  <app-details [experience]="selectedExperience()" />
+  }
 </app-listing-window>
 } }

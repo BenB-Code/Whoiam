@@ -9,33 +9,38 @@ import { ExperiencesService } from './services/experiences.service';
 import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
+import { Details } from './components/details/details';
+import { FormatService } from '../../services/format/format.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-experiences',
-  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
+  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Details],
   templateUrl: './experiences.html',
   styleUrl: './experiences.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Experiences {
-  readonly selectedIndex = signal<number | null>(null);
   readonly selectedExperience = signal<Experience | null>(null);
   protected readonly experiencesService: ExperiencesService = inject(ExperiencesService);
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;
   protected readonly EXPERIENCES = EXPERIENCES;
+
+  protected readonly formatService: FormatService = inject(FormatService);
   private readonly store = inject(Store);
   experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
 
-  onSelection(event: { item: Experience; index: number }): void {
-    this.selectedIndex.set(event.index);
-    this.selectedExperience.set(event.item);
+  constructor() {
+    this.experiencesWindow$.pipe(takeUntilDestroyed()).subscribe(window => {
+      if (window?.status === CLOSED) {
+        this.selectedExperience.set(null);
+      }
+    });
   }
 
-  formatDuration(duration: { startDate: Date; endDate: Date }): string {
-    const startMonth = duration.startDate.toLocaleDateString('fr-FR', { month: '2-digit', year: 'numeric' });
-    const endMonth = duration.endDate.toLocaleDateString('fr-FR', { month: '2-digit', year: 'numeric' });
-    return `${startMonth} - ${endMonth}`;
+  onSelection(event: { item: Experience; index: number }): void {
+    this.selectedExperience.set(event.item);
   }
 }
