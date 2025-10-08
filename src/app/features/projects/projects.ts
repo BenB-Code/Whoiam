@@ -10,8 +10,8 @@ import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
 import { Card } from '../../common/components/card/card';
-import { Bubble } from '../../common/components/bubble/bubble';
 import { GREEN } from '../../common/constants/style.const';
+import { Bubble } from '../../common/components/bubble/bubble';
 
 @Component({
   selector: 'app-projects',
@@ -30,17 +30,4 @@ export class Projects {
   protected readonly GREEN = GREEN;
   private readonly store = inject(Store);
   projectsWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(PROJECTS));
-
-  getStatusColor(status: string): string {
-    switch (status) {
-      case 'active':
-        return '#00CA4E';
-      case 'completed':
-        return '#007ACC';
-      case 'archived':
-        return '#FFA500';
-      default:
-        return '#666';
-    }
-  }
 }

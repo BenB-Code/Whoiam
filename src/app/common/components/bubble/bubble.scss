@@ -1,10 +1,25 @@
 @use '../../../../assets/styles/index' as *;
 
-:host {
+div {
   border-radius: 0.5rem;
-  background: $light-grey;
   padding: $space-xs $space-sm;
   margin: 0 $space-xs;
   font-size: $font-size-xs;
   opacity: 1;
+
+  &.grey {
+    background: $light-grey;
+  }
+
+  &.orange {
+    background: $accent-orange-strong;
+  }
+
+  &.red {
+    background: $accent-red-strong;
+  }
+
+  &.green {
+    background: $accent-green-strong;
+  }
 }

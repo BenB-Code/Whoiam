@@ -34,7 +34,7 @@
         <p>Technologies:</p>
         <article class="bubbles">
           @if (project.technologies) { @for (techno of project.technologies; track $index) {
-          <app-bubble [textContent]="techno" />
+          <app-bubble [contentText]="techno" />
           } }
         </article>
       </section>
