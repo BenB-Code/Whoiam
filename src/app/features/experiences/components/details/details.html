@@ -1,0 +1,32 @@
+@if (experience()) {
+<section>
+  <h2>{{ experience()!.name }}</h2>
+  <h3>{{ experience()!.company }}</h3>
+  <p><strong>Durée :</strong> {{ formatService.formatDuration(experience()!.duration) }}</p>
+  <p>
+    <strong>Localisation :</strong> {{ experience()!.localisation.city }} , {{ experience()!.localisation.state }} - {{
+    experience()!.localisation.country }}
+  </p>
+  <section>
+    <h3>Actions</h3>
+    <ul>
+      @for (action of experience()!.actions; track $index) {
+      <li>{{ action }}</li>
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h3>Compétences</h3>
+    <div class="skills-list">
+      @for (skill of experience()!.skills; track $index) {
+      <app-bubble [contentText]="skill" />
+      }
+    </div>
+  </section>
+</section>
+} @else {
+<div class="placeholder">
+  <p>Sélectionnez une expérience pour voir les détails</p>
+</div>
+}

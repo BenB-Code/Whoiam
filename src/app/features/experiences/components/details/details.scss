@@ -1,0 +1,47 @@
+@use '../../../../../assets/styles/index' as *;
+
+section {
+  margin-bottom: $space-xl;
+
+  h2 {
+    margin: 0 0 $space-sm 0;
+    font-size: $font-size-xl;
+  }
+
+  h3 {
+    margin: $space-lg 0 $space-sm 0;
+    font-size: $font-size-lg;
+    color: $system-accent;
+  }
+
+  ul {
+    margin: $space-sm 0;
+    padding-left: $space-xl;
+
+    li {
+      margin-bottom: $space-sm;
+      line-height: 1.4;
+    }
+  }
+
+  p {
+    margin: $space-sm 0;
+    line-height: 1.4;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm;
+    margin-top: $space-sm;
+  }
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
+  font-style: italic;
+}
