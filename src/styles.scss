@@ -16,6 +16,9 @@
 .maximized {
   height: 100% !important;
   width: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translate(0, 0) !important;
 }
 
 .minimized {

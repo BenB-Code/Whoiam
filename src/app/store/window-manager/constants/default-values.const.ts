@@ -10,9 +10,9 @@ export const DEFAULT_POSITION: Record<WindowType, Position> = {
     transform: 'translate(-50%, -50%)',
   },
   [EXPERIENCES]: {
-    x: '50%',
-    y: '50%',
-    transform: 'translate(-50%, -50%)',
+    x: '0%',
+    y: '15%',
+    transform: 'translate(0%, 0%)',
   },
   [PROJECTS]: {
     x: '10%',
@@ -48,7 +48,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
 export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: HOME,
-    status: OPEN,
+    status: CLOSED,
     disableFullscreen: true,
     position: DEFAULT_POSITION[HOME],
     size: DEFAULT_SIZES[HOME],
@@ -57,7 +57,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   },
   {
     id: EXPERIENCES,
-    status: CLOSED,
+    status: OPEN,
     disableFullscreen: false,
     position: DEFAULT_POSITION[EXPERIENCES],
     size: DEFAULT_SIZES[EXPERIENCES],
@@ -67,7 +67,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: PROJECTS,
     status: CLOSED,
-    disableFullscreen: true,
+    disableFullscreen: false,
     position: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],
     zIndex: DEFAULT_ZINDEX,
