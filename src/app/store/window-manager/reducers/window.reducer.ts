@@ -105,7 +105,11 @@ export const windowReducer = createReducer(
     return adapter.updateOne(
       {
         id: id,
-        changes: { status, lastStatus: currentWindow?.status, isActive: true },
+        changes: {
+          status,
+          lastStatus: currentWindow?.status,
+          isActive: true,
+        },
       },
       state
     );
