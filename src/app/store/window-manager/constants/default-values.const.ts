@@ -33,7 +33,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
   },
   [EXPERIENCES]: {
     width: '80%',
-    height: '90%',
+    height: '60%',
   },
   [PROJECTS]: {
     width: '80%',
@@ -48,7 +48,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
 export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: HOME,
-    status: CLOSED,
+    status: OPEN,
     disableFullscreen: true,
     position: DEFAULT_POSITION[HOME],
     size: DEFAULT_SIZES[HOME],
@@ -57,7 +57,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   },
   {
     id: EXPERIENCES,
-    status: OPEN,
+    status: CLOSED,
     disableFullscreen: false,
     position: DEFAULT_POSITION[EXPERIENCES],
     size: DEFAULT_SIZES[EXPERIENCES],

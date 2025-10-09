@@ -1,47 +1,73 @@
 @use '../../../../../assets/styles/index' as *;
 
-section {
-  margin-bottom: $space-xl;
+:host {
+  display: flex;
+  flex-direction: column;
 
-  h2 {
-    margin: 0 0 $space-sm 0;
-    font-size: $font-size-xl;
-  }
+  .infos {
+    width: 100%;
 
-  h3 {
-    margin: $space-lg 0 $space-sm 0;
-    font-size: $font-size-lg;
-    color: $system-accent;
-  }
+    h4 {
+      margin: $space-md 0;
+      font-size: $font-size-lg;
+      color: $orange;
+    }
 
-  ul {
-    margin: $space-sm 0;
-    padding-left: $space-xl;
-
-    li {
-      margin-bottom: $space-sm;
-      line-height: 1.4;
+    p {
+      margin: 0;
     }
   }
 
-  p {
-    margin: $space-sm 0;
-    line-height: 1.4;
+  .content {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+
+    h4 {
+      font-size: $font-size-xl;
+      margin-bottom: $space-md;
+    }
+
+    .actions {
+      width: 68%;
+
+      ul {
+        margin: $space-sm 0;
+        padding-left: $space-xl;
+        list-style: square outside none;
+
+        li {
+          margin-bottom: $space-xs;
+          line-height: 1.4;
+
+          &::marker {
+            color: #ff920a;
+            transform: skewX(45deg);
+          }
+        }
+      }
+    }
   }
 
-  .skills-list {
+  .skills {
+    width: 31%;
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-sm;
+      margin-top: $space-sm;
+    }
+  }
+
+  .placeholder {
     display: flex;
-    flex-wrap: wrap;
-    gap: $space-sm;
-    margin-top: $space-sm;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-style: italic;
+    color: $gray-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
   }
-}
-
-.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #666;
-  font-style: italic;
 }

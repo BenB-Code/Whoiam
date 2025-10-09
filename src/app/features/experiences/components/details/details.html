@@ -1,14 +1,16 @@
 @if (experience()) {
-<section>
-  <h2>{{ experience()!.name }}</h2>
-  <h3>{{ experience()!.company }}</h3>
+<section class="infos">
+  <h3>{{ experience()!.name }}</h3>
+  <h4>{{ experience()!.company }}</h4>
   <p><strong>Durée :</strong> {{ formatService.formatDuration(experience()!.duration) }}</p>
   <p>
     <strong>Localisation :</strong> {{ experience()!.localisation.city }} , {{ experience()!.localisation.state }} - {{
     experience()!.localisation.country }}
   </p>
-  <section>
-    <h3>Actions</h3>
+</section>
+<section class="content">
+  <section class="actions">
+    <h4>Actions</h4>
     <ul>
       @for (action of experience()!.actions; track $index) {
       <li>{{ action }}</li>
@@ -16,11 +18,11 @@
     </ul>
   </section>
 
-  <section>
-    <h3>Compétences</h3>
-    <div class="skills-list">
+  <section class="skills">
+    <h4>Compétences</h4>
+    <div class="list">
       @for (skill of experience()!.skills; track $index) {
-      <app-bubble [contentText]="skill" />
+      <app-bubble [color]="ORANGE" [contentText]="skill" />
       }
     </div>
   </section>
