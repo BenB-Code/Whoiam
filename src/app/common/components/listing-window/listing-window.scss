@@ -49,6 +49,7 @@
 
             &:hover,
             &.active {
+              transition: background $timer-fast;
               background:
                 linear-gradient($light-orange, $light-orange) padding-box,
                 linear-gradient(

@@ -105,6 +105,11 @@
             font-size: $font-size-md;
             color: $system-white;
             padding: $space-sm $space-md;
+
+            &:hover {
+              transform: scale(102%);
+              transition: transform $timer-fast;
+            }
           }
         }
       }

@@ -35,6 +35,7 @@
 
     &:hover {
       transform: scale(105%) translateY(-0.1rem);
+      transition: transform $timer-fast;
     }
 
     &.no-bg {

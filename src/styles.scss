@@ -38,6 +38,7 @@ a {
 
   &:hover {
     color: $os-red;
+    transition: color $timer-fast;
   }
 }
 

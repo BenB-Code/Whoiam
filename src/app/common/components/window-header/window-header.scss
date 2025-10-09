@@ -48,6 +48,7 @@
 
       &:hover {
         transform: scale(110%);
+        transition: transform $timer-fast;
       }
     }
   }

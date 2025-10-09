@@ -29,14 +29,16 @@
         <p>{{ contactsService.placeholder() }}</p>
       </div>
       } @else { @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
-      <button
-        type="button"
-        (click)="navigationService.redirect(contactMethod.url)"
-        (keydown.enter)="navigationService.redirect(contactMethod.url)"
-      >
-        <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
+      <section class="btn-container">
+        <button
+          type="button"
+          (click)="navigationService.redirect(contactMethod.url)"
+          (keydown.enter)="navigationService.redirect(contactMethod.url)"
+        >
+          <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
+        </button>
         <p>{{ contactMethod.name }}</p>
-      </button>
+      </section>
       } }
     </article>
   </section>

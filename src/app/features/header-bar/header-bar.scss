@@ -30,7 +30,7 @@
     justify-content: center;
 
     .i18n {
-      margin-right: 0.5rem;
+      margin-right: $space-sm;
       display: inline-flex;
       align-items: center;
 
@@ -42,14 +42,19 @@
         margin-right: $space-md;
         cursor: pointer;
         filter: grayscale(50%);
+        border: 1px solid transparent;
 
         &:first-child {
           margin-right: $space-sm;
         }
 
-        &.active {
-          border: 2px solid $system-white;
+        &.active,
+        &:hover {
+          border: 1px solid $system-white;
           filter: grayscale(0);
+          transition:
+            filter $timer-fast,
+            border $timer-fast;
         }
       }
     }
