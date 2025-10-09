@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { GREEN, GREY, ORANGE, RED } from '../../constants/style.const';
 import { NgClass } from '@angular/common';
 
@@ -7,6 +7,7 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './bubble.html',
   styleUrl: './bubble.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Bubble {
   readonly contentText = input('');
