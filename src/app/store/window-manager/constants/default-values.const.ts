@@ -7,22 +7,18 @@ export const DEFAULT_POSITION: Record<WindowType, Position> = {
   [HOME]: {
     x: '17.5%',
     y: '5%',
-    transform: 'translate(0%, 0%)',
   },
   [EXPERIENCES]: {
     x: '0%',
     y: '5%',
-    transform: 'translate(0%, 0%)',
   },
   [PROJECTS]: {
     x: '10%',
     y: '1%',
-    transform: 'translate(0%, 0%)',
   },
   [CONTACT]: {
     x: '69%',
     y: '5%',
-    transform: 'translate(0%, 0%)',
   },
 };
 
