@@ -5,20 +5,20 @@ import { CLOSED, OPEN } from './status.const';
 export const DEFAULT_ZINDEX = 1;
 export const DEFAULT_POSITION: Record<WindowType, Position> = {
   [HOME]: {
-    x: '17.5%',
+    x: '3%',
     y: '5%',
   },
   [EXPERIENCES]: {
-    x: '0%',
-    y: '5%',
+    x: '6%',
+    y: '15%',
   },
   [PROJECTS]: {
-    x: '10%',
-    y: '1%',
+    x: '9%',
+    y: '25%',
   },
   [CONTACT]: {
-    x: '69%',
-    y: '5%',
+    x: '68%',
+    y: '3%',
   },
 };
 
