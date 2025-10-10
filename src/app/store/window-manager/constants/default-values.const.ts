@@ -5,9 +5,9 @@ import { CLOSED, OPEN } from './status.const';
 export const DEFAULT_ZINDEX = 1;
 export const DEFAULT_POSITION: Record<WindowType, Position> = {
   [HOME]: {
-    x: '50%',
-    y: '50%',
-    transform: 'translate(-50%, -50%)',
+    x: '17.5%',
+    y: '5%',
+    transform: 'translate(0%, 0%)',
   },
   [EXPERIENCES]: {
     x: '0%',
@@ -51,6 +51,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: OPEN,
     disableFullscreen: true,
     position: DEFAULT_POSITION[HOME],
+    lastPosition: DEFAULT_POSITION[HOME],
     size: DEFAULT_SIZES[HOME],
     zIndex: 2,
     isActive: true,
@@ -60,6 +61,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     disableFullscreen: false,
     position: DEFAULT_POSITION[EXPERIENCES],
+    lastPosition: DEFAULT_POSITION[EXPERIENCES],
     size: DEFAULT_SIZES[EXPERIENCES],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -69,6 +71,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     disableFullscreen: true,
     position: DEFAULT_POSITION[PROJECTS],
+    lastPosition: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,
@@ -78,6 +81,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
     status: CLOSED,
     disableFullscreen: true,
     position: DEFAULT_POSITION[CONTACT],
+    lastPosition: DEFAULT_POSITION[CONTACT],
     size: DEFAULT_SIZES[CONTACT],
     zIndex: DEFAULT_ZINDEX,
     isActive: false,

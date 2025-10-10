@@ -9,6 +9,7 @@ import {
   openWindow,
   restoreWindow,
   setActiveWindow,
+  updateWindow,
 } from '../actions/window.actions';
 
 export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowState>({
@@ -101,12 +102,12 @@ export const windowReducer = createReducer(
   }),
   on(maximizeWindow, (state, { id }) => {
     const currentWindow = state.entities[id];
-    const status = currentWindow?.status === OPEN ? MAXIMIZED : OPEN;
+    const statusIsOpen = currentWindow?.status === OPEN ? MAXIMIZED : OPEN;
     return adapter.updateOne(
       {
         id: id,
         changes: {
-          status,
+          status: statusIsOpen,
           lastStatus: currentWindow?.status,
           isActive: true,
         },
@@ -130,6 +131,23 @@ export const windowReducer = createReducer(
     }));
 
     return adapter.updateMany(updates, state);
+  }),
+  on(updateWindow, (state, { id, position }) => {
+    const currentWindow = state.entities[id];
+    console.log(position);
+    console.log(currentWindow?.position);
+    console.log(state);
+
+    return adapter.updateOne(
+      {
+        id,
+        changes: {
+          position,
+          lastPosition: currentWindow?.position,
+        },
+      },
+      state
+    );
   })
 );
 

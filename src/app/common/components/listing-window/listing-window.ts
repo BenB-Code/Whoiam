@@ -13,10 +13,11 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
 import { TRANSPARENT } from '../../constants/style.const';
+import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-listing-window',
-  imports: [NgClass, NgTemplateOutlet, WindowHeader],
+  imports: [NgClass, NgTemplateOutlet, WindowHeader, CdkDrag],
   templateUrl: './listing-window.html',
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +27,7 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();
   @Output() readonly itemSelected = new EventEmitter<{ item: T; index: number }>();
+  @Output() readonly dragNDropEvent = new EventEmitter<CdkDragEnd>();
 
   readonly items = input<T[]>([]);
   readonly title = input<string>('Liste');
@@ -40,6 +42,10 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.selectedItemSignal.set(this.selectedIndex());
+  }
+
+  onDragEnded(event: CdkDragEnd): void {
+    this.dragNDropEvent.emit(event);
   }
 
   selectItem(item: T, index: number): void {

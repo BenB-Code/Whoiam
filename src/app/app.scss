@@ -7,17 +7,19 @@
   }
 
   .global-content {
-    height: calc(100% - #{$space-sm});
+    height: calc(100% - #{$space-sm} - #{$header-height} - #{$space-sm});
     position: relative;
+    overflow: hidden;
+    top: calc(#{$space-sm} + #{$header-height});
 
     app-home,
     app-contact,
     app-experiences,
     app-projects {
       position: absolute;
-      top: $space-2xl;
-      left: $space-sm;
-      right: $space-sm;
+      top: 0;
+      left: 0;
+      right: 0;
       bottom: $space-4xl + $space-sm;
     }
   }

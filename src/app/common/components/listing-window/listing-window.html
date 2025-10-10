@@ -1,4 +1,4 @@
-<article class="window">
+<article cdkDrag cdkDragBoundary=".drag-n-drop-boundary" class="window" (cdkDragEnded)="onDragEnded($event)">
   <div class="vertical-nav">
     <app-window-header
       [backgroundColor]="TRANSPARENT"

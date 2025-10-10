@@ -9,6 +9,7 @@ export type WindowState = {
   disableFullscreen?: boolean;
   lastStatus?: WindowStatus;
   position?: Position;
+  lastPosition?: Position;
   size?: Size;
   zIndex: number;
   isActive: boolean;
