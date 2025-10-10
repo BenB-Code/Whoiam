@@ -1,4 +1,11 @@
-<article cdkDrag cdkDragBoundary=".drag-n-drop-boundary" class="window" (cdkDragEnded)="onDragEnded($event)">
+<article
+  cdkDrag
+  cdkDragBoundary=".drag-n-drop-boundary"
+  class="window"
+  [cdkDragDisabled]="disableDrag()"
+  (cdkDragEnded)="onDragEnded($event)"
+  (cdkDragStarted)="onDragStart()"
+>
   <app-window-header
     [disableFullscreen]="disableFullscreen()"
     [title]="title()"

@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, input, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, input, Output, signal } from '@angular/core';
 import { WindowComponentBase } from '../../models/window-component.base';
 import { WindowHeader } from '../window-header/window-header';
 import { NgClass } from '@angular/common';
 import { RAINBOW } from '../../constants/style.const';
 import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { Position } from '../../../store';
+import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
 
 @Component({
   selector: 'app-content-window',
@@ -16,15 +18,24 @@ export class ContentWindow extends WindowComponentBase {
   @Output() readonly closeEvent = new EventEmitter<void>();
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();
-  @Output() readonly dragNDropEvent = new EventEmitter<CdkDragEnd>();
+  @Output() readonly dragNDropEndEvent = new EventEmitter<Position>();
+  @Output() readonly dragNDropStartEvent = new EventEmitter<void>();
 
   readonly title = input('');
   readonly disableFullscreen = input<boolean>(false);
   readonly color = input<string>(RAINBOW);
   readonly isFullscreen = signal<boolean>(false);
+  readonly disableDrag = input<boolean>(false);
+
+  private readonly dragNDropService: DragNDropService = inject(DragNDropService);
+
+  onDragStart(): void {
+    this.dragNDropStartEvent.emit();
+  }
 
   onDragEnded(event: CdkDragEnd): void {
-    this.dragNDropEvent.emit(event);
+    this.dragNDropEndEvent.emit(this.dragNDropService.processNewPosition(event));
+    event.source.reset();
   }
 
   close(): void {

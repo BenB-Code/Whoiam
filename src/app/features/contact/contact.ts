@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CLOSED, CONTACT, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
+import { CLOSED, CONTACT, MAXIMIZED, MINIMIZED, OPEN, selectWindowById, WindowState } from '../../store';
 import { ContentWindow } from '../../common/components/content-window/content-window';
 import { ContactsService } from '../../services/contact/contacts.service';
 import { Spinner } from '../../common/components/spinner/spinner';
@@ -24,6 +24,7 @@ export class Contact {
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;
+  protected readonly OPEN = OPEN;
   private readonly store = inject(Store);
   contactWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(CONTACT));
 }

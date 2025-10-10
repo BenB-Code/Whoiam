@@ -3,7 +3,7 @@ import { ListingWindow } from '../../common/components/listing-window/listing-wi
 import { Experience } from './models/experience.type';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CLOSED, EXPERIENCES, MAXIMIZED, MINIMIZED, selectWindowById, WindowState } from '../../store';
+import { CLOSED, EXPERIENCES, MAXIMIZED, MINIMIZED, OPEN, selectWindowById, WindowState } from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { ExperiencesService } from './services/experiences.service';
 import { Spinner } from '../../common/components/spinner/spinner';
@@ -29,6 +29,7 @@ export class Experiences {
   protected readonly EXPERIENCES = EXPERIENCES;
 
   protected readonly formatService: FormatService = inject(FormatService);
+  protected readonly OPEN = OPEN;
   private readonly store = inject(Store);
   experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
 

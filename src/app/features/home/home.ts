@@ -8,6 +8,7 @@ import {
   HOME,
   MAXIMIZED,
   MINIMIZED,
+  OPEN,
   openWindow,
   PROJECTS,
   selectWindowById,
@@ -35,6 +36,7 @@ export class Home {
   protected readonly EXPERIENCES = EXPERIENCES;
   protected readonly CONTACT = CONTACT;
   protected readonly RED = RED;
+  protected readonly OPEN = OPEN;
   private readonly store = inject(Store);
   homeWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(HOME));
 

@@ -6,6 +6,7 @@
   [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
   [color]="GREEN"
+  [disableDrag]="projectsWindow.status !== OPEN"
   [disableFullscreen]="projectsWindow?.disableFullscreen === true"
   [style.height]="projectsWindow.size?.height"
   [style.left]="projectsWindow.position?.x"

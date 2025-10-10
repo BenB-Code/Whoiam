@@ -1,5 +1,13 @@
 import { Directive, HostListener, inject, input, OnInit } from '@angular/core';
-import { closeWindow, maximizeWindow, minimizeWindow, setActiveWindow, WindowType } from '../../store';
+import {
+  closeWindow,
+  maximizeWindow,
+  minimizeWindow,
+  Position,
+  setActiveWindow,
+  updateWindow,
+  WindowType,
+} from '../../store';
 import { Store } from '@ngrx/store';
 import { ContentWindow } from '../components/content-window/content-window';
 import { ListingWindow } from '../components/listing-window/listing-window';
@@ -36,6 +44,12 @@ export class WindowActions implements OnInit {
     });
     this.windowComponent.closeEvent.subscribe(() => {
       this.store.dispatch(closeWindow({ id: this.windowId() as WindowType }));
+    });
+    this.windowComponent.dragNDropEndEvent.subscribe((position: Position) => {
+      this.store.dispatch(updateWindow({ id: this.windowId() as WindowType, position }));
+    });
+    this.windowComponent.dragNDropStartEvent.subscribe((position: Position) => {
+      this.store.dispatch(setActiveWindow({ id: this.windowId() as WindowType }));
     });
   }
 }

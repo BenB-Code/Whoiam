@@ -5,6 +5,7 @@
   [class.active]="contactWindow.isActive"
   [class.maximized]="contactWindow.status === MAXIMIZED"
   [class.minimized]="contactWindow.status === MINIMIZED"
+  [disableDrag]="contactWindow.status !== OPEN"
   [disableFullscreen]="contactWindow?.disableFullscreen === true"
   [style.height]="contactWindow.size?.height"
   [style.left]="contactWindow.position?.x"

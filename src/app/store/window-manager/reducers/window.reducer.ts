@@ -118,7 +118,7 @@ export const windowReducer = createReducer(
   on(setActiveWindow, (state, { id }) => {
     const targetWindow = state.entities[id];
     if (!targetWindow || targetWindow.status === CLOSED) {
-      return state; // Pas de changement
+      return state;
     }
 
     const maxZ = selectMaxZIndexValue(state) + 1;
@@ -133,17 +133,11 @@ export const windowReducer = createReducer(
     return adapter.updateMany(updates, state);
   }),
   on(updateWindow, (state, { id, position }) => {
-    const currentWindow = state.entities[id];
-    console.log(position);
-    console.log(currentWindow?.position);
-    console.log(state);
-
     return adapter.updateOne(
       {
         id,
         changes: {
           position,
-          lastPosition: currentWindow?.position,
         },
       },
       state
