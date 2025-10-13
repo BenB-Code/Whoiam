@@ -16,7 +16,7 @@ import { provideEffects } from '@ngrx/effects';
 import { WindowEffects } from './store/window-manager/effects/window.effects';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { EN, FR } from './common/constants/lang.const';
+import { FR } from './common/constants/lang.const';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideTranslateService({
       lang: FR,
-      fallbackLang: EN,
+      fallbackLang: FR,
       loader: provideTranslateHttpLoader({
         prefix: '/assets/i18n/',
         suffix: '.json',

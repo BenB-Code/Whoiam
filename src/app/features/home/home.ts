@@ -19,10 +19,11 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { WindowActions } from '../../common/directives';
 import { RED } from '../../common/constants/style.const';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [ContentWindow, AsyncPipe, WindowActions],
+  imports: [ContentWindow, AsyncPipe, WindowActions, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

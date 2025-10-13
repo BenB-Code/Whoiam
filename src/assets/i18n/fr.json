@@ -1,0 +1,35 @@
+{
+  "home": {
+    "hi": "Hey",
+    "short-1": "Je m'appelle",
+    "short-2": "développeur web",
+    "short-3": "",
+    "intro": "Je conçois et développe des <strong>applications web robustes et scalables</strong> avec <strong>Angular & NestJS.</strong>",
+    "description": "Spécialisé en <strong>Angular</strong> depuis plusieurs années, je ne me contente pas d'apporter mon expertise technique mais également <strong>une communication claire </strong> et un <strong>fort esprit d'équipe</strong> qui rendent la collaboration fluide et efficace.",
+    "signature": "Ma patte ? Un code de qualité, une intégration aux équipes rapide, l'énergie et la positivité qui font avancer les projets.",
+    "cta-1": "Découvrez mes",
+    "cta-2": "et",
+    "cta-3": "ou",
+    "optimalExp": "Expérience optimale sur ordinateur – naviguez comme sur votre poste de travail.",
+    "projects": "projets perso",
+    "experiences": "expériences pro",
+    "connect": "contactez-moi"
+  },
+  "contact": {
+    "description": "N'hésitez pas à me contacter par le moyen qui vous convient.",
+    "unreachable": "Je reviens vite. Impossible de me contacter pour le moment.",
+    "error": "Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard."
+  },
+  "common": {
+    "loading": "Chargement",
+    "close": "Fermer",
+    "reduce": "Reduire",
+    "fullscreen": "Plein écran"
+  },
+  "page": {
+    "contact": "Contact",
+    "home": "Accueil",
+    "exp": "Expériences",
+    "projects": "Projets"
+  }
+}

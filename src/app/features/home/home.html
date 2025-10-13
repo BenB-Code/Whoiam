@@ -1,7 +1,6 @@
 @if (homeWindow$ | async; as homeWindow) { @if (homeWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
-  title="Home"
   [class.active]="homeWindow.isActive"
   [class.maximized]="homeWindow.status === MAXIMIZED"
   [class.minimized]="homeWindow.status === MINIMIZED"
@@ -13,51 +12,45 @@
   [style.top]="homeWindow.position?.y"
   [style.width]="homeWindow.size?.width"
   [style.z-index]="homeWindow.zIndex"
+  [title]="HOME"
   [windowId]="HOME"
 >
   <article>
     <section class="description">
-      <h1>Hi</h1>
-      <h3>I'm <span class="name">Benjamin</span>, a <span class="skill">fullstack</span> web developer</h3>
-
-      <p class="intro">
-        I design and build <strong>robust, scalable web applications</strong> with <strong>Angular & NestJS.</strong>
-      </p>
-
-      <p>
-        Specialized in <strong>Angular</strong> for several years, I bring not only technical expertise but also
-        <strong>clear communication</strong> and a <strong>genuine team spirit</strong> that makes collaboration smooth
-        and efficient.
-      </p>
-
-      <p class="highlight">
-        My signature ? Maintainable code, rapid integration, and positive energy that moves projects forward.
-      </p>
+      <h1>{{ 'home.hi' | translate }}</h1>
+      <h3>
+        {{ 'home.short-1' | translate }} <span class="name">Benjamin</span>, {{ 'home.short-2' | translate }}
+        <span class="skill">fullstack</span>
+        {{ 'home.short-3' | translate }}
+      </h3>
+      <p class="intro" [innerHTML]="'home.intro' | translate"></p>
+      <p [innerHTML]="'home.description' | translate"></p>
+      <p class="highlight">{{ 'home.signature' | translate }}</p>
 
       <p class="cta">
-        Discover my
+        {{ 'home.cta-1' | translate }}
         <a
           tabindex="0"
           (click)="open(PROJECTS); $event.stopPropagation()"
           (keydown.enter)="open(PROJECTS); $event.stopPropagation()"
-          >projects</a
+          >{{ 'home.projects' | translate }}</a
         >
-        and
+        {{ 'home.cta-2' | translate }}
         <a
           tabindex="0"
           (click)="open(EXPERIENCES); $event.stopPropagation()"
           (keydown.enter)="open(EXPERIENCES); $event.stopPropagation()"
-          >experiences</a
-        >, or
+          >{{ 'home.experiences' | translate }}</a
+        >, {{ 'home.cta-3' | translate }}
         <a
           tabindex="0"
           (click)="open(CONTACT); $event.stopPropagation()"
           (keydown.enter)="open(CONTACT); $event.stopPropagation()"
-          >let's connect</a
+          >{{ 'home.connect' | translate }}</a
         >.
       </p>
 
-      <p class="italic">Optimal experience designed for desktop – explore it like you would on your computer.</p>
+      <p class="italic">{{ 'home.optimalExp' | translate }}</p>
     </section>
     <section class="picture">
       <div class="img-container">
