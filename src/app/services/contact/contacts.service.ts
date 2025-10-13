@@ -13,9 +13,7 @@ export class ContactsService {
   readonly hasError = computed(() => this.error() !== null);
   readonly isEmpty = computed(() => !this.hasError() && this.contacts().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  readonly placeholder = computed(() =>
-    this.hasError() ? this.error() : 'Aucun moyen de me contacter pour le moment.'
-  );
+  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'contact.unreachable'));
   private readonly dataService = inject(DataService);
 
   loadContacts(): void {
@@ -35,9 +33,7 @@ export class ContactsService {
       }),
       catchError(err => {
         console.error('Error loading contact: ', err);
-        this.error.set(
-          'Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard.'
-        );
+        this.error.set('contact.error');
         this.isLoading.set(false);
         this.contacts.set([]);
         return of([]);

@@ -1,7 +1,6 @@
 @if (contactWindow$ | async; as contactWindow) { @if (contactWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
-  title="Contact"
   [class.active]="contactWindow.isActive"
   [class.maximized]="contactWindow.status === MAXIMIZED"
   [class.minimized]="contactWindow.status === MINIMIZED"
@@ -12,15 +11,16 @@
   [style.top]="contactWindow.position?.y"
   [style.width]="contactWindow.size?.width"
   [style.z-index]="contactWindow.zIndex"
+  [title]="CONTACT"
   [windowId]="CONTACT"
 >
   @if (contactsService.isLoading()) {
   <app-spinner />
   } @else if (contactsService.shouldDisplayPlaceholder()) {
-  <app-placeholder-text [textContent]="contactsService.placeholder() || ''" />
+  <app-placeholder-text [textContent]="contactsService.placeholder() | translate" />
   } @else {
   <section>
-    <p class="description">Feel free to contact me with any of this ways.</p>
+    <p class="description">{{ 'contact.description' | translate }}</p>
     <article>
       @if (contactsService.isLoading()) {
       <app-spinner />

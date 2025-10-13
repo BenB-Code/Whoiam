@@ -9,10 +9,11 @@ import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact',
-  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, TranslatePipe],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
