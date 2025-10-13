@@ -4,8 +4,22 @@
 </article>
 <article class="right-side">
   <div class="i18n">
-    <img alt="FR" class="active" src="../../../assets/icons/flag-for-france-svgrepo-com.svg" />
-    <img alt="EN" src="../../../assets/icons/united-kingdom-svgrepo-com.svg" />
+    <img
+      alt="FR"
+      src="../../../assets/icons/flag-for-france-svgrepo-com.svg"
+      tabindex="0"
+      [class.active]="activeLang === FR"
+      (click)="setLang(FR)"
+      (keydown.enter)="setLang(FR)"
+    />
+    <img
+      alt="EN"
+      src="../../../assets/icons/united-kingdom-svgrepo-com.svg"
+      tabindex="0"
+      [class.active]="activeLang === EN"
+      (click)="setLang(EN)"
+      (keydown.enter)="setLang(EN)"
+    />
   </div>
   <div class="time">{{ time() | date:"EEE dd MMM HH:mm":"fr-FR" }}</div>
 </article>
