@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { ListingWindow } from '../../common/components/listing-window/listing-window';
 import { Experience } from './models/experience.type';
 import { Store } from '@ngrx/store';
@@ -22,27 +22,33 @@ import { TranslatePipe } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Experiences {
-  readonly selectedExperience = signal<Experience | null>(null);
   protected readonly experiencesService: ExperiencesService = inject(ExperiencesService);
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
   protected readonly CLOSED = CLOSED;
   protected readonly EXPERIENCES = EXPERIENCES;
-
   protected readonly formatService: FormatService = inject(FormatService);
   protected readonly OPEN = OPEN;
+  private readonly selectedExperienceIndex = signal<number | null>(null);
+  readonly selectedExperience = computed(() => {
+    const index = this.selectedExperienceIndex();
+    if (index === null) {
+      return null;
+    }
+    return this.experiencesService.experiences()[index] || null;
+  });
   private readonly store = inject(Store);
   experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
 
   constructor() {
     this.experiencesWindow$.pipe(takeUntilDestroyed()).subscribe(window => {
       if (window?.status === CLOSED) {
-        this.selectedExperience.set(null);
+        this.selectedExperienceIndex.set(null);
       }
     });
   }
 
   onSelection(event: { item: Experience; index: number }): void {
-    this.selectedExperience.set(event.item);
+    this.selectedExperienceIndex.set(event.index);
   }
 }
