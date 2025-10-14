@@ -1,7 +1,13 @@
 [
   {
-    "company": "Akka I&S",
-    "name": "Ingénieur d'étude et développement",
+    "company": {
+      "fr": "Akka I&S",
+      "en": "Akka I&S"
+    },
+    "name": {
+      "fr": "Ingénieur d'étude et développement",
+      "en": "Study and Development Engineer"
+    },
     "duration": {
       "startDate": "2021-05",
       "endDate": "2024-01"
@@ -11,36 +17,72 @@
       "state": "Nouvelle Aquitaine",
       "country": "France"
     },
-    "actions": [
-      "Développements d'applications from scratch mono et multi-repo",
-      "Développements d'API RestFull en lien avec des bases de données",
-      "Intégration de persistance des données (MongoDb, MySql, NgRx)",
-      "Mise en place et cohérence des tests unitaires, fonctionnels, intégration, e2e",
-      "Mise en place et utilisation de CI Jenkins pour l'automatisation des builds et déploiements",
-      "Création et maintenance de librairies de composants (design system)",
-      "Documentation des outils et méthodologies de travail"
-    ],
-    "skills": [
-      "Angular",
-      "NestJS",
-      "Kafka",
-      "RabbitMq",
-      "Nx",
-      "Micro-services",
-      "Docker",
-      "Kubernetes",
-      "ArgoCd",
-      "Cypress",
-      "Swagger",
-      "Keycloak",
-      "Jenkins",
-      "MongoDB",
-      "Design System"
-    ]
+    "actions": {
+      "fr": [
+        "Développements d'applications from scratch mono et multi-repo",
+        "Développements d'API RestFull en lien avec des bases de données",
+        "Intégration de persistance des données (MongoDb, MySql, NgRx)",
+        "Mise en place et cohérence des tests unitaires, fonctionnels, intégration, e2e",
+        "Mise en place et utilisation de CI Jenkins pour l'automatisation des builds et déploiements",
+        "Création et maintenance de librairies de composants (design system)",
+        "Documentation des outils et méthodologies de travail"
+      ],
+      "en": [
+        "Development of applications from scratch in mono and multi-repo architectures",
+        "Development of RESTful APIs connected to databases",
+        "Integration of data persistence (MongoDB, MySQL, NgRx)",
+        "Implementation and consistency of unit, functional, integration, and e2e tests",
+        "Implementation and use of Jenkins CI for build and deployment automation",
+        "Creation and maintenance of component libraries (design system)",
+        "Documentation of tools and work methodologies"
+      ]
+    },
+    "skills": {
+      "fr": [
+        "Angular",
+        "NestJS",
+        "Kafka",
+        "RabbitMq",
+        "Nx",
+        "Micro-services",
+        "Docker",
+        "Kubernetes",
+        "ArgoCd",
+        "Cypress",
+        "Swagger",
+        "Keycloak",
+        "Jenkins",
+        "MongoDB",
+        "Design System"
+      ],
+      "en": [
+        "Angular",
+        "NestJS",
+        "Kafka",
+        "RabbitMQ",
+        "Nx",
+        "Microservices",
+        "Docker",
+        "Kubernetes",
+        "ArgoCD",
+        "Cypress",
+        "Swagger",
+        "Keycloak",
+        "Jenkins",
+        "MongoDB",
+        "Design System"
+      ]
+    }
   },
   {
-    "company": "SQLI",
-    "name": "Ingénieur concepteur développeur",
+    "company": {
+      "fr": "SQLI",
+      "en": "SQLI"
+    },
+    "name": {
+      "fr": "Ingénieur concepteur développeur",
+      "en": "Software Design Engineer"
+    },
     "duration": {
       "startDate": "2019-03",
       "endDate": "2021-03"
@@ -50,27 +92,54 @@
       "state": "Occitanie",
       "country": "France"
     },
-    "actions": [
-      "Conception et développement, principalement Front, dans l'équipe mobilité numérique.",
-      "Avant-ventes, études de faisabilités techniques",
-      "Conception, PoC",
-      "Développements d'applications mobiles hybrides",
-      "Maintenance applicatives, analyse et évolutions"
-    ],
-    "skills": [
-      "Angular",
-      "Méthode Agile",
-      "SQLite",
-      "Ionic",
-      "GitLab",
-      "Etude de faisabilité",
-      "Analyse technique",
-      "Raffinement de besoin"
-    ]
+    "actions": {
+      "fr": [
+        "Conception et développement, principalement Front, dans l'équipe mobilité numérique.",
+        "Avant-ventes, études de faisabilités techniques",
+        "Conception, PoC",
+        "Développements d'applications mobiles hybrides",
+        "Maintenance applicatives, analyse et évolutions"
+      ],
+      "en": [
+        "Design and development, mainly Front-end, in the digital mobility team",
+        "Pre-sales activities, technical feasibility studies",
+        "Design, PoC",
+        "Development of hybrid mobile applications",
+        "Application maintenance, analysis and evolution"
+      ]
+    },
+    "skills": {
+      "fr": [
+        "Angular",
+        "Méthode Agile",
+        "SQLite",
+        "Ionic",
+        "GitLab",
+        "Etude de faisabilité",
+        "Analyse technique",
+        "Raffinement de besoin"
+      ],
+      "en": [
+        "Angular",
+        "Agile Methodology",
+        "SQLite",
+        "Ionic",
+        "GitLab",
+        "Feasibility Study",
+        "Technical Analysis",
+        "Requirements Refinement"
+      ]
+    }
   },
   {
-    "company": "SQLI",
-    "name": "Stagiaire Concepteur Developpeur Informatique",
+    "company": {
+      "fr": "SQLI",
+      "en": "SQLI"
+    },
+    "name": {
+      "fr": "Stagiaire Concepteur Developpeur Informatique",
+      "en": "Software Developer Intern"
+    },
     "duration": {
       "startDate": "2018-11",
       "endDate": "2019-02"
@@ -80,24 +149,48 @@
       "state": "Occitanie",
       "country": "France"
     },
-    "actions": [
-      "Intégration à une équipe Agile Scrum",
-      "Développement d'applications mobiles hybrides",
-      "Mise en place de dashboards avec graphiques et gestion de statut"
-    ],
-    "skills": [
-      "Angular",
-      "Méthode Agile",
-      "SQLite",
-      "Ionic",
-      "Etude de faisabilité",
-      "Analyse technique",
-      "Raffinement de besoin"
-    ]
+    "actions": {
+      "fr": [
+        "Intégration à une équipe Agile Scrum",
+        "Développement d'applications mobiles hybrides",
+        "Mise en place de dashboards avec graphiques et gestion de statut"
+      ],
+      "en": [
+        "Integration into an Agile Scrum team",
+        "Development of hybrid mobile applications",
+        "Implementation of dashboards with charts and status management"
+      ]
+    },
+    "skills": {
+      "fr": [
+        "Angular",
+        "Méthode Agile",
+        "SQLite",
+        "Ionic",
+        "Etude de faisabilité",
+        "Analyse technique",
+        "Raffinement de besoin"
+      ],
+      "en": [
+        "Angular",
+        "Agile Methodology",
+        "SQLite",
+        "Ionic",
+        "Feasibility Study",
+        "Technical Analysis",
+        "Requirements Refinement"
+      ]
+    }
   },
   {
-    "company": "7 Bataillon de Chasseurs Alpins",
-    "name": "Chasseur Alpins",
+    "company": {
+      "fr": "7 Bataillon de Chasseurs Alpins",
+      "en": "7th Alpine Infantry Battalion"
+    },
+    "name": {
+      "fr": "Chasseur Alpins",
+      "en": "Alpine Infantry"
+    },
     "duration": {
       "startDate": "2013-03",
       "endDate": "2018-04"
@@ -107,12 +200,23 @@
       "state": "Isère",
       "country": "France"
     },
-    "actions": [
-      "Chef d'équipe infanterie de 3 à 7 personnes (suivant la mission)",
-      "Diriger, écouter, comprendre, gérer les conflits entre les personnels",
-      "Responsable d'un magasin de matériels sensibles (1100 références)",
-      "Gestion du local, suivi des perceptions, réintégrations, mise en réparation"
-    ],
-    "skills": ["Management d'équipe", "Gestion des conflits", "Adaptabilité", "Gestion du stress"]
+    "actions": {
+      "fr": [
+        "Chef d'équipe infanterie de 3 à 7 personnes (suivant la mission)",
+        "Diriger, écouter, comprendre, gérer les conflits entre les personnels",
+        "Responsable d'un magasin de matériels sensibles (1100 références)",
+        "Gestion du local, suivi des perceptions, réintégrations, mise en réparation"
+      ],
+      "en": [
+        "Infantry team leader of 3 to 7 people (depending on the mission)",
+        "Lead, listen, understand, manage conflicts between personnel",
+        "Manager of sensitive equipment storage (1100 references)",
+        "Facility management, tracking of issues, returns, and repairs"
+      ]
+    },
+    "skills": {
+      "fr": ["Management d'équipe", "Gestion des conflits", "Adaptabilité", "Gestion du stress"],
+      "en": ["Team Management", "Conflict Management", "Adaptability", "Stress Management"]
+    }
   }
 ]

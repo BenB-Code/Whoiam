@@ -1,7 +1,10 @@
 [
   {
     "name": "Kaamelott Citation Extractor",
-    "description": "An XML parser to extract and structure quotes from the Kaamelott Wikiquote pages",
+    "description": {
+      "fr": "Un parseur XML pour extraire et structurer les citations des pages Wikiquote de Kaamelott",
+      "en": "An XML parser to extract and structure quotes from the Kaamelott Wikiquote pages"
+    },
     "link": {
       "name": "Github",
       "url": "https://github.com/BenB-Code/Kaamelott_Citation_Extractor"
@@ -13,7 +16,10 @@
   },
   {
     "name": "Kaamelott Citation API",
-    "description": "Une API REST qui permet de récupérer, filtrer et rechercher des citations cultes de la série Kaamelott d'Alexandre Astier.",
+    "description": {
+      "fr": "Une API REST qui permet de récupérer, filtrer et rechercher des citations cultes de la série Kaamelott d'Alexandre Astier.",
+      "en": "A REST API to retrieve, filter and search iconic quotes from Alexandre Astier's Kaamelott series."
+    },
     "link": {
       "name": "Github",
       "url": "https://github.com/BenB-Code/Kaamelott_Citation_API"
@@ -25,7 +31,10 @@
   },
   {
     "name": "Whoiam",
-    "description": "Quick portfolio website that act as a resume.",
+    "description": {
+      "fr": "Site web portfolio qui agit comme un CV.",
+      "en": "Portfolio website that acts as a resume."
+    },
     "link": {
       "name": "Github",
       "url": "https://github.com/BenB-Code/Whoiam"
