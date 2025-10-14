@@ -1,59 +1,255 @@
 # Whoiam
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+Un portfolio interactif sous forme de bureau virtuel.
 
-## Development server
+## 🎯 Concept
 
-To start a local development server, run:
+Whoiam est mon site vitrine personnel qui transforme un CV classique en une expérience interactive. Inspiré des interfaces desktop macOS et Linux, il présente mes projets, expériences et informations de contact à travers des fenêtres draggables et un gestionnaire d'état.
 
-```bash
-ng serve
+L'objectif : créer quelque chose de techniquement solide tout en restant visuellement sympathique et original.
+
+## ✨ Fonctionnalités
+
+- Interface desktop avec fenêtres draggables
+- Gestion complète des fenêtres : minimiser, maximiser, fermer
+- Changement de langue à la volée FR/EN sans rechargement
+- Server-Side Rendering pour SEO et performances
+- Mode Zoneless d'Angular 20
+- Architecture modulaire par features
+
+## 🛠️ Stack Technique
+
+### Core
+
+- **Angular 20**
+- **TypeScript 5.8** strict mode
+- **RxJS 7.8**
+- **SCSS**
+
+### Gestion d'état
+
+- **NgRx Store** : Store global pour les fenêtres
+- **NgRx Effects** : Side-effects asynchrones
+- **NgRx Entity** : Normalisation des entités
+- **NgRx DevTools** : Debugging en développement
+
+### Internationalisation
+
+- **ngx-translate** : Traductions dynamiques
+- Custom loaders séparés pour browser et SSR
+
+### UI/UX
+
+- **Angular CDK** : Drag & Drop
+- **OnPush Change Detection**
+- **Angular Signals** : Réactivité fine-grained
+
+### Qualité de code
+
+- **ESLint** : Règles strictes TypeScript + Angular
+- **Prettier** : Formatage automatique
+- **Husky** : Git hooks pre-commit
+- **Lint-staged** : Validation des fichiers modifiés
+
+## 📁 Architecture du Projet
+
+```
+src/
+├── app/
+│   ├── common/                    # Composants et utilitaires partagés
+│   │   ├── components/            # Composants réutilisables
+│   │   │   ├── bubble/
+│   │   │   ├── card/
+│   │   │   ├── content-window/
+│   │   │   ├── listing-window/
+│   │   │   ├── placeholder-text/
+│   │   │   ├── spinner/
+│   │   │   └── window-header/
+│   │   ├── constants/             # Constantes globales
+│   │   ├── directives/            # window-actions
+│   │   └── models/                # Classes de base abstraites
+│   │
+│   ├── features/                  # Features organisées par domaine
+│   │   ├── app-bar/               # Dock
+│   │   ├── contact/
+│   │   ├── experiences/
+│   │   │   ├── components/
+│   │   │   ├── models/
+│   │   │   └── services/
+│   │   ├── header-bar/            # Menu, horloge, langues
+│   │   ├── home/
+│   │   └── projects/
+│   │       ├── models/
+│   │       └── services/
+│   │
+│   ├── services/                  # Services globaux
+│   │   ├── contact/
+│   │   ├── data/
+│   │   ├── drag-n-drop/
+│   │   ├── format/
+│   │   ├── i18n/
+│   │   ├── navigation/
+│   │   └── translate-loader/
+│   │
+│   └── store/                     # NgRx Store - Window Manager
+│       └── window-manager/
+│           ├── actions/
+│           ├── constants/
+│           ├── effects/
+│           ├── models/
+│           ├── reducers/
+│           └── selectors/
+│
+├── assets/
+│   ├── data/                      # JSON
+│   └── i18n/                      # Traductions
+│
+├── main.ts                        # Entry browser
+├── main.server.ts                 # Entry server
+└── server.ts                      # Express SSR
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Organisation
 
-## Code scaffolding
+Architecture **feature-based** :
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Features autonomes avec composants, services et modèles
+- Éléments partagés dans `common/`
+- Store NgRx pour l'état global du window manager
+- Séparation logique métier / présentation
 
-```bash
-ng generate component component-name
+## 🎨 Choix Techniques
+
+### Pas de Routing Angular
+
+Application SPA pure avec navigation par fenêtres. Le routing est géré via le store NgRx plutôt que par des routes URL, créant une expérience utilisateur type bureau desktop.
+
+### NgRx Store
+
+Gestion centralisée de l'état des fenêtres : ouverture, fermeture, position, z-index, focus. NgRx Entity pour la normalisation, selectors mémoïsés pour les performances.
+
+### ngx-translate
+
+Changement de langue instantané avec custom loaders pour résoudre les problématiques de paths en SSR. Helper `getTranslatedField()` pour gérer les données multilingues.
+
+### Mode Zoneless + Signals
+
+Angular 20 en mode zoneless : meilleures performances et détection de changements explicite. Signals pour l'état local réactif, computed pour les dérivations automatiques.
+
+### OnPush + Standalone
+
+Tous les composants en standalone avec OnPush change detection. Utilisation des nouveaux signal inputs et function-based inject.
+
+## 🏗️ Store NgRx - Window Manager
+
+### Structure
+
+```typescript
+State = {
+  windowManager: EntityState < WindowState > {
+    ids: ['home', 'projects', 'experiences', 'contact'],
+    entities: {
+      home: {id, status, position, size, isActive, zIndex, lastStatus},
+      // ...
+    }
+  }
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Actions
 
-```bash
-ng generate --help
+- `openWindow` / `closeWindow`
+- `minimizeWindow` / `maximizeWindow` / `restoreWindow`
+- `setActiveWindow`
+- `updateWindow`
+
+### Logic
+
+**Z-Index** : Calculé dynamiquement, fenêtre active = `max(zIndexes) + 1`
+
+**Status** : `CLOSED → OPEN ⇄ MAXIMIZED → MINIMIZED → lastStatus`
+
+**Position** : Sauvegardée dans le store, reset lors de la fermeture
+
+## 🧩 Conventions
+
+### Naming
+
+- **Components** : PascalCase sans suffix
+- **Files** : kebab-case
+- **Constants** : UPPER_SNAKE_CASE
+- **Types** : PascalCase + `.type.ts`
+
+### Imports
+
+```typescript
+// 1. Angular core
+// 2. Angular modules
+// 3. Third-party
+// 4. App imports (alphabétique)
 ```
 
-## Building
+### TypeScript
 
-To build the project run:
+- Strict mode activé
+- Explicit return types
+- Types over interfaces
 
-```bash
-ng build
-```
+## 🚀 Développement
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Installation
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Dev
 
 ```bash
-ng e2e
+npm run start
+# http://localhost:4200/
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Build
 
-## Additional Resources
+```bash
+npm run build
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### SSR
+
+```bash
+npm run build
+npm run serve:ssr:Whoiam
+```
+
+### Qualité
+
+```bash
+npm run lint          # Check
+npm run lint:fix      # Auto-fix
+npm run format        # Format
+npm test              # Tests
+```
+
+## 🔧 Configuration
+
+**ESLint** : Rules TypeScript strictes + Angular best practices + sécurité
+
+**Prettier** : Single quotes, semi-colons, 120 chars, tab 2
+
+**Husky** : Pre-commit hook pour lint + format automatique sur les fichiers staged
+
+**Budgets** : Initial 500kB warn / 1MB error, Styles 4kB warn / 8kB error
+
+## 🔮 Roadmap
+
+- [ ] Dockerisation
+- [ ] Optimisation SEO wording
+- [ ] Responsive mobile
+- [ ] Tests unitaires et E2E
+- [ ] Resize de fenêtres
+
+## 📝 Licence
+
+Projet personnel - Tous droits réservés
