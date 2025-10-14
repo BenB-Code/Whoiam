@@ -27,6 +27,8 @@
     ></button>
   </section>
   <section class="title">
-    <p>{{ `page.${title()}` | translate }}</p>
+    @if (title()) {
+    <p>{{ title() }}</p>
+    }
   </section>
 </div>

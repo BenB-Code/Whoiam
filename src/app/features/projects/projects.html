@@ -12,7 +12,7 @@
   [style.top]="projectsWindow.position?.y"
   [style.width]="projectsWindow.size?.width"
   [style.z-index]="projectsWindow.zIndex"
-  [title]="PROJECTS"
+  [title]=" `page.${PROJECTS}` | translate "
   [windowId]="PROJECTS"
 >
   @if (projectsService.isLoading()) {

@@ -34,7 +34,7 @@ export class ListingWindow<T> extends WindowComponentBase implements OnInit {
   @Output() readonly dragNDropStartEvent = new EventEmitter<void>();
 
   readonly items = input<T[]>([]);
-  readonly title = input<string>('Liste');
+  readonly title = input<string>();
   readonly selectedIndex = input<number | null>(null);
   readonly disableFullscreen = input<boolean>(false);
   readonly disableDrag = input<boolean>(false);

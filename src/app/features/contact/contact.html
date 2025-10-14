@@ -11,8 +11,8 @@
   [style.top]="contactWindow.position?.y"
   [style.width]="contactWindow.size?.width"
   [style.z-index]="contactWindow.zIndex"
-  [title]="CONTACT"
-  [windowId]="CONTACT"
+  [title]=" `page.${CONTACT}` | translate "
+  [windowId]=" CONTACT"
 >
   @if (contactsService.isLoading()) {
   <app-spinner />
