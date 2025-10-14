@@ -37,18 +37,11 @@
 
       app-card {
         width: 31%;
+        min-width: 30rem;
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        &:last-of-type {
-          margin-right: 0;
-        }
 
         &::after {
           content: '';

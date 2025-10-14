@@ -32,7 +32,7 @@ export const DEFAULT_SIZES: Record<WindowType, Size> = {
     height: '60%',
   },
   [PROJECTS]: {
-    width: '80%',
+    width: '60%',
     height: 'fit-content',
   },
   [CONTACT]: {
@@ -63,7 +63,7 @@ export const DEFAULT_WINDOWS: WindowState[] = [
   {
     id: PROJECTS,
     status: CLOSED,
-    disableFullscreen: true,
+    disableFullscreen: false,
     position: DEFAULT_POSITION[PROJECTS],
     size: DEFAULT_SIZES[PROJECTS],
     zIndex: DEFAULT_ZINDEX,

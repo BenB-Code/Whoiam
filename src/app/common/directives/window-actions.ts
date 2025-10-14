@@ -48,7 +48,7 @@ export class WindowActions implements OnInit {
     this.windowComponent.dragNDropEndEvent.subscribe((position: Position) => {
       this.store.dispatch(updateWindow({ id: this.windowId() as WindowType, position }));
     });
-    this.windowComponent.dragNDropStartEvent.subscribe((position: Position) => {
+    this.windowComponent.dragNDropStartEvent.subscribe(() => {
       this.store.dispatch(setActiveWindow({ id: this.windowId() as WindowType }));
     });
   }
