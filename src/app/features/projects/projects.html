@@ -1,7 +1,6 @@
 @if (projectsWindow$ | async; as projectsWindow) { @if (projectsWindow.status !== CLOSED) {
 <app-content-window
   appWindowActions
-  title="Projects"
   [class.active]="projectsWindow.isActive"
   [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
@@ -13,17 +12,18 @@
   [style.top]="projectsWindow.position?.y"
   [style.width]="projectsWindow.size?.width"
   [style.z-index]="projectsWindow.zIndex"
+  [title]="PROJECTS"
   [windowId]="PROJECTS"
 >
   @if (projectsService.isLoading()) {
   <app-spinner />
   } @else if (projectsService.shouldDisplayPlaceholder()) {
-  <app-placeholder-text [textContent]="projectsService.placeholder() || ''" />
+  <app-placeholder-text [textContent]="projectsService.placeholder() | translate" />
   } @else {
   <article>
     <section class="title">
       <hr />
-      <h4>Personals projects and repositories</h4>
+      <h4>{{ 'projects.title' | translate }}</h4>
       <hr />
     </section>
     @for (project of projectsService.projects(); track $index) {
@@ -31,7 +31,7 @@
       <h3>{{ project.name }}</h3>
       <p class="description">{{ project.description }}</p>
       <section class="technos-list">
-        <p>Technologies:</p>
+        <p>{{ 'common.technologies' | translate }}:</p>
         <article class="bubbles">
           @if (project.technologies) { @for (techno of project.technologies; track $index) {
           <app-bubble [contentText]="techno" />
@@ -45,7 +45,7 @@
           (click)="navigationService.redirect(project.link.url); $event.stopPropagation()"
           (keydown.enter)="navigationService.redirect(project.link.url); $event.stopPropagation()"
         >
-          Visit {{ project.link.name }}
+          {{ 'common.access' | translate }} {{ project.link.name }}
         </button>
         }
       </section>

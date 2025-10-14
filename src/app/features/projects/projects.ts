@@ -12,10 +12,11 @@ import { PlaceholderText } from '../../common/components/placeholder-text/placeh
 import { Card } from '../../common/components/card/card';
 import { GREEN } from '../../common/constants/style.const';
 import { Bubble } from '../../common/components/bubble/bubble';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects',
-  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Card, Bubble],
+  imports: [ContentWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Card, Bubble, TranslatePipe],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

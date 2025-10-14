@@ -13,7 +13,7 @@ export class ProjectsService {
   readonly hasError = computed(() => this.error() !== null);
   readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'Aucun projet disponible pour le moment'));
+  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'projects.unreachable'));
   private readonly dataService = inject(DataService);
 
   loadProjects(): void {
@@ -33,7 +33,7 @@ export class ProjectsService {
       }),
       catchError(err => {
         console.error('Error loading projects: ', err);
-        this.error.set('Une erreur est survenue lors de la récupération des projets. Merci de réessayer plus tard.');
+        this.error.set('projects.error');
         this.isLoading.set(false);
         this.projects.set([]);
         return of([]);

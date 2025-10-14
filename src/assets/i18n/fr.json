@@ -1,12 +1,12 @@
 {
   "home": {
-    "hi": "Hey",
+    "hi": "Bonjour",
     "short-1": "Je m'appelle",
     "short-2": "développeur web",
     "short-3": "",
     "intro": "Je conçois et développe des <strong>applications web robustes et scalables</strong> avec <strong>Angular & NestJS.</strong>",
     "description": "Spécialisé en <strong>Angular</strong> depuis plusieurs années, je ne me contente pas d'apporter mon expertise technique mais également <strong>une communication claire </strong> et un <strong>fort esprit d'équipe</strong> qui rendent la collaboration fluide et efficace.",
-    "signature": "Ma patte ? Un code de qualité, une intégration aux équipes rapide, l'énergie et la positivité qui font avancer les projets.",
+    "signature": "Ma patte ? Un code de qualité, une intégration rapide aux équipes, l'énergie et la positivité qui font avancer les projets.",
     "cta-1": "Découvrez mes",
     "cta-2": "et",
     "cta-3": "ou",
@@ -20,11 +20,18 @@
     "unreachable": "Je reviens vite. Impossible de me contacter pour le moment.",
     "error": "Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard."
   },
+  "projects": {
+    "title": "Projets personnels et repositories",
+    "unreachable": "Aucun projet disponible pour le moment",
+    "error": "Une erreur est survenue lors de la récupération des projets. Merci de réessayer plus tard."
+  },
   "common": {
     "loading": "Chargement",
     "close": "Fermer",
-    "reduce": "Reduire",
-    "fullscreen": "Plein écran"
+    "reduce": "Réduire",
+    "fullscreen": "Plein écran",
+    "access": "Accéder à",
+    "technologies": "Technologies"
   },
   "page": {
     "contact": "Contact",

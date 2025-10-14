@@ -20,11 +20,18 @@
     "unreachable": "I'll be back soon. Impossible to reach me for now.",
     "error": "An error occurred while retrieving contact methods. Please try again later."
   },
+  "projects": {
+    "title": "Personal projects and repositories",
+    "unreachable": "Nothing to see for now",
+    "error": "An error occurred while retrieving projects. Please try again later."
+  },
   "common": {
     "loading": "Loading",
     "close": "Close",
     "reduce": "Reduce",
-    "fullscreen": "Fullscreen"
+    "fullscreen": "Fullscreen",
+    "access": "Go to",
+    "technologies": "Technologies"
   },
   "page": {
     "contact": "Contact",
