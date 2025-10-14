@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { EN, FR } from '../../common/constants/lang.const';
 import { I18nService } from '../../services/i18n/i18n.service';
+import { EN, FR } from '../../common/constants';
 
 @Component({
   selector: 'app-header-bar',

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core
 import { Experience } from '../../models/experience.type';
 import { Bubble } from '../../../../common/components/bubble/bubble';
 import { FormatService } from '../../../../services/format/format.service';
-import { ORANGE } from '../../../../common/constants/style.const';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ORANGE } from '../../../../common/constants';
 
 @Component({
   selector: 'app-details',

@@ -18,8 +18,8 @@ import {
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { WindowActions } from '../../common/directives';
-import { RED } from '../../common/constants/style.const';
 import { TranslatePipe } from '@ngx-translate/core';
+import { RED } from '../../common/constants';
 
 @Component({
   selector: 'app-home',

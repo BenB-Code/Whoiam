@@ -16,7 +16,7 @@ import { provideEffects } from '@ngrx/effects';
 import { WindowEffects } from './store/window-manager/effects/window.effects';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FR } from './common/constants/lang.const';
+import { FR } from './common/constants';
 
 export const appConfig: ApplicationConfig = {
   providers: [

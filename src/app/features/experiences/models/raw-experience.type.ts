@@ -1,8 +1,8 @@
-import { EN, FR } from '../../../common/constants/lang.const';
+import { LANGUAGES } from '../../../common/constants';
 
 export type RawExperience = {
-  company: Record<typeof FR | typeof EN, string>;
-  name: Record<typeof FR | typeof EN, string>;
+  company: Record<LANGUAGES, string>;
+  name: Record<LANGUAGES, string>;
   duration: {
     startDate: Date;
     endDate: Date;
@@ -12,6 +12,6 @@ export type RawExperience = {
     state: string;
     country: string;
   };
-  actions: Record<typeof FR | typeof EN, string[]>;
-  skills: Record<typeof FR | typeof EN, string[]>;
+  actions: Record<LANGUAGES, string[]>;
+  skills: Record<LANGUAGES, string[]>;
 };
