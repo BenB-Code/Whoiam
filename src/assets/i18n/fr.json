@@ -15,15 +15,24 @@
     "experiences": "expériences pro",
     "connect": "contactez-moi"
   },
-  "contact": {
-    "description": "N'hésitez pas à me contacter par le moyen qui vous convient.",
-    "unreachable": "Je reviens vite. Impossible de me contacter pour le moment.",
-    "error": "Une erreur est survenue lors de la récupération des moyens de contact. Merci de réessayer plus tard."
-  },
   "projects": {
     "title": "Projets personnels et repositories",
     "unreachable": "Aucun projet disponible pour le moment",
-    "error": "Une erreur est survenue lors de la récupération des projets. Merci de réessayer plus tard."
+    "error": "Une erreur est survenue lors de la récupération des projets.<br/>Merci de réessayer plus tard."
+  },
+  "experiences": {
+    "unreachable": "Aucune expérience disponible pour le moment",
+    "error": "Une erreur est survenue lors de la récupération des expériences.<br/>Merci de réessayer plus tard.",
+    "duration": "Durée",
+    "localisation": "Emplacement",
+    "actions": "Actions",
+    "skills": "Compétences",
+    "selectPlaceholder": "Sélectionnez une expérience pour voir les détails"
+  },
+  "contact": {
+    "description": "N'hésitez pas à me contacter par le moyen qui vous convient.",
+    "unreachable": "Je reviens vite.<br/>Impossible de me contacter pour le moment.",
+    "error": "Une erreur est survenue lors de la récupération des moyens de contact.<br/>Merci de réessayer plus tard."
   },
   "common": {
     "loading": "Chargement",
@@ -36,7 +45,7 @@
   "page": {
     "contact": "Contact",
     "home": "Accueil",
-    "exp": "Expériences",
+    "experiences": "Expériences",
     "projects": "Projets"
   }
 }

@@ -3,10 +3,11 @@ import { Experience } from '../../models/experience.type';
 import { Bubble } from '../../../../common/components/bubble/bubble';
 import { FormatService } from '../../../../services/format/format.service';
 import { ORANGE } from '../../../../common/constants/style.const';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details',
-  imports: [Bubble],
+  imports: [Bubble, TranslatePipe],
   templateUrl: './details.html',
   styleUrl: './details.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

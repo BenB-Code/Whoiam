@@ -12,14 +12,14 @@
   [style.top]="experiencesWindow.position?.y"
   [style.width]="experiencesWindow.size?.width"
   [style.z-index]="experiencesWindow.zIndex"
-  [title]="EXPERIENCES"
+  [title]="`page.${EXPERIENCES}` | translate"
   [windowId]="EXPERIENCES"
   (itemSelected)="onSelection($event)"
 >
   @if (experiencesService.isLoading()) {
   <app-spinner />
   } @else if (experiencesService.shouldDisplayPlaceholder()) {
-  <app-placeholder-text [textContent]="experiencesService.placeholder() || ''" />
+  <app-placeholder-text [textContent]="experiencesService.placeholder() | translate" />
   } @else {
   <ng-template #itemTemplate let-experience>
     <section class="card">

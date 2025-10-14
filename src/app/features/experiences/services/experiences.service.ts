@@ -13,9 +13,8 @@ export class ExperiencesService {
   readonly hasError = computed(() => this.error() !== null);
   readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  readonly placeholder = computed(() =>
-    this.hasError() ? this.error() : 'Aucune expérience disponible pour le moment'
-  );
+  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'experiences.unreachable'));
+
   private readonly dataService = inject(DataService);
 
   loadExperiences(): void {
@@ -44,9 +43,7 @@ export class ExperiencesService {
       }),
       catchError(err => {
         console.error('Error loading experiences: ', err);
-        this.error.set(
-          'Une erreur est survenue lors de la récupération des expériences. Merci de réessayer plus tard.'
-        );
+        this.error.set('experiences.error');
         this.isLoading.set(false);
         this.experiences.set([]);
         return of([]);

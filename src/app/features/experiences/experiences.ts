@@ -12,10 +12,11 @@ import { PlaceholderText } from '../../common/components/placeholder-text/placeh
 import { Details } from './components/details/details';
 import { FormatService } from '../../services/format/format.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-experiences',
-  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Details],
+  imports: [ListingWindow, AsyncPipe, Spinner, WindowActions, PlaceholderText, Details, TranslatePipe],
   templateUrl: './experiences.html',
   styleUrl: './experiences.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

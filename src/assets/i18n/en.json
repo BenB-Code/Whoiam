@@ -15,15 +15,24 @@
     "experiences": "experiences",
     "connect": "let's connect"
   },
-  "contact": {
-    "description": "Feel free to contact me however you prefer.",
-    "unreachable": "I'll be back soon. Impossible to reach me for now.",
-    "error": "An error occurred while retrieving contact methods. Please try again later."
-  },
   "projects": {
     "title": "Personal projects and repositories",
     "unreachable": "Nothing to see for now",
-    "error": "An error occurred while retrieving projects. Please try again later."
+    "error": "An error occurred while retrieving projects.<br/>Please try again later."
+  },
+  "experiences": {
+    "unreachable": "No experiences available",
+    "error": "An error occurred while retrieving experiences.<br/>Please try again later.",
+    "duration": "Duration",
+    "localisation": "Localisation",
+    "actions": "Actions",
+    "skills": "Skills",
+    "selectPlaceholder": "Select an experience to see details"
+  },
+  "contact": {
+    "description": "Feel free to contact me however you prefer.",
+    "unreachable": "I'll be back soon.<br/>Impossible to reach me for now.",
+    "error": "An error occurred while retrieving contact methods.<br/>Please try again later."
   },
   "common": {
     "loading": "Loading",
@@ -36,7 +45,7 @@
   "page": {
     "contact": "Contact",
     "home": "Home",
-    "exp": "Experiences",
+    "experiences": "Experiences",
     "projects": "Projects"
   }
 }

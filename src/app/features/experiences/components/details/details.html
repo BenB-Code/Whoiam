@@ -2,15 +2,18 @@
 <section class="infos">
   <h3>{{ experience()!.name }}</h3>
   <h4>{{ experience()!.company }}</h4>
-  <p><strong>Durée :</strong> {{ formatService.formatDuration(experience()!.duration) }}</p>
   <p>
-    <strong>Localisation :</strong> {{ experience()!.localisation.city }} , {{ experience()!.localisation.state }} - {{
-    experience()!.localisation.country }}
+    <strong>{{ 'experiences.duration' | translate }} :</strong> {{ formatService.formatDuration(experience()!.duration)
+    }}
+  </p>
+  <p>
+    <strong>{{ 'experiences.localisation' | translate }} :</strong> {{ experience()!.localisation.city }} , {{
+    experience()!.localisation.state }} - {{ experience()!.localisation.country }}
   </p>
 </section>
 <section class="content">
   <section class="actions">
-    <h4>Actions</h4>
+    <h4>{{ 'experiences.actions' | translate }}</h4>
     <ul>
       @for (action of experience()!.actions; track $index) {
       <li>{{ action }}</li>
@@ -19,7 +22,7 @@
   </section>
 
   <section class="skills">
-    <h4>Compétences</h4>
+    <h4>{{ 'experiences.skills' | translate }}</h4>
     <div class="list">
       @for (skill of experience()!.skills; track $index) {
       <app-bubble [color]="ORANGE" [contentText]="skill" />
@@ -29,6 +32,6 @@
 </section>
 } @else {
 <div class="placeholder">
-  <p>Sélectionnez une expérience pour voir les détails</p>
+  <p>{{ 'experiences.selectPlaceholder' | translate }}</p>
 </div>
 }
