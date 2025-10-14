@@ -1,0 +1,37 @@
+<article
+  cdkDrag
+  cdkDragBoundary=".drag-n-drop-boundary"
+  class="window"
+  [cdkDragDisabled]="disableDrag()"
+  (cdkDragEnded)="onDragEnded($event)"
+  (cdkDragStarted)="onDragStart()"
+>
+  <div class="vertical-nav">
+    <app-window-header
+      [backgroundColor]="TRANSPARENT"
+      [disableFullscreen]="disableFullscreen()"
+      (activateFullscreen)="fullscreen()"
+      (closeWindow)="close()"
+      (reduceWindow)="reduce()"
+    />
+    <div class="list-section">
+      <h3 class="title">{{ title() }}</h3>
+      <div class="list">
+        @for (item of items(); track $index) {
+        <article
+          class="block"
+          tabindex="0"
+          [ngClass]="{ active: isSelected($index) }"
+          (click)="selectItem(item, $index)"
+          (keydown.enter)="selectItem(item, $index)"
+        >
+          <ng-container *ngTemplateOutlet="itemTemplate(); context: { $implicit: item, index: $index }" />
+        </article>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="details">
+    <ng-content />
+  </div>
+</article>

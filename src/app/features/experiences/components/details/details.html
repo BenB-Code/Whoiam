@@ -1,0 +1,37 @@
+@if (experience()) {
+<section class="infos">
+  <h3>{{ experience()!.name }}</h3>
+  <h4>{{ experience()!.company }}</h4>
+  <p>
+    <strong>{{ 'experiences.duration' | translate }} :</strong> {{ formatService.formatDuration(experience()!.duration)
+    }}
+  </p>
+  <p>
+    <strong>{{ 'experiences.localisation' | translate }} :</strong> {{ experience()!.localisation.city }} , {{
+    experience()!.localisation.state }} - {{ experience()!.localisation.country }}
+  </p>
+</section>
+<section class="content">
+  <section class="actions">
+    <h4>{{ 'experiences.actions' | translate }}</h4>
+    <ul>
+      @for (action of experience()!.actions; track $index) {
+      <li>{{ action }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="skills">
+    <h4>{{ 'experiences.skills' | translate }}</h4>
+    <div class="list">
+      @for (skill of experience()!.skills; track $index) {
+      <app-bubble [color]="ORANGE" [contentText]="skill" />
+      }
+    </div>
+  </section>
+</section>
+} @else {
+<div class="placeholder">
+  <p>{{ 'experiences.selectPlaceholder' | translate }}</p>
+</div>
+}

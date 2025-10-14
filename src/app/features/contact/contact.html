@@ -1,0 +1,47 @@
+@if (contactWindow$ | async; as contactWindow) { @if (contactWindow.status !== CLOSED) {
+<app-content-window
+  appWindowActions
+  [class.active]="contactWindow.isActive"
+  [class.maximized]="contactWindow.status === MAXIMIZED"
+  [class.minimized]="contactWindow.status === MINIMIZED"
+  [disableDrag]="contactWindow.status !== OPEN"
+  [disableFullscreen]="contactWindow?.disableFullscreen === true"
+  [style.height]="contactWindow.size?.height"
+  [style.left]="contactWindow.position?.x"
+  [style.top]="contactWindow.position?.y"
+  [style.width]="contactWindow.size?.width"
+  [style.z-index]="contactWindow.zIndex"
+  [title]=" `page.${CONTACT}` | translate "
+  [windowId]=" CONTACT"
+>
+  @if (contactsService.isLoading()) {
+  <app-spinner />
+  } @else if (contactsService.shouldDisplayPlaceholder()) {
+  <app-placeholder-text [textContent]="contactsService.placeholder() | translate" />
+  } @else {
+  <section>
+    <p class="description">{{ 'contact.description' | translate }}</p>
+    <article>
+      @if (contactsService.isLoading()) {
+      <app-spinner />
+      } @else if (contactsService.shouldDisplayPlaceholder()) {
+      <div class="message-container">
+        <p>{{ contactsService.placeholder() }}</p>
+      </div>
+      } @else { @for (contactMethod of contactsService.contacts(); track contactMethod.name) {
+      <section class="btn-container">
+        <button
+          type="button"
+          (click)="navigationService.redirect(contactMethod.url)"
+          (keydown.enter)="navigationService.redirect(contactMethod.url)"
+        >
+          <img [alt]="contactMethod.alt" [src]="contactMethod.logo" />
+        </button>
+        <p>{{ contactMethod.name }}</p>
+      </section>
+      } }
+    </article>
+  </section>
+  }
+</app-content-window>
+} }

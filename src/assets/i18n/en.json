@@ -1,0 +1,51 @@
+{
+  "home": {
+    "hi": "Hi",
+    "short-1": "I'm",
+    "short-2": "a",
+    "short-3": "web developer",
+    "intro": "I design and build <strong>robust, scalable web applications</strong> with <strong>Angular & NestJS.</strong>",
+    "description": "Specialized in <strong>Angular</strong> for several years, I bring not only technical expertise but also <strong>clear communication</strong> and a <strong>genuine team spirit</strong> that makes collaboration smooth and efficient.",
+    "signature": "My signature ? Maintainable code, rapid integration, and positive energy that moves projects forward.",
+    "cta-1": "Discover my",
+    "cta-2": "and",
+    "cta-3": "or",
+    "optimalExp": "Optimal experience designed for desktop – explore it like you would on your computer.",
+    "projects": "projects",
+    "experiences": "experiences",
+    "connect": "let's connect"
+  },
+  "projects": {
+    "title": "Personal projects and repositories",
+    "unreachable": "Nothing to see for now",
+    "error": "An error occurred while retrieving projects.<br/>Please try again later."
+  },
+  "experiences": {
+    "unreachable": "No experiences available",
+    "error": "An error occurred while retrieving experiences.<br/>Please try again later.",
+    "duration": "Duration",
+    "localisation": "Localisation",
+    "actions": "Actions",
+    "skills": "Skills",
+    "selectPlaceholder": "Select an experience to see details"
+  },
+  "contact": {
+    "description": "Feel free to contact me however you prefer.",
+    "unreachable": "I'll be back soon.<br/>Impossible to reach me for now.",
+    "error": "An error occurred while retrieving contact methods.<br/>Please try again later."
+  },
+  "common": {
+    "loading": "Loading",
+    "close": "Close",
+    "reduce": "Reduce",
+    "fullscreen": "Fullscreen",
+    "access": "Go to",
+    "technologies": "Technologies"
+  },
+  "page": {
+    "contact": "Contact",
+    "home": "Home",
+    "experiences": "Experiences",
+    "projects": "Projects"
+  }
+}

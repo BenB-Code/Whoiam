@@ -1,0 +1,20 @@
+<article
+  cdkDrag
+  cdkDragBoundary=".drag-n-drop-boundary"
+  class="window"
+  [cdkDragDisabled]="disableDrag()"
+  (cdkDragEnded)="onDragEnded($event)"
+  (cdkDragStarted)="onDragStart()"
+>
+  <app-window-header
+    [disableFullscreen]="disableFullscreen()"
+    [title]="title()"
+    (activateFullscreen)="fullscreen()"
+    (closeWindow)="close()"
+    (reduceWindow)="reduce()"
+  />
+  <section class="content">
+    <hr [ngClass]="color()" />
+    <ng-content />
+  </section>
+</article>

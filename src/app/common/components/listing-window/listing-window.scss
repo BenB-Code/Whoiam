@@ -1,0 +1,78 @@
+@use '../../../../assets/styles/index' as *;
+
+:host {
+  .window {
+    height: inherit;
+    width: inherit;
+    min-height: 50%;
+    min-width: 30%;
+    max-height: 100%;
+    border-radius: $radius-md;
+    z-index: inherit;
+    background: $white;
+    position: absolute;
+    top: inherit;
+    bottom: inherit;
+    left: inherit;
+    right: inherit;
+    transform: inherit;
+    box-shadow: $shadow-default;
+    display: inline-flex;
+
+    .vertical-nav {
+      width: 30%;
+      height: 100%;
+      background: $accent-orange-medium;
+      border-radius: $radius-md 0 0 $radius-md;
+
+      .list-section {
+        height: calc(100% - 6.5rem);
+        margin: $space-lg 0 0 $space-xl;
+
+        .title {
+          font-size: $font-size-xl;
+          margin: 0 0 $space-sm 0;
+        }
+
+        .list {
+          overflow-y: auto;
+          height: 100%;
+
+          .block {
+            cursor: pointer;
+            background: $accent-orange-light;
+            border: $space-xs solid transparent;
+            border-radius: $radius-md;
+            margin: $space-xl $space-xl $space-xl 0;
+            padding: $space-lg;
+
+            &:hover,
+            &.active {
+              transition: background $timer-fast;
+              background:
+                linear-gradient($light-orange, $light-orange) padding-box,
+                linear-gradient(
+                    45deg,
+                    $gradient-orange 0% 50%,
+                    $gradient-red 50% 60%,
+                    $gradient-green-alt 60% 70%,
+                    $gradient-gray 70% 80%,
+                    $gradient-medium-gray 80% 90%,
+                    $gradient-light-gray 90% 100%
+                  )
+                  border-box;
+              color: $system-accent;
+            }
+          }
+        }
+      }
+    }
+
+    .details {
+      width: 70%;
+      height: 100%;
+      padding: $space-xl;
+      overflow-y: auto;
+    }
+  }
+}

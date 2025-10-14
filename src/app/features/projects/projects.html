@@ -1,0 +1,58 @@
+@if (projectsWindow$ | async; as projectsWindow) { @if (projectsWindow.status !== CLOSED) {
+<app-content-window
+  appWindowActions
+  [class.active]="projectsWindow.isActive"
+  [class.maximized]="projectsWindow.status === MAXIMIZED"
+  [class.minimized]="projectsWindow.status === MINIMIZED"
+  [color]="GREEN"
+  [disableDrag]="projectsWindow.status !== OPEN"
+  [disableFullscreen]="projectsWindow?.disableFullscreen === true"
+  [style.height]="projectsWindow.size?.height"
+  [style.left]="projectsWindow.position?.x"
+  [style.top]="projectsWindow.position?.y"
+  [style.width]="projectsWindow.size?.width"
+  [style.z-index]="projectsWindow.zIndex"
+  [title]=" `page.${PROJECTS}` | translate "
+  [windowId]="PROJECTS"
+>
+  @if (projectsService.isLoading()) {
+  <app-spinner />
+  } @else if (projectsService.shouldDisplayPlaceholder()) {
+  <app-placeholder-text [textContent]="projectsService.placeholder() | translate" />
+  } @else {
+  <article>
+    <section class="title">
+      <hr />
+      <h4>{{ 'projects.title' | translate }}</h4>
+      <hr />
+    </section>
+    @for (project of projectsService.projects(); track $index) {
+    <app-card>
+      <h3>{{ project.name }}</h3>
+      <p class="description">{{ project.description }}</p>
+      <section class="technos-list">
+        <p>{{ 'common.technologies' | translate }}:</p>
+        <article class="bubbles">
+          @if (project.technologies) { @for (techno of project.technologies; track $index) {
+          <app-bubble [contentText]="techno" />
+          } }
+        </article>
+      </section>
+      <section class="redirect-container">
+        @if (project.link) {
+        <button
+          type="button"
+          (click)="navigationService.redirect(project.link.url); $event.stopPropagation()"
+          (keydown.enter)="navigationService.redirect(project.link.url); $event.stopPropagation()"
+        >
+          {{ 'common.access' | translate }} {{ project.link.name }}
+        </button>
+        }
+      </section>
+    </app-card>
+    }
+  </article>
+
+  }
+</app-content-window>
+} }

@@ -1,0 +1,111 @@
+@use '../../../assets/styles/index' as *;
+
+:host {
+  app-content-window {
+    article {
+      max-height: 100%;
+      padding: $space-2xl;
+      width: 100%;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .title {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: $space-lg;
+
+        h4 {
+          font-weight: $font-weight-light;
+          font-size: $font-size-xl;
+          margin: 0 $space-md;
+          width: fit-content;
+          text-align: center;
+        }
+
+        hr {
+          height: 1px;
+          border-radius: $space-lg;
+          border: none;
+          margin: 0;
+          width: 35%;
+          background: $gradient-green-alt;
+        }
+      }
+
+      app-card {
+        width: 31%;
+        min-width: 30rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        &::after {
+          content: '';
+          height: 90%;
+          width: 90%;
+          position: absolute;
+          top: 15%;
+          left: 35%;
+          background: url('../../../assets/icons/github-background.svg') no-repeat center;
+          background-size: contain;
+          pointer-events: none;
+        }
+
+        h3 {
+          font-size: $font-size-lg;
+          margin: 0;
+        }
+
+        .description {
+          font-size: $font-size-md;
+        }
+
+        .technos-list {
+          width: 100%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding-bottom: $space-md;
+
+          p {
+            width: 25%;
+            font-weight: $font-weight-extra-bold;
+          }
+
+          .bubbles {
+            width: 80%;
+            display: inline-flex;
+            flex-wrap: wrap;
+            padding: 0 0 0 $space-md;
+            justify-content: flex-start;
+          }
+        }
+
+        .redirect-container {
+          display: inline-flex;
+          width: 100%;
+          margin-top: auto;
+
+          button {
+            width: 45%;
+            border-radius: 0.5rem;
+            border: none;
+            background: linear-gradient(90deg, $gradient-green-alt, $os-green 250%);
+            font-size: $font-size-md;
+            color: $system-white;
+            padding: $space-sm $space-md;
+
+            &:hover {
+              transform: scale(102%);
+              transition: transform $timer-fast;
+            }
+          }
+        }
+      }
+    }
+  }
+}

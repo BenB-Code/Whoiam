@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#0e76a8"
+   width="520.32501"
+   height="520.32501"
+   viewBox="0 0 20.813 20.813"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="linkedin-svgrepo-com.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.00875"
+     inkscape:cx="399.50434"
+     inkscape:cy="260.22305"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="824"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">linkedin</title>
+  <path
+     d="m 0,2.625 v 15.563 c 0,1.469 1.156,2.625 2.625,2.625 h 15.563 c 0.719,0 1.406,-0.344 1.844,-0.781 0.469,-0.469 0.781,-1.063 0.781,-1.844 V 2.625 C 20.813,1.156 19.657,0 18.188,0 H 2.625 C 1.844,0 1.25,0.313 0.781,0.781 0.343,1.219 0,1.906 0,2.625 Z m 2.813,2.062 c 0,-1 0.813,-1.875 1.813,-1.875 1.031,0 1.875,0.875 1.875,1.875 0,1.031 -0.844,1.844 -1.875,1.844 -1,0 -1.813,-0.813 -1.813,-1.844 z M 7.844,17.531 V 8 c 0,-0.219 0.219,-0.406 0.375,-0.406 h 2.656 c 0.375,0 0.375,0.438 0.375,0.719 0.75,-0.75 1.719,-0.938 2.719,-0.938 2.438,0 4,1.156 4,3.719 v 6.438 c 0,0.219 -0.188,0.406 -0.375,0.406 h -2.75 c -0.219,0 -0.375,-0.219 -0.375,-0.406 v -5.813 c 0,-0.969 -0.281,-1.5 -1.375,-1.5 -1.375,0 -1.719,0.906 -1.719,2.125 v 5.188 c 0,0.219 -0.219,0.406 -0.438,0.406 H 8.218 c -0.156,0 -0.375,-0.219 -0.375,-0.406 z m -4.969,0 V 8 c 0,-0.219 0.219,-0.406 0.375,-0.406 h 2.719 c 0.25,0 0.406,0.156 0.406,0.406 v 9.531 c 0,0.219 -0.188,0.406 -0.406,0.406 H 3.25 c -0.188,0 -0.375,-0.219 -0.375,-0.406 z"
+     id="path1" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>linkedin</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

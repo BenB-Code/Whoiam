@@ -1,0 +1,76 @@
+@use '../../../assets/styles/index' as *;
+
+:host {
+  width: fit-content;
+  padding: $space-sm;
+  border-radius: $radius-md;
+  background: $white-translucent-light;
+  box-shadow: $shadow-default;
+  position: fixed;
+  bottom: $space-sm;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  .divider {
+    width: 0.1rem;
+    height: $size-2xl;
+    margin: 0 $space-md 0 $space-xs;
+    border-radius: $radius-md;
+    background: $gray-translucent;
+  }
+
+  .el {
+    height: $size-xl;
+    width: $size-xl;
+    margin: 0 $space-sm $space-sm 0;
+    border-radius: $radius-md;
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+
+    &:hover {
+      transform: scale(105%) translateY(-0.1rem);
+      transition: transform $timer-fast;
+    }
+
+    &.no-bg {
+      background: none;
+
+      img {
+        background: none;
+      }
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      background: $system-white;
+      border-radius: $radius-md;
+    }
+
+    &:first-child {
+      margin-left: $space-xs;
+    }
+
+    &:last-child {
+      margin-right: $space-xs;
+    }
+
+    .active-dot {
+      position: absolute;
+      bottom: -0.65rem;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background: $system-accent;
+      border-radius: $radius-full;
+      height: $size-xs;
+      width: $size-xs;
+    }
+  }
+}

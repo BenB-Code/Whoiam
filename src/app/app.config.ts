@@ -1,13 +1,53 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { windowReducer } from './store';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideEffects } from '@ngrx/effects';
+import { WindowEffects } from './store/window-manager/effects/window.effects';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { FR } from './common/constants';
+import { translateBrowserLoaderFactory } from './services/translate-loader/translate-browser-loader.service';
+
+registerLocaleData(localeFr);
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay())
-  ]
+    provideRouter(routes),
+    provideHttpClient(),
+    provideTranslateService({
+      lang: FR,
+      fallbackLang: FR,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateBrowserLoaderFactory,
+      },
+    }),
+    provideClientHydration(withEventReplay()),
+    provideStore({
+      windowManager: windowReducer,
+    }),
+    provideEffects(WindowEffects),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
+    }),
+    provideHttpClient(withFetch()),
+  ],
 };

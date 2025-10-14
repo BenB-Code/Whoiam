@@ -1,0 +1,41 @@
+@if (experiencesWindow$ | async; as experiencesWindow) { @if (experiencesWindow.status !== CLOSED) {
+<app-listing-window
+  appWindowActions
+  [class.active]="experiencesWindow.isActive"
+  [class.maximized]="experiencesWindow.status === MAXIMIZED"
+  [class.minimized]="experiencesWindow.status === MINIMIZED"
+  [disableDrag]="experiencesWindow.status !== OPEN"
+  [disableFullscreen]="experiencesWindow?.disableFullscreen === true"
+  [items]="experiencesService.experiences()"
+  [style.height]="experiencesWindow.size?.height"
+  [style.left]="experiencesWindow.position?.x"
+  [style.top]="experiencesWindow.position?.y"
+  [style.width]="experiencesWindow.size?.width"
+  [style.z-index]="experiencesWindow.zIndex"
+  [title]="`page.${EXPERIENCES}` | translate"
+  [windowId]="EXPERIENCES"
+  (itemSelected)="onSelection($event)"
+>
+  @if (experiencesService.isLoading()) {
+  <app-spinner />
+  } @else if (experiencesService.shouldDisplayPlaceholder()) {
+  <app-placeholder-text [textContent]="experiencesService.placeholder() | translate" />
+  } @else {
+  <ng-template #itemTemplate let-experience>
+    <section class="card">
+      <h3>{{ experience.name }}</h3>
+      <article>
+        <h4>
+          {{ experience.company }} · <span class="date">{{ formatService.formatDuration(experience.duration) }}</span>
+        </h4>
+        <p class="italic">
+          {{ experience.localisation.city }}, {{ experience.localisation.state }} - {{ experience.localisation.country
+          }}
+        </p>
+      </article>
+    </section>
+  </ng-template>
+  <app-details [experience]="selectedExperience()" />
+  }
+</app-listing-window>
+} }

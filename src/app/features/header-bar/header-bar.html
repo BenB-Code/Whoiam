@@ -1,0 +1,25 @@
+<article class="left-side">
+  <img alt="BenB-Code" src="../../../assets/logo/logo.svg" />
+  <h1>Benjamin Bats</h1>
+</article>
+<article class="right-side">
+  <div class="i18n">
+    <img
+      src="../../../assets/icons/flag-for-france-svgrepo-com.svg"
+      tabindex="0"
+      [alt]="FR"
+      [class.active]="i18nService.currentLang() === FR"
+      (click)="i18nService.switchLanguage(FR)"
+      (keydown.enter)="i18nService.switchLanguage(FR)"
+    />
+    <img
+      src="../../../assets/icons/united-kingdom-svgrepo-com.svg"
+      tabindex="0"
+      [alt]="EN"
+      [class.active]="i18nService.currentLang() === EN"
+      (click)="i18nService.switchLanguage(EN)"
+      (keydown.enter)="i18nService.switchLanguage(EN)"
+    />
+  </div>
+  <div class="time">{{ formattedTime() }}</div>
+</article>

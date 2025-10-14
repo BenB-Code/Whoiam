@@ -1,0 +1,31 @@
+@use '../assets/styles/index' as *;
+
+:host {
+  app-header-bar {
+    height: $header-height;
+    z-index: 99999;
+  }
+
+  .global-content {
+    height: calc(100% - #{$space-sm} - #{$header-height} - #{$space-sm});
+    position: relative;
+    overflow: hidden;
+    top: calc(#{$space-sm} + #{$header-height});
+
+    app-home,
+    app-contact,
+    app-experiences,
+    app-projects {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: $space-4xl + $space-sm;
+    }
+  }
+
+  app-app-bar {
+    height: $app-bar-height;
+    z-index: 99999;
+  }
+}

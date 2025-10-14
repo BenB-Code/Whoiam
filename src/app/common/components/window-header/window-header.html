@@ -1,0 +1,34 @@
+<div cdkDragHandle class="header" [ngClass]="backgroundColor()">
+  <section class="btn-container">
+    <button
+      aria-label="close"
+      class="window-action red"
+      tabindex="0"
+      type="button"
+      (click)="onClose()"
+      (keydown.enter)="onClose()"
+    ></button>
+    <button
+      aria-label="reduce"
+      class="window-action orange"
+      tabindex="0"
+      type="button"
+      (click)="onReduce()"
+      (keydown.arrowDown)="onReduce()"
+    ></button>
+    <button
+      aria-label="fullscreen"
+      class="window-action green"
+      tabindex="0"
+      type="button"
+      [disabled]="disableFullscreen()"
+      (click)="onFullscreen()"
+      (keydown.arrowUp)="onFullscreen()"
+    ></button>
+  </section>
+  <section class="title">
+    @if (title()) {
+    <p>{{ title() }}</p>
+    }
+  </section>
+</div>

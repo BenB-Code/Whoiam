@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Github",
+    "logo": "assets/icons/github-svgrepo-com.svg",
+    "url": "https://github.com/BenB-Code",
+    "alt": "Github"
+  },
+  {
+    "name": "Email",
+    "logo": "assets/icons/gmail-svgrepo-com.svg",
+    "url": "mailto:benjamin.bats.dev@gmail.com",
+    "alt": "Email"
+  },
+  {
+    "name": "LinkedIn",
+    "logo": "assets/icons/linkedin-svgrepo-com.svg",
+    "url": "https://www.linkedin.com/in/benjamin-bats-200464165/",
+    "alt": "LinkedIn"
+  }
+]

@@ -1,0 +1,47 @@
+@use '../../../assets/styles/index' as *;
+
+:host {
+  app-listing-window {
+    .card {
+      .red {
+        color: $accent-red-full;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      h3 {
+        font-size: $font-size-lg;
+      }
+
+      h3,
+      h4,
+      p {
+        margin: 0 0 $space-xs 0;
+        align-self: flex-start;
+        position: relative;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+
+      article {
+        margin-top: $space-md;
+        margin-left: $space-sm;
+        padding-left: $space-sm;
+        border-radius: $space-xs 0 0 $space-xs;
+        border-left: $space-xs solid $accent-red-medium;
+
+        .date {
+          font-weight: $font-weight-medium;
+        }
+
+        h4 {
+          font-size: $font-size-md;
+        }
+      }
+    }
+  }
+}

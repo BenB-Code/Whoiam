@@ -1,0 +1,62 @@
+@use '../../../assets/styles/index' as *;
+
+:host {
+  section {
+    padding: $space-2xl;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .description {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-light;
+      margin: 0;
+      text-align: center;
+    }
+
+    article {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 25rem;
+      margin: $space-2xl auto auto auto;
+
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: $space-md;
+        margin: 0 $space-md;
+
+        button {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          background: none;
+          border: none;
+
+          &:hover {
+            transition: transform $timer-fast;
+            transform: scale(105%);
+          }
+        }
+
+        p {
+          margin-bottom: 0;
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      img {
+        height: $size-xl;
+        width: $size-xl;
+        background: $system-white;
+        border-radius: $radius-md;
+        box-shadow: 0 0 $size-sm 0 $gradient-light-gray;
+      }
+    }
+  }
+}

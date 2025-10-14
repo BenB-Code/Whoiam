@@ -1,0 +1,62 @@
+@if (homeWindow$ | async; as homeWindow) { @if (homeWindow.status !== CLOSED) {
+<app-content-window
+  appWindowActions
+  [class.active]="homeWindow.isActive"
+  [class.maximized]="homeWindow.status === MAXIMIZED"
+  [class.minimized]="homeWindow.status === MINIMIZED"
+  [color]="RED"
+  [disableDrag]="homeWindow.status !== OPEN"
+  [disableFullscreen]="homeWindow?.disableFullscreen === true"
+  [style.height]="homeWindow.size?.height"
+  [style.left]="homeWindow.position?.x"
+  [style.top]="homeWindow.position?.y"
+  [style.width]="homeWindow.size?.width"
+  [style.z-index]="homeWindow.zIndex"
+  [title]=" `page.${HOME}` | translate "
+  [windowId]="HOME"
+>
+  <article>
+    <section class="description">
+      <h1>{{ 'home.hi' | translate }}</h1>
+      <h3>
+        {{ 'home.short-1' | translate }} <span class="name">Benjamin</span>, {{ 'home.short-2' | translate }}
+        <span class="skill">fullstack</span>
+        {{ 'home.short-3' | translate }}
+      </h3>
+      <p class="intro" [innerHTML]="'home.intro' | translate"></p>
+      <p [innerHTML]="'home.description' | translate"></p>
+      <p class="highlight">{{ 'home.signature' | translate }}</p>
+
+      <p class="cta">
+        {{ 'home.cta-1' | translate }}
+        <a
+          tabindex="0"
+          (click)="open(PROJECTS); $event.stopPropagation()"
+          (keydown.enter)="open(PROJECTS); $event.stopPropagation()"
+          >{{ 'home.projects' | translate }}</a
+        >
+        {{ 'home.cta-2' | translate }}
+        <a
+          tabindex="0"
+          (click)="open(EXPERIENCES); $event.stopPropagation()"
+          (keydown.enter)="open(EXPERIENCES); $event.stopPropagation()"
+          >{{ 'home.experiences' | translate }}</a
+        >, {{ 'home.cta-3' | translate }}
+        <a
+          tabindex="0"
+          (click)="open(CONTACT); $event.stopPropagation()"
+          (keydown.enter)="open(CONTACT); $event.stopPropagation()"
+          >{{ 'home.connect' | translate }}</a
+        >.
+      </p>
+
+      <p class="italic">{{ 'home.optimalExp' | translate }}</p>
+    </section>
+    <section class="picture">
+      <div class="img-container">
+        <img alt="Benjamin Bats" src="assets/images/me.jpg" />
+      </div>
+    </section>
+  </article>
+</app-content-window>
+} }

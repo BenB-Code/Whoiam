@@ -1,0 +1,59 @@
+@use '../../../../assets/styles/index' as *;
+
+:host {
+  .window {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    width: inherit;
+    min-height: 30%;
+    min-width: 30%;
+    max-height: 100%;
+    border-radius: $radius-md;
+    z-index: inherit;
+    background: $white;
+    position: absolute;
+    top: inherit;
+    bottom: inherit;
+    left: inherit;
+    right: inherit;
+    transform: inherit;
+    box-shadow: $shadow-default;
+
+    .content {
+      width: 100%;
+      flex: 1;
+      overflow-y: auto;
+
+      hr {
+        height: $space-md;
+        border: none;
+        margin: 0;
+
+        &.orange {
+          background: $gradient-orange;
+        }
+
+        &.green {
+          background: $gradient-green-alt;
+        }
+
+        &.red {
+          background: $gradient-red;
+        }
+
+        &.rainbow {
+          background: linear-gradient(
+            45deg,
+            $gradient-red 0%,
+            $gradient-red 33.3%,
+            $gradient-orange 33.3%,
+            $gradient-orange 66.6%,
+            $gradient-green-alt 66.6%,
+            $gradient-green-alt 100%
+          );
+        }
+      }
+    }
+  }
+}

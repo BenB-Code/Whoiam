@@ -1,0 +1,79 @@
+@use '../../../assets/styles/index' as *;
+
+:host {
+  app-content-window {
+    article {
+      max-height: 100%;
+      padding: $space-2xl;
+      width: 100%;
+      display: inline-flex;
+
+      .description {
+        width: 70%;
+
+        .name {
+          color: $accent-orange-strong;
+          font-weight: $font-weight-bold;
+        }
+
+        .skill {
+          color: $gradient-green-alt;
+          font-weight: $font-weight-bold;
+        }
+
+        .intro {
+          font-size: $font-size-lg;
+          margin: $space-lg 0;
+        }
+
+        .highlight {
+          font-style: italic;
+          color: $system-white;
+          background: linear-gradient(90deg, $gradient-orange, $gradient-red 100%);
+          padding: $space-md;
+          margin: $space-xl 0;
+          border-radius: $radius-md;
+        }
+
+        .cta {
+          margin-top: $space-xl;
+        }
+
+        h1 {
+          margin: 0;
+        }
+
+        h3 {
+          font-weight: $font-weight-extra-light;
+          margin: 0;
+        }
+      }
+
+      .picture {
+        width: 30%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin: auto $space-3xl;
+
+        .img-container {
+          width: $profile-picture-size;
+          height: $profile-picture-size;
+          border: $space-sm solid $accent-red-strong;
+          border-radius: $profile-border-radius;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            height: $profile-img-zoom;
+            width: auto;
+            margin-bottom: 30%;
+          }
+        }
+      }
+    }
+  }
+}
