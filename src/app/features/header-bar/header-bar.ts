@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EN, FR } from '../../common/constants/lang.const';
-import { TranslateService } from '@ngx-translate/core';
+import { I18nService } from '../../services/i18n/i18n.service';
 
 @Component({
   selector: 'app-header-bar',
@@ -14,9 +14,8 @@ export class HeaderBar {
   readonly time = signal(new Date());
   protected readonly EN = EN;
   protected readonly FR = FR;
-  protected activeLang: typeof FR | typeof EN = FR;
+  protected readonly i18nService: I18nService = inject(I18nService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly translateService: TranslateService = inject(TranslateService);
 
   constructor() {
     const intervalId = setInterval(() => {
@@ -26,10 +25,5 @@ export class HeaderBar {
     this.destroyRef.onDestroy(() => {
       clearInterval(intervalId);
     });
-  }
-
-  setLang(lang: typeof FR | typeof EN): void {
-    this.activeLang = lang;
-    this.translateService.use(lang);
   }
 }

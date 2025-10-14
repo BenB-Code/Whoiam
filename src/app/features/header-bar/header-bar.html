@@ -8,17 +8,17 @@
       src="../../../assets/icons/flag-for-france-svgrepo-com.svg"
       tabindex="0"
       [alt]="FR"
-      [class.active]="activeLang === FR"
-      (click)="setLang(FR)"
-      (keydown.enter)="setLang(FR)"
+      [class.active]="i18nService.currentLang() === FR"
+      (click)="i18nService.switchLanguage(FR)"
+      (keydown.enter)="i18nService.switchLanguage(FR)"
     />
     <img
       src="../../../assets/icons/united-kingdom-svgrepo-com.svg"
       tabindex="0"
       [alt]="EN"
-      [class.active]="activeLang === EN"
-      (click)="setLang(EN)"
-      (keydown.enter)="setLang(EN)"
+      [class.active]="i18nService.currentLang() === EN"
+      (click)="i18nService.switchLanguage(EN)"
+      (keydown.enter)="i18nService.switchLanguage(EN)"
     />
   </div>
   <div class="time">{{ time() | date:"EEE dd MMM HH:mm":"fr-FR" }}</div>
