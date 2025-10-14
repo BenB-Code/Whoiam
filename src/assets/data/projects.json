@@ -32,8 +32,8 @@
   {
     "name": "Whoiam",
     "description": {
-      "fr": "Site web portfolio qui agit comme un CV.",
-      "en": "Portfolio website that acts as a resume."
+      "fr": "Site portfolio imitant une interface MacOS/Linux, et qui fait office de CV intéractif.",
+      "en": "Portfolio website imitating a MacOS/Linux interface, and which acts as an interactive resume."
     },
     "link": {
       "name": "Github",
