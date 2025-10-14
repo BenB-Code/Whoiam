@@ -2,6 +2,18 @@
 
 Un portfolio interactif sous forme de bureau virtuel.
 
+<img src="https://img.shields.io/badge/-Angular-DD0031?style=flat-square&logo=angular&logoColor=white">
+<img src="https://img.shields.io/badge/-npm-CB3837?style=flat-square&logo=npm&logoColor=white">
+<img src="https://img.shields.io/badge/-Jest-C21325?style=flat-square&logo=jest&logoColor=white">
+<img src="https://img.shields.io/badge/-Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black">
+<img src="https://img.shields.io/badge/-Docker-2CA5E0?style=flat-square&logo=docker&logoColor=white">
+<img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/-SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white">
+<img src="https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white">
+<img src="https://img.shields.io/badge/-NgRx-BA2BD2?style=flat-square&logo=redux&logoColor=white">
+<img src="https://img.shields.io/badge/-Jasmine-8A4182?style=flat-square&logo=Jasmine&logoColor=white">
+<img src="https://img.shields.io/badge/-SCSS-CC6699?style=flat-square&logo=sass&logoColor=white">
+
 ## 🎯 Concept
 
 Whoiam est mon site vitrine personnel qui transforme un CV classique en une expérience interactive. Inspiré des interfaces desktop macOS et Linux, il présente mes projets, expériences et informations de contact à travers des fenêtres draggables et un gestionnaire d'état.
