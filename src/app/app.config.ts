@@ -16,9 +16,9 @@ import { windowReducer } from './store';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideEffects } from '@ngrx/effects';
 import { WindowEffects } from './store/window-manager/effects/window.effects';
-import { provideTranslateService } from '@ngx-translate/core';
-import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { FR } from './common/constants';
+import { translateBrowserLoaderFactory } from './services/translate-loader/translate-browser-loader.service';
 
 registerLocaleData(localeFr);
 
@@ -31,10 +31,10 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       lang: FR,
       fallbackLang: FR,
-      loader: provideTranslateHttpLoader({
-        prefix: '/assets/i18n/',
-        suffix: '.json',
-      }),
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateBrowserLoaderFactory,
+      },
     }),
     provideClientHydration(withEventReplay()),
     provideStore({
