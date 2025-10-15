@@ -4,6 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:docker:dev": "cd docker/compose && docker-compose --env-file ../env/.env.dev -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "start:docker:prod": "cd docker/compose && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml up --build",
+    "stop:docker:dev": "cd docker/compose && docker-compose --env-file ../env/.env.dev -f docker-compose.yml -f docker-compose.dev.yml down",
+    "stop:docker:prod": "cd docker/compose && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml down",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

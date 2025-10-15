@@ -32,22 +32,30 @@ RUN npm run build
 FROM node:22-alpine AS production
 WORKDIR /app
 COPY package*.json .
+
 # Install only dependencies, not devs
-RUN npm ci --omit=dev && \
-    npm cache clean --force \
+RUN npm ci --omit=dev --ignore-scripts && \
+    npm cache clean --force
+
 # Get files from last building stage
 COPY --from=builder /app/dist ./dist
+
 # Non-root user
 RUN addgroup -g 1001 -S nodejs &&\
     adduser -S angular -u 1001
+
 # Change files property with new user
 RUN chown -R angular:nodejs /app
+
 # Switch to right user
 USER angular
+
 # Expose SSR port
 EXPOSE 4000
+
 # Set env
 ENV NODE_ENV=production
+
 # Start SSR server
 CMD ["node", "dist/Whoiam/server/server.mjs"]
 
