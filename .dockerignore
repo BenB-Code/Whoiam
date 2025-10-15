@@ -10,6 +10,9 @@ dist
 .vscode
 .idea
 
+# Tests coverage
+coverage
+
 # Git
 .git
 .gitignore
@@ -17,9 +20,12 @@ dist
 # Docker (sauf Dockerfile)
 docker/compose/
 docker/env/
+.dockerignore
+
 
 # Environment
-.env*
+.env
+.env.*
 
 # Logs
 *.log

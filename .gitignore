@@ -43,4 +43,4 @@ Thumbs.db
 
 # Docker
 docker/env/.env.*
-!docker/env/.env.*.exemple
+!docker/env/.env.*.example
