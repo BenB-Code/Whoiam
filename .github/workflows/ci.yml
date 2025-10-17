@@ -46,7 +46,8 @@ jobs:
           file: ./coverage/lcov.info
           fail_ci_if_error: false
 
-  if: github.ref == 'refs/heads/master'
+  if: |
+    github.ref == 'refs/heads/master'
   build:
     name: Unit Tests
     runs-on: ubuntu-latest
