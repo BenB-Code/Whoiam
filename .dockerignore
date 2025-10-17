@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build outputs
+dist
+.angular
+
+# IDEs
+.vscode
+.idea
+
+# Tests coverage
+coverage
+
+# Git
+.git
+.gitignore
+
+# Docker (sauf Dockerfile)
+docker/compose/
+docker/env/
+.dockerignore
+
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

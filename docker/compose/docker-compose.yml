@@ -1,0 +1,21 @@
+# docker/compose/docker-compose.yml
+networks:
+  whoiam-network:
+    driver: bridge
+
+name: ${APP_NAME:-myapp}_${ENV:-dev}
+services:
+  angular-app:
+    build:
+      context: ../../
+      dockerfile: docker/Dockerfile
+      target: ${BUILD_TARGET:-development}
+
+    env_file:
+      - ../env/.env.${ENV:-dev}
+
+    container_name: ${APP_NAME:-myapp}_${ENV:-dev}
+    restart: unless-stopped
+
+    networks:
+      - whoiam-network

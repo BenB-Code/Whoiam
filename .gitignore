@@ -41,4 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-package-lock.json
+# Docker
+docker/env/.env.*
+!docker/env/.env.*.example
