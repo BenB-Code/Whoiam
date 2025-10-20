@@ -51,6 +51,11 @@ jobs:
       - name: Push changes
         run: |
           git push origin master --follow-tags
+      - name: Rebase develop
+        run: |
+          git checkout develop
+          git pull origin master
+          git push origin develop
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
