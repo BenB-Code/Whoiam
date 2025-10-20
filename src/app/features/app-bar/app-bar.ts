@@ -1,20 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
-import {
-  CLOSED,
-  CONTACT,
-  EXPERIENCES,
-  HOME,
-  openWindow,
-  PROJECTS,
-  selectAllWindows,
-  WindowState,
-  WindowType,
-} from '../../store';
+import { CLOSED, CONTACT, EXPERIENCES, HOME, PROJECTS, WindowType } from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { ContactsService } from '../../services/contact/contacts.service';
 import { NavigationService } from '../../services/navigation/navigation.service';
+import { WindowManagerService } from '../../services/window-manager/window-manager.service';
 
 @Component({
   selector: 'app-app-bar',
@@ -31,22 +20,14 @@ export class AppBar implements OnInit {
   protected readonly EXPERIENCES = EXPERIENCES;
   protected readonly PROJECTS = PROJECTS;
   protected readonly CONTACT = CONTACT;
-  private readonly store = inject(Store);
-  windowState$ = this.store.select(selectAllWindows).pipe(
-    map(windows => {
-      const stateMap: Record<string, WindowState | null> = {};
-      for (const window of windows) {
-        stateMap[window.id] = window;
-      }
-      return stateMap;
-    })
-  );
+  private readonly windowManagerService = inject(WindowManagerService);
+  windowState$ = this.windowManagerService.selectAllWindows();
 
   ngOnInit(): void {
     this.contactsService.loadContacts();
   }
 
   onAppClick(id: WindowType): void {
-    this.store.dispatch(openWindow({ id }));
+    this.windowManagerService.openWindow(id);
   }
 }

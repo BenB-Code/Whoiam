@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { ListingWindow } from '../../common/components/listing-window/listing-window';
 import { Experience } from './models/experience.type';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { CLOSED, EXPERIENCES, MAXIMIZED, MINIMIZED, OPEN, selectWindowById, WindowState } from '../../store';
+import { CLOSED, EXPERIENCES, MAXIMIZED, MINIMIZED, OPEN } from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { ExperiencesService } from './services/experiences.service';
 import { Spinner } from '../../common/components/spinner/spinner';
@@ -13,6 +11,7 @@ import { Details } from './components/details/details';
 import { FormatService } from '../../services/format/format.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
+import { WindowManagerService } from '../../services/window-manager/window-manager.service';
 
 @Component({
   selector: 'app-experiences',
@@ -37,8 +36,9 @@ export class Experiences {
     }
     return this.experiencesService.experiences()[index] || null;
   });
-  private readonly store = inject(Store);
-  experiencesWindow$: Observable<WindowState | null> = this.store.select(selectWindowById(EXPERIENCES));
+
+  private readonly windowManagerService = inject(WindowManagerService);
+  experiencesWindow$ = this.windowManagerService.selectWindowById(EXPERIENCES);
 
   constructor() {
     this.experiencesWindow$.pipe(takeUntilDestroyed()).subscribe(window => {

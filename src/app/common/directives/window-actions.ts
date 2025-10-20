@@ -1,16 +1,8 @@
 import { Directive, HostListener, inject, input, OnInit } from '@angular/core';
-import {
-  closeWindow,
-  maximizeWindow,
-  minimizeWindow,
-  Position,
-  setActiveWindow,
-  updateWindow,
-  WindowType,
-} from '../../store';
-import { Store } from '@ngrx/store';
+import { Position, WindowType } from '../../store';
 import { ContentWindow } from '../components/content-window/content-window';
 import { ListingWindow } from '../components/listing-window/listing-window';
+import { WindowManagerService } from '../../services/window-manager/window-manager.service';
 
 @Directive({
   selector: '[appWindowActions]',
@@ -18,9 +10,9 @@ import { ListingWindow } from '../components/listing-window/listing-window';
 export class WindowActions implements OnInit {
   readonly windowId = input<WindowType>();
 
-  private readonly store = inject(Store);
   private readonly contentWindow = inject(ContentWindow, { optional: true });
   private readonly listingWindow = inject(ListingWindow, { optional: true });
+  private readonly windowManagerService = inject(WindowManagerService);
 
   private get windowComponent(): ContentWindow | ListingWindow<unknown> {
     const component = this.contentWindow || this.listingWindow;
@@ -32,24 +24,20 @@ export class WindowActions implements OnInit {
 
   @HostListener('click')
   onActivate(): void {
-    this.store.dispatch(setActiveWindow({ id: this.windowId() as WindowType }));
+    this.windowManagerService.setActiveWindow(this.windowId() || '');
   }
 
   ngOnInit(): void {
-    this.windowComponent.fullscreenEvent.subscribe(() => {
-      this.store.dispatch(maximizeWindow({ id: this.windowId() as WindowType }));
-    });
-    this.windowComponent.reduceEvent.subscribe(() => {
-      this.store.dispatch(minimizeWindow({ id: this.windowId() as WindowType }));
-    });
-    this.windowComponent.closeEvent.subscribe(() => {
-      this.store.dispatch(closeWindow({ id: this.windowId() as WindowType }));
-    });
-    this.windowComponent.dragNDropEndEvent.subscribe((position: Position) => {
-      this.store.dispatch(updateWindow({ id: this.windowId() as WindowType, position }));
-    });
-    this.windowComponent.dragNDropStartEvent.subscribe(() => {
-      this.store.dispatch(setActiveWindow({ id: this.windowId() as WindowType }));
-    });
+    this.windowComponent.fullscreenEvent.subscribe(() =>
+      this.windowManagerService.maximizeWindow(this.windowId() || '')
+    );
+    this.windowComponent.reduceEvent.subscribe(() => this.windowManagerService.minimizeWindow(this.windowId() || ''));
+    this.windowComponent.closeEvent.subscribe(() => this.windowManagerService.closeWindow(this.windowId() || ''));
+    this.windowComponent.dragNDropEndEvent.subscribe((position: Position) =>
+      this.windowManagerService.updateWindow(this.windowId() || '', position)
+    );
+    this.windowComponent.dragNDropStartEvent.subscribe(() =>
+      this.windowManagerService.setActiveWindow(this.windowId() || '')
+    );
   }
 }
