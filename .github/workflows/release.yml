@@ -42,6 +42,7 @@ jobs:
           echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       - name: Push changes
         run: |
+          git pull origin master
           git push origin master --follow-tags
       - name: Generate changelog
         id: changelog
