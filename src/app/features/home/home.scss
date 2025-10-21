@@ -77,3 +77,22 @@
     }
   }
 }
+
+@media (max-width: $screen-md) {
+  :host {
+    app-content-window {
+      article {
+        flex-direction: column;
+
+        .description {
+          width: 100%;
+        }
+
+        .picture {
+          width: 100%;
+          margin: 1rem 0 0;
+        }
+      }
+    }
+  }
+}
