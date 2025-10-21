@@ -20,7 +20,7 @@
   } @else if (projectsService.shouldDisplayPlaceholder()) {
   <app-placeholder-text [textContent]="projectsService.placeholder() | translate" />
   } @else {
-  <article>
+  <article class="content">
     <section class="title">
       <hr />
       <h4>{{ 'projects.title' | translate }}</h4>
