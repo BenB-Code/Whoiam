@@ -21,7 +21,7 @@
 
     .vertical-nav {
       width: 30%;
-      height: 100%;
+      height: auto;
       background: $accent-orange-medium;
       border-radius: $radius-md 0 0 $radius-md;
 
@@ -73,6 +73,16 @@
       height: 100%;
       padding: $space-xl;
       overflow-y: auto;
+    }
+  }
+}
+
+@media (max-width: $screen-max-lg) {
+  :host {
+    .window {
+      .vertical-nav {
+        width: 45%;
+      }
     }
   }
 }
