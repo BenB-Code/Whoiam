@@ -71,3 +71,16 @@
     font-weight: $font-weight-bold;
   }
 }
+
+@media (max-width: $screen-max-lg) {
+  :host {
+    .content {
+      flex-direction: column;
+
+      .actions,
+      .skills {
+        width: 100%;
+      }
+    }
+  }
+}

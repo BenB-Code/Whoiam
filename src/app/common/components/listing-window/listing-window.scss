@@ -86,3 +86,31 @@
     }
   }
 }
+
+@media (max-width: $screen-max-md) {
+  :host {
+    .window {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      .vertical-nav,
+      .details {
+        width: 100%;
+      }
+
+      .vertical-nav {
+        border-radius: $radius-md;
+
+        .list-section {
+          max-height: 15rem;
+          overflow: scroll;
+
+          .title {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
