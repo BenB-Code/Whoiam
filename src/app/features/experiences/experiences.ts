@@ -10,7 +10,7 @@ import { Details } from './components/details/details';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormatService } from '../../services/format/format.service';
-import { ComponentConstants } from '../../common/models/component-constants';
+import { ComponentConstantsAbstract } from '../../common/models/component-constants.abstract';
 
 @Component({
   selector: 'app-experiences',
@@ -19,7 +19,7 @@ import { ComponentConstants } from '../../common/models/component-constants';
   styleUrl: './experiences.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Experiences extends ComponentConstants {
+export class Experiences extends ComponentConstantsAbstract {
   experiencesWindow$ = this.windowManagerService.selectWindowById(this.EXPERIENCES);
   protected readonly experiencesService: ExperiencesService = inject(ExperiencesService);
   protected readonly formatService: FormatService = inject(FormatService);

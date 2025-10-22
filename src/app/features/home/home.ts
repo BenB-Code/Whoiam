@@ -4,7 +4,7 @@ import { WindowType } from '../../store';
 import { AsyncPipe } from '@angular/common';
 import { WindowActions } from '../../common/directives';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ComponentConstants } from '../../common/models/component-constants';
+import { ComponentConstantsAbstract } from '../../common/models/component-constants.abstract';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ import { ComponentConstants } from '../../common/models/component-constants';
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Home extends ComponentConstants {
+export class Home extends ComponentConstantsAbstract {
   homeWindow$ = this.windowManagerService.selectWindowById(this.HOME);
 
   open(id: WindowType): void {

@@ -7,7 +7,7 @@ import { WindowActions } from '../../common/directives';
 import { NavigationService } from '../../services/navigation/navigation.service';
 import { PlaceholderText } from '../../common/components/placeholder-text/placeholder-text';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ComponentConstants } from '../../common/models/component-constants';
+import { ComponentConstantsAbstract } from '../../common/models/component-constants.abstract';
 
 @Component({
   selector: 'app-contact',
@@ -16,7 +16,7 @@ import { ComponentConstants } from '../../common/models/component-constants';
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Contact extends ComponentConstants {
+export class Contact extends ComponentConstantsAbstract {
   contactWindow$ = this.windowManagerService.selectWindowById(this.CONTACT);
   protected readonly navigationService: NavigationService = inject(NavigationService);
   protected readonly contactsService = inject(ContactsService);

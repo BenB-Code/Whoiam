@@ -9,7 +9,7 @@ import { PlaceholderText } from '../../common/components/placeholder-text/placeh
 import { Card } from '../../common/components/card/card';
 import { Bubble } from '../../common/components/bubble/bubble';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ComponentConstants } from '../../common/models/component-constants';
+import { ComponentConstantsAbstract } from '../../common/models/component-constants.abstract';
 
 @Component({
   selector: 'app-projects',
@@ -18,7 +18,7 @@ import { ComponentConstants } from '../../common/models/component-constants';
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Projects extends ComponentConstants {
+export class Projects extends ComponentConstantsAbstract {
   projectsWindow$ = this.windowManagerService.selectWindowById(this.PROJECTS);
   protected readonly projectsService: ProjectsService = inject(ProjectsService);
   protected readonly navigationService: NavigationService = inject(NavigationService);
