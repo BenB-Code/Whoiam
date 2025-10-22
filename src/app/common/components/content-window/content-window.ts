@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, input, Output, signal } from '@angular/core';
-import { WindowComponentBase } from '../../models/window-component.base';
+import { WindowComponentAbstract } from '../../models/window-component.abstract';
 import { WindowHeader } from '../window-header/window-header';
 import { NgClass } from '@angular/common';
 import { RAINBOW } from '../../constants/style.const';
@@ -14,7 +14,7 @@ import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.serv
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContentWindow extends WindowComponentBase {
+export class ContentWindow extends WindowComponentAbstract {
   @Output() readonly closeEvent = new EventEmitter<void>();
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();

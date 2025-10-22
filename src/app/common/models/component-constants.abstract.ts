@@ -3,7 +3,7 @@ import { GREEN, RED } from '../constants';
 import { inject } from '@angular/core';
 import { WindowManagerService } from '../../services/window-manager/window-manager.service';
 
-export abstract class ComponentConstants {
+export abstract class ComponentConstantsAbstract {
   protected readonly CONTACT = CONTACT;
   protected readonly MAXIMIZED = MAXIMIZED;
   protected readonly MINIMIZED = MINIMIZED;
