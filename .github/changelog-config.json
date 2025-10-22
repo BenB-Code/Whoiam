@@ -5,6 +5,10 @@
       "labels": ["feature", "enhancement", "feat"]
     },
     {
+      "title": "## 🧨 Tests",
+      "labels": ["feature", "enhancement", "feat"]
+    },
+    {
       "title": "## 🐛 Bug Fixes",
       "labels": ["bug", "fix"]
     },
@@ -27,6 +31,10 @@
   "label_extractor": [
     {
       "pattern": "^(feat|feature)(\\(.+\\))?:",
+      "target": "$1"
+    },
+    {
+      "pattern": "^(test)(\\(.+\\))?:",
       "target": "$1"
     },
     {
