@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { I18nService } from '../../services/i18n/i18n.service';
-import { EN, FR } from '../../common/constants';
+import { EN, FR, FR_DATE_FORMAT, FR_LOCAL, US_DATE_FORMAT, US_LOCAL } from '../../common/constants';
 
 @Component({
   selector: 'app-header-bar',
@@ -16,13 +16,13 @@ export class HeaderBar {
   protected readonly i18nService: I18nService = inject(I18nService);
   private readonly time = signal(new Date());
   private readonly destroyRef = inject(DestroyRef);
-  private readonly datePipe = new DatePipe('en-US');
+  private readonly datePipe = new DatePipe(US_LOCAL);
 
   protected readonly formattedTime = computed(() => {
     const currentTime = this.time();
     const lang = this.i18nService.currentLang();
-    const format = lang === FR ? 'EEE dd MMM HH:mm' : 'EEE dd MMM hh:mm a';
-    const locale = lang === FR ? 'fr-FR' : 'en-US';
+    const format = lang === FR ? FR_DATE_FORMAT : US_DATE_FORMAT;
+    const locale = lang === FR ? FR_LOCAL : US_LOCAL;
 
     return this.datePipe.transform(currentTime, format, undefined, locale) || '';
   });

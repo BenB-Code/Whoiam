@@ -2,6 +2,8 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { Contact } from '../../features/contact/models/contact.type';
 import { catchError, Observable, of, take, tap } from 'rxjs';
 import { DataService } from '../data/data.service';
+import { CONTACT } from '../../store';
+import { DATA_PATH } from '../../common/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +28,7 @@ export class ContactsService {
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.dataService.fetchJson<Contact[]>('/assets/data/contacts.json').pipe(
+    return this.dataService.fetchJson<Contact[]>(DATA_PATH(CONTACT)).pipe(
       tap(contacts => {
         this.contacts.set(contacts);
         this.isLoading.set(false);

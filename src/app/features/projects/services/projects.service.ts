@@ -3,6 +3,8 @@ import { DataService } from '../../../services/data/data.service';
 import { catchError, Observable, of, take, tap } from 'rxjs';
 import { RawProject } from '../models';
 import { I18nService } from '../../../services/i18n/i18n.service';
+import { DATA_PATH } from '../../../common/constants';
+import { PROJECTS } from '../../../store';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,7 @@ export class ProjectsService {
   readonly error = signal<string | null>(null);
   readonly hasError = computed(() => this.error() !== null);
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'projects.unreachable'));
+  readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   private readonly dataService = inject(DataService);
   private readonly i18nService = inject(I18nService);
@@ -22,7 +25,6 @@ export class ProjectsService {
       description: this.i18nService.getTranslatedField(project.description),
     }))
   );
-  readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
 
   loadProjects(): void {
     if (this.rawProjects().length === 0) {
@@ -34,7 +36,7 @@ export class ProjectsService {
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.dataService.fetchJson<RawProject[]>('/assets/data/projects.json').pipe(
+    return this.dataService.fetchJson<RawProject[]>(DATA_PATH(PROJECTS)).pipe(
       tap(projects => {
         this.rawProjects.set(projects);
         this.isLoading.set(false);

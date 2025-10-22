@@ -3,6 +3,8 @@ import { DataService } from '../../../services/data/data.service';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { I18nService } from '../../../services/i18n/i18n.service';
 import { RawExperience } from '../models/raw-experience.type';
+import { DATA_PATH } from '../../../common/constants';
+import { EXPERIENCES } from '../../../store';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,6 @@ export class ExperiencesService {
   readonly error = signal<string | null>(null);
   readonly hasError = computed(() => this.error() !== null);
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'experiences.unreachable'));
-  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   private readonly rawExperiences = signal<RawExperience[]>([]);
   private readonly i18nService = inject<I18nService>(I18nService);
@@ -29,6 +30,7 @@ export class ExperiencesService {
       skills: this.i18nService.getTranslatedField(exp.skills),
     }))
   );
+  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   private readonly dataService = inject(DataService);
 
   loadExperiences(): void {
@@ -41,7 +43,7 @@ export class ExperiencesService {
     this.isLoading.set(true);
     this.error.set(null);
 
-    return this.dataService.fetchJson<RawExperience[]>('/assets/data/experiences.json').pipe(
+    return this.dataService.fetchJson<RawExperience[]>(DATA_PATH(EXPERIENCES)).pipe(
       tap(experiences => {
         this.rawExperiences.set(experiences);
         this.isLoading.set(false);
