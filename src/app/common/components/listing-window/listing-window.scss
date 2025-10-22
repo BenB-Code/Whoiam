@@ -92,7 +92,7 @@
     .window {
       display: flex;
       flex-direction: column;
-      height: auto;
+      height: 100%;
 
       .vertical-nav,
       .details {
@@ -101,6 +101,7 @@
 
       .vertical-nav {
         border-radius: $radius-md;
+        box-shadow: $shadow-light;
 
         .list-section {
           max-height: 15rem;
