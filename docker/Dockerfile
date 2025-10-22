@@ -5,12 +5,6 @@
 FROM node:22-alpine AS base
 WORKDIR /app
 
-# Sys dependencies
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++
-
 # Copy app dependencies
 COPY package*.json ./
 
@@ -20,7 +14,7 @@ RUN npm ci
 COPY . .
 EXPOSE 4200
 EXPOSE 9229
-CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--poll","2000"]
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--poll", "2000"]
 
 # Build production
 FROM base AS builder
