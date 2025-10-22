@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, input, Output
 import { WindowComponentAbstract } from '../../models/window-component.abstract';
 import { WindowHeader } from '../window-header/window-header';
 import { NgClass } from '@angular/common';
-import { RAINBOW } from '../../constants/style.const';
 import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
+import { RAINBOW } from '../../constants';
 
 @Component({
   selector: 'app-content-window',

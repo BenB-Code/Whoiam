@@ -32,7 +32,7 @@ export abstract class DataLoaderServiceAbstract<TRaw, TTransformed> {
         this.rawData.set(data);
         this.isLoading.set(false);
       }),
-      catchError(err => {
+      catchError(() => {
         this.error.set(this.getErrorKey());
         this.isLoading.set(false);
         this.rawData.set([]);

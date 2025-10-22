@@ -13,10 +13,10 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { WindowComponentAbstract } from '../../models/window-component.abstract';
 import { WindowHeader } from '../window-header/window-header';
-import { TRANSPARENT } from '../../constants/style.const';
 import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
+import { TRANSPARENT } from '../../constants';
 
 @Component({
   selector: 'app-listing-window',
