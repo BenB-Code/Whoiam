@@ -2,3 +2,8 @@ export * from './status.const';
 export * from './types.const';
 export * from './default-values.const';
 export * from './screen-sizes.enum';
+export * from './default-positions.const';
+export * from './default-sizes.const';
+export * from './default-zindex.const';
+export * from './default-fullscreen-is-disabled.const';
+export * from './breakpoints.type';
