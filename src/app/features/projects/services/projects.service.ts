@@ -14,7 +14,6 @@ export class ProjectsService {
   readonly error = signal<string | null>(null);
   readonly hasError = computed(() => this.error() !== null);
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'projects.unreachable'));
-  readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   private readonly dataService = inject(DataService);
   private readonly i18nService = inject(I18nService);
@@ -25,6 +24,7 @@ export class ProjectsService {
       description: this.i18nService.getTranslatedField(project.description),
     }))
   );
+  readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
 
   loadProjects(): void {
     if (this.rawProjects().length === 0) {
@@ -42,7 +42,6 @@ export class ProjectsService {
         this.isLoading.set(false);
       }),
       catchError(err => {
-        console.error('Error loading projects: ', err);
         this.error.set('projects.error');
         this.isLoading.set(false);
         this.rawProjects.set([]);

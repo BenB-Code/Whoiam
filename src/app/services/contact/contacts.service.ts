@@ -34,7 +34,6 @@ export class ContactsService {
         this.isLoading.set(false);
       }),
       catchError(err => {
-        console.error('Error loading contact: ', err);
         this.error.set('contact.error');
         this.isLoading.set(false);
         this.contacts.set([]);

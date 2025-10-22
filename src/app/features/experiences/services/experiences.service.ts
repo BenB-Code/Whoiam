@@ -14,6 +14,7 @@ export class ExperiencesService {
   readonly error = signal<string | null>(null);
   readonly hasError = computed(() => this.error() !== null);
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'experiences.unreachable'));
+  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   private readonly rawExperiences = signal<RawExperience[]>([]);
   private readonly i18nService = inject<I18nService>(I18nService);
@@ -30,7 +31,6 @@ export class ExperiencesService {
       skills: this.i18nService.getTranslatedField(exp.skills),
     }))
   );
-  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
   private readonly dataService = inject(DataService);
 
   loadExperiences(): void {
@@ -49,7 +49,6 @@ export class ExperiencesService {
         this.isLoading.set(false);
       }),
       catchError(err => {
-        console.error('Error loading experiences: ', err);
         this.error.set('experiences.error');
         this.isLoading.set(false);
         this.rawExperiences.set([]);
