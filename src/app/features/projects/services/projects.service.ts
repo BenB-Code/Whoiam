@@ -1,52 +1,36 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { DataService } from '../../../services/data/data.service';
-import { catchError, Observable, of, take, tap } from 'rxjs';
-import { RawProject } from '../models';
-import { I18nService } from '../../../services/i18n/i18n.service';
+import { computed, Injectable } from '@angular/core';
+import { take } from 'rxjs';
+import { Project, RawProject } from '../models';
 import { DATA_PATH } from '../../../common/constants';
 import { PROJECTS } from '../../../store';
+import { DataLoaderServiceAbstract } from '../../../common/models/data-loader-service.abstract';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectsService {
-  readonly isLoading = signal<boolean>(false);
-  readonly error = signal<string | null>(null);
-  readonly hasError = computed(() => this.error() !== null);
-  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'projects.unreachable'));
-  readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  private readonly dataService = inject(DataService);
-  private readonly i18nService = inject(I18nService);
-  private readonly rawProjects = signal<RawProject[]>([]);
+export class ProjectsService extends DataLoaderServiceAbstract<RawProject, Project> {
   readonly projects = computed(() =>
-    this.rawProjects().map(project => ({
+    this.rawData().map((project: RawProject) => ({
       ...project,
       description: this.i18nService.getTranslatedField(project.description),
     }))
   );
-  readonly isEmpty = computed(() => !this.hasError() && this.projects().length === 0);
 
-  loadProjects(): void {
-    if (this.rawProjects().length === 0) {
-      this.getProjects().pipe(take(1)).subscribe();
-    }
+  getData(): Project[] {
+    return this.projects();
   }
 
-  private getProjects(): Observable<RawProject[]> {
-    this.isLoading.set(true);
-    this.error.set(null);
+  getErrorKey(): string {
+    return `${PROJECTS}.error`;
+  }
 
-    return this.dataService.fetchJson<RawProject[]>(DATA_PATH(PROJECTS)).pipe(
-      tap(projects => {
-        this.rawProjects.set(projects);
-        this.isLoading.set(false);
-      }),
-      catchError(err => {
-        this.error.set('projects.error');
-        this.isLoading.set(false);
-        this.rawProjects.set([]);
-        return of([]);
-      })
-    );
+  getPlaceholderKey(): string {
+    return `${PROJECTS}.unreachable`;
+  }
+
+  loadProjects(): void {
+    if (this.rawData().length === 0) {
+      this.loadData(DATA_PATH(PROJECTS)).pipe(take(1)).subscribe();
+    }
   }
 }
