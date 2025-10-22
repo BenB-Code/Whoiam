@@ -7,6 +7,8 @@ import { Home } from './features/home/home';
 import { Experiences } from './features/experiences/experiences';
 import { Projects } from './features/projects/projects';
 import { DragNDropService } from './services/drag-n-drop/drag-n-drop.service';
+import { WindowManagerService } from './services/window-manager/window-manager.service';
+import { HOME } from './store';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +20,12 @@ import { DragNDropService } from './services/drag-n-drop/drag-n-drop.service';
 export class App {
   protected title = 'Whoiam';
   protected readonly dragNDropService: DragNDropService = inject(DragNDropService);
+  protected readonly windowManagerService = inject(WindowManagerService);
 
   constructor() {
     afterNextRender(() => {
       this.setDragBoundaries();
+      this.windowManagerService.openWindow(HOME);
     });
   }
 

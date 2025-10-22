@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { CLOSED, DEFAULT_WINDOWS, DEFAULT_ZINDEX, MAXIMIZED, MINIMIZED, OPEN } from '../constants';
+import { CLOSED, DEFAULT_ZINDEX, getResponsiveDefaultSettings, MAXIMIZED, MINIMIZED, OPEN } from '../constants';
 import { WindowState } from '../models';
 import {
   closeWindow,
@@ -18,13 +18,15 @@ export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowSta
 
 export type State = {} & EntityState<WindowState>;
 
-export const initialState: State = adapter.setAll(DEFAULT_WINDOWS, adapter.getInitialState());
+const initialWindows =
+  typeof window !== 'undefined' ? getResponsiveDefaultSettings(window.innerWidth) : getResponsiveDefaultSettings(1920);
+export const initialState: State = adapter.setAll(initialWindows, adapter.getInitialState());
 
 export const windowReducer = createReducer(
   initialState,
   on(openWindow, (state, { id }) => {
     const currentWindow = state.entities[id];
-    const defaultValues = DEFAULT_WINDOWS.find(window => window.id === id);
+    const defaultValues = getResponsiveDefaultSettings(window.innerWidth).find(w => w.id === id);
     const openBehavior =
       currentWindow?.status === CLOSED
         ? OPEN
