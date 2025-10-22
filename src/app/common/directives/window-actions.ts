@@ -1,4 +1,4 @@
-import { Directive, HostListener, inject, input, OnInit } from '@angular/core';
+import { Directive, HostListener, inject, input } from '@angular/core';
 import { Position, WindowType } from '../../store';
 import { ContentWindow } from '../components/content-window/content-window';
 import { ListingWindow } from '../components/listing-window/listing-window';
@@ -8,27 +8,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Directive({
   selector: '[appWindowActions]',
 })
-export class WindowActions implements OnInit {
+export class WindowActions {
   readonly windowId = input.required<WindowType>();
 
   private readonly contentWindow = inject(ContentWindow, { optional: true });
   private readonly listingWindow = inject(ListingWindow, { optional: true });
   private readonly windowManagerService = inject(WindowManagerService);
 
-  private get windowComponent(): ContentWindow | ListingWindow<unknown> {
-    const component = this.contentWindow || this.listingWindow;
-    if (!component) {
-      throw new Error('WindowActions directive must be used on ContentWindow or ListingWindow');
-    }
-    return component;
-  }
-
-  @HostListener('click')
-  onActivate(): void {
-    this.windowManagerService.setActiveWindow(this.windowId());
-  }
-
-  ngOnInit(): void {
+  constructor() {
     this.windowComponent.fullscreenEvent
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.windowManagerService.maximizeWindow(this.windowId()));
@@ -44,5 +31,18 @@ export class WindowActions implements OnInit {
     this.windowComponent.dragNDropStartEvent
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.windowManagerService.setActiveWindow(this.windowId()));
+  }
+
+  private get windowComponent(): ContentWindow | ListingWindow<unknown> {
+    const component = this.contentWindow || this.listingWindow;
+    if (!component) {
+      throw new Error('WindowActions directive must be used on ContentWindow or ListingWindow');
+    }
+    return component;
+  }
+
+  @HostListener('click')
+  onActivate(): void {
+    this.windowManagerService.setActiveWindow(this.windowId());
   }
 }
