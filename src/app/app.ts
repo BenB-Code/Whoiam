@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderBar } from './features/header-bar/header-bar';
 import { AppBar } from './features/app-bar/app-bar';
@@ -9,6 +9,8 @@ import { Projects } from './features/projects/projects';
 import { DragNDropService } from './services/drag-n-drop/drag-n-drop.service';
 import { WindowManagerService } from './services/window-manager/window-manager.service';
 import { HOME } from './store';
+import { debounceTime, fromEvent } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +24,20 @@ export class App {
   protected readonly dragNDropService: DragNDropService = inject(DragNDropService);
   protected readonly windowManagerService = inject(WindowManagerService);
 
+  private readonly destroyRef = inject(DestroyRef);
+
   constructor() {
     afterNextRender(() => {
       this.windowManagerService.setDefaultConfig(window.innerWidth);
       this.setDragBoundaries();
       this.windowManagerService.openWindow(HOME);
+
+      fromEvent(window, 'resize')
+        .pipe(debounceTime(25), takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => {
+          this.windowManagerService.handleResize();
+          this.setDragBoundaries();
+        });
     });
   }
 

@@ -7,6 +7,7 @@ import {
   maximizeWindow,
   minimizeWindow,
   openWindow,
+  resizeAllWindows,
   restoreWindow,
   setActiveWindow,
   setScreenSize,
@@ -26,9 +27,26 @@ export const windowReducer = createReducer(
     const defaultConfig: WindowState[] = getResponsiveDefaultSettings(width);
     return adapter.setAll(defaultConfig, state);
   }),
-  on(openWindow, (state, { id }) => {
+  on(resizeAllWindows, (state, { width }) => {
+    const config: WindowState[] = getResponsiveDefaultSettings(width);
+    const updates = Object.keys(state.entities)
+      .filter(id => {
+        const window = state.entities[id];
+        return window?.status === OPEN || window?.status === MINIMIZED;
+      })
+      .map(id => ({
+        id,
+        changes: {
+          position: config.find(window => window.id === id)?.position,
+          size: config.find(window => window.id === id)?.size,
+        },
+      }));
+
+    return adapter.updateMany(updates, state);
+  }),
+  on(openWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
-    const defaultValues = getResponsiveDefaultSettings(window.innerWidth).find(w => w.id === id);
+    const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
     const openBehavior =
       currentWindow?.status === CLOSED
         ? OPEN

@@ -5,6 +5,7 @@ import {
   minimizeWindow,
   openWindow,
   Position,
+  resizeAllWindows,
   selectAllWindows,
   selectWindowById,
   setActiveWindow,
@@ -26,6 +27,10 @@ export class WindowManagerService {
     this.store.dispatch(setScreenSize({ width }));
   }
 
+  handleResize(): void {
+    this.store.dispatch(resizeAllWindows({ width: window.innerWidth }));
+  }
+
   setActiveWindow(id: WindowType): void {
     this.store.dispatch(setActiveWindow({ id }));
   }
@@ -43,7 +48,7 @@ export class WindowManagerService {
   }
 
   openWindow(id: WindowType): void {
-    this.store.dispatch(openWindow({ id }));
+    this.store.dispatch(openWindow({ id, width: window.innerWidth }));
   }
 
   maximizeWindow(id: WindowType): void {
