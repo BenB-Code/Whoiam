@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ContentWindow } from '../../common/components/content-window/content-window';
 import { AsyncPipe } from '@angular/common';
-import { CLOSED, MAXIMIZED, MINIMIZED, OPEN, PROJECTS } from '../../store';
 import { ProjectsService } from './services/projects.service';
 import { Spinner } from '../../common/components/spinner/spinner';
 import { WindowActions } from '../../common/directives';
@@ -10,8 +9,7 @@ import { PlaceholderText } from '../../common/components/placeholder-text/placeh
 import { Card } from '../../common/components/card/card';
 import { Bubble } from '../../common/components/bubble/bubble';
 import { TranslatePipe } from '@ngx-translate/core';
-import { GREEN } from '../../common/constants';
-import { WindowManagerService } from '../../services/window-manager/window-manager.service';
+import { ComponentConstants } from '../../common/models/component-constants';
 
 @Component({
   selector: 'app-projects',
@@ -20,15 +18,8 @@ import { WindowManagerService } from '../../services/window-manager/window-manag
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Projects {
+export class Projects extends ComponentConstants {
+  projectsWindow$ = this.windowManagerService.selectWindowById(this.PROJECTS);
   protected readonly projectsService: ProjectsService = inject(ProjectsService);
   protected readonly navigationService: NavigationService = inject(NavigationService);
-  protected readonly PROJECTS = PROJECTS;
-  protected readonly CLOSED = CLOSED;
-  protected readonly MAXIMIZED = MAXIMIZED;
-  protected readonly MINIMIZED = MINIMIZED;
-  protected readonly GREEN = GREEN;
-  protected readonly OPEN = OPEN;
-  private readonly windowManagerService = inject(WindowManagerService);
-  projectsWindow$ = this.windowManagerService.selectWindowById(PROJECTS);
 }
