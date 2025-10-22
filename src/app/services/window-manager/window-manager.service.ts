@@ -8,6 +8,7 @@ import {
   selectAllWindows,
   selectWindowById,
   setActiveWindow,
+  setScreenSize,
   updateWindow,
   WindowState,
   WindowType,
@@ -20,6 +21,10 @@ import { map, Observable } from 'rxjs';
 })
 export class WindowManagerService {
   private readonly store = inject(Store);
+
+  setDefaultConfig(width: number): void {
+    this.store.dispatch(setScreenSize({ width }));
+  }
 
   setActiveWindow(id: WindowType): void {
     this.store.dispatch(setActiveWindow({ id }));

@@ -24,6 +24,7 @@ export class App {
 
   constructor() {
     afterNextRender(() => {
+      this.windowManagerService.setDefaultConfig(window.innerWidth);
       this.setDragBoundaries();
       this.windowManagerService.openWindow(HOME);
     });

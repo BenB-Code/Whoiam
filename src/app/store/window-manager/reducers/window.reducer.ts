@@ -9,6 +9,7 @@ import {
   openWindow,
   restoreWindow,
   setActiveWindow,
+  setScreenSize,
   updateWindow,
 } from '../actions/window.actions';
 
@@ -17,13 +18,14 @@ export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowSta
 });
 
 export type State = {} & EntityState<WindowState>;
-
-const initialWindows =
-  typeof window !== 'undefined' ? getResponsiveDefaultSettings(window.innerWidth) : getResponsiveDefaultSettings(1920);
-export const initialState: State = adapter.setAll(initialWindows, adapter.getInitialState());
+export const initialState: State = adapter.setAll([], adapter.getInitialState());
 
 export const windowReducer = createReducer(
   initialState,
+  on(setScreenSize, (state, { width }) => {
+    const defaultConfig: WindowState[] = getResponsiveDefaultSettings(width);
+    return adapter.setAll(defaultConfig, state);
+  }),
   on(openWindow, (state, { id }) => {
     const currentWindow = state.entities[id];
     const defaultValues = getResponsiveDefaultSettings(window.innerWidth).find(w => w.id === id);

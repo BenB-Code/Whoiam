@@ -8,3 +8,4 @@ export const maximizeWindow = createAction('[Window] Maximize Window', props<{ i
 export const restoreWindow = createAction('[Window] Restore Window', props<{ id: WindowType }>());
 export const setActiveWindow = createAction('[Window] Set active Window', props<{ id: WindowType }>());
 export const updateWindow = createAction('[Window] Update Window', props<WindowUpdate>());
+export const setScreenSize = createAction('[Window] SetScreen Size', props<{ width: number }>());
