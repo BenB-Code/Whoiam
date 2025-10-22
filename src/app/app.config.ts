@@ -9,16 +9,15 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { windowReducer } from './store';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { provideEffects } from '@ngrx/effects';
 import { WindowEffects } from './store/window-manager/effects/window.effects';
-import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { FR } from './common/constants';
-import { translateBrowserLoaderFactory } from './services/translate-loader/translate-browser-loader.service';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService } from '@ngx-translate/core';
 
 registerLocaleData(localeFr);
 
@@ -31,12 +30,11 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       lang: FR,
       fallbackLang: FR,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: translateBrowserLoaderFactory,
-      },
+      loader: provideTranslateHttpLoader({
+        prefix: 'assets/i18n/',
+        suffix: '.json',
+      }),
     }),
-    provideClientHydration(withEventReplay()),
     provideStore({
       windowManager: windowReducer,
     }),
@@ -48,6 +46,5 @@ export const appConfig: ApplicationConfig = {
       trace: false,
       traceLimit: 75,
     }),
-    provideHttpClient(withFetch()),
   ],
 };
