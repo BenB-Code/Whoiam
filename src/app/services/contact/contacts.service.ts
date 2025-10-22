@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Contact } from '../../features/contact/models/contact.type';
 import { catchError, Observable, of, take, tap } from 'rxjs';
 import { DataService } from '../data/data.service';
@@ -11,10 +11,9 @@ export class ContactsService {
   readonly error = signal<string | null>(null);
   readonly hasError = computed(() => this.error() !== null);
   readonly placeholder = computed(() => (this.hasError() ? this.error() : 'contact.unreachable'));
-  readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   readonly contacts = signal<Contact[]>([]);
   readonly isEmpty = computed(() => !this.hasError() && this.contacts().length === 0);
-  private readonly platformId = inject(PLATFORM_ID);
+  readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
   private readonly dataService = inject(DataService);
 
   loadContacts(): void {
