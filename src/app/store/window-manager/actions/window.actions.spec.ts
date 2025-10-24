@@ -39,15 +39,6 @@ describe('WindowActions', () => {
       expect(action.type).toEqual(expectedAction.type);
     });
   });
-  describe('restoreWindow', () => {
-    it('should create an action to restore a window', () => {
-      const expectedAction = {
-        type: '[Window] Restore Window',
-      };
-      const action = WindowActions.restoreWindow({ id: HOME });
-      expect(action.type).toEqual(expectedAction.type);
-    });
-  });
   describe('setActiveWindow', () => {
     it('should create an action to set an active window', () => {
       const expectedAction = {

@@ -8,7 +8,6 @@ import {
   minimizeWindow,
   openWindow,
   resizeAllWindows,
-  restoreWindow,
   setActiveWindow,
   setScreenSize,
   updateWindow,
@@ -85,32 +84,6 @@ export const windowReducer = createReducer(
       },
       state
     );
-  }),
-  on(restoreWindow, (state, { id }) => {
-    const currentWindow = state.entities[id];
-    const targetStatus = currentWindow?.lastStatus || OPEN;
-
-    const restoredState = adapter.updateOne(
-      {
-        id,
-        changes: {
-          status: targetStatus,
-          isActive: true,
-        },
-      },
-      state
-    );
-
-    const maxZ = selectMaxZIndexValue(restoredState) + 1;
-    const updates = Object.keys(restoredState.entities).map(windowId => ({
-      id: windowId,
-      changes: {
-        isActive: windowId === id,
-        zIndex: windowId === id ? maxZ : restoredState.entities[windowId]?.zIndex || DEFAULT_ZINDEX,
-      },
-    }));
-
-    return adapter.updateMany(updates, restoredState);
   }),
   on(minimizeWindow, (state, { id }) => {
     const currentWindow = state.entities[id];
