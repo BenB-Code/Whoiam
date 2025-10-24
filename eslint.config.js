@@ -6,6 +6,10 @@ const eslintConfigPrettier = require('eslint-config-prettier');
 
 module.exports = tseslint.config(
   {
+    files: ['**/*.spec.ts'],
+    rules: { 'max-lines': ['error', 500] },
+  },
+  {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
