@@ -1,5 +1,3 @@
-// TODO - find a way to test zoneless
-
 import { ReplaySubject } from 'rxjs';
 import { WindowEffects } from './window.effects';
 import { ProjectsService } from '../../../features/projects/services/projects.service';
