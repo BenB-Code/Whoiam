@@ -1,6 +1,6 @@
 import { Position, WindowType } from '../models';
 import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
-import { DEFAULT, MOBILE, TABLET } from './breakpoints.type';
+import { DEFAULT, MOBILE, TABLET } from '../models/breakpoints.type';
 
 export const RESPONSIVE_POSITION: Record<string, Record<WindowType, Position>> = {
   [DEFAULT]: {

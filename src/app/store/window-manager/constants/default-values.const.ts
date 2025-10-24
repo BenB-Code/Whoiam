@@ -6,7 +6,7 @@ import { RESPONSIVE_POSITION } from './default-positions.const';
 import { RESPONSIVE_SIZES } from './default-sizes.const';
 import { RESPONSIVE_IS_FULLSCREEN_DISABLED } from './default-fullscreen-is-disabled.const';
 import { DEFAULT_ZINDEX } from './default-zindex.const';
-import { BREAKPOINTS, DEFAULT, MOBILE, TABLET } from './breakpoints.type';
+import { BREAKPOINTS, DEFAULT, MOBILE, TABLET } from '../models/breakpoints.type';
 
 export function getResponsiveDefaultSettings(screenWidth = 1920): WindowState[] {
   let breakpoint: BREAKPOINTS = DEFAULT;

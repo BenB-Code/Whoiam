@@ -1,6 +1,6 @@
 import { WindowType } from '../models';
 import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
-import { DEFAULT, MOBILE, TABLET } from './breakpoints.type';
+import { DEFAULT, MOBILE, TABLET } from '../models/breakpoints.type';
 
 export const RESPONSIVE_IS_FULLSCREEN_DISABLED: Record<string, Record<WindowType, boolean>> = {
   [DEFAULT]: {

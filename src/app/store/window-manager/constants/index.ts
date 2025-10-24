@@ -6,4 +6,4 @@ export * from './default-positions.const';
 export * from './default-sizes.const';
 export * from './default-zindex.const';
 export * from './default-fullscreen-is-disabled.const';
-export * from './breakpoints.type';
+export * from '../models/breakpoints.type';
