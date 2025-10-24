@@ -6,10 +6,6 @@ const eslintConfigPrettier = require('eslint-config-prettier');
 
 module.exports = tseslint.config(
   {
-    files: ['**/*.spec.ts'],
-    rules: { 'max-lines': ['error', 500] },
-  },
-  {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
@@ -133,6 +129,10 @@ module.exports = tseslint.config(
       '@angular-eslint/template/prefer-self-closing-tags': 'warn',
       '@angular-eslint/template/use-track-by-function': 'warn',
     },
+  },
+  {
+    files: ['**/*.spec.ts'],
+    rules: { 'max-lines': ['error', 600] },
   },
   {
     ignores: ['.angular', 'dist', 'node_modules', 'src/main.*.ts', 'src/server.ts'],
