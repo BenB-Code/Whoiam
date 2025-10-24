@@ -68,8 +68,10 @@ export const windowReducer = createReducer(
       state
     );
   }),
-  on(closeWindow, (state, { id }) => {
+  on(closeWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
+    const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
+
     return adapter.updateOne(
       {
         id,
@@ -77,8 +79,8 @@ export const windowReducer = createReducer(
           status: CLOSED,
           lastStatus: currentWindow?.status,
           isActive: false,
-          position: undefined,
-          size: undefined,
+          position: defaultValues?.position,
+          size: defaultValues?.size,
           zIndex: DEFAULT_ZINDEX,
         },
       },
