@@ -33,7 +33,7 @@ export class App {
       this.windowManagerService.openWindow(HOME);
 
       fromEvent(window, 'resize')
-        .pipe(debounceTime(25), takeUntilDestroyed(this.destroyRef))
+        .pipe(debounceTime(10), takeUntilDestroyed(this.destroyRef))
         .subscribe(() => {
           this.windowManagerService.handleResize();
           this.setDragBoundaries();
