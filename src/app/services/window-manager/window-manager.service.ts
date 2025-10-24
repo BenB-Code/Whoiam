@@ -60,7 +60,7 @@ export class WindowManagerService {
   }
 
   closeWindow(id: WindowType): void {
-    this.store.dispatch(closeWindow({ id }));
+    this.store.dispatch(closeWindow({ id, width: window.innerWidth }));
   }
 
   updateWindow(id: WindowType, position: Position): void {

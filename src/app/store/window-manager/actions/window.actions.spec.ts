@@ -17,7 +17,7 @@ describe('WindowActions', () => {
       const expectedAction = {
         type: '[Window] Close Window',
       };
-      const action = WindowActions.closeWindow({ id: HOME });
+      const action = WindowActions.closeWindow({ id: HOME, width: 1200 });
       expect(action.type).toEqual(expectedAction.type);
     });
   });

@@ -16,9 +16,10 @@ export function getResponsiveDefaultSettings(screenWidth = 1920): WindowState[] 
     breakpoint = TABLET;
   }
 
-  const positions = RESPONSIVE_POSITION[breakpoint];
-  const sizes = RESPONSIVE_SIZES[breakpoint];
-  const isFullscreenDisabled = RESPONSIVE_IS_FULLSCREEN_DISABLED[breakpoint];
+  const positions = RESPONSIVE_POSITION[breakpoint] || RESPONSIVE_POSITION[DEFAULT];
+  const sizes = RESPONSIVE_SIZES[breakpoint] || RESPONSIVE_SIZES[DEFAULT];
+  const isFullscreenDisabled =
+    RESPONSIVE_IS_FULLSCREEN_DISABLED[breakpoint] || RESPONSIVE_IS_FULLSCREEN_DISABLED[DEFAULT];
   return [
     {
       id: HOME,
