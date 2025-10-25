@@ -11,7 +11,7 @@ import { openWindow } from '../actions/window.actions';
 import { WindowType } from '../models';
 import { provideZonelessChangeDetection } from '@angular/core';
 
-describe('WindowEffects', () => {
+describe('Store - WindowEffects', () => {
   let actions$: ReplaySubject<Action>;
   let effects: WindowEffects;
 

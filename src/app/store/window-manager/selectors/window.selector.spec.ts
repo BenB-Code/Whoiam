@@ -3,7 +3,7 @@ import { WindowState, WindowType } from '../models';
 import { CLOSED, CONTACT, EXPERIENCES, HOME, PROJECTS } from '../constants';
 import { EntityState } from '@ngrx/entity';
 
-describe('WindowSelectors', () => {
+describe('Store - WindowSelectors', () => {
   const windowsStateMock: EntityState<WindowState> = {
     ids: [HOME, EXPERIENCES, PROJECTS, CONTACT],
     entities: {

@@ -13,7 +13,7 @@ import { CLOSED, CONTACT, DEFAULT_ZINDEX, EXPERIENCES, HOME, MAXIMIZED, MINIMIZE
 import { Dictionary, EntityState } from '@ngrx/entity';
 import { Position, WindowState, WindowType } from '../models';
 
-describe('WindowReducer', () => {
+describe('Store - WindowReducer', () => {
   describe('setScreenSize', () => {
     const defaultState: Dictionary<WindowState> = {
       [HOME]: {

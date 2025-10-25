@@ -2,7 +2,7 @@ import * as WindowActions from './window.actions';
 import { updateWindow } from './window.actions';
 import { HOME } from '../constants';
 
-describe('WindowActions', () => {
+describe('Store - WindowActions', () => {
   describe('openWindows', () => {
     it('should create an action to open a window', () => {
       const expectedAction = {
