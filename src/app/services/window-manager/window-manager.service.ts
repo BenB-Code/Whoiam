@@ -5,9 +5,11 @@ import {
   minimizeWindow,
   openWindow,
   Position,
+  resizeAllWindows,
   selectAllWindows,
   selectWindowById,
   setActiveWindow,
+  setScreenSize,
   updateWindow,
   WindowState,
   WindowType,
@@ -21,8 +23,16 @@ import { map, Observable } from 'rxjs';
 export class WindowManagerService {
   private readonly store = inject(Store);
 
-  setActiveWindow(id: string): void {
-    this.store.dispatch(setActiveWindow({ id: id as WindowType }));
+  setDefaultConfig(width: number): void {
+    this.store.dispatch(setScreenSize({ width }));
+  }
+
+  handleResize(): void {
+    this.store.dispatch(resizeAllWindows({ width: window.innerWidth }));
+  }
+
+  setActiveWindow(id: WindowType): void {
+    this.store.dispatch(setActiveWindow({ id }));
   }
 
   selectAllWindows(): Observable<Record<string, WindowState | null>> {
@@ -37,27 +47,27 @@ export class WindowManagerService {
     );
   }
 
-  openWindow(id: string): void {
-    this.store.dispatch(openWindow({ id: id as WindowType }));
+  openWindow(id: WindowType): void {
+    this.store.dispatch(openWindow({ id, width: window.innerWidth }));
   }
 
-  maximizeWindow(id: string): void {
-    this.store.dispatch(maximizeWindow({ id: id as WindowType }));
+  maximizeWindow(id: WindowType): void {
+    this.store.dispatch(maximizeWindow({ id }));
   }
 
-  minimizeWindow(id: string): void {
-    this.store.dispatch(minimizeWindow({ id: id as WindowType }));
+  minimizeWindow(id: WindowType): void {
+    this.store.dispatch(minimizeWindow({ id }));
   }
 
-  closeWindow(id: string): void {
-    this.store.dispatch(closeWindow({ id: id as WindowType }));
+  closeWindow(id: WindowType): void {
+    this.store.dispatch(closeWindow({ id, width: window.innerWidth }));
   }
 
-  updateWindow(id: string, position: Position): void {
-    this.store.dispatch(updateWindow({ id: id as WindowType, position }));
+  updateWindow(id: WindowType, position: Position): void {
+    this.store.dispatch(updateWindow({ id, position }));
   }
 
-  selectWindowById(id: string): Observable<WindowState | null> {
-    return this.store.select(selectWindowById(id as WindowType));
+  selectWindowById(id: WindowType): Observable<WindowState | null> {
+    return this.store.select(selectWindowById(id));
   }
 }

@@ -1,23 +1,17 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { DataService } from '../../../services/data/data.service';
-import { catchError, Observable, of, tap } from 'rxjs';
-import { I18nService } from '../../../services/i18n/i18n.service';
+import { computed, Injectable } from '@angular/core';
 import { RawExperience } from '../models/raw-experience.type';
+import { DataLoaderServiceAbstract } from '../../../common/models/data-loader-service.abstract';
+import { Experience } from '../models/experience.type';
+import { DATA_PATH } from '../../../common/constants';
+import { EXPERIENCES } from '../../../store';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ExperiencesService {
-  readonly isLoading = signal<boolean>(false);
-  readonly error = signal<string | null>(null);
-  readonly hasError = computed(() => this.error() !== null);
-  readonly placeholder = computed(() => (this.hasError() ? this.error() : 'experiences.unreachable'));
-  readonly isEmpty = computed(() => !this.hasError() && this.experiences().length === 0);
-  readonly shouldDisplayPlaceholder = computed(() => this.hasError() || this.isEmpty());
-  private readonly rawExperiences = signal<RawExperience[]>([]);
-  private readonly i18nService = inject<I18nService>(I18nService);
+export class ExperiencesService extends DataLoaderServiceAbstract<RawExperience, Experience> {
   readonly experiences = computed(() =>
-    this.rawExperiences().map(exp => ({
+    this.rawData().map(exp => ({
       ...exp,
       company: this.i18nService.getTranslatedField(exp.company),
       name: this.i18nService.getTranslatedField(exp.name),
@@ -29,30 +23,22 @@ export class ExperiencesService {
       skills: this.i18nService.getTranslatedField(exp.skills),
     }))
   );
-  private readonly dataService = inject(DataService);
 
-  loadExperiences(): void {
-    if (this.rawExperiences().length === 0) {
-      this.getExperiences().subscribe();
-    }
+  getData(): Experience[] {
+    return this.experiences();
   }
 
-  private getExperiences(): Observable<RawExperience[]> {
-    this.isLoading.set(true);
-    this.error.set(null);
+  getErrorKey(): string {
+    return `${EXPERIENCES}.error`;
+  }
 
-    return this.dataService.fetchJson<RawExperience[]>('/assets/data/experiences.json').pipe(
-      tap(experiences => {
-        this.rawExperiences.set(experiences);
-        this.isLoading.set(false);
-      }),
-      catchError(err => {
-        console.error('Error loading experiences: ', err);
-        this.error.set('experiences.error');
-        this.isLoading.set(false);
-        this.rawExperiences.set([]);
-        return of([]);
-      })
-    );
+  getPlaceholderKey(): string {
+    return `${EXPERIENCES}.unreachable`;
+  }
+
+  loadExperiences(): void {
+    if (this.rawData().length === 0) {
+      this.loadData(DATA_PATH(EXPERIENCES)).pipe(take(1)).subscribe();
+    }
   }
 }

@@ -21,7 +21,7 @@
 
     .vertical-nav {
       width: 30%;
-      height: 100%;
+      height: auto;
       background: $accent-orange-medium;
       border-radius: $radius-md 0 0 $radius-md;
 
@@ -73,6 +73,45 @@
       height: 100%;
       padding: $space-xl;
       overflow-y: auto;
+    }
+  }
+}
+
+@media (max-width: $screen-max-lg) {
+  :host {
+    .window {
+      .vertical-nav {
+        width: 45%;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-max-md) {
+  :host {
+    .window {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .vertical-nav,
+      .details {
+        width: 100%;
+      }
+
+      .vertical-nav {
+        border-radius: $radius-md;
+        box-shadow: $shadow-light;
+
+        .list-section {
+          max-height: 15rem;
+          overflow: scroll;
+
+          .title {
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }

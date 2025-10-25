@@ -1,14 +1,15 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { CLOSED, DEFAULT_WINDOWS, DEFAULT_ZINDEX, MAXIMIZED, MINIMIZED, OPEN } from '../constants';
+import { CLOSED, DEFAULT_ZINDEX, getResponsiveDefaultSettings, MAXIMIZED, MINIMIZED, OPEN } from '../constants';
 import { WindowState } from '../models';
 import {
   closeWindow,
   maximizeWindow,
   minimizeWindow,
   openWindow,
-  restoreWindow,
+  resizeAllWindows,
   setActiveWindow,
+  setScreenSize,
   updateWindow,
 } from '../actions/window.actions';
 
@@ -17,14 +18,34 @@ export const adapter: EntityAdapter<WindowState> = createEntityAdapter<WindowSta
 });
 
 export type State = {} & EntityState<WindowState>;
-
-export const initialState: State = adapter.setAll(DEFAULT_WINDOWS, adapter.getInitialState());
+export const initialState: State = adapter.setAll([], adapter.getInitialState());
 
 export const windowReducer = createReducer(
   initialState,
-  on(openWindow, (state, { id }) => {
+  on(setScreenSize, (state, { width }) => {
+    const defaultConfig: WindowState[] = getResponsiveDefaultSettings(width);
+    return adapter.setAll(defaultConfig, state);
+  }),
+  on(resizeAllWindows, (state, { width }) => {
+    const config: WindowState[] = getResponsiveDefaultSettings(width);
+    const updates = Object.keys(state.entities)
+      .filter(id => {
+        const window = state.entities[id];
+        return window?.status === OPEN || window?.status === MINIMIZED;
+      })
+      .map(id => ({
+        id,
+        changes: {
+          position: config.find(window => window.id === id)?.position,
+          size: config.find(window => window.id === id)?.size,
+        },
+      }));
+
+    return adapter.updateMany(updates, state);
+  }),
+  on(openWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
-    const defaultValues = DEFAULT_WINDOWS.find(window => window.id === id);
+    const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
     const openBehavior =
       currentWindow?.status === CLOSED
         ? OPEN
@@ -47,8 +68,10 @@ export const windowReducer = createReducer(
       state
     );
   }),
-  on(closeWindow, (state, { id }) => {
+  on(closeWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
+    const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
+
     return adapter.updateOne(
       {
         id,
@@ -56,39 +79,13 @@ export const windowReducer = createReducer(
           status: CLOSED,
           lastStatus: currentWindow?.status,
           isActive: false,
-          position: undefined,
-          size: undefined,
+          position: defaultValues?.position,
+          size: defaultValues?.size,
           zIndex: DEFAULT_ZINDEX,
         },
       },
       state
     );
-  }),
-  on(restoreWindow, (state, { id }) => {
-    const currentWindow = state.entities[id];
-    const targetStatus = currentWindow?.lastStatus || OPEN;
-
-    const restoredState = adapter.updateOne(
-      {
-        id,
-        changes: {
-          status: targetStatus,
-          isActive: true,
-        },
-      },
-      state
-    );
-
-    const maxZ = selectMaxZIndexValue(restoredState) + 1;
-    const updates = Object.keys(restoredState.entities).map(windowId => ({
-      id: windowId,
-      changes: {
-        isActive: windowId === id,
-        zIndex: windowId === id ? maxZ : restoredState.entities[windowId]?.zIndex || DEFAULT_ZINDEX,
-      },
-    }));
-
-    return adapter.updateMany(updates, restoredState);
   }),
   on(minimizeWindow, (state, { id }) => {
     const currentWindow = state.entities[id];

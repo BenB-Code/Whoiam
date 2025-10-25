@@ -11,12 +11,12 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { WindowComponentBase } from '../../models/window-component.base';
+import { WindowComponentAbstract } from '../../models/window-component.abstract';
 import { WindowHeader } from '../window-header/window-header';
-import { TRANSPARENT } from '../../constants/style.const';
 import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
+import { TRANSPARENT } from '../../constants';
 
 @Component({
   selector: 'app-listing-window',
@@ -25,7 +25,7 @@ import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.serv
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListingWindow<T> extends WindowComponentBase implements OnInit {
+export class ListingWindow<T> extends WindowComponentAbstract implements OnInit {
   @Output() readonly closeEvent = new EventEmitter<void>();
   @Output() readonly fullscreenEvent = new EventEmitter<boolean>();
   @Output() readonly reduceEvent = new EventEmitter<void>();

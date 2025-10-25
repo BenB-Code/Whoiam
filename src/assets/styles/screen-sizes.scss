@@ -1,0 +1,13 @@
+$screen-xs: 320px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1400px;
+
+$screen-max-xs: calc(320px - 1px);
+$screen-max-sm: calc(576px - 1px);
+$screen-max-md: calc(768px - 1px);
+$screen-max-lg: calc(992px - 1px);
+$screen-max-xl: calc(1200px - 1px);
+$screen-max-xxl: calc(1400px - 1px);

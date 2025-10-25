@@ -131,6 +131,10 @@ module.exports = tseslint.config(
     },
   },
   {
+    files: ['**/*.spec.ts'],
+    rules: { 'max-lines': ['error', 600] },
+  },
+  {
     ignores: ['.angular', 'dist', 'node_modules', 'src/main.*.ts', 'src/server.ts'],
   }
 );

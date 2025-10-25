@@ -1,18 +1,37 @@
-import { Directive, HostListener, inject, input, OnInit } from '@angular/core';
+import { Directive, HostListener, inject, input } from '@angular/core';
 import { Position, WindowType } from '../../store';
 import { ContentWindow } from '../components/content-window/content-window';
 import { ListingWindow } from '../components/listing-window/listing-window';
 import { WindowManagerService } from '../../services/window-manager/window-manager.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({
   selector: '[appWindowActions]',
 })
-export class WindowActions implements OnInit {
-  readonly windowId = input<WindowType>();
+export class WindowActions {
+  readonly windowId = input.required<WindowType>();
 
   private readonly contentWindow = inject(ContentWindow, { optional: true });
   private readonly listingWindow = inject(ListingWindow, { optional: true });
   private readonly windowManagerService = inject(WindowManagerService);
+
+  constructor() {
+    this.windowComponent.fullscreenEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.windowManagerService.maximizeWindow(this.windowId()));
+    this.windowComponent.reduceEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.windowManagerService.minimizeWindow(this.windowId()));
+    this.windowComponent.closeEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.windowManagerService.closeWindow(this.windowId()));
+    this.windowComponent.dragNDropEndEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe((position: Position) => this.windowManagerService.updateWindow(this.windowId(), position));
+    this.windowComponent.dragNDropStartEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.windowManagerService.setActiveWindow(this.windowId()));
+  }
 
   private get windowComponent(): ContentWindow | ListingWindow<unknown> {
     const component = this.contentWindow || this.listingWindow;
@@ -24,20 +43,6 @@ export class WindowActions implements OnInit {
 
   @HostListener('click')
   onActivate(): void {
-    this.windowManagerService.setActiveWindow(this.windowId() || '');
-  }
-
-  ngOnInit(): void {
-    this.windowComponent.fullscreenEvent.subscribe(() =>
-      this.windowManagerService.maximizeWindow(this.windowId() || '')
-    );
-    this.windowComponent.reduceEvent.subscribe(() => this.windowManagerService.minimizeWindow(this.windowId() || ''));
-    this.windowComponent.closeEvent.subscribe(() => this.windowManagerService.closeWindow(this.windowId() || ''));
-    this.windowComponent.dragNDropEndEvent.subscribe((position: Position) =>
-      this.windowManagerService.updateWindow(this.windowId() || '', position)
-    );
-    this.windowComponent.dragNDropStartEvent.subscribe(() =>
-      this.windowManagerService.setActiveWindow(this.windowId() || '')
-    );
+    this.windowManagerService.setActiveWindow(this.windowId());
   }
 }

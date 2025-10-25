@@ -1,81 +1,60 @@
-import { Position, Size, WindowState, WindowType } from '../models';
+import { WindowState } from '../models';
 import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
-import { CLOSED, OPEN } from './status.const';
+import { CLOSED } from './status.const';
+import { ScreenSizes } from './screen-sizes.enum';
+import { RESPONSIVE_POSITION } from './default-positions.const';
+import { RESPONSIVE_SIZES } from './default-sizes.const';
+import { RESPONSIVE_IS_FULLSCREEN_DISABLED } from './default-fullscreen-is-disabled.const';
+import { DEFAULT_ZINDEX } from './default-zindex.const';
+import { BREAKPOINTS, DEFAULT, MOBILE, TABLET } from '../models/breakpoints.type';
 
-export const DEFAULT_ZINDEX = 1;
-export const DEFAULT_POSITION: Record<WindowType, Position> = {
-  [HOME]: {
-    x: '3%',
-    y: '5%',
-  },
-  [EXPERIENCES]: {
-    x: '6%',
-    y: '15%',
-  },
-  [PROJECTS]: {
-    x: '9%',
-    y: '25%',
-  },
-  [CONTACT]: {
-    x: '68%',
-    y: '3%',
-  },
-};
+export function getResponsiveDefaultSettings(screenWidth = 1920): WindowState[] {
+  let breakpoint: BREAKPOINTS = DEFAULT;
+  if (screenWidth < ScreenSizes.SM) {
+    breakpoint = MOBILE;
+  } else if (screenWidth < ScreenSizes.LG) {
+    breakpoint = TABLET;
+  }
 
-export const DEFAULT_SIZES: Record<WindowType, Size> = {
-  [HOME]: {
-    width: '64%',
-    height: 'fit-content',
-  },
-  [EXPERIENCES]: {
-    width: '68%',
-    height: '60%',
-  },
-  [PROJECTS]: {
-    width: '60%',
-    height: 'fit-content',
-  },
-  [CONTACT]: {
-    width: '30%',
-    height: 'fit-content',
-  },
-};
-
-export const DEFAULT_WINDOWS: WindowState[] = [
-  {
-    id: HOME,
-    status: OPEN,
-    disableFullscreen: true,
-    position: DEFAULT_POSITION[HOME],
-    size: DEFAULT_SIZES[HOME],
-    zIndex: 2,
-    isActive: true,
-  },
-  {
-    id: EXPERIENCES,
-    status: CLOSED,
-    disableFullscreen: false,
-    position: DEFAULT_POSITION[EXPERIENCES],
-    size: DEFAULT_SIZES[EXPERIENCES],
-    zIndex: DEFAULT_ZINDEX,
-    isActive: false,
-  },
-  {
-    id: PROJECTS,
-    status: CLOSED,
-    disableFullscreen: false,
-    position: DEFAULT_POSITION[PROJECTS],
-    size: DEFAULT_SIZES[PROJECTS],
-    zIndex: DEFAULT_ZINDEX,
-    isActive: false,
-  },
-  {
-    id: CONTACT,
-    status: CLOSED,
-    disableFullscreen: true,
-    position: DEFAULT_POSITION[CONTACT],
-    size: DEFAULT_SIZES[CONTACT],
-    zIndex: DEFAULT_ZINDEX,
-    isActive: false,
-  },
-];
+  const positions = RESPONSIVE_POSITION[breakpoint];
+  const sizes = RESPONSIVE_SIZES[breakpoint];
+  const isFullscreenDisabled = RESPONSIVE_IS_FULLSCREEN_DISABLED[breakpoint];
+  return [
+    {
+      id: HOME,
+      status: CLOSED,
+      disableFullscreen: isFullscreenDisabled[HOME],
+      position: positions[HOME],
+      size: sizes[HOME],
+      zIndex: 2,
+      isActive: true,
+    },
+    {
+      id: EXPERIENCES,
+      status: CLOSED,
+      disableFullscreen: isFullscreenDisabled[EXPERIENCES],
+      position: positions[EXPERIENCES],
+      size: sizes[EXPERIENCES],
+      zIndex: DEFAULT_ZINDEX,
+      isActive: false,
+    },
+    {
+      id: PROJECTS,
+      status: CLOSED,
+      disableFullscreen: isFullscreenDisabled[PROJECTS],
+      position: positions[PROJECTS],
+      size: sizes[PROJECTS],
+      zIndex: DEFAULT_ZINDEX,
+      isActive: false,
+    },
+    {
+      id: CONTACT,
+      status: CLOSED,
+      disableFullscreen: isFullscreenDisabled[CONTACT],
+      position: positions[CONTACT],
+      size: sizes[CONTACT],
+      zIndex: DEFAULT_ZINDEX,
+      isActive: false,
+    },
+  ];
+}
