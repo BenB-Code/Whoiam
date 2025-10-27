@@ -7,22 +7,23 @@ import { LANGUAGES } from '../../common/constants';
 
 describe('Service - I18nService', () => {
   let service: I18nService;
-  let mockTranslateService: any;
+  let translateService: jasmine.SpyObj<TranslateService>;
 
   beforeEach(() => {
-    mockTranslateService = jasmine.createSpyObj(TranslateService, ['use']);
+    const translateServiceSpy = jasmine.createSpyObj(TranslateService, ['use']);
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         {
           provide: TranslateService,
-          useValue: mockTranslateService,
+          useValue: translateServiceSpy,
         },
       ],
     });
 
     service = TestBed.inject(I18nService);
+    translateService = TestBed.inject(TranslateService) as jasmine.SpyObj<TranslateService>;
   });
 
   it('should be created', () => {
@@ -33,7 +34,7 @@ describe('Service - I18nService', () => {
     it('should set the current language', () => {
       service.switchLanguage('en');
 
-      expect(mockTranslateService.use).toHaveBeenCalledWith('en');
+      expect(translateService.use).toHaveBeenCalledWith('en');
       expect(service.currentLang()).toBe('en');
     });
   });

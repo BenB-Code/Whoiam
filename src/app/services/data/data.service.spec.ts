@@ -5,22 +5,23 @@ import { DataService } from './data.service';
 
 describe('Service - DataService', () => {
   let service: DataService;
-  let mockHttp: jasmine.SpyObj<HttpClient>;
+  let http: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    mockHttp = jasmine.createSpyObj('HttpClient', ['get']);
+    const httpSpy = jasmine.createSpyObj('HttpClient', ['get']);
 
     TestBed.configureTestingModule({
       providers: [
         provideZonelessChangeDetection(),
         {
           provide: HttpClient,
-          useValue: mockHttp,
+          useValue: httpSpy,
         },
       ],
     });
 
     service = TestBed.inject(DataService);
+    http = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
   });
 
   it('should be created', () => {
@@ -33,7 +34,7 @@ describe('Service - DataService', () => {
 
       service.fetchJson(path);
 
-      expect(mockHttp.get).toHaveBeenCalledWith(path);
+      expect(http.get).toHaveBeenCalledWith(path);
     });
   });
 });
