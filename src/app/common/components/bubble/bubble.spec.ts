@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Bubble } from './bubble';
 import { provideZonelessChangeDetection } from '@angular/core';
 
-describe('Bubble', () => {
+describe('Component - Bubble', () => {
   let component: Bubble;
   let fixture: ComponentFixture<Bubble>;
 

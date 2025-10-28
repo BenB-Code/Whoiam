@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlaceholderText } from './placeholder-text';
 import { provideZonelessChangeDetection } from '@angular/core';
 
-describe('PlaceholderText', () => {
+describe('Component - PlaceholderText', () => {
   let component: PlaceholderText;
   let fixture: ComponentFixture<PlaceholderText>;
 
