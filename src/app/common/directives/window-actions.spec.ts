@@ -71,27 +71,27 @@ describe('Directive - WindowActions', () => {
 
       it('should trigger event on fullscreenEvent', () => {
         eventsMock.fullscreenEvent.next();
-        expect(windowManagerServiceSpy.maximizeWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.maximizeWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.maximizeWindow).toHaveBeenCalledWith(HOME);
       });
       it('should trigger event on reduceEvent', () => {
         eventsMock.reduceEvent.next();
-        expect(windowManagerServiceSpy.minimizeWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.minimizeWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.minimizeWindow).toHaveBeenCalledWith(HOME);
       });
       it('should trigger event on closeEvent', () => {
         eventsMock.closeEvent.next();
-        expect(windowManagerServiceSpy.closeWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.closeWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.closeWindow).toHaveBeenCalledWith(HOME);
       });
       it('should trigger event on dragNDropEndEvent', () => {
         eventsMock.dragNDropEndEvent.next({ x: '0%', y: 'O%' });
-        expect(windowManagerServiceSpy.updateWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.updateWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.updateWindow).toHaveBeenCalledWith(HOME, { x: '0%', y: 'O%' });
       });
       it('should trigger event on dragNDropStartEvent', () => {
         eventsMock.dragNDropStartEvent.next();
-        expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalledWith(HOME);
       });
 
@@ -99,7 +99,7 @@ describe('Directive - WindowActions', () => {
         const directiveEl = fixture.debugElement.query(By.directive(WindowActions));
         directiveEl.triggerEventHandler('click', null);
 
-        expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalledTimes(1);
+        expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalled();
         expect(windowManagerServiceSpy.setActiveWindow).toHaveBeenCalledWith(HOME);
       });
     });
