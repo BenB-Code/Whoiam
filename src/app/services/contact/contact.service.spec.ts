@@ -97,7 +97,7 @@ describe('Service - ContactService', () => {
   });
 
   describe('loadContacts', () => {
-    it('should load data is rawData is not defined', () => {
+    it('should load data when rawData is not defined', () => {
       (service as any).rawData.set([]);
       service.loadContacts();
 
