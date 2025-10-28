@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Bubble } from './bubble';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Bubble', () => {
   let component: Bubble;
@@ -8,6 +9,7 @@ describe('Bubble', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [Bubble],
     }).compileComponents();
 

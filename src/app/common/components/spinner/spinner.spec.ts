@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Spinner } from './spinner';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Spinner', () => {
   let component: Spinner;
@@ -8,6 +9,7 @@ describe('Spinner', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [Spinner],
     }).compileComponents();
 
