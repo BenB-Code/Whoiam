@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WindowHeader } from './window-header';
 import { provideZonelessChangeDetection } from '@angular/core';
-import { closeWindow } from '../../../store';
 
 describe('Component - WindowHeader', () => {
   let component: WindowHeader;
@@ -15,16 +14,16 @@ describe('Component - WindowHeader', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(WindowHeader);
-    fixture.autoDetectChanges();
+    fixture.componentRef.setInput('disableFullscreen', false);
+    fixture.detectChanges();
+
     component = fixture.componentInstance;
 
-    spyOn(component, 'closeWindow');
-    spyOn(component, 'activateFullscreen');
-    spyOn(component, 'reduceWindow');
+    spyOn(component.closeWindow, 'emit');
+    spyOn(component.activateFullscreen, 'emit');
+    spyOn(component.reduceWindow, 'emit');
 
-    fixture.componentRef.setInput('disableFullscreen', false);
     await fixture.whenStable();
-    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -32,10 +31,26 @@ describe('Component - WindowHeader', () => {
   });
 
   describe('onClose', () => {
-    it('should call closeWindow event', async () => {
+    it('should call closeWindow event', () => {
       component.onClose();
 
-      expect(component.closeWindow).toHaveBeenCalledTimes(1);
+      expect(component.closeWindow.emit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onFullscreen', () => {
+    it('should call activateFullscreen event', () => {
+      component.onFullscreen();
+
+      expect(component.activateFullscreen.emit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('onReduce', () => {
+    it('should call reduceWindow event', () => {
+      component.onReduce();
+
+      expect(component.reduceWindow.emit).toHaveBeenCalledTimes(1);
     });
   });
 });
