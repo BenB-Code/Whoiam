@@ -20,7 +20,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected title = 'Whoiam';
+  protected title = 'Benjamin Bats';
   protected readonly dragNDropService: DragNDropService = inject(DragNDropService);
   protected readonly windowManagerService = inject(WindowManagerService);
 
@@ -28,17 +28,21 @@ export class App {
 
   constructor() {
     afterNextRender(() => {
-      this.windowManagerService.setDefaultConfig(window.innerWidth);
-      this.setDragBoundaries();
-      this.windowManagerService.openWindow(HOME);
-
-      fromEvent(window, 'resize')
-        .pipe(debounceTime(10), takeUntilDestroyed(this.destroyRef))
-        .subscribe(() => {
-          this.windowManagerService.handleResize();
-          this.setDragBoundaries();
-        });
+      this.initialize();
     });
+  }
+
+  initialize(): void {
+    this.windowManagerService.setDefaultConfig(window.innerWidth);
+    this.setDragBoundaries();
+    this.windowManagerService.openWindow(HOME);
+
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(10), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.windowManagerService.handleResize();
+        this.setDragBoundaries();
+      });
   }
 
   setDragBoundaries(): void {
