@@ -29,7 +29,7 @@ export class Experiences extends ComponentConstantsAbstract {
     if (index === null) {
       return null;
     }
-    return this.experiencesService.experiences()[index] || null;
+    return this.experiencesService.experiences()[index];
   });
 
   constructor() {
