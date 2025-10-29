@@ -56,6 +56,16 @@ describe('Component - HeaderBar', () => {
       expect(result).not.toBeNull();
       expect(result).toBe(expected);
     });
+
+    it('should return empty string when datePipe transform returns null', () => {
+      i18nService.currentLang.and.returnValue(EN);
+      spyOn(component['datePipe'], 'transform').and.returnValue(null);
+      (component as any).time.set(new Date());
+
+      const result = component['formattedTime']();
+
+      expect(result).toBe('');
+    });
   });
 
   describe('time update', () => {
