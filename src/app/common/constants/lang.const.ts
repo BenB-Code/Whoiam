@@ -5,4 +5,4 @@ export const FR_LOCAL = 'fr-FR';
 export const US_LOCAL = 'en-US';
 
 export const FR_DATE_FORMAT = 'EEE dd MMM HH:mm';
-export const US_DATE_FORMAT = 'EEE dd MMM HH:mm a';
+export const US_DATE_FORMAT = 'EEE dd MMM hh:mm a';
