@@ -69,19 +69,19 @@ describe('Component - HeaderBar', () => {
   });
 
   describe('time update', () => {
-    it('should update time every second and clear interval on destroy', async () => {
+    it('should update time every second', async () => {
       const initialTime = (component as any).time();
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1100));
       const updatedTime = (component as any).time();
 
       expect(updatedTime.getTime()).toBeGreaterThan(initialTime.getTime());
+    });
 
-      const clearIntervalSpy = spyOn(window, 'clearInterval').and.callThrough();
+    it('should clear interval on destroy', () => {
+      const clearIntervalSpy = spyOn(window, 'clearInterval');
 
-      if (typeof (component as any).ngOnDestroy === 'function') {
-        (component as any).ngOnDestroy();
-      }
+      fixture.destroy();
 
       expect(clearIntervalSpy).toHaveBeenCalled();
     });
