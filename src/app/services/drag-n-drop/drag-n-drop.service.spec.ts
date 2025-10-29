@@ -69,5 +69,53 @@ describe('Service - DragNDropService', () => {
         y: '0px',
       });
     });
+
+    it('should return 0 for x when calculated x is negative', () => {
+      const mockGetRootElement = {
+        getBoundingClientRect: jasmine.createSpy('getBoundingClientRect').and.returnValue({
+          x: -50,
+          y: 100,
+          width: 0,
+          height: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        } as DOMRect),
+      };
+      const negativePositions = {
+        source: {
+          getRootElement: () => mockGetRootElement,
+        } as any,
+      } as CdkDragEnd;
+
+      const result = service.processNewPosition(negativePositions);
+
+      expect(result.x).toBe('0px');
+    });
+
+    it('should return 0 for y when calculated y is negative', () => {
+      const mockGetRootElement = {
+        getBoundingClientRect: jasmine.createSpy('getBoundingClientRect').and.returnValue({
+          x: 100,
+          y: -30,
+          width: 0,
+          height: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        } as DOMRect),
+      };
+      const negativePositions = {
+        source: {
+          getRootElement: () => mockGetRootElement,
+        } as any,
+      } as CdkDragEnd;
+
+      const result = service.processNewPosition(negativePositions);
+
+      expect(result.y).toBe('0px');
+    });
   });
 });
