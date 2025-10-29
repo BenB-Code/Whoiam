@@ -232,6 +232,25 @@ describe('Store - WindowReducer', () => {
           lastStatus: CLOSED,
         });
       });
+
+      it('should use defaultValues position and size when currentWindow has none', () => {
+        const customState = fromReducer.adapter.setOne(
+          {
+            id: EXPERIENCES,
+            status: CLOSED,
+            disableFullscreen: false,
+            zIndex: 1,
+            isActive: false,
+          } as WindowState,
+          state
+        );
+
+        const action = openWindow({ id: EXPERIENCES, width: 1920 });
+        const newState = fromReducer.windowReducer(customState, action);
+
+        expect(newState.entities[EXPERIENCES]?.position).toEqual({ x: '4%', y: '12%' });
+        expect(newState.entities[EXPERIENCES]?.size).toEqual({ width: '68%', height: '60%' });
+      });
       it('should open lastStatus from MINIMIZED to get old positions and size config', () => {
         const action = openWindow({ id: CONTACT, width: 1920 });
         const newState = fromReducer.windowReducer(state, action);
@@ -405,6 +424,25 @@ describe('Store - WindowReducer', () => {
           isActive: true,
           lastStatus: CLOSED,
         });
+      });
+
+      it('should use DEFAULT_ZINDEX when window zIndex is undefined', () => {
+        const customState = fromReducer.adapter.setOne(
+          {
+            id: EXPERIENCES,
+            status: OPEN,
+            disableFullscreen: false,
+            position: { x: '4%', y: '12%' },
+            size: { width: '68%', height: '60%' },
+            isActive: false,
+          } as WindowState,
+          state
+        );
+
+        const action = setActiveWindow({ id: HOME });
+        const newState = fromReducer.windowReducer(customState, action);
+
+        expect(newState.entities[EXPERIENCES]?.zIndex).toBe(DEFAULT_ZINDEX);
       });
       it('should set isActive on MINIMIZED', () => {
         const action = setActiveWindow({ id: CONTACT });
