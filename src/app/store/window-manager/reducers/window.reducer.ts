@@ -46,7 +46,6 @@ export const windowReducer = createReducer(
   on(openWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
     const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
-    console.log('kdjshfkjshdf', JSON.stringify(defaultValues));
     const nextStatus = decideNextStatus(currentWindow!);
     return adapter.updateOne(
       {
