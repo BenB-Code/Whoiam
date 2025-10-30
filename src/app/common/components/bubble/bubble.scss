@@ -8,18 +8,18 @@ div {
   opacity: 1;
 
   &.grey {
-    background: $light-grey;
+    background: $light-gray;
   }
 
   &.orange {
-    background: $accent-orange-strong;
+    background: $pastel-orange;
   }
 
   &.red {
-    background: $accent-red-strong;
+    background: $pastel-red;
   }
 
   &.green {
-    background: $accent-green-strong;
+    background: $pastel-green;
   }
 }

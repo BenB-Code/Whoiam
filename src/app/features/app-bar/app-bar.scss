@@ -4,7 +4,7 @@
   width: fit-content;
   padding: $space-sm;
   border-radius: $radius-md;
-  background: $white-translucent-light;
+  background: $white-super-translucent;
   box-shadow: $shadow-default;
   position: fixed;
   bottom: $space-sm;
@@ -20,7 +20,7 @@
     height: $size-2xl;
     margin: 0 $space-md 0 $space-xs;
     border-radius: $radius-md;
-    background: $gray-translucent;
+    background: $dark-gray;
   }
 
   .el {
@@ -49,7 +49,7 @@
     img {
       height: 100%;
       width: 100%;
-      background: $system-white;
+      background: $white;
       border-radius: $radius-md;
     }
 
@@ -67,7 +67,7 @@
       left: 0;
       right: 0;
       margin: auto;
-      background: $system-accent;
+      background: $blue-gray;
       border-radius: $radius-full;
       height: $size-xs;
       width: $size-xs;

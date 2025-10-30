@@ -49,7 +49,7 @@
 
         &.active,
         &:hover {
-          border: 1px solid $system-white;
+          border: 1px solid $white;
           filter: grayscale(0);
           transition:
             filter $timer-fast,
@@ -59,7 +59,7 @@
     }
 
     .time {
-      color: $system-white;
+      color: $white;
       font-size: $font-size-sm;
       font-weight: $font-weight-medium;
       text-transform: capitalize;
@@ -79,7 +79,7 @@
     }
 
     h1 {
-      color: $system-white;
+      color: $white;
       font-size: $font-size-sm;
       font-weight: $font-weight-medium;
     }

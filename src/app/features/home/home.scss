@@ -12,12 +12,12 @@
         width: 70%;
 
         .name {
-          color: $accent-orange-strong;
+          color: $pastel-orange;
           font-weight: $font-weight-bold;
         }
 
         .skill {
-          color: $gradient-green-alt;
+          color: $pastel-green;
           font-weight: $font-weight-bold;
         }
 
@@ -28,8 +28,8 @@
 
         .highlight {
           font-style: italic;
-          color: $system-white;
-          background: linear-gradient(90deg, $gradient-orange, $gradient-red 100%);
+          color: $white;
+          background: linear-gradient(90deg, $pastel-orange, $pastel-red 100%);
           padding: $space-md;
           margin: $space-xl 0;
           border-radius: $radius-md;
@@ -60,7 +60,7 @@
         .img-container {
           width: $profile-picture-size;
           height: $profile-picture-size;
-          border: $space-sm solid $accent-red-strong;
+          border: $space-sm solid $pastel-red;
           border-radius: $profile-border-radius;
           overflow: hidden;
           display: flex;

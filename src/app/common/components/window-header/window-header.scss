@@ -11,7 +11,7 @@
   cursor: pointer;
 
   &.grey {
-    background: $gray-lighter;
+    background: $medium-dark-gray;
   }
 
   &.transparent {
@@ -60,7 +60,7 @@
     text-align: center;
 
     p {
-      color: $system-white;
+      color: $white;
       font-weight: 500;
       padding: 0;
       margin: 0;
