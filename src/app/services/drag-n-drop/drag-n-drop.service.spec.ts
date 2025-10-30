@@ -46,8 +46,8 @@ describe('Service - DragNDropService', () => {
         event: new MouseEvent('mouseup'),
         source: {
           getRootElement: () => mockGetRootElement,
-        } as any,
-      };
+        },
+      } as unknown as CdkDragEnd;
     });
 
     it('should give recalculated positions without boudaries defined', () => {
@@ -86,8 +86,8 @@ describe('Service - DragNDropService', () => {
       const negativePositions = {
         source: {
           getRootElement: () => mockGetRootElement,
-        } as any,
-      } as CdkDragEnd;
+        },
+      } as unknown as CdkDragEnd;
 
       const result = service.processNewPosition(negativePositions);
 
@@ -110,8 +110,8 @@ describe('Service - DragNDropService', () => {
       const negativePositions = {
         source: {
           getRootElement: () => mockGetRootElement,
-        } as any,
-      } as CdkDragEnd;
+        },
+      } as unknown as CdkDragEnd;
 
       const result = service.processNewPosition(negativePositions);
 

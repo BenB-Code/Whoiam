@@ -10,9 +10,6 @@ import { HOME } from '../../store';
 describe('Component - AppBar', () => {
   let component: AppBar;
   let fixture: ComponentFixture<AppBar>;
-
-  let contactService: jasmine.SpyObj<ContactsService>;
-  let navigationService: jasmine.SpyObj<NavigationService>;
   let windowManagerService: jasmine.SpyObj<WindowManagerService>;
 
   beforeEach(async () => {
@@ -40,8 +37,6 @@ describe('Component - AppBar', () => {
     }).compileComponents();
 
     windowManagerService = TestBed.inject(WindowManagerService) as jasmine.SpyObj<WindowManagerService>;
-    contactService = TestBed.inject(ContactsService) as jasmine.SpyObj<ContactsService>;
-    navigationService = TestBed.inject(NavigationService) as jasmine.SpyObj<NavigationService>;
 
     fixture = TestBed.createComponent(AppBar);
     component = fixture.componentInstance;

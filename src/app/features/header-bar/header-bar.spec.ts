@@ -36,7 +36,7 @@ describe('Component - HeaderBar', () => {
     it('should format date in FR', () => {
       i18nService.currentLang.and.returnValue(FR);
       const now = new Date('2025-01-25T14:00:00');
-      (component as any).time.set(now);
+      component['time'].set(now);
 
       const expected = new DatePipe(FR_LOCAL).transform(now, FR_DATE_FORMAT, undefined, FR_LOCAL)!;
       const result = component['formattedTime']();
@@ -48,7 +48,7 @@ describe('Component - HeaderBar', () => {
     it('should format date in EN', () => {
       i18nService.currentLang.and.returnValue(EN);
       const now = new Date('2025-01-25T14:00:00');
-      (component as any).time.set(now);
+      component['time'].set(now);
 
       const expected = new DatePipe(US_LOCAL).transform(now, US_DATE_FORMAT, undefined, US_LOCAL)!;
       const result = component['formattedTime']();
@@ -60,7 +60,7 @@ describe('Component - HeaderBar', () => {
     it('should return empty string when datePipe transform returns null', () => {
       i18nService.currentLang.and.returnValue(EN);
       spyOn(component['datePipe'], 'transform').and.returnValue(null);
-      (component as any).time.set(new Date());
+      component['time'].set(new Date());
 
       const result = component['formattedTime']();
 
@@ -70,10 +70,10 @@ describe('Component - HeaderBar', () => {
 
   describe('time update', () => {
     it('should update time every second', async () => {
-      const initialTime = (component as any).time();
+      const initialTime = component['time']();
 
       await new Promise(resolve => setTimeout(resolve, 1100));
-      const updatedTime = (component as any).time();
+      const updatedTime = component['time']();
 
       expect(updatedTime.getTime()).toBeGreaterThan(initialTime.getTime());
     });

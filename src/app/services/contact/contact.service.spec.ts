@@ -9,8 +9,6 @@ import { Contact } from '../../features/contact/models/contact.type';
 
 describe('Service - ContactService', () => {
   let service: ContactsService;
-  let i18nService: jasmine.SpyObj<I18nService>;
-  let dataService: jasmine.SpyObj<DataService>;
 
   beforeEach(() => {
     const i18nServiceSpy = jasmine.createSpyObj('', ['']);
@@ -31,10 +29,8 @@ describe('Service - ContactService', () => {
     });
 
     service = TestBed.inject(ContactsService);
-    i18nService = TestBed.inject(I18nService) as jasmine.SpyObj<I18nService>;
-    dataService = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
 
-    spyOn(service as any, 'loadData').and.returnValue(of([]));
+    service['loadData'] = jasmine.createSpy().and.returnValue(of([]));
   });
 
   it('should be created', () => {
@@ -43,7 +39,7 @@ describe('Service - ContactService', () => {
 
   describe('contacts', () => {
     it('should compute contacts with rawData', () => {
-      (service as any).rawData.set([
+      service['rawData'].set([
         {
           name: 'Jhon Doe Mail',
           logo: 'JD',
@@ -58,7 +54,7 @@ describe('Service - ContactService', () => {
         },
       ]);
       expect(service.contacts().length).toBe(2);
-      expect(service.contacts()).toEqual((service as any).rawData());
+      expect(service.contacts()).toEqual(service['rawData']());
     });
   });
 
@@ -72,7 +68,7 @@ describe('Service - ContactService', () => {
           alt: 'JD',
         },
       ];
-      (service as any).rawData.set(data);
+      service['rawData'].set(data);
 
       const result = service.getData();
 
@@ -98,15 +94,15 @@ describe('Service - ContactService', () => {
 
   describe('loadContacts', () => {
     it('should load data when rawData is not defined', () => {
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
       service.loadContacts();
 
-      expect((service as any).loadData).toHaveBeenCalledTimes(1);
-      expect((service as any).loadData).toHaveBeenCalledWith(`/assets/data/contact.json`);
+      expect(service['loadData']).toHaveBeenCalledTimes(1);
+      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/contact.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {
-      (service as any).rawData.set([
+      service['rawData'].set([
         {
           name: 'Jhon Doe Mail',
           logo: 'JD',
@@ -116,7 +112,7 @@ describe('Service - ContactService', () => {
       ]);
       service.loadContacts();
 
-      expect((service as any).loadData).not.toHaveBeenCalled();
+      expect(service['loadData']).not.toHaveBeenCalled();
     });
   });
 });

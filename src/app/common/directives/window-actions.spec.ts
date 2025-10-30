@@ -3,7 +3,7 @@ import { WindowManagerService } from '../../services/window-manager/window-manag
 import { ListingWindow } from '../components/listing-window/listing-window';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
-import { Component, Provider, provideZonelessChangeDetection } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Provider, provideZonelessChangeDetection } from '@angular/core';
 import { WindowActions } from './window-actions';
 import { HOME, Position, WindowType } from '../../store';
 import { By } from '@angular/platform-browser';
@@ -12,6 +12,7 @@ import { By } from '@angular/platform-browser';
   template: '<div appWindowActions [windowId]="windowId"></div>',
   standalone: true,
   imports: [WindowActions],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestHostComponent {
   windowId: WindowType = HOME;
@@ -51,7 +52,6 @@ describe('Directive - WindowActions', () => {
   ]);
 
   testCase.forEach(({ componentType, mockProvider }) => {
-    let component: TestHostComponent;
     let fixture: ComponentFixture<TestHostComponent>;
 
     describe(`Window Actions avec ${componentType}`, () => {
@@ -65,7 +65,6 @@ describe('Directive - WindowActions', () => {
         }).compileComponents();
 
         fixture = TestBed.createComponent(TestHostComponent);
-        component = fixture.componentInstance;
         fixture.detectChanges();
       });
 

@@ -41,7 +41,6 @@ class TestDataLoaderService extends DataLoaderServiceAbstract<TestRawData, TestT
 describe('Abstract - DataLoaderServiceAbstract', () => {
   let service: TestDataLoaderService;
   let dataService: jasmine.SpyObj<DataService>;
-  let i18nService: I18nService;
 
   const mockRawData: TestRawData[] = [
     { id: 1, name: 'Item 1' },
@@ -64,7 +63,6 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
 
     service = TestBed.inject(TestDataLoaderService);
     dataService = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
-    i18nService = TestBed.inject(I18nService);
   });
 
   it('should be created', () => {
@@ -86,14 +84,14 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
 
     it('should compute isEmpty as true when no error and data is empty', () => {
       service.error.set(null);
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
 
       expect(service.isEmpty()).toBe(true);
     });
 
     it('should compute isEmpty as false when data is present', () => {
       service.error.set(null);
-      (service as any).rawData.set(mockRawData);
+      service['rawData'].set(mockRawData);
 
       expect(service.isEmpty()).toBe(false);
     });
@@ -106,14 +104,14 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
 
     it('should compute shouldDisplayPlaceholder as true when isEmpty', () => {
       service.error.set(null);
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
 
       expect(service.shouldDisplayPlaceholder()).toBe(true);
     });
 
     it('should compute shouldDisplayPlaceholder as false when has data and no error', () => {
       service.error.set(null);
-      (service as any).rawData.set(mockRawData);
+      service['rawData'].set(mockRawData);
 
       expect(service.shouldDisplayPlaceholder()).toBe(false);
     });
@@ -126,7 +124,7 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
 
     it('should compute placeholder as placeholderKey when isEmpty', () => {
       service.error.set(null);
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
 
       expect(service.placeholder()).toBe('test.placeholder');
     });
@@ -137,7 +135,7 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
       dataService.fetchJson.and.returnValue(of(mockRawData));
 
       service.loadTestData('/test/path').subscribe(() => {
-        expect((service as any).rawData()).toEqual(mockRawData);
+        expect(service['rawData']()).toEqual(mockRawData);
         expect(service.isLoading()).toBe(false);
         expect(service.error()).toBeNull();
         done();
@@ -150,7 +148,7 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
       service.loadTestData('/test/path').subscribe(() => {
         expect(service.error()).toBe('test.error');
         expect(service.isLoading()).toBe(false);
-        expect((service as any).rawData()).toEqual([]);
+        expect(service['rawData']()).toEqual([]);
         done();
       });
     });
@@ -168,7 +166,7 @@ describe('Abstract - DataLoaderServiceAbstract', () => {
 
   describe('abstract methods', () => {
     it('should transform data via getData', () => {
-      (service as any).rawData.set(mockRawData);
+      service['rawData'].set(mockRawData);
 
       const result = service.getData();
 

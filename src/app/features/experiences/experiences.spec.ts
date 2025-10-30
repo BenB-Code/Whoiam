@@ -11,13 +11,7 @@ import { CLOSED, EXPERIENCES as EXPERIENCES_ID, WindowState } from '../../store'
 describe('Component - Experiences', () => {
   let component: Experiences;
   let fixture: ComponentFixture<Experiences>;
-  let windowManagerService: jasmine.SpyObj<WindowManagerService>;
-  let experiencesService: Partial<jasmine.SpyObj<ExperiencesService>> & {
-    experiences: () => Experience[];
-    isLoading: () => boolean;
-    shouldDisplayPlaceholder: () => boolean;
-    placeholder: () => string;
-  };
+  let experiencesService: jasmine.SpyObj<ExperiencesService>;
   let windowState$: Subject<WindowState | null>;
 
   const mockExperiences: Experience[] = [
@@ -65,12 +59,13 @@ describe('Component - Experiences', () => {
     const windowManagerServiceSpy = jasmine.createSpyObj('WindowManagerService', ['selectWindowById']);
     windowManagerServiceSpy.selectWindowById.and.returnValue(windowState$.asObservable());
 
-    experiencesService = {
-      experiences: () => mockExperiences,
-      isLoading: () => false,
-      shouldDisplayPlaceholder: () => false,
-      placeholder: () => 'experiences.unreachable',
-    } as any;
+    const experiencesServiceSpy = jasmine.createSpyObj('ExperiencesService', ['getData', 'loadExperiences'], {
+      experiences: jasmine.createSpy().and.returnValue(mockExperiences),
+      isLoading: jasmine.createSpy().and.returnValue(false),
+      shouldDisplayPlaceholder: jasmine.createSpy().and.returnValue(false),
+      placeholder: jasmine.createSpy().and.returnValue('experiences.unreachable'),
+    });
+    experiencesService = experiencesServiceSpy;
 
     await TestBed.configureTestingModule({
       providers: [
@@ -80,8 +75,6 @@ describe('Component - Experiences', () => {
       ],
       imports: [Experiences],
     }).compileComponents();
-
-    windowManagerService = TestBed.inject(WindowManagerService) as jasmine.SpyObj<WindowManagerService>;
 
     fixture = TestBed.createComponent(Experiences);
     component = fixture.componentInstance;

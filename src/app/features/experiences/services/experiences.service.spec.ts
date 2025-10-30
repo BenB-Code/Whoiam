@@ -12,8 +12,6 @@ import { of } from 'rxjs';
 
 describe('Service - ExperiencesService', () => {
   let service: ExperiencesService;
-  let translateService: jasmine.SpyObj<TranslateService>;
-  let dataService: jasmine.SpyObj<DataService>;
   let i18nService: I18nService;
 
   const rawData: RawExperience[] = [
@@ -93,11 +91,8 @@ describe('Service - ExperiencesService', () => {
 
     i18nService = TestBed.inject(I18nService);
     service = TestBed.inject(ExperiencesService);
-    translateService = TestBed.inject(TranslateService) as jasmine.SpyObj<TranslateService>;
-    dataService = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
 
-    spyOn(service as any, 'loadData');
-    (service as any).loadData.and.returnValue(of([]));
+    service['loadData'] = jasmine.createSpy().and.returnValue(of([]));
   });
 
   it('should be created', () => {
@@ -107,7 +102,7 @@ describe('Service - ExperiencesService', () => {
   describe('getData', () => {
     it('should return data', () => {
       i18nService.switchLanguage(EN);
-      (service as any).rawData.set(rawData);
+      service['rawData'].set(rawData);
 
       const result = service.getData();
 
@@ -133,19 +128,19 @@ describe('Service - ExperiencesService', () => {
 
   describe('loadExperiences', () => {
     it('should load data when rawData is not defined', () => {
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
 
       service.loadExperiences();
 
-      expect((service as any).loadData).toHaveBeenCalledTimes(1);
-      expect((service as any).loadData).toHaveBeenCalledWith(`/assets/data/experiences.json`);
+      expect(service['loadData']).toHaveBeenCalledTimes(1);
+      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/experiences.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {
-      (service as any).rawData.set(rawData);
+      service['rawData'].set(rawData);
       service.loadExperiences();
 
-      expect((service as any).loadData).not.toHaveBeenCalled();
+      expect(service['loadData']).not.toHaveBeenCalled();
     });
   });
 });

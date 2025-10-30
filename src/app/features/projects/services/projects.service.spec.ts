@@ -11,8 +11,6 @@ import { of } from 'rxjs';
 
 describe('Service - ProjectService', () => {
   let service: ProjectsService;
-  let translateService: jasmine.SpyObj<TranslateService>;
-  let dataService: jasmine.SpyObj<DataService>;
   let i18nService: I18nService;
 
   const rawData: RawProject[] = [
@@ -68,11 +66,8 @@ describe('Service - ProjectService', () => {
 
     i18nService = TestBed.inject(I18nService);
     service = TestBed.inject(ProjectsService);
-    translateService = TestBed.inject(TranslateService) as jasmine.SpyObj<TranslateService>;
-    dataService = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
 
-    spyOn(service as any, 'loadData');
-    (service as any).loadData.and.returnValue(of([]));
+    service['loadData'] = jasmine.createSpy().and.returnValue(of([]));
   });
 
   it('should be created', () => {
@@ -82,7 +77,7 @@ describe('Service - ProjectService', () => {
   describe('getData', () => {
     it('should return data', () => {
       i18nService.switchLanguage(EN);
-      (service as any).rawData.set(rawData);
+      service['rawData'].set(rawData);
 
       const result = service.getData();
 
@@ -108,18 +103,18 @@ describe('Service - ProjectService', () => {
 
   describe('loadProjects', () => {
     it('should load data when rawData is not defined', () => {
-      (service as any).rawData.set([]);
+      service['rawData'].set([]);
       service.loadProjects();
 
-      expect((service as any).loadData).toHaveBeenCalledTimes(1);
-      expect((service as any).loadData).toHaveBeenCalledWith(`/assets/data/projects.json`);
+      expect(service['loadData']).toHaveBeenCalledTimes(1);
+      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/projects.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {
-      (service as any).rawData.set(rawData);
+      service['rawData'].set(rawData);
       service.loadProjects();
 
-      expect((service as any).loadData).not.toHaveBeenCalled();
+      expect(service['loadData']).not.toHaveBeenCalled();
     });
   });
 });

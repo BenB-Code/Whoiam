@@ -58,7 +58,7 @@ describe('Service - I18nService', () => {
     });
     it('should return default currentLang translation when no association found', () => {
       service.switchLanguage('en');
-      const result = service.getTranslatedField(translations.helloNoOne as Record<LANGUAGES, any>);
+      const result = service.getTranslatedField(translations.helloNoOne as Record<LANGUAGES, string>);
 
       expect(result).toEqual(translations.helloNoOne.fr);
     });

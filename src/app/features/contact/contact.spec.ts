@@ -9,9 +9,6 @@ import { WindowManagerService } from '../../services/window-manager/window-manag
 describe('Component - Contact', () => {
   let component: Contact;
   let fixture: ComponentFixture<Contact>;
-  let contactService: jasmine.SpyObj<ContactsService>;
-  let navigationService: jasmine.SpyObj<NavigationService>;
-  let windowManagerService: jasmine.SpyObj<WindowManagerService>;
 
   beforeEach(async () => {
     const contactServiceSpy = jasmine.createSpyObj(ContactsService, ['']);
@@ -36,10 +33,6 @@ describe('Component - Contact', () => {
       ],
       imports: [Contact],
     }).compileComponents();
-
-    contactService = TestBed.inject(ContactsService) as jasmine.SpyObj<ContactsService>;
-    navigationService = TestBed.inject(NavigationService) as jasmine.SpyObj<NavigationService>;
-    windowManagerService = TestBed.inject(WindowManagerService) as jasmine.SpyObj<WindowManagerService>;
 
     fixture = TestBed.createComponent(Contact);
     component = fixture.componentInstance;

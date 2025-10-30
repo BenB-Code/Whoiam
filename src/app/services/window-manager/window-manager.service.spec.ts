@@ -12,7 +12,6 @@ import {
   OPEN,
   openWindow,
   resizeAllWindows,
-  selectWindowById,
   setActiveWindow,
   setScreenSize,
   updateWindow,

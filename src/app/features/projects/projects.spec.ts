@@ -9,9 +9,6 @@ import { ProjectsService } from './services/projects.service';
 describe('Projects', () => {
   let component: Projects;
   let fixture: ComponentFixture<Projects>;
-  let projectsService: jasmine.SpyObj<ProjectsService>;
-  let navigationService: jasmine.SpyObj<NavigationService>;
-  let windowManagerService: jasmine.SpyObj<WindowManagerService>;
 
   beforeEach(async () => {
     const projectsServiceSpy = jasmine.createSpyObj(ProjectsService, ['']);
@@ -36,10 +33,6 @@ describe('Projects', () => {
       ],
       imports: [Projects],
     }).compileComponents();
-
-    projectsService = TestBed.inject(ProjectsService) as jasmine.SpyObj<ProjectsService>;
-    navigationService = TestBed.inject(NavigationService) as jasmine.SpyObj<NavigationService>;
-    windowManagerService = TestBed.inject(WindowManagerService) as jasmine.SpyObj<WindowManagerService>;
 
     fixture = TestBed.createComponent(Projects);
     component = fixture.componentInstance;
