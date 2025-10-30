@@ -232,7 +232,6 @@ describe('Store - WindowReducer', () => {
           lastStatus: CLOSED,
         });
       });
-
       it('should use defaultValues position and size when currentWindow has none', () => {
         const customState = fromReducer.adapter.setOne(
           {
@@ -267,14 +266,30 @@ describe('Store - WindowReducer', () => {
           lastStatus: MINIMIZED,
         });
       });
-      it('should not change when already OPEN', () => {
+      it('should OPEN from MINIMIZED to get old positions and size config when lastStatus not defined', () => {
+        const action = openWindow({ id: CONTACT, width: 1920 });
+        const newState = fromReducer.windowReducer(state, action);
+
+        expect(newState.entities[CONTACT]).not.toEqual(state.entities[CONTACT]);
+        expect(newState.entities[CONTACT]).toEqual({
+          id: CONTACT,
+          status: OPEN,
+          disableFullscreen: true,
+          position: { x: '68%', y: '1%' },
+          size: { width: '30%', height: 'fit-content' },
+          zIndex: 4,
+          isActive: false,
+          lastStatus: MINIMIZED,
+        });
+      });
+      it('should MINIMIZED when already OPEN', () => {
         const action = openWindow({ id: HOME, width: 1920 });
         const newState = fromReducer.windowReducer(state, action);
 
         expect(newState.entities[HOME]).not.toEqual(state.entities[HOME]);
         expect(newState.entities[HOME]).toEqual({
           id: HOME,
-          status: OPEN,
+          status: MINIMIZED,
           disableFullscreen: true,
           position: { x: '1%', y: '1%' },
           size: { width: '64%', height: 'fit-content' },
@@ -283,14 +298,14 @@ describe('Store - WindowReducer', () => {
           lastStatus: OPEN,
         });
       });
-      it('should not change when already MAXIMIZED', () => {
+      it('should MINIMIZED when already MAXIMIZED', () => {
         const action = openWindow({ id: PROJECTS, width: 1920 });
         const newState = fromReducer.windowReducer(state, action);
 
         expect(newState.entities[PROJECTS]).not.toEqual(state.entities[PROJECTS]);
         expect(newState.entities[PROJECTS]).toEqual({
           id: PROJECTS,
-          status: MAXIMIZED,
+          status: MINIMIZED,
           disableFullscreen: false,
           position: { x: '7%', y: '22%' },
           size: { width: '90%', height: 'fit-content' },
@@ -299,6 +314,8 @@ describe('Store - WindowReducer', () => {
           lastStatus: MAXIMIZED,
         });
       });
+
+      it('');
     });
 
     describe('closeWindow', () => {

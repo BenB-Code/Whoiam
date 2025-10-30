@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { CLOSED, DEFAULT_ZINDEX, getResponsiveDefaultSettings, MAXIMIZED, MINIMIZED, OPEN } from '../constants';
-import { WindowState } from '../models';
+import { WindowState, WindowStatus } from '../models';
 import {
   closeWindow,
   maximizeWindow,
@@ -46,19 +46,14 @@ export const windowReducer = createReducer(
   on(openWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
     const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
-    const openBehavior =
-      currentWindow?.status === CLOSED
-        ? OPEN
-        : currentWindow?.status === MINIMIZED
-          ? currentWindow.lastStatus
-          : currentWindow?.status;
-
+    console.log('kdjshfkjshdf', JSON.stringify(defaultValues));
+    const nextStatus = decideNextStatus(currentWindow!);
     return adapter.updateOne(
       {
         id,
         changes: {
-          status: openBehavior,
-          lastStatus: currentWindow?.status,
+          status: nextStatus.status,
+          lastStatus: nextStatus.lastStatus,
           position: currentWindow?.position || defaultValues?.position,
           size: currentWindow?.size || defaultValues?.size,
           isActive: defaultValues?.isActive,
@@ -145,4 +140,22 @@ export const windowReducer = createReducer(
 function selectMaxZIndexValue(state: State): number {
   const windows = Object.values(state.entities).filter(w => w?.status === OPEN || w?.status === MAXIMIZED);
   return windows.length > 0 ? Math.max(...windows.map(w => w!.zIndex)) : DEFAULT_ZINDEX;
+}
+
+function decideNextStatus(state: WindowState): { status: WindowStatus; lastStatus: WindowStatus } {
+  let status = state.status;
+  let lastStatus = state.lastStatus || OPEN;
+
+  if (status === CLOSED) {
+    lastStatus = CLOSED;
+    status = OPEN;
+  } else if (status === MINIMIZED) {
+    status = lastStatus;
+    lastStatus = MINIMIZED;
+  } else {
+    lastStatus = status;
+    status = MINIMIZED;
+  }
+
+  return { status, lastStatus };
 }
