@@ -28,4 +28,19 @@
     height: $app-bar-height;
     z-index: 99999;
   }
+
+  #bg-logo {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translateY(-50%);
+    width: 30%;
+    max-width: 15rem;
+    min-width: 7rem;
+    height: auto;
+    min-height: 30%;
+    opacity: 1;
+    pointer-events: none;
+    z-index: -999;
+  }
 }
