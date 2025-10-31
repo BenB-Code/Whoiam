@@ -2,7 +2,7 @@ import { getResponsiveDefaultSettings } from './default-values.const';
 import { CONTACT, EXPERIENCES, HOME, PROJECTS } from './types.const';
 import { CLOSED } from './status.const';
 
-describe('DefaultValuesConst', () => {
+describe('Constant - DefaultValuesConst', () => {
   describe('getResponsiveDefaultSettings', () => {
     it('should use fallback values', () => {
       const result = getResponsiveDefaultSettings();
