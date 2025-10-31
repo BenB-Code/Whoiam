@@ -6,7 +6,7 @@ import { NavigationService } from '../../services/navigation/navigation.service'
 import { WindowManagerService } from '../../services/window-manager/window-manager.service';
 import { ProjectsService } from './services/projects.service';
 
-describe('Projects', () => {
+describe('Component - Projects', () => {
   let component: Projects;
   let fixture: ComponentFixture<Projects>;
 
