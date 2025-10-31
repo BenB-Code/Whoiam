@@ -23,36 +23,6 @@
       width: 100%;
       flex: 1;
       overflow-y: auto;
-
-      hr {
-        height: $space-md;
-        border: none;
-        margin: 0;
-
-        &.orange {
-          background: $pastel-orange;
-        }
-
-        &.green {
-          background: $pastel-green;
-        }
-
-        &.red {
-          background: $pastel-red;
-        }
-
-        &.rainbow {
-          background: linear-gradient(
-            45deg,
-            $pastel-red 0%,
-            $pastel-red 33.3%,
-            $pastel-orange 33.3%,
-            $pastel-orange 66.6%,
-            $pastel-green 66.6%,
-            $pastel-green 100%
-          );
-        }
-      }
     }
   }
 }
