@@ -4,7 +4,7 @@
   width: fit-content;
   padding: $space-sm;
   border-radius: $radius-md;
-  background: $white-translucent-light;
+  background: $white-super-translucent;
   box-shadow: $shadow-default;
   position: fixed;
   bottom: $space-sm;
@@ -20,18 +20,18 @@
     height: $size-2xl;
     margin: 0 $space-md 0 $space-xs;
     border-radius: $radius-md;
-    background: $gray-translucent;
+    background: $blue-gray;
   }
 
   .el {
     height: $size-xl;
     width: $size-xl;
     margin: 0 $space-sm $space-sm 0;
-    border-radius: $radius-md;
     position: relative;
     cursor: pointer;
     padding: 0;
     border: none;
+    background: none;
 
     &:hover {
       transform: scale(105%) translateY(-0.1rem);
@@ -47,9 +47,9 @@
     }
 
     img {
-      height: 100%;
+      height: auto;
       width: 100%;
-      background: $system-white;
+      background: none;
       border-radius: $radius-md;
     }
 
@@ -67,7 +67,7 @@
       left: 0;
       right: 0;
       margin: auto;
-      background: $system-accent;
+      background: $blue-gray;
       border-radius: $radius-full;
       height: $size-xs;
       width: $size-xs;

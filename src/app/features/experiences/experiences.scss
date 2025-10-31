@@ -4,7 +4,7 @@
   app-listing-window {
     .card {
       .red {
-        color: $accent-red-full;
+        color: $red;
       }
 
       .italic {
@@ -32,7 +32,7 @@
         margin-left: $space-sm;
         padding-left: $space-sm;
         border-radius: $space-xs 0 0 $space-xs;
-        border-left: $space-xs solid $accent-red-medium;
+        border-left: $space-xs solid $pastel-red;
 
         .date {
           font-weight: $font-weight-medium;

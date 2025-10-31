@@ -1,69 +1,105 @@
 @use '../../../../assets/styles/index' as *;
 
-.header {
-  border-radius: $radius-md $radius-md 0 0;
-  height: $window-header-height;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto 1fr;
-  margin-bottom: -1px;
-  cursor: pointer;
+:host {
+  box-shadow: $shadow-light-bottom;
+  z-index: 2;
 
-  &.grey {
-    background: $gray-lighter;
-  }
+  .header {
+    border-radius: $radius-md $radius-md 0 0;
+    height: $window-header-height;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+    margin-bottom: -1px;
+    cursor: pointer;
 
-  &.transparent {
-    background: transparent;
-  }
+    &.grey {
+      background: $medium-dark-gray;
+    }
 
-  .btn-container {
-    margin-top: $space-xs;
-    grid-column: 1;
-    justify-self: start;
+    &.transparent {
+      background: transparent;
+    }
 
-    .window-action {
-      height: $size-sm;
-      width: $size-sm;
-      margin-right: $space-sm;
-      border-radius: $radius-full;
-      cursor: pointer;
-      border: none;
+    .btn-container {
+      margin-top: $space-xs;
+      grid-column: 1;
+      justify-self: start;
 
-      &:first-child {
-        margin-left: $space-lg;
+      .window-action {
+        height: $size-sm;
+        width: $size-sm;
+        margin-right: $space-sm;
+        border-radius: $radius-full;
+        cursor: pointer;
+        border: none;
+
+        &:first-child {
+          margin-left: $space-lg;
+        }
+
+        &.red {
+          background-color: $os-red;
+        }
+
+        &.orange {
+          background-color: $os-orange;
+        }
+
+        &.green {
+          background-color: $os-green;
+        }
+
+        &:hover {
+          transform: scale(110%);
+          transition: transform $timer-fast;
+        }
       }
+    }
 
-      &.red {
-        background-color: $os-red;
-      }
+    .title {
+      margin: 0 auto;
+      grid-column: 2;
+      text-align: center;
 
-      &.orange {
-        background-color: $os-orange;
-      }
-
-      &.green {
-        background-color: $os-green;
-      }
-
-      &:hover {
-        transform: scale(110%);
-        transition: transform $timer-fast;
+      p {
+        color: $white;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
       }
     }
   }
 
-  .title {
-    margin: 0 auto;
-    grid-column: 2;
-    text-align: center;
+  hr {
+    height: $space-md;
+    border: none;
+    margin: 0;
+    width: 100%;
 
-    p {
-      color: $system-white;
-      font-weight: 500;
-      padding: 0;
-      margin: 0;
+    &.orange {
+      background: $pastel-orange;
+    }
+
+    &.green {
+      background: $pastel-green;
+    }
+
+    &.red {
+      background: $pastel-red;
+    }
+
+    &.rainbow {
+      background: linear-gradient(
+        45deg,
+        $pastel-red 0%,
+        $pastel-red 33.3%,
+        $pastel-orange 33.3%,
+        $pastel-orange 66.6%,
+        $pastel-green 66.6%,
+        $pastel-green 100%
+      );
     }
   }
 }

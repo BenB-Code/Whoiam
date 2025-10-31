@@ -246,10 +246,10 @@ npm test              # Tests
 
 ## 🔮 Roadmap
 
-- [ ] Dockerisation
+- [x] Dockerisation
 - [ ] Optimisation SEO wording
-- [ ] Responsive mobile
-- [ ] Tests unitaires et E2E
+- [x] Responsive mobile
+- [x] Tests unitaires
 - [ ] Resize de fenêtres
 
 ## 📝 Licence

@@ -22,7 +22,7 @@
     .vertical-nav {
       width: 30%;
       height: auto;
-      background: $accent-orange-medium;
+      background: $light-pastel-orange;
       border-radius: $radius-md 0 0 $radius-md;
 
       .list-section {
@@ -40,7 +40,7 @@
 
           .block {
             cursor: pointer;
-            background: $accent-orange-light;
+            background: $medium-pastel-orange;
             border: $space-xs solid transparent;
             border-radius: $radius-md;
             margin: $space-xl $space-xl $space-xl 0;
@@ -50,18 +50,18 @@
             &.active {
               transition: background $timer-fast;
               background:
-                linear-gradient($light-orange, $light-orange) padding-box,
+                linear-gradient($medium-pastel-orange, $medium-pastel-orange) padding-box,
                 linear-gradient(
                     45deg,
-                    $gradient-orange 0% 50%,
-                    $gradient-red 50% 60%,
-                    $gradient-green-alt 60% 70%,
-                    $gradient-gray 70% 80%,
-                    $gradient-medium-gray 80% 90%,
-                    $gradient-light-gray 90% 100%
+                    $pastel-orange 0% 50%,
+                    $pastel-red 50% 60%,
+                    $pastel-green 60% 70%,
+                    $pastel-blue-gray 70% 80%,
+                    $pastel-medium-gray 80% 90%,
+                    $pastel-light-gray 90% 100%
                   )
                   border-box;
-              color: $system-accent;
+              color: $medium-gray;
             }
           }
         }

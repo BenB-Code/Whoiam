@@ -7,6 +7,7 @@
   (cdkDragStarted)="onDragStart()"
 >
   <app-window-header
+    [color]="color()"
     [disableFullscreen]="disableFullscreen()"
     [title]="title()"
     (activateFullscreen)="fullscreen()"
@@ -14,7 +15,6 @@
     (reduceWindow)="reduce()"
   />
   <section class="content">
-    <hr [ngClass]="color()" />
     <ng-content />
   </section>
 </article>

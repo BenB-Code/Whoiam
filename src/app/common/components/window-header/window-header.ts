@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { GREY, TRANSPARENT } from '../../constants/style.const';
 import { CdkDragHandle } from '@angular/cdk/drag-drop';
+import { GREY, TRANSPARENT } from '../../constants';
 
 @Component({
   selector: 'app-window-header',
@@ -14,6 +14,7 @@ export class WindowHeader {
   @Output() readonly closeWindow = new EventEmitter<void>();
   @Output() readonly activateFullscreen = new EventEmitter<boolean>();
   @Output() readonly reduceWindow = new EventEmitter<void>();
+  readonly color = input<string | undefined>();
 
   readonly title = input('');
   readonly disableFullscreen = input.required<boolean>();

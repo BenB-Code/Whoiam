@@ -1,5 +1,4 @@
 import * as WindowActions from './window.actions';
-import { updateWindow } from './window.actions';
 import { HOME } from '../constants';
 
 describe('Store - WindowActions', () => {

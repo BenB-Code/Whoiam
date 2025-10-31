@@ -1,18 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Spinner } from './spinner';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
-describe('Spinner', () => {
+describe('Component - Spinner', () => {
   let component: Spinner;
   let fixture: ComponentFixture<Spinner>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Spinner],
+      providers: [provideZonelessChangeDetection()],
+      imports: [Spinner, TranslateModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Spinner);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
