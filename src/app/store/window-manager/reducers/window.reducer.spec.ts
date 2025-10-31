@@ -282,20 +282,20 @@ describe('Store - WindowReducer', () => {
           lastStatus: MINIMIZED,
         });
       });
-      it('should MINIMIZED when already OPEN', () => {
+      it('should keep OPEN when already OPEN but change zIndex', () => {
         const action = openWindow({ id: HOME, width: 1920 });
         const newState = fromReducer.windowReducer(state, action);
 
         expect(newState.entities[HOME]).not.toEqual(state.entities[HOME]);
         expect(newState.entities[HOME]).toEqual({
           id: HOME,
-          status: MINIMIZED,
+          status: OPEN,
           disableFullscreen: true,
           position: { x: '1%', y: '1%' },
           size: { width: '64%', height: 'fit-content' },
           zIndex: 4,
           isActive: true,
-          lastStatus: OPEN,
+          lastStatus: CLOSED,
         });
       });
       it('should MINIMIZED when already MAXIMIZED', () => {
@@ -314,8 +314,6 @@ describe('Store - WindowReducer', () => {
           lastStatus: MAXIMIZED,
         });
       });
-
-      it('');
     });
 
     describe('closeWindow', () => {

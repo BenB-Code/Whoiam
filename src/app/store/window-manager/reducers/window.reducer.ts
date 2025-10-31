@@ -46,7 +46,9 @@ export const windowReducer = createReducer(
   on(openWindow, (state, { id, width }) => {
     const currentWindow = state.entities[id];
     const defaultValues = getResponsiveDefaultSettings(width).find(w => w.id === id);
-    const nextStatus = decideNextStatus(currentWindow!);
+    const maxZIndex = selectMaxZIndexValue(state);
+    const nextStatus = decideNextStatus(currentWindow!, maxZIndex);
+
     return adapter.updateOne(
       {
         id,
@@ -56,7 +58,7 @@ export const windowReducer = createReducer(
           position: currentWindow?.position || defaultValues?.position,
           size: currentWindow?.size || defaultValues?.size,
           isActive: defaultValues?.isActive,
-          zIndex: selectMaxZIndexValue(state) + 1,
+          zIndex: maxZIndex + 1,
         },
       },
       state
@@ -141,7 +143,7 @@ function selectMaxZIndexValue(state: State): number {
   return windows.length > 0 ? Math.max(...windows.map(w => w!.zIndex)) : DEFAULT_ZINDEX;
 }
 
-function decideNextStatus(state: WindowState): { status: WindowStatus; lastStatus: WindowStatus } {
+function decideNextStatus(state: WindowState, maxZIndex: number): { status: WindowStatus; lastStatus: WindowStatus } {
   let status = state.status;
   let lastStatus = state.lastStatus || OPEN;
 
@@ -152,8 +154,10 @@ function decideNextStatus(state: WindowState): { status: WindowStatus; lastStatu
     status = lastStatus;
     lastStatus = MINIMIZED;
   } else {
-    lastStatus = status;
-    status = MINIMIZED;
+    if (maxZIndex <= state.zIndex) {
+      lastStatus = status;
+      status = MINIMIZED;
+    }
   }
 
   return { status, lastStatus };
