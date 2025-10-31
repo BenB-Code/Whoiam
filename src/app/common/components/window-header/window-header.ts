@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { GREY, TRANSPARENT } from '../../constants/style.const';
 import { CdkDragHandle } from '@angular/cdk/drag-drop';
+import { GREY, TRANSPARENT } from '../../constants';
 
 @Component({
   selector: 'app-window-header',
