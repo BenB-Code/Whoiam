@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <circle fill="#FE704C" stroke="#FE704C" stroke-width="7" r="15" cx="40" cy="65">
-    <animate attributeName="cy" calcMode="spline" dur="1.5" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1"
-             repeatCount="indefinite" begin="-.4"></animate>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="65" fill="#FE704C" r="15" stroke="#FE704C" stroke-width="7">
+    <animate attributeName="cy" begin="-.4" calcMode="spline" dur="1.5" keySplines=".5 0 .5 1;.5 0 .5 1"
+             repeatCount="indefinite" values="65;135;65;"></animate>
   </circle>
-  <circle fill="#FFA73B" stroke="#FFA73B" stroke-width="7" r="15" cx="100" cy="65">
-    <animate attributeName="cy" calcMode="spline" dur="1.5" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1"
-             repeatCount="indefinite" begin="-.2"></animate>
+  <circle cx="100" cy="65" fill="#FFA73B" r="15" stroke="#FFA73B" stroke-width="7">
+    <animate attributeName="cy" begin="-.2" calcMode="spline" dur="1.5" keySplines=".5 0 .5 1;.5 0 .5 1"
+             repeatCount="indefinite" values="65;135;65;"></animate>
   </circle>
-  <circle fill="#5FD38D" stroke="#5FD38D" stroke-width="7" r="15" cx="160" cy="65">
-    <animate attributeName="cy" calcMode="spline" dur="1.5" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1"
-             repeatCount="indefinite" begin="0"></animate>
+  <circle cx="160" cy="65" fill="#37c870" r="15" stroke="#37c870" stroke-width="7">
+    <animate attributeName="cy" begin="0" calcMode="spline" dur="1.5" keySplines=".5 0 .5 1;.5 0 .5 1"
+             repeatCount="indefinite" values="65;135;65;"></animate>
   </circle>
 </svg>
