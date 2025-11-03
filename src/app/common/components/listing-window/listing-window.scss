@@ -20,8 +20,8 @@
     box-shadow: $shadow-default;
     display: inline-flex;
 
-    container-type: inline-size;
     container-name: listing-window;
+    container-type: inline-size;
 
     .vertical-nav {
       width: 30%;
@@ -81,7 +81,8 @@
   }
 }
 
-@media (max-width: $screen-max-lg) {
+// $screen-max-md < width > $screen-max-lg
+@container listing-window (min-width: 576px) and (max-width: 991px) {
   :host {
     .window {
       .vertical-nav {

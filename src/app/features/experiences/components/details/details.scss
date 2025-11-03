@@ -72,7 +72,8 @@
   }
 }
 
-@media (max-width: $screen-max-lg) {
+// $screen-max-lg
+@container listing-window (max-width: 991px) {
   :host {
     .content {
       flex-direction: column;
