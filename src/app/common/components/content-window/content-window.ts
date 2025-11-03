@@ -15,10 +15,11 @@ import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
 import { RAINBOW } from '../../constants';
+import { ResizeHandle } from '../resize-handle/resize-handle';
 
 @Component({
   selector: 'app-content-window',
-  imports: [WindowHeader, CdkDrag],
+  imports: [WindowHeader, CdkDrag, ResizeHandle],
   templateUrl: './content-window.html',
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

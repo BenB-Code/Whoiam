@@ -19,10 +19,11 @@ import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
 import { TRANSPARENT } from '../../constants';
+import { ResizeHandle } from '../resize-handle/resize-handle';
 
 @Component({
   selector: 'app-listing-window',
-  imports: [NgClass, NgTemplateOutlet, WindowHeader, CdkDrag],
+  imports: [NgClass, NgTemplateOutlet, WindowHeader, CdkDrag, ResizeHandle],
   templateUrl: './listing-window.html',
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
