@@ -139,7 +139,18 @@
               padding: 0;
             }
           }
+        }
+      }
+    }
+  }
+}
 
+// $screen-max-sm
+@container content-window (max-width: 575px) {
+  :host {
+    app-content-window {
+      .content {
+        app-card {
           .redirect-container {
             display: flex;
             flex-direction: column;
