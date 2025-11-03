@@ -15,6 +15,7 @@
   [style.z-index]="projectsWindow.zIndex"
   [title]=" `page.${PROJECTS}` | translate "
   [windowId]="PROJECTS"
+  [windowMinWidth]="450"
 >
   @if (projectsService.isLoading()) {
   <app-spinner />

@@ -14,6 +14,7 @@
   [style.z-index]="contactWindow.zIndex"
   [title]=" `page.${CONTACT}` | translate "
   [windowId]=" CONTACT"
+  [windowMinHeight]="300"
 >
   @if (contactsService.isLoading()) {
   <app-spinner />
