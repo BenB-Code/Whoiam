@@ -10,8 +10,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class WindowActions implements OnDestroy {
   readonly windowId = input.required<WindowType>();
-  readonly windowMinWidth = input<number>(300);
-  readonly windowMinHeight = input<number>(350);
+  readonly windowMinWidth = input<number>(350);
+  readonly windowMinHeight = input<number>(500);
 
   private isResizing = false;
   private startX = 0;
