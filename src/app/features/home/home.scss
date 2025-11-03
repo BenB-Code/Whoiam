@@ -78,7 +78,8 @@
   }
 }
 
-@media (max-width: $screen-max-lg) {
+// $screen-max-lg
+@container content-window (max-width: 991px) {
   :host {
     app-content-window {
       article {

@@ -111,7 +111,8 @@
   }
 }
 
-@media (max-width: $screen-md) {
+// $screen-max-md
+@container content-window (max-width: 767px) {
   :host {
     width: 100%;
 
