@@ -157,7 +157,7 @@ export const windowReducer = createReducer(
 
     return adapter.updateMany(updates, state);
   }),
-  (on(positionUpdate, (state, { id, position }) => {
+  on(positionUpdate, (state, { id, position }) => {
     return adapter.updateOne(
       {
         id,
@@ -169,18 +169,18 @@ export const windowReducer = createReducer(
       state
     );
   }),
-    on(resizeWindow, (state, { id, size }) => {
-      return adapter.updateOne(
-        {
-          id,
-          changes: {
-            size,
-            lastSize: size,
-          },
+  on(resizeWindow, (state, { id, size }) => {
+    return adapter.updateOne(
+      {
+        id,
+        changes: {
+          size,
+          lastSize: size,
         },
-        state
-      );
-    }));
+      },
+      state
+    );
+  })
 );
 
 function selectMaxZIndexValue(state: State): number {
@@ -189,7 +189,7 @@ function selectMaxZIndexValue(state: State): number {
 }
 
 function decideNextStatus(
-  state: Window,State,
+  state: WindowState,
   maxZIndex: number
 ): {
   status: WindowStatus;
