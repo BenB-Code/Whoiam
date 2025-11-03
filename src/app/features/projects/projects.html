@@ -2,14 +2,15 @@
 <app-content-window
   appWindowActions
   [class.active]="projectsWindow.isActive"
-  [class.maximized]="projectsWindow.status === MAXIMIZED"
   [class.minimized]="projectsWindow.status === MINIMIZED"
   [color]="GREEN"
   [disableDrag]="projectsWindow.status !== OPEN"
   [disableFullscreen]="projectsWindow?.disableFullscreen === true"
+  [disableResize]="projectsWindow?.disableResize === true"
   [style.height]="projectsWindow.size.height"
   [style.left]="projectsWindow.position.x"
   [style.top]="projectsWindow.position.y"
+  [style.transform]="projectsWindow.position.transform"
   [style.width]="projectsWindow.size.width"
   [style.z-index]="projectsWindow.zIndex"
   [title]=" `page.${PROJECTS}` | translate "

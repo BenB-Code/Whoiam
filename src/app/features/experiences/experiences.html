@@ -2,14 +2,15 @@
 <app-listing-window
   appWindowActions
   [class.active]="experiencesWindow.isActive"
-  [class.maximized]="experiencesWindow.status === MAXIMIZED"
   [class.minimized]="experiencesWindow.status === MINIMIZED"
   [disableDrag]="experiencesWindow.status !== OPEN"
   [disableFullscreen]="experiencesWindow?.disableFullscreen === true"
+  [disableResize]="experiencesWindow?.disableResize === true"
   [items]="experiencesService.experiences()"
   [style.height]="experiencesWindow.size.height"
   [style.left]="experiencesWindow.position.x"
   [style.top]="experiencesWindow.position.y"
+  [style.transform]="experiencesWindow.position.transform"
   [style.width]="experiencesWindow.size.width"
   [style.z-index]="experiencesWindow.zIndex"
   [title]="`page.${EXPERIENCES}` | translate"
