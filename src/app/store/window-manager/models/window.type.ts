@@ -6,10 +6,13 @@ import { Position } from './position.type';
 export type WindowState = {
   id: WindowType;
   status: WindowStatus;
-  disableFullscreen: boolean;
-  lastStatus?: WindowStatus;
+  lastStatus: WindowStatus;
   position: Position;
+  lastPosition: Position;
   size: Size;
+  lastSize: Size;
+  disableFullscreen: boolean;
+  disableResize: boolean;
   zIndex: number;
   isActive: boolean;
 };

@@ -5,12 +5,14 @@ import {
   minimizeWindow,
   openWindow,
   Position,
+  positionUpdate,
   resizeAllWindows,
+  resizeWindow,
   selectAllWindows,
   selectWindowById,
   setActiveWindow,
   setScreenSize,
-  updateWindow,
+  Size,
   WindowState,
   WindowType,
 } from '../../store';
@@ -63,11 +65,15 @@ export class WindowManagerService {
     this.store.dispatch(closeWindow({ id, width: window.innerWidth }));
   }
 
-  updateWindow(id: WindowType, position: Position): void {
-    this.store.dispatch(updateWindow({ id, position }));
+  positionUpdate(id: WindowType, position: Position): void {
+    this.store.dispatch(positionUpdate({ id, position }));
   }
 
   selectWindowById(id: WindowType): Observable<WindowState | null> {
     return this.store.select(selectWindowById(id));
+  }
+
+  resizeWindow(id: WindowType, size: Size): void {
+    return this.store.dispatch(resizeWindow({ id, size }));
   }
 }
