@@ -71,7 +71,7 @@ export const RESPONSIVE_POSITION: Record<string, Record<WindowType, Position>> =
   },
 };
 export const MAXIMIZED_POSITION: Position = {
-  x: '0',
-  y: '0',
+  x: '0%',
+  y: '0%',
   transform: 'translate(0%, 0%)',
 };
