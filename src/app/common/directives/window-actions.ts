@@ -129,8 +129,15 @@ export class WindowActions implements OnDestroy {
     const deltaX = clientX - this.startX;
     const deltaY = clientY - this.startY;
 
-    const newWidth = Math.max(this.windowMinWidth(), this.startWidth + deltaX);
-    const newHeight = Math.max(this.windowMinHeight(), this.startHeight + deltaY);
+    const boundary = document.querySelector('.resize-boundary');
+    const boundaryRect = boundary?.getBoundingClientRect();
+    const windowRect = windowEl.getBoundingClientRect();
+
+    const maxWidth = boundaryRect ? boundaryRect.width - (windowRect.left - boundaryRect.left) : Infinity;
+    const maxHeight = boundaryRect ? boundaryRect.height - (windowRect.top - boundaryRect.top) : Infinity;
+
+    const newWidth = Math.max(this.windowMinWidth(), Math.min(maxWidth, this.startWidth + deltaX));
+    const newHeight = Math.max(this.windowMinHeight(), Math.min(maxHeight, this.startHeight + deltaY));
 
     windowEl.style.width = `${newWidth}px`;
     windowEl.style.height = `${newHeight}px`;
