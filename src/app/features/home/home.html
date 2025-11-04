@@ -2,18 +2,20 @@
 <app-content-window
   appWindowActions
   [class.active]="homeWindow.isActive"
-  [class.maximized]="homeWindow.status === MAXIMIZED"
   [class.minimized]="homeWindow.status === MINIMIZED"
   [color]="RED"
   [disableDrag]="homeWindow.status !== OPEN"
   [disableFullscreen]="homeWindow?.disableFullscreen === true"
+  [disableResize]="homeWindow?.disableResize === true"
   [style.height]="homeWindow.size.height"
   [style.left]="homeWindow.position.x"
   [style.top]="homeWindow.position.y"
+  [style.transform]="homeWindow.position.transform"
   [style.width]="homeWindow.size.width"
   [style.z-index]="homeWindow.zIndex"
   [title]=" `page.${HOME}` | translate "
   [windowId]="HOME"
+  [windowMinWidth]="400"
 >
   <article>
     <section class="description">

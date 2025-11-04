@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   contentChild,
+  ElementRef,
   EventEmitter,
   inject,
   input,
@@ -9,6 +10,7 @@ import {
   Output,
   signal,
   TemplateRef,
+  viewChild,
 } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { WindowComponentAbstract } from '../../models/window-component.abstract';
@@ -17,10 +19,11 @@ import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
 import { TRANSPARENT } from '../../constants';
+import { ResizeHandle } from '../resize-handle/resize-handle';
 
 @Component({
   selector: 'app-listing-window',
-  imports: [NgClass, NgTemplateOutlet, WindowHeader, CdkDrag],
+  imports: [NgClass, NgTemplateOutlet, WindowHeader, CdkDrag, ResizeHandle],
   templateUrl: './listing-window.html',
   styleUrl: './listing-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,11 +36,14 @@ export class ListingWindow<T> extends WindowComponentAbstract implements OnInit 
   @Output() readonly dragNDropEndEvent = new EventEmitter<Position>();
   @Output() readonly dragNDropStartEvent = new EventEmitter<void>();
 
+  readonly windowContent = viewChild<ElementRef<HTMLElement>>('window');
+
   readonly items = input<T[]>([]);
   readonly title = input<string>();
   readonly selectedIndex = input<number | null>(null);
   readonly disableFullscreen = input<boolean>(false);
   readonly disableDrag = input<boolean>(false);
+  readonly disableResize = input<boolean>(false);
 
   readonly itemTemplate = contentChild.required<TemplateRef<{ $implicit: T; index: number }>>('itemTemplate');
 

@@ -111,7 +111,8 @@
   }
 }
 
-@media (max-width: $screen-md) {
+// $screen-max-md
+@container content-window (max-width: 767px) {
   :host {
     width: 100%;
 
@@ -138,7 +139,18 @@
               padding: 0;
             }
           }
+        }
+      }
+    }
+  }
+}
 
+// $screen-max-sm
+@container content-window (max-width: 575px) {
+  :host {
+    app-content-window {
+      .content {
+        app-card {
           .redirect-container {
             display: flex;
             flex-direction: column;

@@ -1,14 +1,25 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, input, Output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  input,
+  Output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { WindowComponentAbstract } from '../../models/window-component.abstract';
 import { WindowHeader } from '../window-header/window-header';
 import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Position } from '../../../store';
 import { DragNDropService } from '../../../services/drag-n-drop/drag-n-drop.service';
 import { RAINBOW } from '../../constants';
+import { ResizeHandle } from '../resize-handle/resize-handle';
 
 @Component({
   selector: 'app-content-window',
-  imports: [WindowHeader, CdkDrag],
+  imports: [WindowHeader, CdkDrag, ResizeHandle],
   templateUrl: './content-window.html',
   styleUrl: './content-window.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,11 +31,14 @@ export class ContentWindow extends WindowComponentAbstract {
   @Output() readonly dragNDropEndEvent = new EventEmitter<Position>();
   @Output() readonly dragNDropStartEvent = new EventEmitter<void>();
 
+  readonly windowContent = viewChild<ElementRef<HTMLElement>>('window');
+
   readonly title = input('');
   readonly disableFullscreen = input<boolean>(false);
   readonly color = input<string>(RAINBOW);
   readonly isFullscreen = signal<boolean>(false);
   readonly disableDrag = input<boolean>(false);
+  readonly disableResize = input<boolean>(false);
 
   private readonly dragNDropService: DragNDropService = inject(DragNDropService);
 

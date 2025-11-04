@@ -22,6 +22,6 @@ export class DragNDropService {
     const xPositive = x >= 0 ? x : 0;
     const yPositive = y >= 0 ? y : 0;
 
-    return { x: `${xPositive}px`, y: `${yPositive}px` };
+    return { x: `${xPositive}px`, y: `${yPositive}px`, transform: 'none' };
   }
 }

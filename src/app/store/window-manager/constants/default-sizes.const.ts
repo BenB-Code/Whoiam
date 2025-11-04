@@ -58,3 +58,7 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
     },
   },
 };
+export const MAXIMIZED_SIZES: Size = {
+  width: '100%',
+  height: 'fit-content',
+};

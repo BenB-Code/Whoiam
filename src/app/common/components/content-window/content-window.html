@@ -1,4 +1,5 @@
 <article
+  #window
   cdkDrag
   cdkDragBoundary=".drag-n-drop-boundary"
   class="window"
@@ -17,4 +18,5 @@
   <section class="content">
     <ng-content />
   </section>
+  <app-resize-handle [disableResize]="disableResize()" />
 </article>

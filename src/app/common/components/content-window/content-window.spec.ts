@@ -83,7 +83,7 @@ describe('Component - ContentWindow', () => {
 
   describe('onDragEnded', () => {
     it('should emit dragNDropEndEvent with processed position and reset source', () => {
-      const position: Position = { x: '100px', y: '200px' };
+      const position: Position = { x: '100px', y: '200px', transform: 'none' };
       const mockEvent = {
         source: {
           reset: jasmine.createSpy('reset'),

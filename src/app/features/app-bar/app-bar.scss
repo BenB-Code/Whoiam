@@ -75,7 +75,7 @@
   }
 }
 
-@media (max-width: calc($screen-max-sm)) {
+@media (max-width: $screen-max-sm) {
   :host {
     width: 100%;
 

@@ -11,10 +11,11 @@ import {
   minimizeWindow,
   OPEN,
   openWindow,
+  positionUpdate,
   resizeAllWindows,
+  resizeWindow,
   setActiveWindow,
   setScreenSize,
-  updateWindow,
   WindowState,
 } from '../../store';
 import { Store } from '@ngrx/store';
@@ -122,12 +123,17 @@ describe('Service - WindowManagerService', () => {
     });
   });
 
-  describe('updateWindow', () => {
-    it('should call updateWindow store dispatch event', () => {
-      service.updateWindow(HOME, { x: '100', y: '100' });
+  describe('positionUpdate', () => {
+    it('should call positionUpdate store dispatch event', () => {
+      service.positionUpdate(HOME, { x: '100', y: '100', transform: 'none' });
 
       expect(store.dispatch).toHaveBeenCalledTimes(1);
-      expect(store.dispatch).toHaveBeenCalledWith(updateWindow({ id: HOME, position: { x: '100', y: '100' } }));
+      expect(store.dispatch).toHaveBeenCalledWith(
+        positionUpdate({
+          id: HOME,
+          position: { x: '100', y: '100', transform: 'none' },
+        })
+      );
     });
   });
 
@@ -144,6 +150,19 @@ describe('Service - WindowManagerService', () => {
         expect(result).toEqual(mockWindows[0]);
         expect(store.select).toHaveBeenCalledTimes(1);
       });
+    });
+  });
+  describe('resizeWindow', () => {
+    it('should call resizeWindow store dispatch event', () => {
+      service.resizeWindow(HOME, { height: '100', width: '100' });
+
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        resizeWindow({
+          id: HOME,
+          size: { height: '100', width: '100' },
+        })
+      );
     });
   });
 });
