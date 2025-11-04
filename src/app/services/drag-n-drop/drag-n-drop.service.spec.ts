@@ -56,6 +56,7 @@ describe('Service - DragNDropService', () => {
       expect(result).toEqual({
         x: '100px',
         y: '0px',
+        transform: 'none',
       });
     });
 
@@ -67,6 +68,7 @@ describe('Service - DragNDropService', () => {
       expect(result).toEqual({
         x: '350px',
         y: '0px',
+        transform: 'none',
       });
     });
 

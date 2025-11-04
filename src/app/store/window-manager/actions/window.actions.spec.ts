@@ -47,12 +47,12 @@ describe('Store - WindowActions', () => {
       expect(action.type).toEqual(expectedAction.type);
     });
   });
-  describe('updateWindow', () => {
-    it('should create an action to update a window', () => {
+  describe('positionUpdate', () => {
+    it('should create an action to update the position', () => {
       const expectedAction = {
-        type: '[Window] Update Window',
+        type: '[Window] Update position',
       };
-      const action = WindowActions.updateWindow({ id: HOME });
+      const action = WindowActions.positionUpdate({ id: HOME });
       expect(action.type).toEqual(expectedAction.type);
     });
   });

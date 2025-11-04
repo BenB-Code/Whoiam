@@ -126,7 +126,7 @@ describe('Component - ListingWindow', () => {
 
   describe('onDragEnded', () => {
     it('should emit dragNDropEndEvent with processed position and reset source', () => {
-      const position: Position = { x: '150px', y: '250px' };
+      const position: Position = { x: '150px', y: '250px', transform: 'none' };
       const mockEvent = {
         source: {
           reset: jasmine.createSpy('reset'),
