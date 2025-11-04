@@ -6,12 +6,13 @@ import {
   openWindow,
   positionUpdate,
   resizeAllWindows,
+  resizeWindow,
   setActiveWindow,
   setScreenSize,
 } from '../actions/window.actions';
 import { CLOSED, CONTACT, DEFAULT_ZINDEX, EXPERIENCES, HOME, MAXIMIZED, MINIMIZED, OPEN, PROJECTS } from '../constants';
 import { Dictionary, EntityState } from '@ngrx/entity';
-import { Position, WindowState, WindowType } from '../models';
+import { Position, Size, WindowState, WindowType } from '../models';
 
 describe('Store - WindowReducer', () => {
   describe('setScreenSize', () => {
@@ -605,7 +606,7 @@ describe('Store - WindowReducer', () => {
       });
     });
 
-    describe('updateWindow', () => {
+    describe('positionUpdate', () => {
       it('should update position', () => {
         const expectedPosition: Position = { x: '99%', y: '99%', transform: 'none' };
         const action = positionUpdate({ id: HOME, position: expectedPosition });
@@ -613,6 +614,19 @@ describe('Store - WindowReducer', () => {
 
         expect(newState.entities[HOME]).not.toEqual(state.entities[HOME]);
         expect(newState.entities[HOME]?.position).toEqual(expectedPosition);
+        expect(newState.entities[HOME]?.lastPosition).toEqual(expectedPosition);
+      });
+    });
+
+    describe('resizeWindow', () => {
+      it('should update size', () => {
+        const expectedSize: Size = { width: '100%', height: '100%' };
+        const action = resizeWindow({ id: HOME, size: expectedSize });
+        const newState = fromReducer.windowReducer(state, action);
+
+        expect(newState.entities[HOME]).not.toEqual(state.entities[HOME]);
+        expect(newState.entities[HOME]?.size).toEqual(expectedSize);
+        expect(newState.entities[HOME]?.lastSize).toEqual(expectedSize);
       });
     });
   });

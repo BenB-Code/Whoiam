@@ -13,6 +13,7 @@ import {
   openWindow,
   positionUpdate,
   resizeAllWindows,
+  resizeWindow,
   setActiveWindow,
   setScreenSize,
   WindowState,
@@ -149,6 +150,19 @@ describe('Service - WindowManagerService', () => {
         expect(result).toEqual(mockWindows[0]);
         expect(store.select).toHaveBeenCalledTimes(1);
       });
+    });
+  });
+  describe('resizeWindow', () => {
+    it('should call resizeWindow store dispatch event', () => {
+      service.resizeWindow(HOME, { height: '100', width: '100' });
+
+      expect(store.dispatch).toHaveBeenCalledTimes(1);
+      expect(store.dispatch).toHaveBeenCalledWith(
+        resizeWindow({
+          id: HOME,
+          size: { height: '100', width: '100' },
+        })
+      );
     });
   });
 });
