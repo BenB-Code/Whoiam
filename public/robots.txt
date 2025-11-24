@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /assets/data/
+Disallow: /*.json$
+
+Disallow: /assets/i18n/
+
+Disallow: /*.map$
+
+Sitemap: https://benjaminbats.fr/sitemap.xml
