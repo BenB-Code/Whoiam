@@ -6,7 +6,7 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
   [DEFAULT]: {
     [HOME]: {
       width: '64%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [EXPERIENCES]: {
       width: '68%',
@@ -14,17 +14,17 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
     },
     [PROJECTS]: {
       width: '90%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [CONTACT]: {
       width: '30%',
-      height: 'fit-content',
+      height: 'auto',
     },
   },
   [TABLET]: {
     [HOME]: {
       width: '85%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [EXPERIENCES]: {
       width: '97%',
@@ -32,17 +32,17 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
     },
     [PROJECTS]: {
       width: '78%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [CONTACT]: {
       width: '50%',
-      height: 'fit-content',
+      height: 'auto',
     },
   },
   [MOBILE]: {
     [HOME]: {
       width: '100%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [EXPERIENCES]: {
       width: '100%',
@@ -50,15 +50,15 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
     },
     [PROJECTS]: {
       width: '100%',
-      height: 'fit-content',
+      height: 'auto',
     },
     [CONTACT]: {
       width: '100%',
-      height: 'fit-content',
+      height: 'auto',
     },
   },
 };
 export const MAXIMIZED_SIZES: Size = {
   width: '100%',
-  height: 'fit-content',
+  height: 'auto',
 };

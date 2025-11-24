@@ -18,6 +18,7 @@ export class WindowHeader {
 
   readonly title = input('');
   readonly disableFullscreen = input.required<boolean>();
+  readonly isFullscreen = input.required<boolean>();
 
   readonly backgroundColor = input<typeof GREY | typeof TRANSPARENT>(GREY);
 

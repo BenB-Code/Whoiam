@@ -15,6 +15,7 @@ describe('Component - WindowHeader', () => {
 
     fixture = TestBed.createComponent(WindowHeader);
     fixture.componentRef.setInput('disableFullscreen', false);
+    fixture.componentRef.setInput('isFullscreen', false);
     fixture.detectChanges();
 
     component = fixture.componentInstance;
