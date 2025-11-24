@@ -11,6 +11,7 @@
     <app-window-header
       [backgroundColor]="TRANSPARENT"
       [disableFullscreen]="disableFullscreen()"
+      [isFullscreen]="isFullscreen()"
       (activateFullscreen)="fullscreen()"
       (closeWindow)="close()"
       (reduceWindow)="reduce()"

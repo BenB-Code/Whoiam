@@ -35,6 +35,22 @@
         border-radius: $radius-half-full;
         cursor: pointer;
         border: none;
+        position: relative;
+
+        img {
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100%;
+          height: 100%;
+          min-width: $space-sm;
+          min-height: $space-sm;
+          opacity: 0.5;
+        }
 
         &:first-child {
           margin-left: $space-lg;
@@ -55,6 +71,10 @@
         &:hover {
           transform: scale(110%);
           transition: transform $timer-fast;
+
+          img {
+            display: block;
+          }
         }
       }
     }
