@@ -86,7 +86,7 @@ export class WindowActions implements OnDestroy {
     });
   }
 
-  private onResizeStart = (event: MouseEvent): void => {
+  private onResizeStart = (event: MouseEvent | TouchEvent): void => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -97,8 +97,8 @@ export class WindowActions implements OnDestroy {
 
     this.isResizing = true;
 
-    const clientX = event instanceof TouchEvent ? event.touches[0].clientX : event.clientX;
-    const clientY = event instanceof TouchEvent ? event.touches[0].clientY : event.clientY;
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
 
     this.startX = clientX;
     this.startY = clientY;
@@ -113,7 +113,7 @@ export class WindowActions implements OnDestroy {
     document.body.style.cursor = 'nwse-resize';
   };
 
-  private onResizeMove = (event: MouseEvent): void => {
+  private onResizeMove = (event: MouseEvent | TouchEvent): void => {
     if (!this.isResizing) {
       return;
     }
@@ -123,8 +123,8 @@ export class WindowActions implements OnDestroy {
       return;
     }
 
-    const clientX = event instanceof TouchEvent ? event.touches[0].clientX : event.clientX;
-    const clientY = event instanceof TouchEvent ? event.touches[0].clientY : event.clientY;
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
 
     const deltaX = clientX - this.startX;
     const deltaY = clientY - this.startY;
