@@ -1,4 +1,4 @@
-<div cdkDragHandle class="header" [ngClass]="backgroundColor()">
+<div cdkDragHandle class="header" [ngClass]="backgroundColor()" (dblclick)="onFullscreen()">
   <section class="btn-container">
     <button
       aria-label="close"
