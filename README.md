@@ -10,8 +10,8 @@ Un portfolio interactif sous forme de bureau virtuel.
 
 <div align="center">
   
-[![Release](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml/badge.svg)](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml)
 [![GitHub version](https://badge.fury.io/gh/BenB-Code%2FWhoiam.svg)](https://badge.fury.io/gh/BenB-Code%2FWhoiam)
+[![Release](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml/badge.svg)](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml)
 
 </div>
 
