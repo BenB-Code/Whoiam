@@ -27,7 +27,9 @@ export class WindowHeader {
   }
 
   onFullscreen(): void {
-    this.activateFullscreen.emit();
+    if (!this.disableFullscreen()) {
+      this.activateFullscreen.emit();
+    }
   }
 
   onReduce(): void {

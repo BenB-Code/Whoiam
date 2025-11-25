@@ -41,6 +41,14 @@ describe('Component - WindowHeader', () => {
 
   describe('onFullscreen', () => {
     it('should call activateFullscreen event', () => {
+      fixture.componentRef.setInput('disableFullscreen', true);
+      fixture.detectChanges();
+
+      component.onFullscreen();
+
+      expect(component.activateFullscreen.emit).not.toHaveBeenCalled();
+    });
+    it('should not call activateFullscreen event', () => {
       component.onFullscreen();
 
       expect(component.activateFullscreen.emit).toHaveBeenCalledTimes(1);

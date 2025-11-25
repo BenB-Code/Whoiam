@@ -64,6 +64,10 @@ h3 {
 
   &:hover {
     transform: none !important;
+
+    img {
+      display: none !important;
+    }
   }
 }
 
