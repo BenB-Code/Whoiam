@@ -374,11 +374,7 @@ git commit -m "feat: nouvelle fonctionnalité"
 
 ### Docker Image
 
-Les images Docker sont automatiquement publiées sur GitHub Container Registry lors des releases :
-
-```
-ghcr.io/yourusername/whoiam:v1.2.4
-```
+Les images Docker sont automatiquement publiées sur GitHub Container Registry lors des releases
 
 ---
 
@@ -408,6 +404,6 @@ Le code source est disponible à des fins de consultation et d'apprentissage uni
 
 **Développé avec passion par Benjamin Bats 🚀**
 
-[Portfolio](https://benjaminbats.fr) • [LinkedIn](#) • [GitHub](#)
+[Portfolio](https://benjaminbats.fr) • [LinkedIn](https://www.linkedin.com/in/benjamin-bats-200464165/) • [GitHub](https://github.com/BenB-Code)
 
-</div>****
+</div>
