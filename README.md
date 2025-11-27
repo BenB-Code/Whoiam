@@ -1,212 +1,265 @@
+<div align="center">
+
 # Whoiam
 
-Un portfolio interactif sous forme de bureau virtuel.
+### *Portfolio interactif sous forme de bureau virtuel*
 
-<div align="center">
-<img src="https://img.shields.io/badge/-Angular-DD0031?style=flat-square&logo=angular&logoColor=white"> <img src="https://img.shields.io/badge/-npm-CB3837?style=flat-square&logo=npm&logoColor=white"> <img src="https://img.shields.io/badge/-Jest-C21325?style=flat-square&logo=jest&logoColor=white"> <img src="https://img.shields.io/badge/-Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"> <img src="https://img.shields.io/badge/-Docker-2CA5E0?style=flat-square&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/-SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white"> <img src="https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"> <img src="https://img.shields.io/badge/-NgRx-BA2BD2?style=flat-square&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/-Jasmine-8A4182?style=flat-square&logo=Jasmine&logoColor=white"> <img src="https://img.shields.io/badge/-SCSS-CC6699?style=flat-square&logo=sass&logoColor=white">
+**[🌐 Voir le site en production](https://benjaminbats.fr)**
+
+---
+
+### Technologies
+
+<img src="https://img.shields.io/badge/-Angular%2020-DD0031?style=flat-square&logo=angular&logoColor=white"> <img src="https://img.shields.io/badge/-TypeScript%205.8-007ACC?style=flat-square&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/-NgRx-BA2BD2?style=flat-square&logo=redux&logoColor=white"> <img src="https://img.shields.io/badge/-RxJS-B7178C?style=flat-square&logo=reactivex&logoColor=white">
+
+<img src="https://img.shields.io/badge/-Docker-2CA5E0?style=flat-square&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/-Nginx-009639?style=flat-square&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/-Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white">
+
+<img src="https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"> <img src="https://img.shields.io/badge/-Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"> <img src="https://img.shields.io/badge/-Jasmine-8A4182?style=flat-square&logo=Jasmine&logoColor=white"> <img src="https://img.shields.io/badge/-Karma-56C5A8?style=flat-square&logo=karma&logoColor=white">
+
+<img src="https://img.shields.io/badge/-SCSS-CC6699?style=flat-square&logo=sass&logoColor=white"> <img src="https://img.shields.io/badge/-npm-CB3837?style=flat-square&logo=npm&logoColor=white"> <img src="https://img.shields.io/badge/-Husky-42B983?style=flat-square&logo=git&logoColor=white">
+
+### Status
+
+![Version](https://img.shields.io/github/package-json/v/BenB-Code/Whoiam?style=flat-square&logo=github)
+![Release CI](https://img.shields.io/github/actions/workflow/status/BenB-Code/Whoiam/release.yml?style=flat-square&logo=github-actions&label=Release)
+![CI Status](https://img.shields.io/github/actions/workflow/status/BenB-Code/Whoiam/ci.yml?style=flat-square&logo=github-actions&label=CI)
+
+[//]: # (![Coverage]&#40;https://img.shields.io/codecov/c/github/BenB-Code/Whoiam?style=flat-square&logo=codecov&label=Coverage&#41;)
+
 </div>
 
-<br/>
-
-<div align="center">
-  
-[![GitHub version](https://badge.fury.io/gh/BenB-Code%2FWhoiam.svg)](https://badge.fury.io/gh/BenB-Code%2FWhoiam)
-[![Release](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml/badge.svg)](https://github.com/BenB-Code/Whoiam/actions/workflows/release.yml)
-
-</div>
+---
 
 ## 🎯 Concept
 
-Whoiam est mon site vitrine personnel qui transforme un CV classique en une expérience interactive. Inspiré des interfaces desktop macOS et Linux, il présente mes projets, expériences et informations de contact à travers des fenêtres draggables et un gestionnaire d'état.
+**Whoiam** est un portfolio personnel qui transforme l'expérience classique d'un CV en une **interface desktop interactive**.
 
-L'objectif : créer quelque chose de techniquement solide tout en restant visuellement sympathique et original.
+Inspiré des environnements **macOS** et **Linux**, le projet présente mes compétences, projets et expériences à travers un système de fenêtres *draggables* avec gestion complète de l'état via **NgRx**.
 
-## ✨ Fonctionnalités
+> *L'objectif : démontrer une maîtrise technique solide tout en offrant une expérience utilisateur originale et engageante.*
 
-- Interface desktop avec fenêtres draggables
-- Gestion complète des fenêtres : minimiser, maximiser, fermer
-- Changement de langue à la volée FR/EN sans rechargement
-- Server-Side Rendering pour SEO et performances
-- Mode Zoneless d'Angular 20
-- Architecture modulaire par features
+---
+
+## ✨ Fonctionnalités Clés
+
+<table>
+<tr>
+<td width="50%">
+
+### 🪟 Interface Desktop
+
+- Fenêtres draggables et redimensionnables
+- Gestion complète : minimiser, maximiser, fermer
+- Z-index dynamique et focus automatique
+- Animations fluides
+
+</td>
+<td width="50%">
+
+### 🌍 Internationalisation
+
+- Changement de langue FR/EN instantané
+- Sans rechargement de page
+- Custom loaders pour SSR
+- Traductions des données dynamiques
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ⚡ Performance
+
+- Mode **Zoneless** d'Angular 20
+- **OnPush** change detection
+- **Signals** pour la réactivité fine-grained
+- Budgets stricts (500kB initial)
+
+</td>
+<td width="50%">
+
+### 🏗️ Architecture
+
+- Composants **Standalone**
+- Organisation **feature-based**
+- **NgRx** pour l'état global
+- TypeScript **strict mode**
+
+</td>
+</tr>
+</table>
+
+---
 
 ## 🛠️ Stack Technique
 
-### Core
+### Core Framework
 
-- **Angular 20**
-- **TypeScript 5.8** strict mode
-- **RxJS 7.8**
-- **SCSS**
+| Technologie    | Version  | Usage                              |
+|----------------|----------|------------------------------------|
+| **Angular**    | `20.0.0` | Framework principal, mode zoneless |
+| **TypeScript** | `5.8.2`  | Strict mode, explicit return types |
+| **RxJS**       | `7.8.0`  | Programmation réactive             |
+| **SCSS**       | -        | Styling avec variables et mixins   |
 
-### Gestion d'état
+### State Management
 
-- **NgRx Store** : Store global pour les fenêtres
-- **NgRx Effects** : Side-effects asynchrones
-- **NgRx Entity** : Normalisation des entités
-- **NgRx DevTools** : Debugging en développement
-
-### Internationalisation
-
-- **ngx-translate** : Traductions dynamiques
-- Custom loaders séparés pour browser et SSR
+```typescript
+// NgRx Store pour la gestion centralisée des fenêtres
+@ngrx/
+store           // Store global
+@ngrx/
+effects         // Side-effects asynchrones  
+@ngrx/
+entity          // Normalisation des entités
+@ngrx/
+store - devtools  // Debugging en dev
+```
 
 ### UI/UX
 
-- **Angular CDK** : Drag & Drop
-- **OnPush Change Detection**
+- **Angular CDK** : Drag & Drop natif
 - **Angular Signals** : Réactivité fine-grained
+- **ngx-translate** : Traductions dynamiques avec custom loaders
 
-### Qualité de code
+### Quality Assurance
 
-- **ESLint** : Règles strictes TypeScript + Angular
-- **Prettier** : Formatage automatique
-- **Husky** : Git hooks pre-commit
-- **Lint-staged** : Validation des fichiers modifiés
+| Outil         | Configuration                              | Purpose                           |
+|---------------|--------------------------------------------|-----------------------------------|
+| ESLint        | TypeScript strict + Angular best practices | Linting avec règles de sécurité   |
+| Prettier      | Single quotes, 120 chars, tab 2            | Formatage automatique             |
+| Husky         | Pre-commit hooks                           | Lint + format sur fichiers staged |
+| Jasmine/Karma | ChromeHeadless, coverage                   | Tests unitaires                   |
+
+### DevOps
+
+- **Docker** : Multi-stage builds (dev/prod avec Nginx)
+- **GitHub Actions** : CI/CD (lint, test, build, release)
+- **Cloudflare** : CDN et protection DDoS
+- **Nginx** : Reverse proxy avec gzip, security headers
+
+---
 
 ## 📁 Architecture du Projet
 
 ```
-src/
-├── app/
-│   ├── common/                    # Composants et utilitaires partagés
-│   │   ├── components/            # Composants réutilisables
-│   │   │   ├── bubble/
-│   │   │   ├── card/
-│   │   │   ├── content-window/
-│   │   │   ├── listing-window/
-│   │   │   ├── placeholder-text/
-│   │   │   ├── spinner/
-│   │   │   └── window-header/
-│   │   ├── constants/             # Constantes globales
-│   │   ├── directives/            # window-actions
-│   │   └── models/                # Classes de base abstraites
-│   │
-│   ├── features/                  # Features organisées par domaine
-│   │   ├── app-bar/               # Dock
-│   │   ├── contact/
-│   │   ├── experiences/
-│   │   │   ├── components/
-│   │   │   ├── models/
-│   │   │   └── services/
-│   │   ├── header-bar/            # Menu, horloge, langues
-│   │   ├── home/
-│   │   └── projects/
-│   │       ├── models/
-│   │       └── services/
-│   │
-│   ├── services/                  # Services globaux
-│   │   ├── contact/
-│   │   ├── data/
-│   │   ├── drag-n-drop/
-│   │   ├── format/
-│   │   ├── i18n/
-│   │   ├── navigation/
-│   │   └── translate-loader/
-│   │
-│   └── store/                     # NgRx Store - Window Manager
-│       └── window-manager/
-│           ├── actions/
-│           ├── constants/
-│           ├── effects/
-│           ├── models/
-│           ├── reducers/
-│           └── selectors/
+src/app/
+├── common/                          # Éléments partagés
+│   ├── components/                  # Composants réutilisables
+│   │   ├── bubble/                  # Bulles d'information
+│   │   ├── card/                    # Cartes de contenu
+│   │   ├── content-window/          # Fenêtre de contenu générique
+│   │   ├── listing-window/          # Fenêtre de liste
+│   │   ├── placeholder-text/        # Texte de placeholder
+│   │   ├── resize-handle/           # Poignée de redimensionnement
+│   │   ├── spinner/                 # Indicateur de chargement
+│   │   └── window-header/           # En-tête de fenêtre
+│   ├── constants/                   # Constantes globales (paths, langs, styles)
+│   ├── directives/                  # window-actions directive
+│   └── models/                      # Classes abstraites de base
 │
-├── assets/
-│   ├── data/                      # JSON
-│   └── i18n/                      # Traductions
+├── features/                        # Features organisées par domaine
+│   ├── app-bar/                     # Dock applicatif (bottom bar)
+│   ├── contact/                     # Informations de contact
+│   ├── experiences/                 # Expériences professionnelles
+│   │   ├── components/details/      # Détails d'une expérience
+│   │   ├── models/                  # Types Experience, RawExperience
+│   │   └── services/                # ExperiencesService
+│   ├── header-bar/                  # Barre supérieure (menu, horloge, langues)
+│   ├── home/                        # Page d'accueil/introduction
+│   └── projects/                    # Portfolio de projets
+│       ├── models/                  # Types Project, Category, Status
+│       └── services/                # ProjectsService
 │
-├── main.ts                        # Entry browser
-├── main.server.ts                 # Entry server
-└── server.ts                      # Express SSR
+├── services/                        # Services globaux
+│   ├── contact/                     # Gestion des contacts
+│   ├── data/                        # Chargement des données JSON
+│   ├── drag-n-drop/                 # Service de drag & drop
+│   ├── format/                      # Formatage des données
+│   ├── i18n/                        # Service d'internationalisation
+│   ├── navigation/                  # Navigation entre fenêtres
+│   ├── translate-loader/            # Custom loaders pour SSR
+│   └── window-manager/              # Façade du store NgRx
+│
+└── store/                           # NgRx Store
+    └── window-manager/              # Feature store des fenêtres
+        ├── actions/                 # Actions (open, close, minimize, etc.)
+        ├── constants/               # Valeurs par défaut, breakpoints
+        ├── effects/                 # Side-effects asynchrones
+        ├── models/                  # Types du state
+        ├── reducers/                # Reducers avec NgRx Entity
+        └── selectors/               # Selectors mémoïsés
 ```
 
-### Organisation
+### Principes d'organisation
 
-Architecture **feature-based** :
+- **Feature-based architecture** : Chaque feature est autonome avec ses composants, services et modèles
+- **Separation of concerns** : Logique métier séparée de la présentation
+- **NgRx Store** : État global uniquement pour le window manager
+- **Standalone components** : Tous les composants sont standalone (no NgModules)
 
-- Features autonomes avec composants, services et modèles
-- Éléments partagés dans `common/`
-- Store NgRx pour l'état global du window manager
-- Séparation logique métier / présentation
+---
 
 ## 🎨 Choix Techniques
 
-### Pas de Routing Angular
+### Pas de Routing Angular classique
 
-Application SPA pure avec navigation par fenêtres. Le routing est géré via le store NgRx plutôt que par des routes URL, créant une expérience utilisateur type bureau desktop.
+L'application n'utilise pas le Router Angular traditionnel. La navigation se fait entièrement via le store NgRx :
 
-### NgRx Store
+```typescript
+// Navigation par ouverture de fenêtres plutôt que par routes URL
+windowManagerService.openWindow('projects');
+windowManagerService.closeWindow('home');
+```
 
-Gestion centralisée de l'état des fenêtres : ouverture, fermeture, position, z-index, focus. NgRx Entity pour la normalisation, selectors mémoïsés pour les performances.
-
-### ngx-translate
-
-Changement de langue instantané avec custom loaders pour résoudre les problématiques de paths en SSR. Helper `getTranslatedField()` pour gérer les données multilingues.
+> **Avantage** : Crée une expérience utilisateur type desktop natif où plusieurs fenêtres coexistent simultanément.
 
 ### Mode Zoneless + Signals
 
-Angular 20 en mode zoneless : meilleures performances et détection de changements explicite. Signals pour l'état local réactif, computed pour les dérivations automatiques.
-
-### OnPush + Standalone
-
-Tous les composants en standalone avec OnPush change detection. Utilisation des nouveaux signal inputs et function-based inject.
-
-## 🏗️ Store NgRx - Window Manager
-
-### Structure
+Angular 20 en mode zoneless pour des performances optimales :
 
 ```typescript
-State = {
-  windowManager: EntityState < WindowState > {
-    ids: ['home', 'projects', 'experiences', 'contact'],
-    entities: {
-      home: {id, status, position, size, isActive, zIndex, lastStatus},
-      // ...
-    }
+// app.config.ts
+provideZonelessChangeDetection()
+```
+
+- Signals pour l'état local réactif
+- `computed()` pour les dérivations automatiques
+- OnPush change detection partout
+- Détection de changements explicite et prédictible
+
+### NgRx Entity pour la normalisation
+
+```typescript
+State = EntityState < WindowState > {
+  ids: ['home', 'projects', 'experiences', 'contact'],
+  entities: {
+    home: {id, status, position, size, zIndex, isActive},
+    // ...
   }
 }
 ```
 
-### Actions
+**Bénéfices :**
 
-- `openWindow` / `closeWindow`
-- `minimizeWindow` / `maximizeWindow` / `restoreWindow`
-- `setActiveWindow`
-- `updateWindow`
+- Accès O(1) aux entités par ID
+- Reducers standardisés
+- Selectors mémoïsés pour éviter les recalculs
 
-### Logic
+### Custom Translation Loaders
 
-**Z-Index** : Calculé dynamiquement, fenêtre active = `max(zIndexes) + 1`
+**Problématique** : Les paths diffèrent entre browser et SSR.
 
-**Status** : `CLOSED → OPEN ⇄ MAXIMIZED → MINIMIZED → lastStatus`
-
-**Position** : Sauvegardée dans le store, reset lors de la fermeture
-
-## 🧩 Conventions
-
-### Naming
-
-- **Components** : PascalCase sans suffix
-- **Files** : kebab-case
-- **Constants** : UPPER_SNAKE_CASE
-- **Types** : PascalCase + `.type.ts`
-
-### Imports
+**Solution** : Custom loaders qui détectent l'environnement :
 
 ```typescript
-// 1. Angular core
-// 2. Angular modules
-// 3. Third-party
-// 4. App imports (alphabétique)
+// Browser : /assets/i18n/fr.json
+// SSR : dist/Whoiam/browser/assets/i18n/fr.json
 ```
 
-### TypeScript
+Helper `getTranslatedField()` pour les données multilingues stockées en JSON.
 
-- Strict mode activé
-- Explicit return types
-- Types over interfaces
+---
 
 ## 🚀 Développement
 
@@ -216,53 +269,141 @@ State = {
 npm install
 ```
 
-### Dev
+### Scripts disponibles
+
+| Commande                | Description                          |
+|-------------------------|--------------------------------------|
+| `npm start`             | Dev server sur http://localhost:4200 |
+| `npm run build`         | Build production optimisé            |
+| `npm test`              | Tests unitaires en mode watch        |
+| `npm run test:coverage` | Tests avec rapport de couverture     |
+| `npm run lint`          | Vérification ESLint                  |
+| `npm run lint:fix`      | Auto-fix des erreurs ESLint          |
+| `npm run format`        | Formatage Prettier                   |
+| `npm run format:check`  | Vérification Prettier                |
+
+### Docker
+
+**Développement**
 
 ```bash
-npm run start
-# http://localhost:4200/
+npm run start:docker:dev
+# Accessible sur http://localhost:4200
+# Hot-reload activé
 ```
 
-### Build
+**Production**
 
 ```bash
-npm run build
+npm run start:docker:prod
+# Build optimisé avec Nginx
+# Accessible sur http://localhost:80
 ```
 
-### SSR
+---
+
+## 🧪 Tests & Qualité
+
+### Configuration Jest/Jasmine
+
+- ChromeHeadless pour CI/CD
+- Code coverage avec seuils configurables
+- Tests unitaires pour tous les composants et services
+- Tests des actions, reducers et selectors NgRx
+
+### Hooks Git automatiques
 
 ```bash
-npm run build
-npm run serve:ssr:Whoiam
+# Pre-commit : lint + format automatique
+git commit -m "feat: nouvelle fonctionnalité"
+# ✓ Lint staged files
+# ✓ Format staged files
+# ✓ Commit créé
 ```
 
-### Qualité
+### CI/CD Pipeline
 
-```bash
-npm run lint          # Check
-npm run lint:fix      # Auto-fix
-npm run format        # Format
-npm test              # Tests
+1. **Lint** : ESLint avec règles strictes
+2. **Test** : Jasmine/Karma avec coverage upload vers Codecov
+3. **Build** : Vérification de la compilation production
+4. **Release** : Création automatique de release + Docker image
+
+---
+
+## 🔧 Configuration Détaillée
+
+### TypeScript
+
+```json
+{
+  "strict": true,
+  "noImplicitReturns": true,
+  "noFallthroughCasesInSwitch": true,
+  "explicit-function-return-type": "error"
+}
 ```
 
-## 🔧 Configuration
+### ESLint - Règles clés
 
-**ESLint** : Rules TypeScript strictes + Angular best practices + sécurité
+- **Complexité** : Max 20 (cyclomatique)
+- **Longueur** : Max 120 caractères, 400 lignes par fichier
+- **Sécurité** : no-eval, no-implied-eval, eqeqeq
+- **Angular** : prefer-on-push, prefer-signals, prefer-standalone
 
-**Prettier** : Single quotes, semi-colons, 120 chars, tab 2
+### Budgets de build
 
-**Husky** : Pre-commit hook pour lint + format automatique sur les fichiers staged
+| Type             | Warning | Error |
+|------------------|---------|-------|
+| Initial bundle   | 500 kB  | 1 MB  |
+| Component styles | 4 kB    | 8 kB  |
 
-**Budgets** : Initial 500kB warn / 1MB error, Styles 4kB warn / 8kB error
+---
 
-## 🔮 Roadmap
+## 🌐 Déploiement
 
-- [x] Dockerisation
-- [ ] Optimisation SEO wording
-- [x] Responsive mobile
-- [x] Tests unitaires
-- [ ] Resize de fenêtres
+### Production actuelle
+
+**URL** : https://benjaminbats.fr
+
+**Infrastructure :**
+
+- **Serveur** : VPS avec Docker
+- **Reverse proxy** : Nginx avec gzip compression
+- **CDN** : Cloudflare pour cache et protection
+- **SSL** : Certificat géré par Cloudflare
+
+### Docker Image
+
+Les images Docker sont automatiquement publiées sur GitHub Container Registry lors des releases
+
+---
+
+## 🤝 Contribution
+
+Ce projet est un portfolio personnel destiné à mettre en valeur mes compétences techniques.
+
+Je n'accepte pas de pull requests pour préserver l'authenticité du code.
+
+Cependant, vous êtes bienvenue à :
+
+- ✅ Créer des issues pour signaler des bugs
+- ✅ Proposer des suggestions d'amélioration
+- ✅ Poser des questions sur l'architecture ou les choix techniques
+
+---
 
 ## 📝 Licence
 
-Projet personnel - Tous droits réservés
+**Projet personnel - Tous droits réservés**
+
+Le code source est disponible à des fins de consultation et d'apprentissage uniquement.
+
+---
+
+<div align="center">
+
+**Développé avec passion par Benjamin Bats 🚀**
+
+[Portfolio](https://benjaminbats.fr) • [LinkedIn](https://www.linkedin.com/in/benjamin-bats-200464165/) • [GitHub](https://github.com/BenB-Code)
+
+</div>
