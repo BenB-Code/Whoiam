@@ -36,6 +36,8 @@
 
 Inspiré des environnements **macOS** et **Linux**, le projet présente mes compétences, projets et expériences à travers un système de fenêtres *draggables* avec gestion complète de l'état via **NgRx**.
 
+[RAA complient](https://accessibilite.numerique.gouv.fr/) 
+
 > *L'objectif : démontrer une maîtrise technique solide tout en offrant une expérience utilisateur originale et engageante.*
 
 ---
