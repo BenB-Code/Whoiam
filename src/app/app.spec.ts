@@ -11,7 +11,7 @@ import { Home } from './features/home/home';
 import { Experiences } from './features/experiences/experiences';
 import { Projects } from './features/projects/projects';
 import { HOME } from './store';
-import { MockAppBar, MockContact, MockExperiences, MockHeaderBar, MockHome, MockProjects } from '../assets/tests';
+import { MockAppBar, MockContact, MockExperiences, MockHeaderBar, MockHome, MockProjects } from '../../public/tests';
 
 describe('Component - App', () => {
   let component: App;

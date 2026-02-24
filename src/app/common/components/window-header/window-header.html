@@ -8,7 +8,7 @@
       (click)="onClose()"
       (keydown.enter)="onClose()"
     >
-      <img alt="close" src="assets/icons/close.svg" />
+      <img alt="close" src="../../../../../public/icons/close.svg" />
     </button>
     <button
       aria-label="reduce"
@@ -18,7 +18,7 @@
       (click)="onReduce()"
       (keydown.arrowDown)="onReduce()"
     >
-      <img alt="reduce" src="assets/icons/reduce.svg" />
+      <img alt="reduce" src="../../../../../public/icons/reduce.svg" />
     </button>
     <button
       aria-label="fullscreen"
@@ -30,9 +30,9 @@
       (keydown.arrowUp)="onFullscreen()"
     >
       @if (isFullscreen()) {
-      <img alt="min" src="assets/icons/minimize-left.svg" />
+      <img alt="min" src="../../../../../public/icons/minimize-left.svg" />
       } @else {
-      <img alt="max" src="assets/icons/maximize-left.svg" />
+      <img alt="max" src="../../../../../public/icons/maximize-left.svg" />
       }
     </button>
   </section>

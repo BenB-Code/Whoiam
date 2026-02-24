@@ -107,7 +107,7 @@ describe('Service - ProjectService', () => {
       service.loadProjects();
 
       expect(service['loadData']).toHaveBeenCalledTimes(1);
-      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/projects.json`);
+      expect(service['loadData']).toHaveBeenCalledWith(`/public/data/projects.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {
