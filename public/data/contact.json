@@ -1,19 +1,19 @@
 [
   {
     "name": "Github",
-    "logo": "icons/github-svgrepo-com.svg",
+    "logo": "/icons/github-svgrepo-com.svg",
     "url": "https://github.com/BenB-Code",
     "alt": "Github"
   },
   {
     "name": "Email",
-    "logo": "icons/gmail-svgrepo-com.svg",
+    "logo": "/icons/gmail-svgrepo-com.svg",
     "url": "mailto:contact@benjaminbats.fr",
     "alt": "Email"
   },
   {
     "name": "LinkedIn",
-    "logo": "icons/linkedin-svgrepo-com.svg",
+    "logo": "/icons/linkedin-svgrepo-com.svg",
     "url": "https://www.linkedin.com/in/benjamin-bats-200464165/",
     "alt": "LinkedIn"
   }

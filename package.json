@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:host": "ng serve --host",
     "start:docker:dev": "cd docker/compose && docker-compose --env-file ../env/.env.dev -f docker-compose.yml -f docker-compose.dev.yml up --build",
-    "start:docker:prod": "cd docker/compose && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml up --build",
+    "start:docker:prod": "cd docker/compose && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml build --no-cache && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml up -d",
     "stop:docker:dev": "cd docker/compose && docker-compose --env-file ../env/.env.dev -f docker-compose.yml -f docker-compose.dev.yml down",
     "stop:docker:prod": "cd docker/compose && docker-compose --env-file ../env/.env.prod -f docker-compose.yml -f docker-compose.prod.yml down",
     "build": "ng build",
