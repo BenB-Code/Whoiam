@@ -20,10 +20,12 @@ describe('Service - ProjectService', () => {
         fr: 'Un parseur XML pour extraire et structurer les citations des pages Wikiquote de Kaamelott',
         en: 'An XML parser to extract and structure quotes from the Kaamelott Wikiquote pages',
       },
-      link: {
-        name: 'Github',
-        url: 'https://github.com/BenB-Code/Kaamelott_Citation_Extractor',
-      },
+      link: [
+        {
+          name: 'Github',
+          url: 'https://github.com/BenB-Code/Kaamelott_Citation_Extractor',
+        },
+      ],
       technologies: ['TypeScript', 'XML', 'JSON', 'Parser'],
       status: 'active',
       year: 2025,
@@ -34,10 +36,12 @@ describe('Service - ProjectService', () => {
     {
       name: 'Kaamelott Citation Extractor',
       description: 'An XML parser to extract and structure quotes from the Kaamelott Wikiquote pages',
-      link: {
-        name: 'Github',
-        url: 'https://github.com/BenB-Code/Kaamelott_Citation_Extractor',
-      },
+      link: [
+        {
+          name: 'Github',
+          url: 'https://github.com/BenB-Code/Kaamelott_Citation_Extractor',
+        },
+      ],
       technologies: ['TypeScript', 'XML', 'JSON', 'Parser'],
       status: 'active',
       year: 2025,
@@ -107,7 +111,7 @@ describe('Service - ProjectService', () => {
       service.loadProjects();
 
       expect(service['loadData']).toHaveBeenCalledTimes(1);
-      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/projects.json`);
+      expect(service['loadData']).toHaveBeenCalledWith(`/data/projects.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {

@@ -7,7 +7,7 @@ export type Project = {
   link: {
     name: string;
     url: string;
-  };
+  }[];
   technologies?: string[];
   status?: PROJECT_STATUS;
   year?: number;

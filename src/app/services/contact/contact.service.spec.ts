@@ -98,7 +98,7 @@ describe('Service - ContactService', () => {
       service.loadContacts();
 
       expect(service['loadData']).toHaveBeenCalledTimes(1);
-      expect(service['loadData']).toHaveBeenCalledWith(`/assets/data/contact.json`);
+      expect(service['loadData']).toHaveBeenCalledWith(`/data/contact.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {

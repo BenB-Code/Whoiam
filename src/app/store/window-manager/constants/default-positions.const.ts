@@ -16,7 +16,7 @@ export const RESPONSIVE_POSITION: Record<string, Record<WindowType, Position>> =
     },
     [PROJECTS]: {
       x: '7%',
-      y: '22%',
+      y: '10%',
       transform: 'none',
     },
     [CONTACT]: {
