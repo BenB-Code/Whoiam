@@ -13,8 +13,8 @@ export const RESPONSIVE_SIZES: Record<string, Record<WindowType, Size>> = {
       height: '60%',
     },
     [PROJECTS]: {
-      width: '90%',
-      height: 'auto',
+      width: '61%',
+      height: '90%',
     },
     [CONTACT]: {
       width: '30%',

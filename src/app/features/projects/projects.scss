@@ -1,4 +1,4 @@
-@use '../../../../public/styles/index' as *;
+@use '../../styles/index' as *;
 
 :host {
   app-content-window {
@@ -8,7 +8,8 @@
       width: 100%;
       display: inline-flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
+      gap: 1rem;
 
       .title {
         display: inline-flex;
@@ -90,6 +91,8 @@
           display: inline-flex;
           width: 100%;
           margin-top: auto;
+          justify-content: space-between;
+          gap: 0.5rem;
 
           button {
             width: 45%;

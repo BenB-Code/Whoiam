@@ -8,7 +8,7 @@ export type RawProject = {
   link: {
     name: string;
     url: string;
-  };
+  }[];
   technologies?: string[];
   status?: PROJECT_STATUS;
   year?: number;

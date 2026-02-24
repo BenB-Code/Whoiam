@@ -133,7 +133,7 @@ describe('Service - ExperiencesService', () => {
       service.loadExperiences();
 
       expect(service['loadData']).toHaveBeenCalledTimes(1);
-      expect(service['loadData']).toHaveBeenCalledWith(`/public/data/experiences.json`);
+      expect(service['loadData']).toHaveBeenCalledWith(`/data/experiences.json`);
     });
 
     it('should do nothing when rawData is already defined', () => {

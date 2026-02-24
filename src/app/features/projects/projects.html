@@ -41,15 +41,15 @@
         </article>
       </section>
       <section class="redirect-container">
-        @if (project.link) {
+        @if (project.link) { @for(link of project.link; track $index){
         <button
           type="button"
-          (click)="navigationService.redirect(project.link.url); $event.stopPropagation()"
-          (keydown.enter)="navigationService.redirect(project.link.url); $event.stopPropagation()"
+          (click)="navigationService.redirect(link.url); $event.stopPropagation()"
+          (keydown.enter)="navigationService.redirect(link.url); $event.stopPropagation()"
         >
-          {{ 'common.access' | translate }} {{ project.link.name }}
+          {{ link.name }}
         </button>
-        }
+        }}
       </section>
     </app-card>
     }

@@ -253,8 +253,8 @@ State = EntityState < WindowState > {
 **Solution** : Custom loaders qui détectent l'environnement :
 
 ```typescript
-// Browser : /public/i18n/fr.json
-// SSR : dist/Whoiam/browser/public/i18n/fr.json
+// Browser : /i18n/fr.json
+// SSR : dist/Whoiam/browser/i18n/fr.json
 ```
 
 Helper `getTranslatedField()` pour les données multilingues stockées en JSON.

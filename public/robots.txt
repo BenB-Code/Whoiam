@@ -1,10 +1,10 @@
 User-agent: *
 Allow: /
 
-Disallow: /public/data/
+Disallow: /data/
 Disallow: /*.json$
 
-Disallow: /public/i18n/
+Disallow: /i18n/
 
 Disallow: /*.map$
 
